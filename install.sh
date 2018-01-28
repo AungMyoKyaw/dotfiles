@@ -22,6 +22,16 @@ if [ -f "$HOME/.config/nvim/init.vim" ]; then
   cp "$HOME/.config/nvim/init.vim" "$HOME/.config/nvim/init.vim.bk"
 fi
 
+# Backup zshrc 
+if [ -f "$HOME/.zshrc" ]; then
+  cp "$HOME/.zshrc" "$HOME/.zshrc.bk"
+fi
+
+# Backup aliases 
+if [ -f "$HOME/.aliases" ]; then
+  cp "$HOME/.aliases" "$HOME/.aliases.bk"
+fi
+
 # Make dir if no .vim folder exists
 if [ ! -d "$HOME/.vim/" ]; then
   mkdir $HOME/.vim/
@@ -41,6 +51,8 @@ fi
 ln -fs "$CURRENT_DIR/vim/vimrc" "$HOME/.vim/vimrc"
 ln -fs "$CURRENT_DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
 ln -fs "$CURRENT_DIR/nvim/nvimrc" "$HOME/.config/nvim/init.vim"
+ln -fs "$CURRENT_DIR/zsh/zshrc" "$HOME/.zshrc"
+ln -fs "$CURRENT_DIR/zsh/aliases" "$HOME/.aliases"
 
 echo "**************************"
 echo "*                        *"
