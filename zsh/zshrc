@@ -68,7 +68,10 @@ plugins=(
 autoload -U compinit && compinit
 source $ZSH/oh-my-zsh.sh
 
-# aliases
+# alias
+alias vim=nvim
+
+# user aliases
 source ~/.aliases
 
 # User configuration

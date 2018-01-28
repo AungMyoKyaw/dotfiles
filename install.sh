@@ -47,6 +47,11 @@ if [ ! -d "$HOME/.config/nvim/" ]; then
   mkdir $HOME/.config/nvim/
 fi
 
+# create aliases file if aliases exists
+if [ ! -f "$CURRENT_DIR/zsh/aliases" ]; then
+  echo "# aliases" > $CURRENT_DIR/zsh/aliases
+fi
+
 # Linking rc
 ln -fs "$CURRENT_DIR/vim/vimrc" "$HOME/.vim/vimrc"
 ln -fs "$CURRENT_DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
