@@ -27,6 +27,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'valloric/youcompleteme'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-scripts/BufOnly.vim'
+Plugin 'wakatime/vim-wakatime'
 Plugin 'zefei/vim-colortuner'
 call vundle#end()             " required
 filetype plugin indent on     " Load plugins according to detected filetype.
