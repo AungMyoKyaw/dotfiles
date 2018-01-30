@@ -62,6 +62,7 @@ let g:neodark#use_256color = 1
 let g:neodark#use_custom_terminal_theme = 1
 set fdm=syntax
 nnoremap zo za
+nnoremap zO zA
 
 " Vim Airline
 let g:lightline = {}
