@@ -8,6 +8,7 @@ call vundle#begin()
 Plugin 'KeitaNakamura/neodark.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'arecarn/vim-fold-cycle'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'honza/vim-snippets'
@@ -17,6 +18,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
 Plugin 'prettier/vim-prettier'
+Plugin 'pseewald/vim-anyfold'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tacahiroy/ctrlp-funky'
@@ -63,6 +65,11 @@ let g:neodark#use_custom_terminal_theme = 1
 set fdm=syntax
 nnoremap zo za
 nnoremap zO zA
+
+" Folding
+let anyfold_activate=1
+let anyfold_fold_comments=1
+set foldlevel=0
 
 " Vim Airline
 let g:lightline = {}
