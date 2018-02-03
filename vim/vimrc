@@ -20,7 +20,6 @@ Plugin 'mileszs/ack.vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
 Plugin 'prettier/vim-prettier'
-Plugin 'pseewald/vim-anyfold'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tacahiroy/ctrlp-funky'
@@ -64,14 +63,11 @@ endif
 colorscheme neodark
 let g:neodark#use_256color = 1
 let g:neodark#use_custom_terminal_theme = 1
-set fdm=syntax
-nnoremap zo za
-nnoremap zO zA
 
 " Folding
-let anyfold_activate=1
-let anyfold_fold_comments=1
-set foldlevel=0
+nnoremap zO zA
+nnoremap zo za
+set fdm=syntax
 
 " Vim Airline
 let g:lightline = {}
