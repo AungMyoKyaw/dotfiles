@@ -3,7 +3,7 @@
 set nocompatible
 
 " Set Plugin Manager
-set rtp+=~/.vim/bundle/Vundle.vim
+set  rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'KeitaNakamura/neodark.vim'
 Plugin 'SirVer/ultisnips'
@@ -13,7 +13,8 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'honza/vim-snippets'
-Plugin 'jiangmiao/auto-pairs' 
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'junegunn/vim-easy-align'
 Plugin 'majutsushi/tagbar'
 Plugin 'mattn/emmet-vim'
 Plugin 'mileszs/ack.vim'
@@ -32,8 +33,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-scripts/BufOnly.vim'
 Plugin 'wakatime/vim-wakatime'
 Plugin 'zefei/vim-colortuner'
-call vundle#end()             " required
-filetype plugin indent on     " Load plugins according to detected filetype.
+call     vundle#end()     " required
+filetype plugin indent on " Load plugins according to detected filetype.
 
 " clipboard
 set clipboard^=unnamed,unnamedplus
@@ -67,26 +68,26 @@ let g:neodark#use_custom_terminal_theme = 1
 " Folding
 nnoremap zO zA
 nnoremap zo za
-set fdm=syntax
+set      fdm=syntax
 
 " Vim Airline
-let g:lightline = {}
-let g:lightline.colorscheme = 'neodark'
-let g:airline#extensions#tabline#enabled = 1  
+let g:lightline                            = {}
+let g:lightline.colorscheme                = 'neodark'
+let g:airline#extensions#tabline#enabled   = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 " CtrlP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_match_window = 'top,order:btt,min:1,max:20,results:20'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*,*/dist/*
+let g:ctrlp_map           = '<c-p>'
+let g:ctrlp_cmd           = 'CtrlP'
+let g:ctrlp_match_window  = 'top,order:btt,min:1,max:20,results:20'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
 
 " vim-devicon
 let g:airline_powerline_fonts = 1
 
 " Javascript Plugin Settings
 let g:javascript_plugin_flow = 1
-let g:jsx_ext_required = 1
+let g:jsx_ext_required       = 1
 
 " Prettier Settings
 let g:prettier#config#trailing_comma = 'none'
@@ -94,14 +95,14 @@ let g:prettier#config#trailing_comma = 'none'
 " ctrlp funky
 nnoremap <Leader>fu :CtrlPFunky<Cr>
 nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
-let g:ctrlp_funky_matchtype = 'path'
+let g:ctrlp_funky_matchtype        = 'path'
 let g:ctrlp_funky_syntax_highlight = 1
 
 " UtilSnips
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsExpandTrigger       = "<c-j>"
+let g:UltiSnipsJumpForwardTrigger  = "<c-b>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
+let g:UltiSnipsEditSplit           = "vertical"
 
 " tags bar
 nmap <F8> :TagbarToggle<CR>
@@ -115,6 +116,13 @@ nmap     <C-F>p <Plug>CtrlSFPwordPath
 nnoremap <C-F>o :CtrlSFOpen<CR>
 nnoremap <C-F>t :CtrlSFToggle<CR>
 inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
+
+" vim easy align
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " Line Number Setting
 set number relativenumber
@@ -151,35 +159,35 @@ nnoremap <up> <nop>
 " Abbrev
 iabbrev amk Aung Myo Kyaw
 
-set autoread " Auto refresh buffer
-set hidden " Leave hidden buffers open
-set ic " ignore case for search
+set autoread                      " Auto refresh buffer
+set hidden                        " Leave hidden buffers open
+set ic                            " ignore case for search
 
-set autoindent             " Indent according to previous line.
-set expandtab              " Use spaces instead of tabs.
-set softtabstop =2         " Tab key indents by 4 spaces.
-set shiftwidth  =2         " >> indents by 4 spaces.
-set shiftround             " >> indents to next multiple of 'shiftwidth'.
+set autoindent                    " Indent according to previous line.
+set expandtab                     " Use spaces instead of tabs.
+set softtabstop =2                " Tab key indents by 4 spaces.
+set shiftwidth  =2                " >> indents by 4 spaces.
+set shiftround                    " >> indents to next multiple of 'shiftwidth'.
 
-set backspace   =indent,eol,start  " Make backspace work as you would expect.
-set hidden                 " Switch between buffers without having to save first.
-set laststatus  =2         " Always show statusline.
-set display     =lastline  " Show as much as possible of the last line.
+set backspace   =indent,eol,start " Make backspace work as you would expect.
+set hidden                        " Switch between buffers without having to save first.
+set laststatus  =2                " Always show statusline.
+set display     =lastline         " Show as much as possible of the last line.
 
-set showmode               " Show current mode in command-line.
-set showcmd                " Show already typed keys when more are expected.
+set showmode                      " Show current mode in command-line.
+set showcmd                       " Show already typed keys when more are expected.
 
-set incsearch              " Highlight while searching with / or ?.
-set hlsearch               " Keep matches highlighted.
+set incsearch                     " Highlight while searching with / or ?.
+set hlsearch                      " Keep matches highlighted.
 
-set ttyfast                " Faster redrawing.
-set lazyredraw             " Only redraw when necessary.
+set ttyfast                       " Faster redrawing.
+set lazyredraw                    " Only redraw when necessary.
 
-set splitbelow             " Open new windows below the current window.
-set splitright             " Open new windows right of the current window.
+set splitbelow                    " Open new windows below the current window.
+set splitright                    " Open new windows right of the current window.
 
-set cursorline             " Find the current line quickly.
-set wrapscan               " Searches wrap around end-of-file.
-set report      =0         " Always report changed lines.
-set synmaxcol   =200       " Only highlight the first 200 columns.
+set cursorline                    " Find the current line quickly.
+set wrapscan                      " Searches wrap around end-of-file.
+set report      =0                " Always report changed lines.
+set synmaxcol   =200              " Only highlight the first 200 columns.
 set encoding    =utf8

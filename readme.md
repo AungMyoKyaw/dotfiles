@@ -124,6 +124,7 @@ brew install ack
 * [vim-colortuner](http://github.com/zefei/vim-colortuner)
 * [vim-commentary](http://github.com/tpope/vim-commentary)
 * [vim-devicons](http://github.com/ryanoasis/vim-devicons)
+* [vim-easy-align](http://github.com/ junegunn/vim-easy-align)
 * [vim-fold-cycle](http://github.com/arecarn/vim-fold-cycle)
 * [vim-fugitive](http://github.com/tpope/vim-fugitive)
 * [vim-javascript](http://github.com/pangloss/vim-javascript)
