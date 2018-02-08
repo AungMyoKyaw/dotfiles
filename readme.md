@@ -107,34 +107,38 @@ brew install ack
 
 ## Plugins
 
-* [BufOnly](http://github.com/vim-scripts/BufOnly.vim)
-* [Vundle](http://github.com/VundleVim/Vundle.vim)
-* [ack](http://github.com/mileszs/ack.vim)
-* [auto-pairs ](http://github.com/jiangmiao/auto-pairs)
-* [ctrlp-funky](http://github.com/tacahiroy/ctrlp-funky)
-* [ctrlp](http://github.com/ctrlpvim/ctrlp.vim)
-* [ctrlsf](http://github.com/dyng/ctrlsf.vim)
-* [editorconfig-vim](http://github.com/editorconfig/editorconfig-vim)
-* [emmet-vim](http://github.com/mattn/emmet-vim)
-* [neodark](http://github.com/KeitaNakamura/neodark.vim)
-* [nerdtree](http://github.com/scrooloose/nerdtree)
-* [tagbar](http://github.com/majutsushi/tagbar)
-* [ultisnips](http://github.com/SirVer/ultisnips)
-* [vim-airline](http://github.com/vim-airline/vim-airline)
-* [vim-colortuner](http://github.com/zefei/vim-colortuner)
-* [vim-commentary](http://github.com/tpope/vim-commentary)
-* [vim-devicons](http://github.com/ryanoasis/vim-devicons)
-* [vim-easy-align](http://github.com/ junegunn/vim-easy-align)
-* [vim-fold-cycle](http://github.com/arecarn/vim-fold-cycle)
-* [vim-fugitive](http://github.com/tpope/vim-fugitive)
-* [vim-javascript](http://github.com/pangloss/vim-javascript)
-* [vim-jsx](http://github.com/mxw/vim-jsx)
-* [vim-prettier](http://github.com/prettier/vim-prettier)
-* [vim-snippets](http://github.com/honza/vim-snippets)
-* [vim-surround](http://github.com/tpope/vim-surround)
-* [vim-tmux](http://github.com/tmux-plugins/vim-tmux)
-* [vim-wakatime](http://github.com/wakatime/vim-wakatime)
-* [youcompleteme](http://github.com/valloric/youcompleteme)
+| ------------------------------------------------------------------- | ----------- |
+| Name                                                                | Description |
+| [BufOnly](http://github.com/vim-scripts/BufOnly.vim)                |             |
+| [Vundle](http://github.com/VundleVim/Vundle.vim)                    |             |
+| [ack](http://github.com/mileszs/ack.vim)                            |             |
+| [auto-pairs ](http://github.com/jiangmiao/auto-pairs)               |             |
+| [ctrlp-funky](http://github.com/tacahiroy/ctrlp-funky)              |             |
+| [ctrlp](http://github.com/ctrlpvim/ctrlp.vim)                       |             |
+| [ctrlsf](http://github.com/dyng/ctrlsf.vim)                         |             |
+| [editorconfig-vim](http://github.com/editorconfig/editorconfig-vim) |             |
+| [emmet-vim](http://github.com/mattn/emmet-vim)                      |             |
+| [neodark](http://github.com/KeitaNakamura/neodark.vim)              |             |
+| [nerdtree](http://github.com/scrooloose/nerdtree)                   |             |
+| [tagbar](http://github.com/majutsushi/tagbar)                       |             |
+| [ultisnips](http://github.com/SirVer/ultisnips)                     |             |
+| [vim-airline](http://github.com/vim-airline/vim-airline)            |             |
+| [vim-colortuner](http://github.com/zefei/vim-colortuner)            |             |
+| [vim-commentary](http://github.com/tpope/vim-commentary)            |             |
+| [vim-devicons](http://github.com/ryanoasis/vim-devicons)            |             |
+| [vim-easy-align](http://github.com/junegunn/vim-easy-align)         |             |
+| [vim-fold-cycle](http://github.com/arecarn/vim-fold-cycle)          |             |
+| [vim-fugitive](http://github.com/tpope/vim-fugitive)                |             |
+| [vim-gitgutter](http://github.com/airblade/vim-gitgutter)           |             |
+| [vim-javascript](http://github.com/pangloss/vim-javascript)         |             |
+| [vim-jsx](http://github.com/mxw/vim-jsx)                            |             |
+| [vim-prettier](http://github.com/prettier/vim-prettier)             |             |
+| [vim-snippets](http://github.com/honza/vim-snippets)                |             |
+| [vim-surround](http://github.com/tpope/vim-surround)                |             |
+| [vim-tmux](http://github.com/tmux-plugins/vim-tmux)                 |             |
+| [vim-wakatime](http://github.com/wakatime/vim-wakatime)             |             |
+| [yajs](http://github.com/othree/yajs.vim)                           |             |
+| [youcompleteme](http://github.com/valloric/youcompleteme)           |             |
 
 ## Acknowledgments
 
