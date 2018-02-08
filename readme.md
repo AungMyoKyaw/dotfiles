@@ -107,6 +107,9 @@ brew install ack
 
 ## Plugins
 
+<details>
+<summary>Plugins</summary>
+
 | Name                                                                | Description |
 | ------------------------------------------------------------------- | ----------- |
 | [BufOnly](http://github.com/vim-scripts/BufOnly.vim)                |             |
@@ -139,6 +142,8 @@ brew install ack
 | [vim-wakatime](http://github.com/wakatime/vim-wakatime)             |             |
 | [yajs](http://github.com/othree/yajs.vim)                           |             |
 | [youcompleteme](http://github.com/valloric/youcompleteme)           |             |
+
+</details>
 
 ## Acknowledgments
 
