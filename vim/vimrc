@@ -8,6 +8,7 @@ call vundle#begin()
 Plugin 'KeitaNakamura/neodark.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'arecarn/vim-fold-cycle'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'dyng/ctrlsf.vim'
@@ -19,6 +20,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'mattn/emmet-vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'mxw/vim-jsx'
+Plugin 'othree/yajs.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'prettier/vim-prettier'
 Plugin 'ryanoasis/vim-devicons'
@@ -53,16 +55,8 @@ endif
 if !exists("g:syntax_on")
   syntax enable
 endif
-if (has("termguicolors"))
-  set termguicolors
-endif
-if has('gui_running')
-  set background=light
-else
-  set background=dark
-endif
 colorscheme neodark
-let g:neodark#use_256color = 1
+let g:neodark#use_256color              = 1
 let g:neodark#use_custom_terminal_theme = 1
 
 " Folding
