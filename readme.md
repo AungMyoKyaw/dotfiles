@@ -110,38 +110,38 @@ brew install ack
 <details>
 <summary>Plugins</summary>
 
-| Name                                                                | Description |
-| ------------------------------------------------------------------- | ----------- |
-| [BufOnly](http://github.com/vim-scripts/BufOnly.vim)                |             |
-| [Vundle](http://github.com/VundleVim/Vundle.vim)                    |             |
-| [ack](http://github.com/mileszs/ack.vim)                            |             |
-| [auto-pairs ](http://github.com/jiangmiao/auto-pairs)               |             |
-| [ctrlp-funky](http://github.com/tacahiroy/ctrlp-funky)              |             |
-| [ctrlp](http://github.com/ctrlpvim/ctrlp.vim)                       |             |
-| [ctrlsf](http://github.com/dyng/ctrlsf.vim)                         |             |
-| [editorconfig-vim](http://github.com/editorconfig/editorconfig-vim) |             |
-| [emmet-vim](http://github.com/mattn/emmet-vim)                      |             |
-| [neodark](http://github.com/KeitaNakamura/neodark.vim)              |             |
-| [nerdtree](http://github.com/scrooloose/nerdtree)                   |             |
-| [tagbar](http://github.com/majutsushi/tagbar)                       |             |
-| [ultisnips](http://github.com/SirVer/ultisnips)                     |             |
-| [vim-airline](http://github.com/vim-airline/vim-airline)            |             |
-| [vim-colortuner](http://github.com/zefei/vim-colortuner)            |             |
-| [vim-commentary](http://github.com/tpope/vim-commentary)            |             |
-| [vim-devicons](http://github.com/ryanoasis/vim-devicons)            |             |
-| [vim-easy-align](http://github.com/junegunn/vim-easy-align)         |             |
-| [vim-fold-cycle](http://github.com/arecarn/vim-fold-cycle)          |             |
-| [vim-fugitive](http://github.com/tpope/vim-fugitive)                |             |
-| [vim-gitgutter](http://github.com/airblade/vim-gitgutter)           |             |
-| [vim-javascript](http://github.com/pangloss/vim-javascript)         |             |
-| [vim-jsx](http://github.com/mxw/vim-jsx)                            |             |
-| [vim-prettier](http://github.com/prettier/vim-prettier)             |             |
-| [vim-snippets](http://github.com/honza/vim-snippets)                |             |
-| [vim-surround](http://github.com/tpope/vim-surround)                |             |
-| [vim-tmux](http://github.com/tmux-plugins/vim-tmux)                 |             |
-| [vim-wakatime](http://github.com/wakatime/vim-wakatime)             |             |
-| [yajs](http://github.com/othree/yajs.vim)                           |             |
-| [youcompleteme](http://github.com/valloric/youcompleteme)           |             |
+| NO  | NAME                                                                |
+| --- | ------------------------------------------------------------------- |
+| 1   | [BufOnly](http://github.com/vim-scripts/BufOnly.vim)                |
+| 2   | [Vundle](http://github.com/VundleVim/Vundle.vim)                    |
+| 3   | [ack](http://github.com/mileszs/ack.vim)                            |
+| 4   | [auto-pairs ](http://github.com/jiangmiao/auto-pairs)               |
+| 5   | [ctrlp-funky](http://github.com/tacahiroy/ctrlp-funky)              |
+| 6   | [ctrlp](http://github.com/ctrlpvim/ctrlp.vim)                       |
+| 7   | [ctrlsf](http://github.com/dyng/ctrlsf.vim)                         |
+| 8   | [editorconfig-vim](http://github.com/editorconfig/editorconfig-vim) |
+| 9   | [emmet-vim](http://github.com/mattn/emmet-vim)                      |
+| 10  | [neodark](http://github.com/KeitaNakamura/neodark.vim)              |
+| 11  | [nerdtree](http://github.com/scrooloose/nerdtree)                   |
+| 12  | [tagbar](http://github.com/majutsushi/tagbar)                       |
+| 13  | [ultisnips](http://github.com/SirVer/ultisnips)                     |
+| 14  | [vim-airline](http://github.com/vim-airline/vim-airline)            |
+| 15  | [vim-colortuner](http://github.com/zefei/vim-colortuner)            |
+| 16  | [vim-commentary](http://github.com/tpope/vim-commentary)            |
+| 17  | [vim-devicons](http://github.com/ryanoasis/vim-devicons)            |
+| 18  | [vim-easy-align](http://github.com/junegunn/vim-easy-align)         |
+| 19  | [vim-fold-cycle](http://github.com/arecarn/vim-fold-cycle)          |
+| 20  | [vim-fugitive](http://github.com/tpope/vim-fugitive)                |
+| 21  | [vim-gitgutter](http://github.com/airblade/vim-gitgutter)           |
+| 22  | [vim-javascript](http://github.com/pangloss/vim-javascript)         |
+| 23  | [vim-jsx](http://github.com/mxw/vim-jsx)                            |
+| 24  | [vim-prettier](http://github.com/prettier/vim-prettier)             |
+| 25  | [vim-snippets](http://github.com/honza/vim-snippets)                |
+| 26  | [vim-surround](http://github.com/tpope/vim-surround)                |
+| 27  | [vim-tmux](http://github.com/tmux-plugins/vim-tmux)                 |
+| 28  | [vim-wakatime](http://github.com/wakatime/vim-wakatime)             |
+| 29  | [yajs](http://github.com/othree/yajs.vim)                           |
+| 30  | [youcompleteme](http://github.com/valloric/youcompleteme)           |
 
 </details>
 
