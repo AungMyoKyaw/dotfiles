@@ -107,8 +107,8 @@ brew install ack
 
 ## Plugins
 
-| ------------------------------------------------------------------- | ----------- |
 | Name                                                                | Description |
+| ------------------------------------------------------------------- | ----------- |
 | [BufOnly](http://github.com/vim-scripts/BufOnly.vim)                |             |
 | [Vundle](http://github.com/VundleVim/Vundle.vim)                    |             |
 | [ack](http://github.com/mileszs/ack.vim)                            |             |
