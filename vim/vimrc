@@ -59,6 +59,10 @@ colorscheme neodark
 let g:neodark#use_256color              = 1
 let g:neodark#use_custom_terminal_theme = 1
 
+" Tmux
+set t_8f=^[[38;2;%lu;%lu;%lum
+set t_8b=^[[48;2;%lu;%lu;%lum
+
 " Folding
 nnoremap zO zA
 nnoremap zo za
