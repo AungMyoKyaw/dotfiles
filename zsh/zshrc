@@ -15,8 +15,13 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  zsh-completions
+  history
+  sudo
+  taskwarrior
+  tmux
+  tmuxinator 
   zsh-autosuggestions
+  zsh-completions
   zsh-syntax-highlighting
 )
 
@@ -29,3 +34,5 @@ alias vim=nvim
 # user aliases
 source ~/.aliases
 
+# zsh tmux settings
+ZSH_TMUX_AUTOSTART='true'
