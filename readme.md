@@ -121,7 +121,7 @@ brew install ack
 | 7   | [ctrlsf](http://github.com/dyng/ctrlsf.vim)                         |
 | 8   | [editorconfig-vim](http://github.com/editorconfig/editorconfig-vim) |
 | 9   | [emmet-vim](http://github.com/mattn/emmet-vim)                      |
-| 10  | [neodark](http://github.com/KeitaNakamura/neodark.vim)              |
+| 10  | [Oceanic-Next](https://github.com/mhartington/oceanic-next)         |
 | 11  | [nerdtree](http://github.com/scrooloose/nerdtree)                   |
 | 12  | [tagbar](http://github.com/majutsushi/tagbar)                       |
 | 13  | [ultisnips](http://github.com/SirVer/ultisnips)                     |
@@ -140,8 +140,10 @@ brew install ack
 | 26  | [vim-surround](http://github.com/tpope/vim-surround)                |
 | 27  | [vim-tmux](http://github.com/tmux-plugins/vim-tmux)                 |
 | 28  | [vim-wakatime](http://github.com/wakatime/vim-wakatime)             |
-| 29  | [yajs](http://github.com/othree/yajs.vim)                           |
-| 30  | [youcompleteme](http://github.com/valloric/youcompleteme)           |
+| 30  | [html5](https://github.com/othree/html5.vim)                        |
+| 31  | [yajs](http://github.com/othree/yajs.vim)                           |
+| 32  | [yats](https://github.com/HerringtonDarkholme/yats.vim/)            |
+| 33  | [youcompleteme](http://github.com/valloric/youcompleteme)           |
 
 </details>
 
