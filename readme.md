@@ -2,7 +2,7 @@
 
 > My vim and tmux config
 
-<img src="./assets/dotfiles.gif" alt="dotfiles" align="right" width="400">
+<img src="./assets/vim.gif" alt="dotfiles" align="right" width="400">
 
 * [Prerequisites](#prerequisites)
   * [Install TMUX](#install-tmux)
