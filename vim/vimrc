@@ -13,6 +13,7 @@ Plugin 'arecarn/vim-fold-cycle'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'heavenshell/vim-jsdoc'
 Plugin 'honza/vim-snippets'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'junegunn/vim-easy-align'
@@ -127,6 +128,11 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" js-docs
+let g:jsdoc_allow_input_prompt = 1
+let g:jsdoc_enable_es6         = 1
+let g:jsdoc_input_description  = 1
 
 " Line Number Setting
 set number relativenumber

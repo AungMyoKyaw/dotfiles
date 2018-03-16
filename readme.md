@@ -144,6 +144,7 @@ brew install ack
 | 31  | [yajs](http://github.com/othree/yajs.vim)                           |
 | 32  | [yats](https://github.com/HerringtonDarkholme/yats.vim/)            |
 | 33  | [youcompleteme](http://github.com/valloric/youcompleteme)           |
+| 34  | [vim-jsdoc](http://github.com/heavenshell/vim-jsdoc)                |
 
 </details>
 
