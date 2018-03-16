@@ -74,6 +74,7 @@ set t_8b=^[[48;2;%lu;%lu;%lum
 nnoremap zO zA
 nnoremap zo za
 set      fdm=syntax
+set      nofoldenable
 
 " Vim Airline
 let g:airline#extensions#tabline#enabled   = 1
