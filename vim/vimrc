@@ -96,6 +96,7 @@ let g:jsx_ext_required       = 1
 
 " Prettier Settings
 let g:prettier#config#trailing_comma = 'none'
+let g:prettier#config#parser         = 'babylon'
 
 " ctrlp funky
 nnoremap <Leader>fu :CtrlPFunky<Cr>
