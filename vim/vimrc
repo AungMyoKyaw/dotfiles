@@ -202,3 +202,8 @@ set wrapscan                      " Searches wrap around end-of-file.
 set report      =0                " Always report changed lines.
 set synmaxcol   =200              " Only highlight the first 200 columns.
 set encoding    =utf8
+
+
+set t_Co        =256              " Enable 256 colors
+set ai                            " Turn on auto indentation
+set si                            " Turn on smart indent
