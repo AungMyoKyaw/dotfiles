@@ -5,7 +5,6 @@ set nocompatible
 " Set Plugin Manager
 set  rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'HerringtonDarkholme/yats.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
@@ -16,18 +15,16 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'heavenshell/vim-jsdoc'
 Plugin 'honza/vim-snippets'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'joshdick/onedark.vim'
 Plugin 'junegunn/vim-easy-align'
-Plugin 'majutsushi/tagbar'
 Plugin 'mattn/emmet-vim'
-Plugin 'mhartington/oceanic-next'
 Plugin 'mileszs/ack.vim'
 Plugin 'mxw/vim-jsx'
-Plugin 'othree/html5.vim'
-Plugin 'othree/yajs.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'prettier/vim-prettier'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'scrooloose/nerdtree'
+Plugin 'sheerun/vim-polyglot'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'tmux-plugins/vim-tmux'
 Plugin 'tpope/vim-commentary'
@@ -61,11 +58,9 @@ endif
 if (has("termguicolors"))
  set termguicolors
 endif
-let $NVIM_TUI_ENABLE_TRUE_COLOR    = 1
-let g:airline_theme                = 'oceanicnext'
-let g:oceanic_next_terminal_bold   = 1
-let g:oceanic_next_terminal_italic = 1
-colorscheme OceanicNext
+let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
+let g:airline_theme             = 'onedark'
+colorscheme onedark
 
 " Tmux
 set t_8f=^[[38;2;%lu;%lu;%lum
@@ -176,8 +171,8 @@ set ic                            " ignore case for search
 
 set autoindent                    " Indent according to previous line.
 set expandtab                     " Use spaces instead of tabs.
-set softtabstop =2                " Tab key indents by 4 spaces.
-set shiftwidth  =2                " >> indents by 4 spaces.
+set softtabstop =2                " Tab key indents by 2 spaces.
+set shiftwidth  =2                " >> indents by 2 spaces.
 set shiftround                    " >> indents to next multiple of 'shiftwidth'.
 
 set backspace   =indent,eol,start " Make backspace work as you would expect.
