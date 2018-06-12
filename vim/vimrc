@@ -202,3 +202,4 @@ set encoding    =utf8
 set t_Co        =256              " Enable 256 colors
 set ai                            " Turn on auto indentation
 set si                            " Turn on smart indent
+set mouse       =a                " enable mouse scroll
