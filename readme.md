@@ -84,20 +84,11 @@ _<kbd>ctrl+a</kbd> is `prefix`._
 
 ### Install [Vim](http://www.vim.org/) Plugins
 
-_CMAKE is also needed to be installed `brew install cmake`_
-
 ```shell
 vim +PluginInstall +qall
 ```
 
 ### Need a few more step to activate some plugins
-
-#### YouCompleteMe
-
-```shell
-cd ~/.vim/bundle/YouCompleteMe
-./install.py --all
-```
 
 #### ctrlsf
 
