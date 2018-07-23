@@ -4,19 +4,19 @@
 
 <img src="./assets/vim.gif" alt="dotfiles" align="right" width="400">
 
-* [Prerequisites](#prerequisites)
-  * [Install TMUX](#install-tmux)
-  * [Install TMUX Plugin Manager](#install-tmux-plugin-manager)
-  * [Install Vundle](#install-vundle)
-  * [Install Terminal Font](#install-terminal-font)
-  * [Install neovim](#install-neovim)
-* [Installation](#installation)
-  * [Install Config](#install-config)
-  * [Install TMUX Plugins](#install-tmux-plugins)
-  * [Install Vim Plugins](#install-vim-plugins)
-* [Plugins](#plugins)
-* [Acknowledgments](#acknowledgments)
-* [License](#license)
+- [Prerequisites](#prerequisites)
+  - [Install TMUX](#install-tmux)
+  - [Install TMUX Plugin Manager](#install-tmux-plugin-manager)
+  - [Install Vundle](#install-vundle)
+  - [Install Terminal Font](#install-terminal-font)
+  - [Install neovim](#install-neovim)
+- [Installation](#installation)
+  - [Install Config](#install-config)
+  - [Install TMUX Plugins](#install-tmux-plugins)
+  - [Install Vim Plugins](#install-vim-plugins)
+- [Plugins](#plugins)
+- [Acknowledgments](#acknowledgments)
+- [License](#license)
 
 ---
 
@@ -136,12 +136,11 @@ brew install ack
 | 22  | [vim-jsdoc](http://github.com/heavenshell/vim-jsdoc)                |
 | 23  | [vim-jsx](http://github.com/mxw/vim-jsx)                            |
 | 24  | [vim-polyglot](https://github.com/sheerun/vim-polyglot)             |
-| 25  | [vim-prettier](http://github.com/prettier/vim-prettier)             |
-| 26  | [vim-snippets](http://github.com/honza/vim-snippets)                |
-| 27  | [vim-surround](http://github.com/tpope/vim-surround)                |
-| 28  | [vim-tmux](http://github.com/tmux-plugins/vim-tmux)                 |
-| 29  | [vim-wakatime](http://github.com/wakatime/vim-wakatime)             |
-| 30  | [youcompleteme](http://github.com/valloric/youcompleteme)           |
+| 25  | [vim-snippets](http://github.com/honza/vim-snippets)                |
+| 26  | [vim-surround](http://github.com/tpope/vim-surround)                |
+| 27  | [vim-tmux](http://github.com/tmux-plugins/vim-tmux)                 |
+| 28  | [vim-wakatime](http://github.com/wakatime/vim-wakatime)             |
+| 29  | [youcompleteme](http://github.com/valloric/youcompleteme)           |
 
 </details>
 

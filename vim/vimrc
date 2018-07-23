@@ -21,7 +21,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
-Plugin 'prettier/vim-prettier'
+Plugin 'w0rp/ale'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'scrooloose/nerdtree'
 Plugin 'sheerun/vim-polyglot'
@@ -89,9 +89,10 @@ let g:airline_powerline_fonts = 1
 let g:javascript_plugin_flow = 1
 let g:jsx_ext_required       = 1
 
-" Prettier Settings
-let g:prettier#config#trailing_comma = 'none'
-let g:prettier#config#parser         = 'babylon'
+" ALE Settings
+let g:ale_fixers                               = ['prettier']
+let g:ale_javascript_prettier_options          = '--single-quote --trailing-comma none'
+let g:ale_javascript_prettier_use_local_config = 1
 
 " ctrlp funky
 nnoremap <Leader>fu :CtrlPFunky<Cr>
