@@ -57,3 +57,13 @@ name = "sudo"
 [[layers]]
 name = "checkers"
 # show_cursor_error = false
+
+# TOOLS
+[[layers]]
+  name = "tools"
+
+# JAVASCRIPT
+[[layers]]
+name = "lang#javascript"
+auto_fix = true
+enable_flow_syntax = true
