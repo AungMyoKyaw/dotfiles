@@ -53,11 +53,23 @@ if [ ! -f "$CURRENT_DIR/zsh/aliases" ]; then
 fi
 
 # Linking rc
-ln -fs "$CURRENT_DIR/vim/vimrc" "$HOME/.vim/vimrc"
+# ln -fs "$CURRENT_DIR/vim/vimrc" "$HOME/.vim/vimrc" # I switch to spacevim
 ln -fs "$CURRENT_DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
 ln -fs "$CURRENT_DIR/nvim/nvimrc" "$HOME/.config/nvim/init.vim"
 ln -fs "$CURRENT_DIR/zsh/zshrc" "$HOME/.zshrc"
 ln -fs "$CURRENT_DIR/zsh/aliases" "$HOME/.aliases"
+
+# Installing SPACEVIM
+curl -sLf https://spacevim.org/install.sh | bash
+rm $HOME/.SpaceVim.d/init.toml
+
+# Make dir if no autoload folder exists
+if [ ! -d "$HOME/.SpaceVim.d/autoload/" ]; then
+  mkdir $HOME/.SpaceVim.d/autoload/
+fi
+
+ln -fs "$CURRENT_DIR/spacevim.d/init.toml" "$HOME/.SpaceVim.d/init.toml"
+ln -fs "$CURRENT_DIR/spacevim.d/autoload/myspacevim.vim" "$HOME/.SpaceVim.d/autoload/myspacevim.vim"
 
 echo "**************************"
 echo "*                        *"
