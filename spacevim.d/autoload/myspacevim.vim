@@ -17,4 +17,9 @@ func! myspacevim#after() abort
   let g:ale_fixers                               = ['prettier']
   let g:ale_javascript_prettier_options          = '--single-quote --trailing-comma none'
   let g:ale_javascript_prettier_use_local_config = 1
+
+  " Case insensitive commands
+  set ignorecase
+  set smartcase
+
 endf
