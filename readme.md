@@ -7,15 +7,11 @@
 - [Prerequisites](#prerequisites)
   - [Install TMUX](#install-tmux)
   - [Install TMUX Plugin Manager](#install-tmux-plugin-manager)
-  - [Install Vundle](#install-vundle)
   - [Install Terminal Font](#install-terminal-font)
   - [Install neovim](#install-neovim)
 - [Installation](#installation)
   - [Install Config](#install-config)
   - [Install TMUX Plugins](#install-tmux-plugins)
-  - [Install Vim Plugins](#install-vim-plugins)
-- [Plugins](#plugins)
-- [Acknowledgments](#acknowledgments)
 - [License](#license)
 
 ---
@@ -33,12 +29,6 @@ brew install tmux
 ```shell
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 tmux source ~/.tmux.conf
-```
-
-### Install [Vundle](https://github.com/VundleVim/Vundle.vim)
-
-```shell
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
 ### Install Terminal Font
@@ -60,7 +50,7 @@ brew install neovim
 
 ---
 
-_I recommend to use [iterm2](https://www.iterm2.com/) with [oceanicmaterial color scheme](http://iterm2colorschemes.com/)._
+_I recommend to use [iterm2](https://www.iterm2.com/)._
 
 _[Z shell](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH) and [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) should also be installed._
 
@@ -81,12 +71,6 @@ sh ./install.sh
 Use <kbd>ctrl</kbd>+<kbd>a</kbd>+<kbd>I</kbd> to install [TMUX](https://tmux.github.io/) Plugins
 
 _<kbd>ctrl+a</kbd> is `prefix`._
-
-### Install [Vim](http://www.vim.org/) Plugins
-
-```shell
-vim +PluginInstall +qall
-```
 
 ## License
 
