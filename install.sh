@@ -54,13 +54,13 @@ fi
 
 # Linking rc
 # ln -fs "$CURRENT_DIR/vim/vimrc" "$HOME/.vim/vimrc" # I switch to spacevim
+# ln -fs "$CURRENT_DIR/nvim/nvimrc" "$HOME/.config/nvim/init.vim"
 ln -fs "$CURRENT_DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
-ln -fs "$CURRENT_DIR/nvim/nvimrc" "$HOME/.config/nvim/init.vim"
 ln -fs "$CURRENT_DIR/zsh/zshrc" "$HOME/.zshrc"
 ln -fs "$CURRENT_DIR/zsh/aliases" "$HOME/.aliases"
 
 # Installing SPACEVIM
-curl -sLf https://spacevim.org/install.sh | bash
+# curl -sLf https://spacevim.org/install.sh | bash
 rm $HOME/.SpaceVim.d/init.toml
 
 # Make dir if no autoload folder exists

@@ -9,6 +9,7 @@
   - [Install TMUX Plugin Manager](#install-tmux-plugin-manager)
   - [Install Terminal Font](#install-terminal-font)
   - [Install neovim](#install-neovim)
+  - [Install spacevim-config](#install-spacevim-config)
 - [Installation](#installation)
   - [Install Config](#install-config)
   - [Install TMUX Plugins](#install-tmux-plugins)
@@ -46,6 +47,14 @@ Set Terminal Font to `Sauce Code Pro Nerd Font`.
 
 ```shell
 brew install neovim
+```
+
+### Install [spacevim config](https://spacevim.org/)
+
+#### Linux and macOS
+
+```shell
+curl -sLf https://spacevim.org/install.sh | bash
 ```
 
 ---
