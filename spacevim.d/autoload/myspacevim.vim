@@ -1,6 +1,10 @@
 func! myspacevim#before() abort
   " remap jj to esc
   inoremap jj <esc>
+
+  " Custom SPC mapping
+  " ALEFIX
+  call SpaceVim#custom#SPC('nnoremap', ['a', 'f'], ':ALEFix', 'ALEFIX', 1)
 endf
 
 func! myspacevim#after() abort
@@ -21,5 +25,4 @@ func! myspacevim#after() abort
   " Case insensitive commands
   set ignorecase
   set smartcase
-
 endf
