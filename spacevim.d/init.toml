@@ -72,6 +72,10 @@ name = "checkers"
 [[layers]]
 name = "tools"
 
+# VersionControl
+[[layers]]
+name = "VersionControl"
+
 # JAVASCRIPT
 [[layers]]
 name               = "lang#javascript"
