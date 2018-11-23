@@ -81,3 +81,7 @@ name = "VersionControl"
 name               = "lang#javascript"
 auto_fix           = true
 enable_flow_syntax = true
+
+# TYPESCRIPT
+[[layers]]
+name = "lang#typescript"
