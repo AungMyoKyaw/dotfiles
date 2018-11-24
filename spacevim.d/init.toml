@@ -85,3 +85,10 @@ enable_flow_syntax = true
 # TYPESCRIPT
 [[layers]]
 name = "lang#typescript"
+
+##################
+# CUSTOM PLUGINS #
+##################
+[[custom_plugins]]
+name = "prettier/vim-prettier"
+merged = 0

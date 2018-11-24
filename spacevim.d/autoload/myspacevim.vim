@@ -3,26 +3,25 @@ func! myspacevim#before() abort
   inoremap jj <esc>
 
   " Custom SPC mapping
-  " ALEFIX
-  call SpaceVim#custom#SPC('nnoremap', ['a', 'f'], ':ALEFix', 'ALEFIX', 1)
+  " PRETTIER
+  call SpaceVim#custom#SPC('nnoremap', ['a', 'p'], ':prettier', 'PRETTIER', 1)
+
 endf
 
 func! myspacevim#after() abort
-  " Folding
+  " FOLDING
   nnoremap zO zA
   nnoremap zo za
   set      fdm=syntax
   set      nofoldenable
   
-  " ctrlp config
+  " CTRLP
   let g:ctrlp_match_window  = 'top,order:btt,min:1,max:20,results:20'
 
-  " ALE Settings
-  let g:ale_fixers                               = ['prettier']
-  let g:ale_javascript_prettier_options          = '--single-quote --trailing-comma none'
-  let g:ale_javascript_prettier_use_local_config = 1
+  " PRETTIER
+  let g:prettier#config#single_quote = 'true'
 
-  " Case insensitive commands
+  " CASE INSENSITIVE COMMANDS
   set ignorecase
   set smartcase
 endf
