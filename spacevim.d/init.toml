@@ -96,3 +96,7 @@ merged = 0
 [[custom_plugins]]
 name = "vimwiki/vimwiki"
 merged = 0
+
+[[custom_plugins]]
+name = "wakatime/vim-wakatime"
+merged = 0
