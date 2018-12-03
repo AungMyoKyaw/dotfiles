@@ -92,3 +92,7 @@ name = "lang#typescript"
 [[custom_plugins]]
 name = "prettier/vim-prettier"
 merged = 0
+
+[[custom_plugins]]
+name = "vimwiki/vimwiki"
+merged = 0
