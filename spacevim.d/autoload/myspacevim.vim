@@ -12,6 +12,7 @@ func! myspacevim#before() abort
   let mywiki.syntax = 'markdown'
   let mywiki.ext = '.md'
   let g:vimwiki_list = [mywiki]
+  let g:vimwiki_folding = 'expr'
 
 endf
 
