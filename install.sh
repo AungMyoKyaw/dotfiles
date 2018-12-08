@@ -58,6 +58,7 @@ fi
 ln -fs "$CURRENT_DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
 ln -fs "$CURRENT_DIR/zsh/zshrc" "$HOME/.zshrc"
 ln -fs "$CURRENT_DIR/zsh/aliases" "$HOME/.aliases"
+ln -fs "$CURRENT_DIR/vim/xvimrc" "$HOME/.xvimrc"
 
 # Installing SPACEVIM
 # curl -sLf https://spacevim.org/install.sh | bash
