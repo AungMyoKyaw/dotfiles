@@ -7,12 +7,13 @@ func! myspacevim#before() abort
   call SpaceVim#custom#SPC('nnoremap', ['a', 'p'], ':prettier', 'PRETTIER', 1)
 
   " vimwiki
-  let mywiki = {}
-  let mywiki.path = '~/Dropbox/MyWiki/'
-  let mywiki.syntax = 'markdown'
-  let mywiki.ext = '.md'
-  let g:vimwiki_list = [mywiki]
-  let g:vimwiki_folding = 'expr'
+  let g:vimwiki_global_ext = 0
+  let mywiki               = {}
+  let mywiki.path          = '~/Dropbox/MyWiki/'
+  let mywiki.syntax        = 'markdown'
+  let mywiki.ext           = '.md'
+  let g:vimwiki_list       = [mywiki]
+  let g:vimwiki_folding    = 'expr'
 
 endf
 
