@@ -26,7 +26,7 @@
   # Disable guicolors in basic mode, many terminal do not support 24bit
   # true colors
   enable_guicolors               = true
-  statusline_separator           = "fire"
+  statusline_separator           = "curve"
   statusline_inactive_separator  = "arrow"
   buffer_index_type              = 4
   enable_tabline_filetype_icon   = true
@@ -72,6 +72,10 @@ name = "checkers"
 [[layers]]
 name = "tools"
 
+# tmux
+[[layers]]
+name = "tmux"
+
 # VersionControl
 [[layers]]
 name = "VersionControl"
@@ -89,6 +93,15 @@ name = "lang#typescript"
 # SWIFT
 [[layers]]
 name = "lang#swift"
+
+# latex
+[[layers]]
+name = "lang#latex"
+
+# ejs
+[[custom_plugins]]
+name = "briancollins/vim-jst"
+merged = 0
 
 ##################
 # CUSTOM PLUGINS #
