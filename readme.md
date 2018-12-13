@@ -2,7 +2,7 @@
 
 > My vim and tmux config
 
-<img src="./assets/screenshot.gif" alt="dotfiles" align="right" width="400">
+<img src="./assets/screenshot.png" alt="dotfiles" align="right" width="440">
 
 - [Prerequisites](#prerequisites)
   - [Install TMUX](#install-tmux)
@@ -38,10 +38,10 @@ tmux source ~/.tmux.conf
 
 ```shell
 brew tap caskroom/fonts
-brew cask install font-sourcecodepro-nerd-font
+brew cask install font-dejavusansmono-nerd-font-mono
 ```
 
-Set Terminal Font to `Sauce Code Pro Nerd Font`.
+Set Terminal Font to `DejaVuSansMono Nerd Font Mono`.
 
 ### Install [neovim](https://neovim.io/)
 
