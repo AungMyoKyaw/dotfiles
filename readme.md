@@ -83,4 +83,4 @@ _<kbd>ctrl+a</kbd> is `prefix`._
 
 ## License
 
-[MIT](./LICENSE)
+MIT © [Aung Myo Kyaw](https://github.com/AungMyoKyaw)
