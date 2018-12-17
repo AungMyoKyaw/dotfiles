@@ -30,11 +30,12 @@
   statusline_inactive_separator  = "arrow"
   buffer_index_type              = 4
   enable_tabline_filetype_icon   = true
-  enable_statusline_display_mode = false
+  enable_statusline_display_mode = true
   bootstrap_before               = "myspacevim#before"
   bootstrap_after                = "myspacevim#after"
   enable_neomake                 = false
-  enable_ale                     = true
+  enable_ale                     = false
+  guifont                        = 'DejaVu Sans Mono for Powerline:h20'
 
 # Enable autocomplete layer
 [[layers]]

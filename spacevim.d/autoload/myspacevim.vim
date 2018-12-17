@@ -4,7 +4,7 @@ func! myspacevim#before() abort
 
   " Custom SPC mapping
   " PRETTIER
-  call SpaceVim#custom#SPC('nnoremap', ['a', 'p'], ':prettier', 'PRETTIER', 1)
+  call SpaceVim#custom#SPC('nnoremap', ['a', 'p'], ':Prettier', 'PRETTIER', 1)
 
   " vimwiki
   let g:vimwiki_global_ext = 0
