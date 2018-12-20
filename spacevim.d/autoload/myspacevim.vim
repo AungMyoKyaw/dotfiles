@@ -2,6 +2,9 @@ func! myspacevim#before() abort
   " remap jj to esc
   inoremap jj <esc>
 
+  " disable mouse
+  set mouse=
+
   " Custom SPC mapping
   " PRETTIER
   call SpaceVim#custom#SPC('nnoremap', ['a', 'p'], ':Prettier', 'PRETTIER', 1)
@@ -23,7 +26,7 @@ func! myspacevim#after() abort
   nnoremap zo za
   set      fdm=syntax
   set      nofoldenable
-  
+
   " CTRLP
   let g:ctrlp_match_window  = 'top,order:btt,min:1,max:20,results:20'
 
