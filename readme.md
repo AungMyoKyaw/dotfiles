@@ -34,7 +34,7 @@ tmux source ~/.tmux.conf
 
 ### Install Terminal Font
 
-#### Install Knack [Nerd Font](https://github.com/ryanoasis/nerd-fonts)
+#### Install DejaVuSansMono [Nerd Font](https://github.com/ryanoasis/nerd-fonts) Mono
 
 ```shell
 brew tap caskroom/fonts
