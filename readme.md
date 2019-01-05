@@ -2,22 +2,25 @@
 
 > My vim and tmux config
 
-<img src="./assets/screenshot.png" alt="dotfiles" align="right" width="440">
+[![dotfiles][dotfiles]][dotfiles-url]
+[![License: MIT][license]][license-url]
 
-- [Prerequisites](#prerequisites)
-  - [Install TMUX](#install-tmux)
-  - [Install TMUX Plugin Manager](#install-tmux-plugin-manager)
-  - [Install Terminal Font](#install-terminal-font)
-  - [Install neovim](#install-neovim)
-  - [Install spacevim-config](#install-spacevim-config)
-- [Installation](#installation)
-  - [Install Config](#install-config)
-  - [Install TMUX Plugins](#install-tmux-plugins)
-- [License](#license)
+[![My dotfiles][screenshot]](#)
 
 ---
 
-## Prerequisites
+- [PREREQUISITES](#PREREQUISITES)
+  - [Install TMUX](#install-tmux)
+  - [Install TMUX Plugin Manager](#install-tmux-plugin-manager)
+  - [Install spacevim](#install-spacevim)
+- [INSTALLATION](#INSTALLATION)
+  - [Install Config](#install-config)
+  - [Install TMUX Plugins](#install-tmux-plugins)
+- [LICENSE](#LICENSE)
+
+---
+
+## PREREQUISITES
 
 ### Install [TMUX](https://tmux.github.io/)
 
@@ -29,27 +32,9 @@ brew install tmux
 
 ```shell
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-tmux source ~/.tmux.conf
 ```
 
-### Install Terminal Font
-
-#### Install DejaVuSansMono [Nerd Font](https://github.com/ryanoasis/nerd-fonts) Mono
-
-```shell
-brew tap caskroom/fonts
-brew cask install font-dejavusansmono-nerd-font-mono
-```
-
-Set Terminal Font to `DejaVuSansMono Nerd Font Mono`.
-
-### Install [neovim](https://neovim.io/)
-
-```shell
-brew install neovim
-```
-
-### Install [spacevim config](https://spacevim.org/)
+### Install [spacevim](https://spacevim.org/)
 
 #### Linux and macOS
 
@@ -59,13 +44,11 @@ curl -sLf https://spacevim.org/install.sh | bash
 
 ---
 
-_I recommend to use [iterm2](https://www.iterm2.com/)._
-
-_[Z shell](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH) and [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) should also be installed._
+_[iterm2](https://www.iterm2.com/), [Z shell](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH) and [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) should also be installed._
 
 ---
 
-## Installation
+## INSTALLATION
 
 ### Install Config
 
@@ -81,6 +64,12 @@ Use <kbd>ctrl</kbd>+<kbd>a</kbd>+<kbd>I</kbd> to install [TMUX](https://tmux.git
 
 _<kbd>ctrl+a</kbd> is `prefix`._
 
-## License
+## LICENSE
 
 MIT © [Aung Myo Kyaw](https://github.com/AungMyoKyaw)
+
+[screenshot]: ./assets/screenshot.png
+[license]: https://img.shields.io/badge/License-MIT-brightgreen.svg?style=flat-square
+[license-url]: https://opensource.org/licenses/MIT
+[dotfiles]: https://img.shields.io/badge/Dotfiles-AMK-brightgreen.svg?style=flat-square
+[dotfiles-url]: #
