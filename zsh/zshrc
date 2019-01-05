@@ -1,21 +1,15 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
+# PATH TO YOUR OH-MY-ZSH INSTALLATION.
 export ZSH=~/.oh-my-zsh
+
+# SIGN COMMIT
 export GPG_TTY=$(tty)
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# THEMES
 ZSH_THEME="robbyrussell"
 # ZSH_THEME="spaceship"
 # SPACESHIP_PROMPT_ADD_NEWLINE=false
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
+# PLUGINS
 plugins=(
   git
   history
@@ -31,13 +25,13 @@ plugins=(
 autoload -U compinit && compinit
 source $ZSH/oh-my-zsh.sh
 
-# alias
-alias vim=nvim
-# utf 8/256 color support tmux
+# ALIAS
+
+# UTF 8/256 COLOR SUPPORT TMUX
 alias tmux='tmux -u -2'
 
-# user aliases
+# USER ALIASES
 source ~/.aliases
 
-# zsh tmux settings
+# ZSH TMUX SETTINGS
 # ZSH_TMUX_AUTOSTART='true'
