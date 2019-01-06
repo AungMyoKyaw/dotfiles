@@ -1,10 +1,4 @@
 func! myspacevim#before() abort
-  " remap jj to esc
-  inoremap jj <esc>
-
-  " disable mouse
-  set mouse=
-
   " Custom SPC mapping
   " PRETTIER
   call SpaceVim#custom#SPC('nnoremap', ['a', 'p'], ':Prettier', 'PRETTIER', 1)
@@ -17,15 +11,15 @@ func! myspacevim#before() abort
   let mywiki.ext           = '.md'
   let g:vimwiki_list       = [mywiki]
   let g:vimwiki_folding    = 'expr'
-
-  " Cursor shape By Mode
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-
 endf
 
 func! myspacevim#after() abort
+  " remap jj to esc
+  inoremap jj <esc>
+
+  " disable mouse
+  set mouse=
+
   " FOLDING
   nnoremap zO zA
   nnoremap zo za
@@ -41,4 +35,9 @@ func! myspacevim#after() abort
   " CASE INSENSITIVE COMMANDS
   set ignorecase
   set smartcase
+
+  " Cursor shape By Mode
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 endf
