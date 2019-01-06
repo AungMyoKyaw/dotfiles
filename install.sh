@@ -124,7 +124,7 @@ ln -fs "$CURRENT_DIR/vim/xvimrc" "$HOME/.xvimrc"
 
 # MAKE DIR IF NO .SPACEVIM.D FOLDER EXISTS
 if [ ! -d "$HOME/.SpaceVim.d/" ]; then
-  mkdir $HOME/.SpaceVim.d/.SpaceVim.d/
+  mkdir $HOME/.SpaceVim.d/
 fi
 
 # MAKE DIR IF NO AUTOLOAD FOLDER EXISTS
