@@ -102,9 +102,10 @@ name = "lang#latex"
 name = "briancollins/vim-jst"
 merged = 0
 
-##################
-# CUSTOM PLUGINS #
-##################
+#=================
+# CUSTOM PLUGINS
+#=================
+
 [[custom_plugins]]
 name = "prettier/vim-prettier"
 merged = 0

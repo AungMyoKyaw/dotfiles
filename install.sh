@@ -122,9 +122,24 @@ ln -fs "$CURRENT_DIR/vim/xvimrc" "$HOME/.xvimrc"
 
 # INSTALLING SPACEVIM
 
+# MAKE DIR IF NO .SPACEVIM.D FOLDER EXISTS
+if [ ! -d "$HOME/.SpaceVim.d/" ]; then
+  mkdir $HOME/.SpaceVim.d/.SpaceVim.d/
+fi
+
 # MAKE DIR IF NO AUTOLOAD FOLDER EXISTS
 if [ ! -d "$HOME/.SpaceVim.d/autoload/" ]; then
   mkdir $HOME/.SpaceVim.d/autoload/
+fi
+
+# MAKE FILE IF NO INIT.TOML EXISTS
+if [ ! -f "$HOME/.SpaceVim.d/init.toml" ]; then
+  touch $HOME/.SpaceVim.d/init.toml
+fi
+
+# MAKE FILE IF NO MYSPACEVIM.VIM EXISTS
+if [ ! -f "$HOME/.SpaceVim.d/autoload/myspacevim.vim" ]; then
+  touch $HOME/.SpaceVim.d/autoload/myspacevim.vim
 fi
 
 ln -fs "$CURRENT_DIR/spacevim.d/init.toml" "$HOME/.SpaceVim.d/init.toml"
