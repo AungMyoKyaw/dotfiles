@@ -11,16 +11,7 @@
   # set spacevim theme. by default colorscheme layer is not loaded,
   # if you want to use more colorscheme, please load the colorscheme
   # layer
-  # colorscheme = "molokai"
   colorscheme = "onedark"
-  # colorscheme = "jellybeans"
-  # colorscheme = "one"
-  # colorscheme = "nord"
-  # colorscheme = "gruvbox"
-  # colorscheme = "NeoSolarized"
-  # colorscheme = "hybrid"
-  # colorscheme = "material"
-  # colorscheme = "SpaceVim"
 
   background  = "dark"
   # Disable guicolors in basic mode, many terminal do not support 24bit
@@ -45,10 +36,6 @@ auto-completion-tab-key-behavior    = "smart"
 name             = "shell"
 default_position = "top"
 default_height   = 30
-
-# Enable colorsrScheme
-[[layers]]
-name = "colorscheme"
 
 # Better default config for vim and neovim.
 [[layers]]
@@ -116,4 +103,9 @@ merged = 0
 
 [[custom_plugins]]
 name = "wakatime/vim-wakatime"
+merged = 0
+
+# one dark colorscheme
+[[custom_plugins]]
+name = "joshdick/onedark.vim"
 merged = 0
