@@ -89,6 +89,11 @@ name = "lang#latex"
 name = "briancollins/vim-jst"
 merged = 0
 
+# extra lang
+[[layers]]
+name = "lang#extra"
+merged = 0
+
 #=================
 # CUSTOM PLUGINS
 #=================

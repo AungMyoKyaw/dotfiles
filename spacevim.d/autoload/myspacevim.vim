@@ -11,6 +11,8 @@ func! myspacevim#before() abort
   let mywiki.ext           = '.md'
   let g:vimwiki_list       = [mywiki]
   let g:vimwiki_folding    = 'expr'
+
+  let g:spacevim_disabled_plugins = ['vim-startify']
 endf
 
 func! myspacevim#after() abort
