@@ -12,11 +12,6 @@ ZSH_THEME="robbyrussell"
 # PLUGINS
 plugins=(
   git
-  history
-  sudo
-  taskwarrior
-  tmux
-  tmuxinator
   zsh-autosuggestions
   zsh-completions
   zsh-syntax-highlighting

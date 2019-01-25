@@ -8,23 +8,16 @@
 
 # All SpaceVim option below [option] section
 [options]
-  # set spacevim theme. by default colorscheme layer is not loaded,
-  # if you want to use more colorscheme, please load the colorscheme
-  # layer
-  colorscheme = "onedark"
-
-  background  = "dark"
-  # Disable guicolors in basic mode, many terminal do not support 24bit
-  # true colors
-  enable_guicolors               = true
-  statusline_separator           = "curve"
-  statusline_inactive_separator  = "arrow"
-  buffer_index_type              = 4
-  enable_tabline_filetype_icon   = true
-  enable_statusline_display_mode = true
-  bootstrap_before               = "myspacevim#before"
-  bootstrap_after                = "myspacevim#after"
-  guifont                        = 'DejaVu Sans Mono for Powerline:h20'
+    colorscheme                    = "gruvbox"
+    background                     = "dark"
+    enable_guicolors               = true
+    statusline_separator           = "arrow"
+    statusline_inactive_separator  = "arrow"
+    buffer_index_type              = 4
+    enable_tabline_filetype_icon   = true
+    enable_statusline_display_mode = false
+    bootstrap_before               = "myspacevim#before"
+    bootstrap_after                = "myspacevim#after"
 
 # Enable autocomplete layer
 [[layers]]
@@ -34,33 +27,12 @@ auto-completion-tab-key-behavior    = "smart"
 
 [[layers]]
 name             = "shell"
-default_position = "top"
+default_position = "bottom"
 default_height   = 30
 
 # Better default config for vim and neovim.
 [[layers]]
 name = "default"
-
-# ctrlp
-[[layers]]
-name = "ctrlp"
-
-# Sudo
-[[layers]]
-name = "sudo"
-
-# enable checkers
-[[layers]]
-name = "checkers"
-show_cursor_error = false
-
-# TOOLS
-[[layers]]
-name = "tools"
-
-# tmux
-[[layers]]
-name = "tmux"
 
 # VersionControl
 [[layers]]
@@ -75,14 +47,6 @@ enable_flow_syntax = true
 # TYPESCRIPT
 [[layers]]
 name = "lang#typescript"
-
-# SWIFT
-[[layers]]
-name = "lang#swift"
-
-# latex
-[[layers]]
-name = "lang#latex"
 
 # ejs
 [[custom_plugins]]
@@ -108,9 +72,4 @@ merged = 0
 
 [[custom_plugins]]
 name = "wakatime/vim-wakatime"
-merged = 0
-
-# one dark colorscheme
-[[custom_plugins]]
-name = "joshdick/onedark.vim"
 merged = 0
