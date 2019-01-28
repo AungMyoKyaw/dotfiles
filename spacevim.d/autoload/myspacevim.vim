@@ -25,8 +25,9 @@ func! myspacevim#after() abort
   " FOLDING
   nnoremap zO zA
   nnoremap zo za
-  set      fdm=syntax
   set      nofoldenable
+  set foldlevel=0
+  set      fdm=indent
 
   " CTRLP
   let g:ctrlp_match_window  = 'top,order:btt,min:1,max:20,results:20'
@@ -42,4 +43,16 @@ func! myspacevim#after() abort
   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
   let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+
+  " enable tty fast
+  set ttyfast
+
+  " lazyredraw
+  set lazyredraw
+
+  " limit syntax hightlight
+   augroup vimrc
+     autocmd!
+     autocmd BufWinEnter,Syntax * syn sync minlines=500 maxlines=500
+   augroup END
 endf

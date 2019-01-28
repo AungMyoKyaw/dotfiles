@@ -8,7 +8,7 @@
 
 # All SpaceVim option below [option] section
 [options]
-    colorscheme                    = "gruvbox"
+    colorscheme                    = "hybrid"
     background                     = "dark"
     enable_guicolors               = true
     statusline_separator           = "arrow"
@@ -18,6 +18,10 @@
     enable_statusline_display_mode = false
     bootstrap_before               = "myspacevim#before"
     bootstrap_after                = "myspacevim#after"
+
+# colorschemes
+[[layers]]
+name = "colorscheme"
 
 # Enable autocomplete layer
 [[layers]]
@@ -38,6 +42,10 @@ name = "default"
 [[layers]]
 name = "VersionControl"
 
+# ctrlp
+[[layers]]
+name = "ctrlp"
+
 # JAVASCRIPT
 [[layers]]
 name               = "lang#javascript"
@@ -48,12 +56,12 @@ enable_flow_syntax = true
 [[layers]]
 name = "lang#typescript"
 
-# ejs
+# EJS
 [[custom_plugins]]
 name = "briancollins/vim-jst"
 merged = 0
 
-# extra lang
+# EXTRA/LANG
 [[layers]]
 name = "lang#extra"
 merged = 0
