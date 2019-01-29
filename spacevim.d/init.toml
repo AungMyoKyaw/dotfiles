@@ -42,9 +42,9 @@ name = "default"
 [[layers]]
 name = "VersionControl"
 
-# ctrlp
+# fzf
 [[layers]]
-name = "ctrlp"
+name = "fzf"
 
 # JAVASCRIPT
 [[layers]]

@@ -19,6 +19,9 @@ func! myspacevim#after() abort
   " remap jj to esc
   inoremap jj <esc>
 
+  " fzf
+  nnoremap <C-p> :FZF<CR>
+
   " disable mouse
   set mouse=
 
@@ -28,9 +31,6 @@ func! myspacevim#after() abort
   set      nofoldenable
   set foldlevel=0
   set      fdm=indent
-
-  " CTRLP
-  let g:ctrlp_match_window  = 'top,order:btt,min:1,max:20,results:20'
 
   " PRETTIER
   let g:prettier#config#single_quote = 'true'
