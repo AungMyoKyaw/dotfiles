@@ -19,9 +19,6 @@ func! myspacevim#after() abort
   " remap jj to esc
   inoremap jj <esc>
 
-  " fzf
-  nnoremap <C-p> :FZF<CR>
-
   " disable mouse
   set mouse=
 
