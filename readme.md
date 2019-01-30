@@ -5,6 +5,13 @@
 [![dotfiles][dotfiles]][dotfiles-url]
 [![License: MIT][license]][license-url]
 
+```shell
+    _   __  __ _  __  ___      _    __ _ _
+   /_\ |  \/  | |/ / |   \ ___| |_ / _(_) |___ ___
+  / _ \| |\/| | ' <  | |) / _ \  _|  _| | / -_|_-<
+ /_/ \_\_|  |_|_|\_\ |___/\___/\__|_| |_|_\___/__/
+```
+
 [![asciicast](https://asciinema.org/a/LrBeUcO83YmxixOFCTBi8sQIT.svg)](https://asciinema.org/a/LrBeUcO83YmxixOFCTBi8sQIT)
 
 ---
