@@ -42,7 +42,7 @@ name = "default"
 [[layers]]
 name = "VersionControl"
 
-# fzf
+# FZF
 [[layers]]
 name = "fzf"
 

@@ -4,6 +4,9 @@ export ZSH=~/.oh-my-zsh
 # SIGN COMMIT
 export GPG_TTY=$(tty)
 
+# FZF
+export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git/*"'
+
 # THEMES
 ZSH_THEME="robbyrussell"
 # ZSH_THEME="spaceship"
