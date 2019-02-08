@@ -12,7 +12,21 @@ func! myspacevim#before() abort
   let g:vimwiki_list       = [mywiki]
   let g:vimwiki_folding    = 'expr'
 
+  " disable some plugins
   let g:spacevim_disabled_plugins = ['vim-startify']
+
+  " ctrlsf
+  let g:ctrlsf_ackprg='rg'
+
+  " ctrlsf
+  nmap     <C-F>f <Plug>CtrlSFPrompt
+  vmap     <C-F>f <Plug>CtrlSFVwordPath
+  vmap     <C-F>F <Plug>CtrlSFVwordExec
+  nmap     <C-F>n <Plug>CtrlSFCwordPath
+  nmap     <C-F>p <Plug>CtrlSFPwordPath
+  nnoremap <C-F>o :CtrlSFOpen<CR>
+  nnoremap <C-F>t :CtrlSFToggle<CR>
+  inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 endf
 
 func! myspacevim#after() abort
@@ -26,8 +40,8 @@ func! myspacevim#after() abort
   nnoremap zO zA
   nnoremap zo za
   set      nofoldenable
-  set foldlevel=0
-  set      fdm=indent
+  set foldlevel=1
+  set fdm=indent
 
   " PRETTIER
   let g:prettier#config#single_quote = 'true'

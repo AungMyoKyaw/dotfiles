@@ -8,9 +8,10 @@
 
 # All SpaceVim option below [option] section
 [options]
-    colorscheme                    = "hybrid"
+    colorscheme                    = "gruvbox"
     background                     = "dark"
     enable_guicolors               = true
+    enable_googlesuggest           = true
     statusline_separator           = "arrow"
     statusline_inactive_separator  = "arrow"
     buffer_index_type              = 4
@@ -18,10 +19,6 @@
     enable_statusline_display_mode = false
     bootstrap_before               = "myspacevim#before"
     bootstrap_after                = "myspacevim#after"
-
-# colorschemes
-[[layers]]
-name = "colorscheme"
 
 # Enable autocomplete layer
 [[layers]]
@@ -70,14 +67,22 @@ merged = 0
 # CUSTOM PLUGINS
 #=================
 
+# PRETTIER
 [[custom_plugins]]
 name = "prettier/vim-prettier"
 merged = 0
 
+# VIMWIKI
 [[custom_plugins]]
 name = "vimwiki/vimwiki"
 merged = 0
 
+# WAKATIME
 [[custom_plugins]]
 name = "wakatime/vim-wakatime"
+merged = 0
+
+# CTRL_SF
+[[custom_plugins]]
+name = "dyng/ctrlsf.vim"
 merged = 0
