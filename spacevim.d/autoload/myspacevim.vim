@@ -18,6 +18,11 @@ func! myspacevim#before() abort
   " ctrlsf
   let g:ctrlsf_ackprg='rg'
 
+  " vim polyglot settting
+  let g:vim_markdown_conceal             = 0
+  let g:vim_markdown_conceal_code_blocks = 0
+  let g:javascript_plugin_jsdoc          = 1
+
   " ctrlsf
   nmap     <C-F>f <Plug>CtrlSFPrompt
   vmap     <C-F>f <Plug>CtrlSFVwordPath
@@ -40,7 +45,7 @@ func! myspacevim#after() abort
   nnoremap zO zA
   nnoremap zo za
   set      nofoldenable
-  set foldlevel=1
+  set foldlevel=0
   set fdm=indent
 
   " PRETTIER
@@ -60,10 +65,4 @@ func! myspacevim#after() abort
 
   " lazyredraw
   set lazyredraw
-
-  " limit syntax hightlight
-   augroup vimrc
-     autocmd!
-     autocmd BufWinEnter,Syntax * syn sync minlines=500 maxlines=500
-   augroup END
 endf
