@@ -8,34 +8,6 @@
 
 # PREREQUISITE
 
-# IS MAC OS INSTALLED
-if [[ "$OSTYPE" != "darwin"* ]]; then
-  echo ""
-  echo "☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭"
-  echo "☭ MAC OS SHOULD BE INSTALLED ☭"
-  echo "☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭"
-  echo ""
-  exit 1
-fi
-
-# IS BREW INSTALLED
-if ! hash "brew" &>/dev/null; then
-  echo ""
-  echo "☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭"
-  echo "☭ BREW SHOULD BE INSTALLED ☭"
-  echo "☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭"
-  echo ""
-  open https://brew.sh/
-  exit 1
-fi
-
-# IS GIT INSTALLED
-if ! hash "git" &>/dev/null; then
-  echo "☭ GIT SHOULD BE INSTALLED"
-  echo "☭ INSTALLING GIT"
-  brew install git
-fi
-
 # INSTALLING TMUX
 if ! hash "tmux" &>/dev/null; then
   echo "☭ INSTALLING TMUX"
