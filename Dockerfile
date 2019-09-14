@@ -10,7 +10,7 @@ RUN npm i -g prettier eslint typescript
 RUN apt-get install -y ripgrep fzf
 ENV FZF_DEFAULT_COMMAND='rg --files'
 
-RUN apt-get autoremove
+RUN apt-get autoremove -y
 RUN apt-get clean
 
 USER spacevim
