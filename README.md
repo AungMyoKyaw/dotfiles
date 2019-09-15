@@ -4,6 +4,7 @@
 
 [![dotfiles][dotfiles]][dotfiles-url]
 [![License: MIT][license]][license-url]
+[![Docker Cloud Build Status][docker-build-status]][docker-build-url]
 
 ```shell
     _   __  __ _  __  ___      _    __ _ _
@@ -71,7 +72,13 @@ Use <kbd>ctrl</kbd>+<kbd>a</kbd>+<kbd>I</kbd> to install [TMUX](https://tmux.git
 
 _<kbd>ctrl+a</kbd> is `prefix`._
 
-## Dockerized Vim
+## Dockerized Vim [docker hub]
+
+```shell
+docker run -it --rm -v $(pwd):/home/spacevim/src:cached -v ~/dockerized-nvim/cache:/home/spacevim/.cache:cached aungmyokyaw/dnvim
+```
+
+## Dockerized Vim [local]
 
 ### Build Dockerfile
 
@@ -81,19 +88,19 @@ docker build -t dnvim .
 
 ### Develop with dnvim
 
-#### SET alias
+##### set alias
 
 ```shell
 alias dnvim='docker run -it --rm -v $(pwd):/home/spacevim/src:cached -v ~/dockerized-nvim/cache:/home/spacevim/.cache:cached dnvim'
 ```
 
-#### dnvim
+##### and run
 
 ```shell
 dnvim
 ```
 
-or
+##### or run manually
 
 ```shell
 docker run -it --rm -v $(pwd):/home/spacevim/src:cached -v ~/dockerized-nvim/cache:/home/spacevim/.cache:cached dnvim
@@ -110,3 +117,5 @@ MIT © [Aung Myo Kyaw](https://github.com/AungMyoKyaw)
 [dotfiles-url]: #
 [asciicast-screenshot]: https://asciinema.org/a/LrBeUcO83YmxixOFCTBi8sQIT.svg
 [asciicast-screenshot-url]: https://asciinema.org/a/LrBeUcO83YmxixOFCTBi8sQIT
+[docker-build-status]: https://img.shields.io/docker/cloud/build/aungmyokyaw/dnvim?style=flat-square
+[docker-build-url]: https://hub.docker.com/r/aungmyokyaw/dnvim
