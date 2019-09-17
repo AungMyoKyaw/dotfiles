@@ -18,7 +18,7 @@ source $ZSH/oh-my-zsh.sh
 alias tmux='tmux -u -2'
 
 # DNVIM
-alias dnvim='docker run -it --rm -v $(pwd):/home/spacevim/src:cached -v ~/dockerized-nvim/cache:/home/spacevim/.cache:cached dnvim'
+alias dnvim='docker run -it --rm -v $(pwd):/home/spacevim/src:cached -v ~/dockerized-nvim/.cache:/home/spacevim/.cache:cached -v ~/dockerized-nvim/.local:/home/spacevim/.local:cached dnvim'
 
 # USER ALIASES
 source ~/.aliases

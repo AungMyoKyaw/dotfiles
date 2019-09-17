@@ -75,7 +75,7 @@ _<kbd>ctrl+a</kbd> is `prefix`._
 ## Dockerized Vim [docker hub]
 
 ```shell
-docker run -it --rm -v $(pwd):/home/spacevim/src:cached -v ~/dockerized-nvim/cache:/home/spacevim/.cache:cached aungmyokyaw/dnvim
+docker run -it --rm -v $(pwd):/home/spacevim/src:cached -v ~/dockerized-nvim/.cache:/home/spacevim/.cache:cached -v ~/dockerized-nvim/.local:/home/spacevim/.local:cached aungmyokyaw/dnvim
 ```
 
 ## Dockerized Vim [local]
@@ -91,7 +91,7 @@ docker build -t dnvim .
 ##### set alias
 
 ```shell
-alias dnvim='docker run -it --rm -v $(pwd):/home/spacevim/src:cached -v ~/dockerized-nvim/cache:/home/spacevim/.cache:cached dnvim'
+alias dnvim='docker run -it --rm -v $(pwd):/home/spacevim/src:cached -v ~/dockerized-nvim/.cache:/home/spacevim/.cache:cached -v ~/dockerized-nvim/.local:/home/spacevim/.local:cached dnvim'
 ```
 
 ##### and run
@@ -103,7 +103,7 @@ dnvim
 ##### or run manually
 
 ```shell
-docker run -it --rm -v $(pwd):/home/spacevim/src:cached -v ~/dockerized-nvim/cache:/home/spacevim/.cache:cached dnvim
+docker run -it --rm -v $(pwd):/home/spacevim/src:cached -v ~/dockerized-nvim/.cache:/home/spacevim/.cache:cached -v ~/dockerized-nvim/.local:/home/spacevim/.local:cached dnvim
 ```
 
 ## LICENSE

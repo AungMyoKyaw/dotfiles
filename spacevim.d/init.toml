@@ -11,7 +11,6 @@
   colorscheme                    = "gruvbox"
   background                     = "dark"
   enable_guicolors               = true
-  enable_googlesuggest           = true
   statusline_separator           = "curve"
   statusline_inactive_separator  = "curve"
   buffer_index_type              = 4
@@ -19,12 +18,6 @@
   enable_statusline_display_mode = false
   bootstrap_before               = "myspacevim#before"
   bootstrap_after                = "myspacevim#after"
-
-# Enable autocomplete layer
-[[layers]]
-  name                                = "autocomplete"
-  auto-completion-return-key-behavior = "complete"
-  auto-completion-tab-key-behavior    = "smart"
 
 # Better default config for vim and neovim.
 [[layers]]
@@ -34,6 +27,12 @@
 [[layers]]
   name = "VersionControl"
   enable-gtm-status =  true
+
+# Enable autocomplete layer
+[[layers]]
+  name                                = "autocomplete"
+  auto-completion-return-key-behavior = "complete"
+  auto-completion-tab-key-behavior    = "smart"
 
 # FZF
 [[layers]]
