@@ -19,10 +19,13 @@ alias tmux='tmux -u -2'
 
 # DNVIM
 alias dnvim='docker run -it --rm \
-  -v $(pwd):/home/spacevim/src:cached \
+  -v $(pwd):/home/spacevim/src \
+  -v ~/dockerized-nvim/.local/share/nvim/:/home/spacevim/.local/share/nvim:cached \
   -v ~/dockerized-nvim/.cache:/home/spacevim/.cache:cached \
-  -v ~/dockerized-nvim/.local:/home/spacevim/.local:cached \
   dnvim'
+
+# COPYTO SYSTEM CLIPBOARD
+alias dcp='cat ./dclip.txt | pbcopy'
 
 # USER ALIASES
 source ~/.aliases
