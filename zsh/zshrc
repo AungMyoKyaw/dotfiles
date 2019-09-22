@@ -25,7 +25,7 @@ alias dnvim='docker run -it --rm \
   dnvim'
 
 # COPYTO SYSTEM CLIPBOARD
-alias dcp='cat ./dclip.txt | pbcopy'
+alias dcp='cat ./dcp.txt | pbcopy'
 
 # USER ALIASES
 source ~/.aliases
