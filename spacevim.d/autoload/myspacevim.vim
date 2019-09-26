@@ -18,6 +18,11 @@ func! myspacevim#before() abort
   " nvim python3 provider
   let g:python3_host_prog = '/usr/local/bin/python3'
 
+  " disable ruby provider
+  let g:loaded_ruby_provider   = 0
+  " disable nodejs provider
+  let g:loaded_node_provider   = 0
+
   " ctrlsf
   let g:ctrlsf_ackprg='rg'
 

@@ -4,6 +4,9 @@ export ZSH=~/.oh-my-zsh
 # SIGN COMMIT
 export GPG_TTY=$(tty)
 
+# USE RG FOR FZF COMMAND
+export ENV FZF_DEFAULT_COMMAND='rg --files'
+
 # THEMES
 ZSH_THEME="robbyrussell"
 
@@ -20,6 +23,7 @@ alias tmux='tmux -u -2'
 # DNVIM
 alias dnvim='docker run -it --rm \
   -v $(pwd):/home/spacevim/src \
+  -v ~/Dropbox/MyWiki:/home/spacevim/Dropbox/MyWiki \
   -v ~/dockerized-nvim/.local/share/nvim/:/home/spacevim/.local/share/nvim:cached \
   -v ~/dockerized-nvim/.cache:/home/spacevim/.cache:cached \
   dnvim'

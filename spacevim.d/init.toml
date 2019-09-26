@@ -8,16 +8,22 @@
 
 # All SpaceVim option below [option] section
 [options]
-  colorscheme                    = "gruvbox"
   background                     = "dark"
-  enable_guicolors               = true
-  statusline_separator           = "curve"
-  statusline_inactive_separator  = "curve"
-  buffer_index_type              = 4
-  enable_tabline_filetype_icon   = true
-  enable_statusline_display_mode = false
-  bootstrap_before               = "myspacevim#before"
   bootstrap_after                = "myspacevim#after"
+  bootstrap_before               = "myspacevim#before"
+  buffer_index_type              = 4
+  colorscheme                    = "onedark"
+  enable_guicolors               = true
+  enable_statusline_display_mode = false
+  enable_tabline_filetype_icon   = true
+  filemanager                    = "defx"
+  statusline_inactive_separator  = "curve"
+  statusline_separator           = "curve"
+
+# One Dark Theme
+[[custom_plugins]]
+  name = "joshdick/onedark.vim"
+  merged = 0
 
 # Better default config for vim and neovim.
 [[layers]]
