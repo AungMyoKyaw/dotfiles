@@ -1,22 +1,3 @@
-# PATH TO YOUR OH-MY-ZSH INSTALLATION.
-export ZSH=~/.oh-my-zsh
-
-# SIGN COMMIT
-export GPG_TTY=$(tty)
-
-# USE RG FOR FZF COMMAND
-export ENV FZF_DEFAULT_COMMAND='rg --files'
-
-# THEMES
-ZSH_THEME="robbyrussell"
-
-# PLUGINS
-plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
-
-# ALIAS
-
 # UTF 8/256 COLOR SUPPORT TMUX
 alias tmux='tmux -u -2'
 
@@ -33,6 +14,3 @@ alias dcp='cat ./dcp.txt | pbcopy'
 
 # DOCKER RUN ALIAS
 alias drun='docker run --rm -it -v $(pwd):/src:cached'
-
-# USER ALIASES
-source ~/.aliases

@@ -5,125 +5,152 @@
 # LICENSE: MIT © Aung Myo Kyaw
 # ----------------------------------------------
 
-
-# PREREQUISITE
-
-# INSTALLING TMUX
-if ! hash "tmux" &>/dev/null; then
-  echo "☭ INSTALLING TMUX"
-  brew install tmux
-  exit 1
-fi
-
-# INSTALLING TMUX PLUGIN MANAGER
-if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then
-  echo "☭ INSTALLING TMUX PLUGIN MANAGER"
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-fi
-
-# IS SPACEVIM INSTALLED
-if [[ ! -d "$HOME/.SpaceVim" ]]; then
-  echo ""
-  echo "☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭"
-  echo "☭ SPACEVIM SHOULD BE INSTALLED ☭"
-  echo "☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭"
-  echo ""
-  open https://spacevim.org/quick-start-guide/#install
-  exit 1
-fi
-
-# IS OH-MY-ZSH INSTALLED
-if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
-  echo ""
-  echo "☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭"
-  echo "☭ OH-MY-ZSH SHOULD BE INSTALLED ☭"
-  echo "☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭"
-  echo ""
-  open https://ohmyz.sh/
-  exit 1
-fi
-
-#---------------------------
-# MY DOTFILES INSTALLATION
-#---------------------------
-
 CURRENT_DIR=$PWD
 
-# BACKUP VIMRC
-if [ -f "$HOME/.vim/vimrc" ]; then
-  cp "$HOME/.vim/vimrc" "$HOME/.vim/vimrc.bk"
-fi
+prerequisite(){
+  # INSTALLING TMUX
+  if ! hash "tmux" &>/dev/null; then
+    echo "☭ INSTALLING TMUX"
+    brew install tmux
+    exit 1
+  fi
 
-# BACKUP TMUX.CONF
-if [ -f "$HOME/.tmux.conf" ]; then
-  cp "$HOME/.tmux.conf" "$HOME/.tmux.conf.bk"
-fi
+  # INSTALLING TMUX PLUGIN MANAGER
+  if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then
+    echo "☭ INSTALLING TMUX PLUGIN MANAGER"
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  fi
 
-# BACKUP ZSHRC
-if [ -f "$HOME/.zshrc" ]; then
-  cp "$HOME/.zshrc" "$HOME/.zshrc.bk"
-fi
+  # IS SPACEVIM INSTALLED
+  if [[ ! -d "$HOME/.SpaceVim" ]]; then
+    echo ""
+    echo "☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭"
+    echo "☭ SPACEVIM SHOULD BE INSTALLED ☭"
+    echo "☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭"
+    echo ""
+    open https://spacevim.org/quick-start-guide/#install
+    exit 1
+  fi
+}
 
-# BACKUP ALIASES
-if [ -f "$HOME/.aliases" ]; then
-  cp "$HOME/.aliases" "$HOME/.aliases.bk"
-fi
+# todo
+# prerequisite check
 
-# MAKE DIR IF NO .VIM FOLDER EXISTS
-if [ ! -d "$HOME/.vim/" ]; then
-  mkdir $HOME/.vim/
-fi
+install_dotfiles(){
+  backup_vim_rc
+  backup_tmux_conf
+  backup_zsh_rc
+  backup_aliases
+  makesure_file_exist
+  linking_rc
+  install_tmux_plugin
+  showSuccessMessage
+}
 
-# MAKE DIR IF NO .CONFIG FOLDER EXISTS
-if [ ! -d "$HOME/.config/" ]; then
-  mkdir $HOME/.config/
-fi
+backup_vim_rc(){
+  # BACKUP VIMRC
+  if [ -f "$HOME/.vim/vimrc" ]; then
+    cp "$HOME/.vim/vimrc" "$HOME/.vim/vimrc.bk"
+  fi
+}
 
-# CREATE ALIASES FILE IF NO ALIASES FILE EXISTS
-if [ ! -f "$CURRENT_DIR/zsh/aliases" ]; then
-  echo "# aliases" > $CURRENT_DIR/zsh/aliases
-fi
+backup_tmux_conf(){
+  # BACKUP TMUX.CONF
+  if [ -f "$HOME/.tmux.conf" ]; then
+    cp "$HOME/.tmux.conf" "$HOME/.tmux.conf.bk"
+  fi
+}
 
-# LINKING RC
-# ln -fs "$CURRENT_DIR/vim/vimrc" "$HOME/.vim/vimrc" # I SWITCH TO SPACEVIM
-# ln -fs "$CURRENT_DIR/nvim/nvimrc" "$HOME/.config/nvim/init.vim"
-ln -fs "$CURRENT_DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
-ln -fs "$CURRENT_DIR/zsh/zshrc" "$HOME/.zshrc"
-ln -fs "$CURRENT_DIR/zsh/aliases" "$HOME/.aliases"
-ln -fs "$CURRENT_DIR/vim/xvimrc" "$HOME/.xvimrc"
+backup_zsh_rc(){
+  # BACKUP ZSHRC
+  if [ -f "$HOME/.zshrc" ]; then
+    cp "$HOME/.zshrc" "$HOME/.zshrc.bk"
+  fi
+}
 
-# INSTALLING SPACEVIM
+backup_aliases(){
+  # BACKUP ALIASES
+  if [ -f "$HOME/.aliases" ]; then
+    cp "$HOME/.aliases" "$HOME/.aliases.bk"
+  fi
+}
 
-# MAKE DIR IF NO .SPACEVIM.D FOLDER EXISTS
-if [ ! -d "$HOME/.SpaceVim.d/" ]; then
-  mkdir $HOME/.SpaceVim.d/
-fi
+makesure_file_exist(){
+  # MAKE DIR IF NO .VIM FOLDER EXISTS
+  if [ ! -d "$HOME/.vim/" ]; then
+    mkdir $HOME/.vim/
+  fi
 
-# MAKE DIR IF NO AUTOLOAD FOLDER EXISTS
-if [ ! -d "$HOME/.SpaceVim.d/autoload/" ]; then
-  mkdir $HOME/.SpaceVim.d/autoload/
-fi
+  # MAKE DIR IF NO .CONFIG FOLDER EXISTS
+  if [ ! -d "$HOME/.config/" ]; then
+    mkdir $HOME/.config/
+  fi
 
-# MAKE FILE IF NO INIT.TOML EXISTS
-if [ ! -f "$HOME/.SpaceVim.d/init.toml" ]; then
-  touch $HOME/.SpaceVim.d/init.toml
-fi
+  # CREATE ALIASES FILE IF NO ALIASES FILE EXISTS
+  if [ ! -f "$CURRENT_DIR/zsh/aliases" ]; then
+    echo "# aliases" > $CURRENT_DIR/zsh/aliases
+  fi
 
-# MAKE FILE IF NO MYSPACEVIM.VIM EXISTS
-if [ ! -f "$HOME/.SpaceVim.d/autoload/myspacevim.vim" ]; then
-  touch $HOME/.SpaceVim.d/autoload/myspacevim.vim
-fi
+  # MAKE DIR IF NO .SPACEVIM.D FOLDER EXISTS
+  if [ ! -d "$HOME/.SpaceVim.d/" ]; then
+    mkdir $HOME/.SpaceVim.d/
+  fi
 
-ln -fs "$CURRENT_DIR/spacevim.d/init.toml" "$HOME/.SpaceVim.d/init.toml"
-ln -fs "$CURRENT_DIR/spacevim.d/autoload/myspacevim.vim" "$HOME/.SpaceVim.d/autoload/myspacevim.vim"
+  # MAKE DIR IF NO AUTOLOAD FOLDER EXISTS
+  if [ ! -d "$HOME/.SpaceVim.d/autoload/" ]; then
+    mkdir $HOME/.SpaceVim.d/autoload/
+  fi
 
-# INSTALLING REQUIRED TMUX PLUGIN
-tmux source ~/.tmux.conf
+  # MAKE FILE IF NO INIT.TOML EXISTS
+  if [ ! -f "$HOME/.SpaceVim.d/init.toml" ]; then
+    touch $HOME/.SpaceVim.d/init.toml
+  fi
 
-echo "☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭"
-echo "☭                        ☭"
-echo "☭ INSTALLATION COMPLETED ☭"
-echo "☭                        ☭"
-echo "☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭"
+  # MAKE FILE IF NO MYSPACEVIM.VIM EXISTS
+  if [ ! -f "$HOME/.SpaceVim.d/autoload/myspacevim.vim" ]; then
+    touch $HOME/.SpaceVim.d/autoload/myspacevim.vim
+  fi
+}
 
-exit 0
+linking_rc(){
+  # LINKING RC
+  # ln -fs "$CURRENT_DIR/vim/vimrc" "$HOME/.vim/vimrc" # I SWITCH TO SPACEVIM
+  # ln -fs "$CURRENT_DIR/nvim/nvimrc" "$HOME/.config/nvim/init.vim"
+  ln -fs "$CURRENT_DIR/spacevim.d/autoload/myspacevim.vim" "$HOME/.SpaceVim.d/autoload/myspacevim.vim"
+  ln -fs "$CURRENT_DIR/spacevim.d/init.toml" "$HOME/.SpaceVim.d/init.toml"
+  ln -fs "$CURRENT_DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
+  ln -fs "$CURRENT_DIR/vim/xvimrc" "$HOME/.xvimrc"
+  ln -fs "$CURRENT_DIR/zsh/aliases" "$HOME/.aliases.zsh"
+  ln -fs "$CURRENT_DIR/zsh/default_aliases.zsh" "$HOME/.default_aliases.zsh"
+  ln -fs "$CURRENT_DIR/zsh/env.zsh" "$HOME/.env.zsh"
+  ln -fs "$CURRENT_DIR/zsh/functions.zsh" "$HOME/.functions.zsh"
+  ln -fs "$CURRENT_DIR/zsh/options.zsh" "$HOME/.options.zsh"
+  ln -fs "$CURRENT_DIR/zsh/plugins.txt" "$HOME/.zsh_plugins.txt"
+  ln -fs "$CURRENT_DIR/zsh/theme.zsh" "$HOME/.theme.zsh"
+  ln -fs "$CURRENT_DIR/zsh/zshrc.zsh" "$HOME/.zshrc"
+}
+
+install_tmux_plugin(){
+  # INSTALLING REQUIRED TMUX PLUGIN
+  tmux source ~/.tmux.conf
+}
+
+reload_zshrc(){
+  # reload zsh config
+  source ~/.zshrc
+}
+
+showSuccessMessage(){
+  echo "☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭"
+  echo "☭                        ☭"
+  echo "☭ INSTALLATION COMPLETED ☭"
+  echo "☭                        ☭"
+  echo "☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭"
+  exit 0
+}
+
+main(){
+  install_dotfiles
+}
+
+main

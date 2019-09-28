@@ -15,6 +15,8 @@ func! myspacevim#before() abort
   " disable some plugins
   let g:spacevim_disabled_plugins = ['vim-startify']
 
+  " nvim python2 provider
+  let g:python_host_prog = '/usr/local/bin/python2'
   " nvim python3 provider
   let g:python3_host_prog = '/usr/local/bin/python3'
 

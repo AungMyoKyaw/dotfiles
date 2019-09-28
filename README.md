@@ -13,7 +13,7 @@
  /_/ \_\_|  |_|_|\_\ |___/\___/\__|_| |_|_\___/__/
 ```
 
-[![asciicast][asciicast-screenshot]][asciicast-screenshot-url]
+<img src="./assets/screenshot.png" alt="dotfiles" align="right" width="400">
 
 ---
 
@@ -52,7 +52,7 @@ curl -sLf https://spacevim.org/install.sh | bash
 
 ---
 
-_[iterm2](https://www.iterm2.com/), [Z shell](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH) and [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) should also be installed._
+_[iterm2](https://www.iterm2.com/), [Z shell](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH) and [antibody](https://github.com/getantibody/antibody) should also need to be installed._
 
 ---
 
@@ -71,6 +71,20 @@ sh ./install.sh
 Use <kbd>ctrl</kbd>+<kbd>a</kbd>+<kbd>I</kbd> to install [TMUX](https://tmux.github.io/) Plugins
 
 _<kbd>ctrl+a</kbd> is `prefix`._
+
+### Install [ZSH](https://www.zsh.org/) Plugins
+
+#### reload zshrc
+
+```shell
+source ~/.zshrc
+```
+
+#### reload zshrc
+
+```shell
+updateplugin
+```
 
 ## Dockerized Vim [docker hub]
 
