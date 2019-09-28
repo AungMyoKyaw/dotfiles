@@ -80,7 +80,7 @@ _<kbd>ctrl+a</kbd> is `prefix`._
 source ~/.zshrc
 ```
 
-#### reload zshrc
+#### updateplugin
 
 ```shell
 updateplugin
