@@ -47,36 +47,36 @@ install_dotfiles(){
   showSuccessMessage
 }
 
+# BACKUP VIMRC
 backup_vim_rc(){
-  # BACKUP VIMRC
   if [ -f "$HOME/.vim/vimrc" ]; then
     cp "$HOME/.vim/vimrc" "$HOME/.vim/vimrc.bk"
   fi
 }
 
+# BACKUP TMUX.CONF
 backup_tmux_conf(){
-  # BACKUP TMUX.CONF
   if [ -f "$HOME/.tmux.conf" ]; then
     cp "$HOME/.tmux.conf" "$HOME/.tmux.conf.bk"
   fi
 }
 
+# BACKUP ZSHRC
 backup_zsh_rc(){
-  # BACKUP ZSHRC
   if [ -f "$HOME/.zshrc" ]; then
     cp "$HOME/.zshrc" "$HOME/.zshrc.bk"
   fi
 }
 
+# BACKUP ALIASES
 backup_aliases(){
-  # BACKUP ALIASES
   if [ -f "$HOME/.aliases" ]; then
     cp "$HOME/.aliases" "$HOME/.aliases.bk"
   fi
 }
 
+# MAKE SURE REQUIRED FILE EXISTS
 makesure_file_exist(){
-  # MAKE DIR IF NO .VIM FOLDER EXISTS
   if [ ! -d "$HOME/.vim/" ]; then
     mkdir $HOME/.vim/
   fi
@@ -112,8 +112,8 @@ makesure_file_exist(){
   fi
 }
 
+# LINKING RC
 linking_rc(){
-  # LINKING RC
   # ln -fs "$CURRENT_DIR/vim/vimrc" "$HOME/.vim/vimrc" # I SWITCH TO SPACEVIM
   # ln -fs "$CURRENT_DIR/nvim/nvimrc" "$HOME/.config/nvim/init.vim"
   ln -fs "$CURRENT_DIR/spacevim.d/autoload/myspacevim.vim" "$HOME/.SpaceVim.d/autoload/myspacevim.vim"
@@ -130,13 +130,13 @@ linking_rc(){
   ln -fs "$CURRENT_DIR/zsh/zshrc.zsh" "$HOME/.zshrc"
 }
 
+# INSTALLING REQUIRED TMUX PLUGIN
 install_tmux_plugin(){
-  # INSTALLING REQUIRED TMUX PLUGIN
-  tmux source ~/.tmux.conf
+  tmux source-file ~/.tmux.conf
 }
 
+# reload zsh config
 reload_zshrc(){
-  # reload zsh config
   source ~/.zshrc
 }
 
