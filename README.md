@@ -13,9 +13,9 @@
  /_/ \_\_|  |_|_|\_\ |___/\___/\__|_| |_|_\___/__/
 ```
 
-<img src="./assets/screenshot.png" alt="dotfiles" align="right" width="400">
-
 ---
+
+<img src="./assets/screenshot.png" alt="dotfiles" align="right" width="400">
 
 - [PREREQUISITES](#PREREQUISITES)
   - [Install TMUX](#install-tmux)
