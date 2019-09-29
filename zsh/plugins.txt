@@ -1,1 +1,8 @@
+# Theme
 denysdovhan/spaceship-prompt
+# - - - - - - - - - -
+Tarrasch/zsh-bd
+chrissicool/zsh-256color
+junegunn/fzf
+zsh-users/zsh-completions
+zsh-users/zsh-syntax-highlighting
