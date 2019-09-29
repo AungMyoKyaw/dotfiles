@@ -14,3 +14,8 @@ updateplugin(){
 reload(){
   source ~/.zshrc
 }
+
+# reload tmux
+reload_tmux(){
+  tmux source-file ~/.tmux.conf
+}
