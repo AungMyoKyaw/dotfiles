@@ -11,6 +11,3 @@ alias dnvim='docker run -it --rm \
 
 # COPYTO SYSTEM CLIPBOARD
 alias dcp='cat ./dcp.txt | pbcopy'
-
-# DOCKER RUN ALIAS
-alias drun='docker run --rm -it -v $(pwd):/src:cached'
