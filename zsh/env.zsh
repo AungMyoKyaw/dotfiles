@@ -1,1 +1,4 @@
 export PATH="/usr/local/sbin:$PATH"
+
+# OPTING OUT HOMEBREW ANALYTICS
+export HOMEBREW_NO_ANALYTICS=1
