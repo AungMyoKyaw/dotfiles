@@ -13,7 +13,7 @@ func! myspacevim#before() abort
   let g:vimwiki_folding    = 'expr'
 
   " disable some plugins
-  let g:spacevim_disabled_plugins = ['vim-startify']
+  let g:spacevim_disabled_plugins = ['vim-startify','gruvbox']
 
   " nvim python2 provider
   let g:python_host_prog = '/usr/local/bin/python2'

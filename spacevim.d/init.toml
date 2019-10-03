@@ -19,6 +19,7 @@
   filemanager                    = "defx"
   statusline_inactive_separator  = "curve"
   statusline_separator           = "curve"
+  filetree_direction             = "right"
 
 # One Dark Theme
 [[custom_plugins]]
@@ -47,6 +48,11 @@
 # VIM POLY-GLOT
 [[custom_plugins]]
   name = "sheerun/vim-polyglot"
+  merged = 0
+
+# DBML SYNTAX
+[[custom_plugins]]
+  name = "jidn/vim-dbml"
   merged = 0
 
 # EMMET
