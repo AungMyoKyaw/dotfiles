@@ -52,7 +52,7 @@ curl -sLf https://spacevim.org/install.sh | bash
 
 ---
 
-_[iterm2](https://www.iterm2.com/), [Z shell](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH) and [antibody](https://github.com/getantibody/antibody) should also need to be installed._
+_[Alacritty](https://github.com/jwilm/alacritty), [Z shell](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH) and [antibody](https://github.com/getantibody/antibody) should also need to be installed._
 
 ---
 
