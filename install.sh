@@ -110,6 +110,21 @@ makesure_file_exist(){
   if [ ! -f "$HOME/.SpaceVim.d/autoload/myspacevim.vim" ]; then
     touch $HOME/.SpaceVim.d/autoload/myspacevim.vim
   fi
+
+  # MAKE SURE .CONFIG DIR EXIST
+  if [ ! -d "$HOME/.config/" ]; then
+    mkdir $HOME/.config/
+  fi
+
+  # MAKE SURE .CONFIG/ALACRITTY DIR EXIST
+  if [ ! -d "$HOME/.config/alacritty/" ]; then
+    mkdir $HOME/.config/alacritty/
+  fi
+
+  # MAKE SURE ALACRITTY.YML FILE EXIST
+  if [ ! -f "$HOME/.config/alacritty/alacritty.yml" ]; then
+    touch $HOME/.config/alacritty/alacritty.yml
+  fi
 }
 
 # LINKING RC
@@ -128,6 +143,7 @@ linking_rc(){
   ln -fs "$CURRENT_DIR/zsh/plugins.txt" "$HOME/.zsh_plugins.txt"
   ln -fs "$CURRENT_DIR/zsh/theme.zsh" "$HOME/.theme.zsh"
   ln -fs "$CURRENT_DIR/zsh/zshrc.zsh" "$HOME/.zshrc"
+  ln -fs "$CURRENT_DIR/alacritty/alacritty.yml" "$HOME/.config/alacritty/alacritty.yml"
 }
 
 # INSTALLING REQUIRED TMUX PLUGIN
