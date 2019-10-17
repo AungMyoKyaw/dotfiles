@@ -27,11 +27,11 @@ SPACESHIP_PROMPT_ORDER=(
   # ember         # Ember.js section
   # kubecontext   # Kubectl context section
   # terraform     # Terraform workspace section
-  exec_time     # Execution time
+  # exec_time     # Execution time
   line_sep      # Line break
   battery       # Battery level and status
-  vi_mode       # Vi-mode indicator
-  jobs          # Background jobs indicator
-  exit_code     # Exit code section
+  # vi_mode       # Vi-mode indicator
+  # jobs          # Background jobs indicator
+  # exit_code     # Exit code section
   char          # Prompt character
 )

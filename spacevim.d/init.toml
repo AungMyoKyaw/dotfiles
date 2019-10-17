@@ -16,10 +16,10 @@
   enable_guicolors               = true
   enable_statusline_display_mode = false
   enable_tabline_filetype_icon   = true
-  filemanager                    = "defx"
   statusline_inactive_separator  = "curve"
   statusline_separator           = "curve"
   filetree_direction             = "right"
+  autocomplete_method            = "coc"
 
 # One Dark Theme
 [[custom_plugins]]
@@ -35,12 +35,6 @@
   name = "VersionControl"
   enable-gtm-status =  true
 
-# Enable autocomplete layer
-[[layers]]
-  name                                = "autocomplete"
-  auto-completion-return-key-behavior = "complete"
-  auto-completion-tab-key-behavior    = "smart"
-
 # FZF
 [[layers]]
   name = "fzf"
@@ -48,11 +42,6 @@
 # VIM POLY-GLOT
 [[custom_plugins]]
   name = "sheerun/vim-polyglot"
-  merged = 0
-
-# DBML SYNTAX
-[[custom_plugins]]
-  name = "jidn/vim-dbml"
   merged = 0
 
 # EMMET
