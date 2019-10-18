@@ -21,6 +21,7 @@
   - [Install TMUX](#install-tmux)
   - [Install TMUX Plugin Manager](#install-tmux-plugin-manager)
   - [Install spacevim](#install-spacevim)
+  - [Install FiraCode Nerd Font](#install-firacode-nerd-font)
 - [INSTALLATION](#INSTALLATION)
   - [Install Config](#install-config)
   - [Install TMUX Plugins](#install-tmux-plugins)
@@ -48,6 +49,12 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ```shell
 curl -sLf https://spacevim.org/install.sh | bash
+```
+
+### Install [FiraCode Nerd Font](https://github.com/Homebrew/homebrew-cask-fonts/blob/master/Casks/font-firacode-nerd-font.rb)
+
+```shell
+brew cask install font-firacode-nerd-font
 ```
 
 ---
