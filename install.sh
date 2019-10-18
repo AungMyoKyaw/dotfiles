@@ -131,6 +131,8 @@ makesure_file_exist(){
 linking_rc(){
   # ln -fs "$CURRENT_DIR/vim/vimrc" "$HOME/.vim/vimrc" # I SWITCH TO SPACEVIM
   # ln -fs "$CURRENT_DIR/nvim/nvimrc" "$HOME/.config/nvim/init.vim"
+  ln -fs "$CURRENT_DIR/alacritty/alacritty.yml" "$HOME/.config/alacritty/alacritty.yml"
+  ln -fs "$CURRENT_DIR/git/gitconfig" "$HOME/.gitconfig"
   ln -fs "$CURRENT_DIR/spacevim.d/autoload/myspacevim.vim" "$HOME/.SpaceVim.d/autoload/myspacevim.vim"
   ln -fs "$CURRENT_DIR/spacevim.d/init.toml" "$HOME/.SpaceVim.d/init.toml"
   ln -fs "$CURRENT_DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
@@ -143,7 +145,6 @@ linking_rc(){
   ln -fs "$CURRENT_DIR/zsh/plugins.txt" "$HOME/.zsh_plugins.txt"
   ln -fs "$CURRENT_DIR/zsh/theme.zsh" "$HOME/.theme.zsh"
   ln -fs "$CURRENT_DIR/zsh/zshrc.zsh" "$HOME/.zshrc"
-  ln -fs "$CURRENT_DIR/alacritty/alacritty.yml" "$HOME/.config/alacritty/alacritty.yml"
 }
 
 # INSTALLING REQUIRED TMUX PLUGIN
