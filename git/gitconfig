@@ -1,6 +1,6 @@
 [user]
   signingkey = BE1B68656B7F2147
-	name       = AMK
+	name       = Aung Myo Kyaw
 	email      = git@aungmyokyaw.com
 [commit]
 	gpgsign    = true
