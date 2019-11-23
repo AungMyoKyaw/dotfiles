@@ -1,6 +1,9 @@
 # aliases
 zsh/aliases
 
+# Adguard Folder
+adguardHome/
+
 # General
 .DS_Store
 .AppleDouble

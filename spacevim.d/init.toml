@@ -19,6 +19,7 @@
   statusline_inactive_separator  = "curve"
   statusline_separator           = "curve"
   filetree_direction             = "right"
+  # spacevim_filemanager           = "defx"
   autocomplete_method            = "coc"
 
 # One Dark Theme
