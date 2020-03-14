@@ -1,6 +1,7 @@
 # Theme
 denysdovhan/spaceship-prompt
 # - - - - - - - - - -
+AungMyoKyaw/docker-run-zsh
 Tarrasch/zsh-bd
 chrissicool/zsh-256color
 junegunn/fzf

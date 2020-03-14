@@ -12,20 +12,19 @@
   bootstrap_after                = "myspacevim#after"
   bootstrap_before               = "myspacevim#before"
   buffer_index_type              = 4
-  colorscheme                    = "onedark"
+  colorscheme                    = "nord"
   enable_guicolors               = true
   enable_statusline_display_mode = false
   enable_tabline_filetype_icon   = true
-  statusline_inactive_separator  = "curve"
-  statusline_separator           = "curve"
+  statusline_inactive_separator  = "arrow"
+  statusline_separator           = "arrow"
   filetree_direction             = "right"
-  # spacevim_filemanager           = "defx"
+  enable_vimfiler_welcome        = false
   autocomplete_method            = "coc"
 
-# One Dark Theme
-[[custom_plugins]]
-  name = "joshdick/onedark.vim"
-  merged = 0
+# colorscheme layer
+[[layers]]
+  name = "colorscheme"
 
 # Better default config for vim and neovim.
 [[layers]]
@@ -68,4 +67,9 @@
 # JS DOC
 [[custom_plugins]]
   name = "heavenshell/vim-jsdoc"
+  merged = 0
+
+# cheat.sh
+[[custom_plugins]]
+  name = "dbeniamine/cheat.sh-vim"
   merged = 0

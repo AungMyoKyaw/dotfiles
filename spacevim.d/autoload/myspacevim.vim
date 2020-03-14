@@ -75,4 +75,7 @@ func! myspacevim#after() abort
 
   " lazyredraw
   set lazyredraw
+
+  " redrawtime
+  set redrawtime=10000
 endf
