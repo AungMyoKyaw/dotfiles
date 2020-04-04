@@ -18,7 +18,7 @@
   enable_tabline_filetype_icon   = true
   statusline_inactive_separator  = "arrow"
   statusline_separator           = "arrow"
-  filetree_direction             = "right"
+  filetree_direction             = "left"
   enable_vimfiler_welcome        = false
   autocomplete_method            = "coc"
 

@@ -4,6 +4,9 @@ alias tmux='tmux -u -2'
 # git
 alias g='git'
 
+# tmuxinator
+alias mx='tmuxinator'
+
 # DNVIM
 alias dnvim='docker run -it --rm \
   -v $(pwd):/home/spacevim/src \
