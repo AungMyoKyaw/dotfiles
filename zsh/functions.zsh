@@ -26,6 +26,6 @@ adguard_setup(){
 }
 
 # start adguard DNS
-adguardhome_start(){
+adguardstart(){
   docker start adguardhome
 }

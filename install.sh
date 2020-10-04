@@ -20,22 +20,10 @@ prerequisite(){
     echo "☭ INSTALLING TMUX PLUGIN MANAGER"
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   fi
-
-  # IS SPACEVIM INSTALLED
-  if [[ ! -d "$HOME/.SpaceVim" ]]; then
-    echo ""
-    echo "☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭"
-    echo "☭ SPACEVIM SHOULD BE INSTALLED ☭"
-    echo "☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭"
-    echo ""
-    open https://spacevim.org/quick-start-guide/#install
-    exit 1
-  fi
 }
 
 # todo
 # prerequisite check
-
 install_dotfiles(){
   backup_vim_rc
   backup_tmux_conf
@@ -129,14 +117,16 @@ makesure_file_exist(){
 
 # LINKING RC
 linking_rc(){
-  # ln -fs "$CURRENT_DIR/vim/vimrc" "$HOME/.vim/vimrc" # I SWITCH TO SPACEVIM
-  # ln -fs "$CURRENT_DIR/nvim/nvimrc" "$HOME/.config/nvim/init.vim"
+  ln -fs "$CURRENT_DIR/vim/vimrc" "$HOME/.vim/vimrc"
+  ln -fs "$CURRENT_DIR/vim/vimrc.bundles" "$HOME/.vim/vimrc.bundles"
+  ln -fs "$CURRENT_DIR/vim/vimrc.pluginsettings" "$HOME/.vim/vimrc.pluginsettings"
+  ln -fs "$CURRENT_DIR/vim/vimrc.sensible" "$HOME/.vim/vimrc.sensible"
+  ln -fs "$CURRENT_DIR/vim/vimrc.me" "$HOME/.vim/vimrc.me"
+  ln -fs "$CURRENT_DIR/nvim/nvimrc" "$HOME/.config/nvim/init.vim"
   ln -fs "$CURRENT_DIR/alacritty/alacritty.yml" "$HOME/.config/alacritty/alacritty.yml"
   ln -fs "$CURRENT_DIR/git/gitconfig" "$HOME/.gitconfig"
   ln -fs "$CURRENT_DIR/tmuxinator" "$HOME/.config/tmuxinator"
   ln -fs "$CURRENT_DIR/karabiner" "$HOME/.config/karabiner"
-  ln -fs "$CURRENT_DIR/spacevim.d/autoload/myspacevim.vim" "$HOME/.SpaceVim.d/autoload/myspacevim.vim"
-  ln -fs "$CURRENT_DIR/spacevim.d/init.toml" "$HOME/.SpaceVim.d/init.toml"
   ln -fs "$CURRENT_DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
   ln -fs "$CURRENT_DIR/vim/xvimrc" "$HOME/.xvimrc"
   ln -fs "$CURRENT_DIR/zsh/aliases" "$HOME/.aliases.zsh"

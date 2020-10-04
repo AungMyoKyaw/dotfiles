@@ -1,0 +1,19 @@
+" load bundles
+if filereadable($HOME . "/.vim/vimrc.bundles")
+  source ~/.vim/vimrc.bundles
+endif
+
+" load pluginsettings
+if filereadable($HOME . "/.vim/vimrc.pluginsettings")
+  source ~/.vim/vimrc.pluginsettings
+endif
+
+" load sensible
+if filereadable($HOME . "/.vim/vimrc.sensible")
+  source ~/.vim/vimrc.sensible
+endif
+
+" load me
+if filereadable($HOME . "/.vim/vimrc.me")
+  source ~/.vim/vimrc.me
+endif

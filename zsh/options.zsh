@@ -6,3 +6,9 @@ export ENV FZF_DEFAULT_COMMAND='rg --files'
 
 # EDITOR OPTION
 export EDITOR='vim'
+
+# zsh ompletions
+autoload -U compinit && compinit
+
+# antibody options
+antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh

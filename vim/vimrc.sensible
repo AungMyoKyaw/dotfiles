@@ -1,0 +1,101 @@
+" Leader
+let mapleader = " "
+
+" Tmux term gui colors
+" set t_8f=^[[38;2;%lu;%lu;%lum
+" set t_8b=^[[48;2;%lu;%lu;%lum
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set t_Co=256
+
+" clipboard
+set clipboard^=unnamed,unnamedplus
+
+" remap jj to <esc>
+inoremap jj <esc>
+
+" Split Navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+" nnoremap <C-O> <C-W><C-O>
+
+" Folding
+nnoremap zO zA
+nnoremap zo za
+set      fdm=indent
+set      nofoldenable
+
+" Line Number Setting
+set number relativenumber
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
+
+" Numbers
+set number
+set numberwidth=5
+
+set textwidth=80
+set colorcolumn=120
+
+" Control + s for vim
+inoremap <C-S> <esc>:w<cr>i
+
+" next buffer
+nnoremap <leader>bn :bn<cr>
+nnoremap <leader>bp :bp<cr>
+
+" delete buffer
+nnoremap <leader>bd :bd<cr>
+
+" delete other buffer
+nnoremap <leader>bD :BufOnly<cr>
+
+" buffer list
+nnoremap <leader>bb :CtrlPBuffer<cr>
+
+" reload vimrc
+nnoremap <leader>vr :source ~/.vim/vimrc<cr>
+
+set cursorline                    " Find the current line quickly.
+set hlsearch
+
+" CASE INSENSITIVE COMMANDS
+set ignorecase
+set smartcase
+
+" Cursor shape By Mode
+let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+
+" enable tty fast
+set ttyfast
+
+" lazyredraw
+set lazyredraw
+
+" redrawtime
+set redrawtime=10000
+
+" nowrap
+set nowrap
+
+" thoughtbot
+set backspace=2   " Backspace deletes like most programs in insert mode
+set nobackup
+set nowritebackup
+set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
+set history=50
+set ruler         " show the cursor position all the time
+set showcmd       " display incomplete commands
+set incsearch     " do incremental searching
+set laststatus=2  " Always display the status line
+set autowrite     " Automatically :write before running commands
+set modelines=0   " Disable modelines as a security precaution
+set nomodeline

@@ -3,7 +3,15 @@ denysdovhan/spaceship-prompt
 # - - - - - - - - - -
 AungMyoKyaw/docker-run-zsh
 Tarrasch/zsh-bd
+bobthecow/git-flow-completion
 chrissicool/zsh-256color
 junegunn/fzf
 zsh-users/zsh-completions
 zsh-users/zsh-syntax-highlighting
+
+# ohmyzsh/ohmyzsh path:plugins/aws
+# ohmyzsh/ohmyzsh path:plugins/battery
+# ohmyzsh/ohmyzsh path:plugins/brew
+
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/thefuck
