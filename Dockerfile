@@ -1,21 +1,8 @@
-FROM spacevim/spacevim
-COPY ./spacevim.d $HOME/.SpaceVim.d
+FROM alpine:latest
+COPY ./vim /root/.vim
 
-USER root
-
-RUN pip3 install pynvim
-
-RUN curl -sLf https://deb.nodesource.com/setup_10.x | bash -
-RUN apt-get install -y nodejs
-RUN npm i -g prettier eslint typescript neovim
-
-RUN apt-get install -y ripgrep fzf
-ENV FZF_DEFAULT_COMMAND='rg --files'
-
-RUN apt-get install -y wamerican
-
-RUN apt-get clean
-
-RUN nvim --headless +UpdateRemotePlugins +qall
+RUN apk add vim
+RUN apk add git
+RUN git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 WORKDIR $HOME/src

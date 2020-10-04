@@ -20,8 +20,6 @@
 - [PREREQUISITES](#PREREQUISITES)
   - [Install TMUX](#install-tmux)
   - [Install TMUX Plugin Manager](#install-tmux-plugin-manager)
-  - [Install spacevim](#install-spacevim)
-  - [Install FiraCode Nerd Font](#install-firacode-nerd-font)
 - [INSTALLATION](#INSTALLATION)
   - [Install Config](#install-config)
   - [Install TMUX Plugins](#install-tmux-plugins)
@@ -43,23 +41,9 @@ brew install tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
-### Install [spacevim](https://spacevim.org/)
-
-#### Linux and macOS
-
-```shell
-curl -sLf https://spacevim.org/install.sh | bash
-```
-
-### Install [FiraCode Nerd Font](https://github.com/Homebrew/homebrew-cask-fonts/blob/master/Casks/font-firacode-nerd-font.rb)
-
-```shell
-brew cask install font-firacode-nerd-font
-```
-
 ---
 
-_[Alacritty](https://github.com/jwilm/alacritty), [Z shell](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH) and [antibody](https://github.com/getantibody/antibody) should also need to be installed._
+_[Z shell](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH) and [antibody](https://github.com/getantibody/antibody) should also need to be installed._
 
 ---
 
@@ -97,9 +81,7 @@ updateplugin
 
 ```shell
 docker run -it --rm \
-  -v $(pwd):/home/spacevim/src:cached \
-  -v ~/dockerized-nvim/.cache:/home/spacevim/.cache:cached \
-  -v ~/dockerized-nvim/.local:/home/spacevim/.local:cached \
+  -v $(pwd):/root/src:cached \
   aungmyokyaw/dnvim
 ```
 
@@ -117,9 +99,7 @@ docker build -t dnvim .
 
 ```shell
 alias dnvim='docker run -it --rm \
-  -v $(pwd):/home/spacevim/src:cached \
-  -v ~/dockerized-nvim/.cache:/home/spacevim/.cache:cached \
-  -v ~/dockerized-nvim/.local:/home/spacevim/.local:cached \
+  -v $(pwd):/root/src:cached \
   dnvim'
 ```
 
@@ -133,9 +113,7 @@ dnvim
 
 ```shell
 docker run -it --rm \
-  -v $(pwd):/home/spacevim/src:cached \
-  -v ~/dockerized-nvim/.cache:/home/spacevim/.cache:cached \
-  -v ~/dockerized-nvim/.local:/home/spacevim/.local:cached \
+  -v $(pwd):/root/src:cached \
   dnvim
 ```
 
