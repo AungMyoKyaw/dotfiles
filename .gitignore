@@ -4,6 +4,9 @@ zsh/aliases
 # Adguard Folder
 adguardHome/
 
+# trash
+trash/
+
 # General
 .DS_Store
 .AppleDouble
