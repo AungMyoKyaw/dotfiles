@@ -1,7 +1,7 @@
 [user]
-  signingkey = BE1B68656B7F2147
+  signingkey = key
   name = Aung Myo Kyaw
-  email = git@aungmyokyaw.com
+  email = email
 [commit]
   gpgsign    = true
 [push]

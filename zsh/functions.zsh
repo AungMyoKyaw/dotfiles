@@ -29,3 +29,44 @@ adguard_setup(){
 adguardstart(){
   docker start adguardhome
 }
+
+# delete ds_store recursive
+dsdelete(){
+  find . -name '.DS_Store' -type f -delete
+}
+
+# set adguard dns
+
+adguarddns(){
+  # set networkname
+  NETWORKNAME="iPhone USB"
+
+  # set networkname
+  NETWORKNAME2="Wi-Fi"
+
+  # set dns servers
+  networksetup -setdnsservers "${NETWORKNAME}" 127.0.0.1 172.17.0.3 176.103.130.130 176.103.130.131 1.1.1.1 1.0.0.1
+
+  # get dns servers for verify
+  networksetup -getdnsservers "${NETWORKNAME}"
+
+  # set dns servers
+  networksetup -setdnsservers "${NETWORKNAME2}" 127.0.0.1 172.17.0.3 176.103.130.130 176.103.130.131 1.1.1.1 1.0.0.1
+
+  # get dns servers for verify
+  networksetup -getdnsservers "${NETWORKNAME2}"
+
+  echo "dns servers are now successfully updated for $NETWORKNAME2"
+}
+
+
+# python static
+http_server(){
+  PORT="$1"
+  python -m SimpleHTTPServer
+  if [[ -n "${PORT}" ]]; then
+    python -m SimpleHTTPServer ${PORT}
+  else
+    python -m SimpleHTTPServer
+  fi
+}
