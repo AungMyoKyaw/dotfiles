@@ -10,6 +10,9 @@ adguardHome/
 # trash
 trash/
 
+# ssh config
+ssh/
+
 # General
 .DS_Store
 .AppleDouble
