@@ -86,6 +86,16 @@ makesure_file_exist(){
     echo "# aliases" > $CURRENT_DIR/zsh/aliases
   fi
 
+  # MAKE DIR IF NO SSH FOLDER EXISTS
+  if [ ! -d "$CURRENT_DIR/ssh/" ]; then
+    mkdir $CURRENT_DIR/ssh
+  fi
+
+  # CREATE ALIASES FILE IF NO ALIASES FILE EXISTS
+  if [ ! -f "$CURRENT_DIR/ssh/config" ]; then
+    echo "# sshconfig" > $CURRENT_DIR/ssh/config
+  fi
+
   # MAKE DIR IF NO .SPACEVIM.D FOLDER EXISTS
   if [ ! -d "$HOME/.SpaceVim.d/" ]; then
     mkdir $HOME/.SpaceVim.d/
