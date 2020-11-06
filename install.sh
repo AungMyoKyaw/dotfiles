@@ -63,6 +63,13 @@ backup_aliases(){
   fi
 }
 
+# BACKUP ssh config
+backup_aliases(){
+  if [ -f "$HOME/.ssh" ]; then
+    cp "$HOME/.ssh/config" "$HOME/.ssh/config.bk"
+  fi
+}
+
 # MAKE SURE REQUIRED FILE EXISTS
 makesure_file_exist(){
   if [ ! -d "$HOME/.vim/" ]; then
@@ -137,6 +144,7 @@ linking_rc(){
   ln -fs "$CURRENT_DIR/zsh/plugins.txt" "$HOME/.zsh_plugins.txt"
   ln -fs "$CURRENT_DIR/zsh/theme.zsh" "$HOME/.theme.zsh"
   ln -fs "$CURRENT_DIR/zsh/zshrc.zsh" "$HOME/.zshrc"
+  ln -fs "$CURRENT_DIR/ssh/config" "$HOME/.ssh/config"
 }
 
 # INSTALLING REQUIRED TMUX PLUGIN
