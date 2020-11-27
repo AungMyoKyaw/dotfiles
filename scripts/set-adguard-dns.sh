@@ -7,13 +7,13 @@ NETWORKNAME="iPhone USB"
 NETWORKNAME2="Wi-Fi"
 
 # set dns servers
-networksetup -setdnsservers "${NETWORKNAME}" 127.0.0.1 172.17.0.3 176.103.130.130 176.103.130.131 1.1.1.1 1.0.0.1
+networksetup -setdnsservers "${NETWORKNAME}" 94.140.14.14 94.140.15.15 1.1.1.1 1.0.0.1
 
 # get dns servers for verify
 networksetup -getdnsservers "${NETWORKNAME}"
 
 # set dns servers
-networksetup -setdnsservers "${NETWORKNAME2}" 127.0.0.1 172.17.0.3 176.103.130.130 176.103.130.131 1.1.1.1 1.0.0.1
+networksetup -setdnsservers "${NETWORKNAME2}" 94.140.14.14 94.140.15.15 1.1.1.1 1.0.0.1
 
 # get dns servers for verify
 networksetup -getdnsservers "${NETWORKNAME2}"
