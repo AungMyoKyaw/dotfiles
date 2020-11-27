@@ -4,6 +4,9 @@ alias tmux='tmux -2'
 # git
 alias g='git'
 
+# nvim
+alias n='nvim'
+
 # tmuxinator
 alias mx='tmuxinator'
 
