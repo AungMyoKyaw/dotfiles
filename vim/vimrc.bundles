@@ -32,12 +32,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/BufOnly.vim'
 Plugin 'vimwiki/vimwiki'
 Plugin 'wakatime/vim-wakatime'
-" Plugin 'terryma/vim-smooth-scroll'
-" Plugin 'neoclide/coc.nvim'
-" Plugin 'joshdick/onedark.vim'
-" Plugin 'arcticicestudio/nord-vim'
-" Plugin 'lifepillar/vim-solarized8'
-" Plugin 'overcache/NeoSolarized'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
