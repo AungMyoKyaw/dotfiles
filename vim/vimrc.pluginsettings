@@ -71,3 +71,7 @@ let mywiki.syntax        = 'markdown'
 let mywiki.ext           = '.md'
 let g:vimwiki_list       = [mywiki]
 let g:vimwiki_folding    = 'expr'
+
+" vim rest setting
+let g:vrc_curl_opts = {}
+let g:vrc_curl_opts['-i'] = ''
