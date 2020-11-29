@@ -13,7 +13,7 @@ set showtabline=2
 
 " macvim  conf
 set background=dark
-set guifont=CaskaydiaCove\ Nerd\ Font\ Mono:h25
+set guifont=FiraCode\ Nerd\ Font\ Mono:h25
 
 " vim easy align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -21,6 +21,25 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" easy motion
+" <Leader>f{char} to move to {char}
+map  <Leader><Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader><Leader>f <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader><Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader><Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader><Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader><Leader>w <Plug>(easymotion-overwin-w)
+
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
 
 " js-docs
 let g:jsdoc_allow_input_prompt = 1
@@ -31,14 +50,15 @@ let g:jsdoc_input_description  = 1
 let g:ctrlp_map           = '<c-p>'
 let g:ctrlp_cmd           = 'CtrlP'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
-" let g:ctrlp_match_window  = 'top,order:btt,min:1,max:20,results:20'
+let g:ctrlp_match_window  = 'button,order:btt,min:1,max:20,results:20'
 
 " ALE Settings
-let b:ale_fixers = ['prettier', 'eslint', 'trim_whitespace']
-let g:ale_completion_enabled = 1
+let b:ale_fixers                               = ['prettier', 'eslint', 'trim_whitespace']
 let g:ale_javascript_prettier_options          = '--single-quote --trailing-comma none'
 let g:ale_javascript_prettier_use_local_config = 1
-" let g:ale_hover_cursor = 1
+let g:ale_completion_enabled                   = 1
+" let g:ale_completion_autoimport                = 1
+" let g:ale_hover_cursor                         = 1
 " let g:ale_fix_on_save                          = 1
 
 " ctrlsf
@@ -53,13 +73,13 @@ inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 
 " Nerd Tree
 map <C-n> :NERDTreeToggle<CR>
-autocmd StdinReadPre * let s:std_in=1
-if argc() == 0 && !exists("s:std_in")
-  autocmd vimenter * NERDTree
-else
-  autocmd vimenter * NERDTree
-  autocmd vimenter * wincmd l
-endif
+" autocmd StdinReadPre * let s:std_in=1
+" if argc() == 0 && !exists("s:std_in")
+"   autocmd vimenter * NERDTree
+" else
+"   autocmd vimenter * NERDTree
+"   autocmd vimenter * wincmd l
+" endif
 
 " ----------------------------------------------------------------------------------------------------
 " VIM WIKI
