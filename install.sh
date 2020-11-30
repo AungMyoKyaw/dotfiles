@@ -121,6 +121,11 @@ makesure_file_exist(){
     mkdir $HOME/.config/
   fi
 
+  # MAKE SURE NVIM DIR EXIST
+  if [ ! -d "$HOME/.config/nvim/" ]; then
+    mkdir $HOME/.config/nvim/
+  fi
+
   # MAKE SURE .CONFIG/ALACRITTY DIR EXIST
   if [ ! -d "$HOME/.config/alacritty/" ]; then
     mkdir $HOME/.config/alacritty/
@@ -140,6 +145,7 @@ linking_rc(){
   ln -fs "$CURRENT_DIR/vim/vimrc.sensible" "$HOME/.vim/vimrc.sensible"
   ln -fs "$CURRENT_DIR/vim/vimrc.me" "$HOME/.vim/vimrc.me"
   ln -fs "$CURRENT_DIR/nvim/nvimrc" "$HOME/.config/nvim/init.vim"
+  ln -fs "$CURRENT_DIR/nvim/coc-settings.json" "$HOME/.config/nvim/coc-settings.json"
   ln -fs "$CURRENT_DIR/alacritty/alacritty.yml" "$HOME/.config/alacritty/alacritty.yml"
   ln -fs "$CURRENT_DIR/git/gitconfig" "$HOME/.gitconfig"
   ln -fs "$CURRENT_DIR/tmuxinator" "$HOME/.config/tmuxinator"

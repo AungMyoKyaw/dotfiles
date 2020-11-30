@@ -34,6 +34,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/BufOnly.vim'
 Plugin 'vimwiki/vimwiki'
 Plugin 'wakatime/vim-wakatime'
+Plugin 'neoclide/coc.nvim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
