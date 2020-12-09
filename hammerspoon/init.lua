@@ -14,7 +14,6 @@ hs.alert.show("Config loaded")
 -- default windowfilter: only visible windows, all Spaces
 switcher = hs.window.switcher.new()
 
--- bind to hotkeys; WARNING: at least one modifier key is required!
 hs.hotkey.bind(hyper,'N', function()
   switcher:next()
 end)
