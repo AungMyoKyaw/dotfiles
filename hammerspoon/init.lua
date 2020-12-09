@@ -104,8 +104,14 @@ function caffeineClicked()
 end
 
 if caffeine then
+  local display_status = hs.caffeinate.get("displayIdle")
+  if display_status == false then
+    hs.caffeinate.toggle("displayIdle")
+  end
+
+  display_status = hs.caffeinate.get("displayIdle")
   caffeine:setClickCallback(caffeineClicked)
-  setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
+  setCaffeineDisplay(display_status)
 end
 
 function applicationWatcher(appName, eventType, appObject)
