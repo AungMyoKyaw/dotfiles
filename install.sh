@@ -139,18 +139,20 @@ makesure_file_exist(){
 
 # LINKING RC
 linking_rc(){
-  ln -fs "$CURRENT_DIR/vim/vimrc" "$HOME/.vim/vimrc"
-  ln -fs "$CURRENT_DIR/vim/vimrc.bundles" "$HOME/.vim/vimrc.bundles"
-  ln -fs "$CURRENT_DIR/vim/vimrc.pluginsettings" "$HOME/.vim/vimrc.pluginsettings"
-  ln -fs "$CURRENT_DIR/vim/vimrc.sensible" "$HOME/.vim/vimrc.sensible"
-  ln -fs "$CURRENT_DIR/vim/vimrc.me" "$HOME/.vim/vimrc.me"
-  ln -fs "$CURRENT_DIR/nvim/nvimrc" "$HOME/.config/nvim/init.vim"
-  ln -fs "$CURRENT_DIR/nvim/coc-settings.json" "$HOME/.config/nvim/coc-settings.json"
   ln -fs "$CURRENT_DIR/alacritty/alacritty.yml" "$HOME/.config/alacritty/alacritty.yml"
   ln -fs "$CURRENT_DIR/git/gitconfig" "$HOME/.gitconfig"
-  ln -fs "$CURRENT_DIR/tmuxinator" "$HOME/.config/tmuxinator"
+  ln -fs "$CURRENT_DIR/hammerspoon" "$HOME/.hammerspoon"
   ln -fs "$CURRENT_DIR/karabiner" "$HOME/.config/karabiner"
+  ln -fs "$CURRENT_DIR/nvim/coc-settings.json" "$HOME/.config/nvim/coc-settings.json"
+  ln -fs "$CURRENT_DIR/nvim/nvimrc" "$HOME/.config/nvim/init.vim"
+  ln -fs "$CURRENT_DIR/ssh/config" "$HOME/.ssh/config"
   ln -fs "$CURRENT_DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
+  ln -fs "$CURRENT_DIR/tmuxinator" "$HOME/.config/tmuxinator"
+  ln -fs "$CURRENT_DIR/vim/vimrc" "$HOME/.vim/vimrc"
+  ln -fs "$CURRENT_DIR/vim/vimrc.bundles" "$HOME/.vim/vimrc.bundles"
+  ln -fs "$CURRENT_DIR/vim/vimrc.me" "$HOME/.vim/vimrc.me"
+  ln -fs "$CURRENT_DIR/vim/vimrc.pluginsettings" "$HOME/.vim/vimrc.pluginsettings"
+  ln -fs "$CURRENT_DIR/vim/vimrc.sensible" "$HOME/.vim/vimrc.sensible"
   ln -fs "$CURRENT_DIR/vim/xvimrc" "$HOME/.xvimrc"
   ln -fs "$CURRENT_DIR/zsh/aliases" "$HOME/.aliases.zsh"
   ln -fs "$CURRENT_DIR/zsh/default_aliases.zsh" "$HOME/.default_aliases.zsh"
@@ -160,7 +162,6 @@ linking_rc(){
   ln -fs "$CURRENT_DIR/zsh/plugins.txt" "$HOME/.zsh_plugins.txt"
   ln -fs "$CURRENT_DIR/zsh/theme.zsh" "$HOME/.theme.zsh"
   ln -fs "$CURRENT_DIR/zsh/zshrc.zsh" "$HOME/.zshrc"
-  ln -fs "$CURRENT_DIR/ssh/config" "$HOME/.ssh/config"
 }
 
 # INSTALLING REQUIRED TMUX PLUGIN

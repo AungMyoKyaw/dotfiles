@@ -13,6 +13,10 @@ trash/
 # ssh config
 ssh/
 
+# karabiner
+karabiner/assets/
+karabiner/automatic_backups/
+
 # General
 .DS_Store
 .AppleDouble
