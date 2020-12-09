@@ -9,6 +9,18 @@ hs.hotkey.bind(hyper, "R", function()
 end)
 hs.alert.show("Config loaded")
 
+-- set up your windowfilter
+-- https://www.hammerspoon.org/docs/hs.window.switcher.html
+-- default windowfilter: only visible windows, all Spaces
+switcher = hs.window.switcher.new()
+
+-- bind to hotkeys; WARNING: at least one modifier key is required!
+hs.hotkey.bind(hyper,'N', function()
+  switcher:next()
+end)
+hs.hotkey.bind(hyper,'P', function()
+  switcher:previous()
+end)
 
 hs.hotkey.bind(hyper, "H", function()
   -- https://superuser.com/questions/1150828/how-to-make-hammerspoon-resize-windows-smoothly-on-osx
@@ -76,7 +88,7 @@ hs.hotkey.bind(hyper, "F", function()
 end)
 
 -- hs.hotkey.bind({"alt", "ctrl"}, "K","K", function()
--- hs.spotify.displayCurrentTrack()
+--   hs.spotify.displayCurrentTrack()
 -- end)
 
 caffeine = hs.menubar.new()
