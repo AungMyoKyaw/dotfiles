@@ -1,5 +1,3 @@
-momentStep = 30
-
 hyper = {"cmd", "alt", "ctrl", "shift"}
 
 hs.hotkey.bind(hyper,'w', function()
@@ -13,34 +11,67 @@ hs.alert.show("Config loaded")
 
 
 hs.hotkey.bind(hyper, "H", function()
+  -- https://superuser.com/questions/1150828/how-to-make-hammerspoon-resize-windows-smoothly-on-osx
   local win = hs.window.focusedWindow()
   local f = win:frame()
+  local max = win:screen():frame()
 
-  f.x = f.x - momentStep
+  f.x = max.x
+  f.y = max.y
+  f.w = max.w / 2
+  f.h = max.h
   win:setFrame(f)
 end)
 
 hs.hotkey.bind(hyper, "L", function()
+  -- https://superuser.com/questions/1150828/how-to-make-hammerspoon-resize-windows-smoothly-on-osx
   local win = hs.window.focusedWindow()
   local f = win:frame()
+  local max = win:screen():frame()
 
-  f.x = f.x + momentStep
+  f.x = max.w / 2
+  f.y = max.y
+  f.w = max.w / 2
+  f.h = max.h
   win:setFrame(f)
 end)
 
 hs.hotkey.bind(hyper, "J", function()
+  -- https://superuser.com/questions/1150828/how-to-make-hammerspoon-resize-windows-smoothly-on-osx
   local win = hs.window.focusedWindow()
   local f = win:frame()
+  local max = win:screen():frame()
 
-  f.y = f.y - momentStep
+  f.x = max.x
+  f.y = max.h / 2
+  f.w = max.w
+  f.h = max.h / 2
   win:setFrame(f)
 end)
 
 hs.hotkey.bind(hyper, "K", function()
+  -- https://superuser.com/questions/1150828/how-to-make-hammerspoon-resize-windows-smoothly-on-osx
   local win = hs.window.focusedWindow()
   local f = win:frame()
+  local max = win:screen():frame()
 
-  f.y = f.y + momentStep
+  f.x = max.x
+  f.y = max.y
+  f.w = max.w
+  f.h = max.h / 2
+  win:setFrame(f)
+end)
+
+hs.hotkey.bind(hyper, "F", function()
+  -- https://superuser.com/questions/1150828/how-to-make-hammerspoon-resize-windows-smoothly-on-osx
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local max = win:screen():frame()
+
+  f.x = max.x
+  f.y = max.y
+  f.w = max.w
+  f.h = max.h
   win:setFrame(f)
 end)
 
@@ -67,13 +98,13 @@ if caffeine then
 end
 
 function applicationWatcher(appName, eventType, appObject)
-    if (eventType == hs.application.watcher.activated) then
-        print(appName)
-        if (appName == "Finder") then
-            -- Bring all Finder windows forward when one gets activated
-            appObject:selectMenuItem({"Window", "Bring All to Front"})
-        end
+  if (eventType == hs.application.watcher.activated) then
+    print(appName)
+    if (appName == "Finder") then
+      -- Bring all Finder windows forward when one gets activated
+      appObject:selectMenuItem({"Window", "Bring All to Front"})
     end
+  end
 end
 appWatcher = hs.application.watcher.new(applicationWatcher)
 appWatcher:start()
