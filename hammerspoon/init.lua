@@ -31,7 +31,7 @@ hs.hotkey.bind(hyper, "H", function()
   f.y = max.y
   f.w = max.w / 2
   f.h = max.h
-  win:setFrame(f)
+  win:setFrame(f,0)
 end)
 
 hs.hotkey.bind(hyper, "L", function()
@@ -44,7 +44,7 @@ hs.hotkey.bind(hyper, "L", function()
   f.y = max.y
   f.w = max.w / 2
   f.h = max.h
-  win:setFrame(f)
+  win:setFrame(f,0)
 end)
 
 hs.hotkey.bind(hyper, "J", function()
@@ -57,7 +57,7 @@ hs.hotkey.bind(hyper, "J", function()
   f.y = max.h / 2
   f.w = max.w
   f.h = max.h / 2
-  win:setFrame(f)
+  win:setFrame(f,0)
 end)
 
 hs.hotkey.bind(hyper, "K", function()
@@ -70,7 +70,7 @@ hs.hotkey.bind(hyper, "K", function()
   f.y = max.y
   f.w = max.w
   f.h = max.h / 2
-  win:setFrame(f)
+  win:setFrame(f,0)
 end)
 
 hs.hotkey.bind(hyper, "F", function()
@@ -83,7 +83,7 @@ hs.hotkey.bind(hyper, "F", function()
   f.y = max.y
   f.w = max.w
   f.h = max.h
-  win:setFrame(f)
+  win:setFrame(f,0)
 end)
 
 -- hs.hotkey.bind({"alt", "ctrl"}, "K","K", function()
