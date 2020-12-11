@@ -1,10 +1,15 @@
-hyper = {"cmd", "alt", "ctrl", "shift"}
+local hyper = {"cmd", "alt", "ctrl", "shift"}
+local hswhints_keys = {"alt", "tab"}
+local momentstop = 3000
+hs.window.animationDuration = 0
+hs.hints.showTitleThresh=1
 
-hs.hotkey.bind(hyper,'w', function()
-  hs.notify.new({title="Hammerspoon", informativeText="Hello World"}):send()
+-- hs.hotkey.bind(hswhints_keys, function()
+hs.hotkey.bind(hyper,'w', 'WINDOW_HINT', function()
+  hs.hints.windowHints()
 end)
 
-hs.hotkey.bind(hyper, "R", function()
+hs.hotkey.bind(hyper, "R", 'WINDOW_RELOAD', function()
   hs.reload()
 end)
 hs.alert.show("Config loaded")
@@ -13,15 +18,19 @@ hs.alert.show("Config loaded")
 -- https://www.hammerspoon.org/docs/hs.window.switcher.html
 -- default windowfilter: only visible windows, all Spaces
 switcher = hs.window.switcher.new()
+hs.window.switcher.ui.showThumbnails = false
+hs.window.switcher.ui.showSelectedThumbnail = false
+hs.window.switcher.ui.showSelectedTitle = false
 
-hs.hotkey.bind(hyper,'N', function()
+hs.hotkey.bind(hyper,'N','NEXT', function()
   switcher:next()
 end)
-hs.hotkey.bind(hyper,'P', function()
+
+hs.hotkey.bind(hyper,'P','PREV', function()
   switcher:previous()
 end)
 
-hs.hotkey.bind(hyper, "H", function()
+hs.hotkey.bind(hyper, 'H','W_LEFT_ALIGN', function()
   -- https://superuser.com/questions/1150828/how-to-make-hammerspoon-resize-windows-smoothly-on-osx
   local win = hs.window.focusedWindow()
   local f = win:frame()
@@ -34,7 +43,7 @@ hs.hotkey.bind(hyper, "H", function()
   win:setFrame(f,0)
 end)
 
-hs.hotkey.bind(hyper, "L", function()
+hs.hotkey.bind(hyper, 'L', 'W_RIGHT_ALIGN', function()
   -- https://superuser.com/questions/1150828/how-to-make-hammerspoon-resize-windows-smoothly-on-osx
   local win = hs.window.focusedWindow()
   local f = win:frame()
@@ -47,7 +56,8 @@ hs.hotkey.bind(hyper, "L", function()
   win:setFrame(f,0)
 end)
 
-hs.hotkey.bind(hyper, "J", function()
+hs.hotkey.bind(hyper, 'J', 'W_DOWN_ALIGN', function()
+
   -- https://superuser.com/questions/1150828/how-to-make-hammerspoon-resize-windows-smoothly-on-osx
   local win = hs.window.focusedWindow()
   local f = win:frame()
@@ -60,7 +70,7 @@ hs.hotkey.bind(hyper, "J", function()
   win:setFrame(f,0)
 end)
 
-hs.hotkey.bind(hyper, "K", function()
+hs.hotkey.bind(hyper, 'K','W_UP_ALIGN', function()
   -- https://superuser.com/questions/1150828/how-to-make-hammerspoon-resize-windows-smoothly-on-osx
   local win = hs.window.focusedWindow()
   local f = win:frame()
@@ -73,7 +83,7 @@ hs.hotkey.bind(hyper, "K", function()
   win:setFrame(f,0)
 end)
 
-hs.hotkey.bind(hyper, "F", function()
+hs.hotkey.bind(hyper, 'F', 'W_MAXIMIZE', function()
   -- https://superuser.com/questions/1150828/how-to-make-hammerspoon-resize-windows-smoothly-on-osx
   local win = hs.window.focusedWindow()
   local f = win:frame()
@@ -113,15 +123,3 @@ if caffeine then
   caffeine:setClickCallback(caffeineClicked)
   setCaffeineDisplay(display_status)
 end
-
-function applicationWatcher(appName, eventType, appObject)
-  if (eventType == hs.application.watcher.activated) then
-    print(appName)
-    if (appName == "Finder") then
-      -- Bring all Finder windows forward when one gets activated
-      appObject:selectMenuItem({"Window", "Bring All to Front"})
-    end
-  end
-end
-appWatcher = hs.application.watcher.new(applicationWatcher)
-appWatcher:start()
