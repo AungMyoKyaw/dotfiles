@@ -60,6 +60,22 @@ hs.hotkey.bind(hyper, 'c', 'W_CENTER', function()
   spoon.WinWin:moveAndResize("center")
 end)
 
+hs.hotkey.bind(hyper, 'y', 'W_NORTHWEST_CORNER', function()
+  spoon.WinWin:moveAndResize("cornerNW")
+end)
+
+hs.hotkey.bind(hyper, 'o', 'W_NORTHEAST_CORNER', function()
+  spoon.WinWin:moveAndResize("cornerNE")
+end)
+
+hs.hotkey.bind(hyper, 'u', 'W_SOUTHWEST_CORNER', function()
+  spoon.WinWin:moveAndResize("cornerSW")
+end)
+
+hs.hotkey.bind(hyper, 'i', 'W_SOUTHEAST_CORNER', function()
+  spoon.WinWin:moveAndResize("cornerSE")
+end)
+
 caffeine = hs.menubar.new()
 function setCaffeineDisplay(state)
   if state then
