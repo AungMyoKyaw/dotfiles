@@ -3,19 +3,24 @@ local hswhints_keys = {"alt", "tab"}
 -- hs.window.animationDuration = 0
 
 hs.loadSpoon('SpoonInstall')
-spoon.SpoonInstall:andUse('WinWin')
 spoon.SpoonInstall:andUse('Caffeine')
 spoon.SpoonInstall:andUse('ClipboardTool')
+spoon.SpoonInstall:andUse('FadeLogo')
+spoon.SpoonInstall:andUse('HoldToQuit')
+spoon.SpoonInstall:andUse('KSheet')
+spoon.SpoonInstall:andUse('SpeedMenu')
+spoon.SpoonInstall:andUse('WinWin')
 
 hs.hotkey.bind(hyper,'w', 'WINDOW_HINT', function()
-  hs.hints.windowHints()
+  spoon.KSheet:toggle()
 end)
+
 
 hs.hotkey.bind(hyper, "R", 'CONFIG_RELOADED', function()
   spoon.SpoonInstall:asyncUpdateAllRepos()
   hs.reload()
 end)
-hs.alert.show("Config loaded")
+hs.loadSpoon('FadeLogo'):start()
 
 -- set up your windowfilter
 -- https://www.hammerspoon.org/docs/hs.window.switcher.html
@@ -87,3 +92,9 @@ spoon.Caffeine:setState(true)
 
 -- ClipboardTool
 spoon.ClipboardTool:start()
+
+-- speedmenu
+spoon.SpeedMenu:start()
+
+-- hold to quit
+spoon.HoldToQuit:start()
