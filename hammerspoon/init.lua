@@ -1,8 +1,8 @@
 local hyper = {"cmd", "alt", "ctrl", "shift"}
 local hswhints_keys = {"alt", "tab"}
 local momentstop = 3000
+local gridparts = 30
 hs.window.animationDuration = 0
-hs.hints.showTitleThresh=1
 
 -- hs.hotkey.bind(hswhints_keys, function()
 hs.hotkey.bind(hyper,'w', 'WINDOW_HINT', function()
@@ -94,6 +94,39 @@ hs.hotkey.bind(hyper, 'F', 'W_MAXIMIZE', function()
   f.w = max.w
   f.h = max.h
   win:setFrame(f,0)
+end)
+
+hs.hotkey.bind(hyper, '-', 'W_SHRINK', function()
+  -- https://github.com/ashfinal/awesome-hammerspoon/blob/master/Spoons/WinWin.spoon/init.lua
+  local win = hs.window.focusedWindow()
+  win:centerOnScreen()
+  local cscreen = win:screen()
+  local cres = cscreen:fullFrame()
+  local stepw = cres.w/gridparts
+  local steph = cres.h/gridparts
+  local wf = win:frame()
+  win:setFrame({x=wf.x+stepw, y=wf.y+steph, w=wf.w-(stepw*2), h=wf.h-(steph*2)})
+  -- hs.alert.show("W_SMALLER")
+  -- elseif option == "center" then
+  --     cwin:centerOnScreen()
+  -- elseif option == "expand" then
+  --     cwin:setFrame({x=wf.x-stepw, y=wf.y-steph, w=wf.w+(stepw*2), h=wf.h+(steph*2)})
+  -- elseif option == "shrink" then
+  --     cwin:setFrame({x=wf.x+stepw, y=wf.y+steph, w=wf.w-(stepw*2), h=wf.h-(steph*2)})
+  -- end
+end)
+
+hs.hotkey.bind(hyper, '=', 'W_EXPAND', function()
+  -- https://github.com/ashfinal/awesome-hammerspoon/blob/master/Spoons/WinWin.spoon/init.lua
+  local win = hs.window.focusedWindow()
+  win:centerOnScreen()
+  local cscreen = win:screen()
+  local cres = cscreen:fullFrame()
+  local stepw = cres.w/gridparts
+  local steph = cres.h/gridparts
+  local wf = win:frame()
+  win:setFrame({x=wf.x-stepw, y=wf.y-steph, w=wf.w+(stepw*2), h=wf.h+(steph*2)})
+  -- hs.alert.show("W_LARGE")
 end)
 
 -- hs.hotkey.bind({"alt", "ctrl"}, "K","K", function()
