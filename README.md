@@ -15,7 +15,7 @@
 
 ---
 
-<img src="./assets/screenshot.png" alt="dotfiles" align="right" width="400">
+<img src="./assets/ss.gif" alt="dotfiles_ss" align="right" width="400">
 
 - [PREREQUISITES](#PREREQUISITES)
   - [Install TMUX](#install-tmux)
