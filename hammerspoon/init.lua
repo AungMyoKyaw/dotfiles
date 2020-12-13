@@ -1,16 +1,19 @@
 local hyper = {"cmd", "alt", "ctrl", "shift"}
 local hswhints_keys = {"alt", "tab"}
-hs.loadSpoon('WinWin')
 -- hs.window.animationDuration = 0
+
+hs.loadSpoon('SpoonInstall')
+spoon.SpoonInstall:andUse('WinWin')
+spoon.SpoonInstall:andUse('Caffeine')
 
 hs.hotkey.bind(hyper,'w', 'WINDOW_HINT', function()
   hs.hints.windowHints()
 end)
 
-hs.hotkey.bind(hyper, "R", 'WINDOW_RELOAD', function()
+hs.hotkey.bind(hyper, "R", 'CONFIG_RELOADED', function()
+  spoon.SpoonInstall:asyncUpdateAllRepos()
   hs.reload()
 end)
-hs.alert.show("Config loaded")
 
 -- set up your windowfilter
 -- https://www.hammerspoon.org/docs/hs.window.switcher.html
@@ -76,26 +79,5 @@ hs.hotkey.bind(hyper, 'i', 'W_SOUTHEAST_CORNER', function()
   spoon.WinWin:moveAndResize("cornerSE")
 end)
 
-caffeine = hs.menubar.new()
-function setCaffeineDisplay(state)
-  if state then
-    caffeine:setTitle("AWAKE🥶")
-  else
-    caffeine:setTitle("SLEEPY💤")
-  end
-end
-
-function caffeineClicked()
-  setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
-end
-
-if caffeine then
-  local display_status = hs.caffeinate.get("displayIdle")
-  if display_status == false then
-    hs.caffeinate.toggle("displayIdle")
-  end
-
-  display_status = hs.caffeinate.get("displayIdle")
-  caffeine:setClickCallback(caffeineClicked)
-  setCaffeineDisplay(display_status)
-end
+-- CAFFEINE
+spoon.Caffeine:start()
