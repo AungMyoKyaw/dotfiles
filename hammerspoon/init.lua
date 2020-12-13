@@ -1,10 +1,8 @@
 local hyper = {"cmd", "alt", "ctrl", "shift"}
 local hswhints_keys = {"alt", "tab"}
-local momentstop = 3000
-local gridparts = 30
-hs.window.animationDuration = 0
+hs.loadSpoon('WinWin')
+-- hs.window.animationDuration = 0
 
--- hs.hotkey.bind(hswhints_keys, function()
 hs.hotkey.bind(hyper,'w', 'WINDOW_HINT', function()
   hs.hints.windowHints()
 end)
@@ -31,107 +29,36 @@ hs.hotkey.bind(hyper,'P','PREV', function()
 end)
 
 hs.hotkey.bind(hyper, 'H','W_LEFT_ALIGN', function()
-  -- https://superuser.com/questions/1150828/how-to-make-hammerspoon-resize-windows-smoothly-on-osx
-  local win = hs.window.focusedWindow()
-  local f = win:frame()
-  local max = win:screen():frame()
-
-  f.x = max.x
-  f.y = max.y
-  f.w = max.w / 2
-  f.h = max.h
-  win:setFrame(f,0)
+  spoon.WinWin:moveAndResize("halfleft")
 end)
 
 hs.hotkey.bind(hyper, 'L', 'W_RIGHT_ALIGN', function()
-  -- https://superuser.com/questions/1150828/how-to-make-hammerspoon-resize-windows-smoothly-on-osx
-  local win = hs.window.focusedWindow()
-  local f = win:frame()
-  local max = win:screen():frame()
-
-  f.x = max.w / 2
-  f.y = max.y
-  f.w = max.w / 2
-  f.h = max.h
-  win:setFrame(f,0)
+  spoon.WinWin:moveAndResize("halfright")
 end)
 
 hs.hotkey.bind(hyper, 'J', 'W_DOWN_ALIGN', function()
-
-  -- https://superuser.com/questions/1150828/how-to-make-hammerspoon-resize-windows-smoothly-on-osx
-  local win = hs.window.focusedWindow()
-  local f = win:frame()
-  local max = win:screen():frame()
-
-  f.x = max.x
-  f.y = max.h / 2
-  f.w = max.w
-  f.h = max.h / 2
-  win:setFrame(f,0)
+  spoon.WinWin:moveAndResize("halfdown")
 end)
 
 hs.hotkey.bind(hyper, 'K','W_UP_ALIGN', function()
-  -- https://superuser.com/questions/1150828/how-to-make-hammerspoon-resize-windows-smoothly-on-osx
-  local win = hs.window.focusedWindow()
-  local f = win:frame()
-  local max = win:screen():frame()
-
-  f.x = max.x
-  f.y = max.y
-  f.w = max.w
-  f.h = max.h / 2
-  win:setFrame(f,0)
+  spoon.WinWin:moveAndResize("halfup")
 end)
 
 hs.hotkey.bind(hyper, 'F', 'W_MAXIMIZE', function()
-  -- https://superuser.com/questions/1150828/how-to-make-hammerspoon-resize-windows-smoothly-on-osx
-  local win = hs.window.focusedWindow()
-  local f = win:frame()
-  local max = win:screen():frame()
-
-  f.x = max.x
-  f.y = max.y
-  f.w = max.w
-  f.h = max.h
-  win:setFrame(f,0)
+  spoon.WinWin:moveAndResize('maximize')
 end)
 
 hs.hotkey.bind(hyper, '-', 'W_SHRINK', function()
-  -- https://github.com/ashfinal/awesome-hammerspoon/blob/master/Spoons/WinWin.spoon/init.lua
-  local win = hs.window.focusedWindow()
-  win:centerOnScreen()
-  local cscreen = win:screen()
-  local cres = cscreen:fullFrame()
-  local stepw = cres.w/gridparts
-  local steph = cres.h/gridparts
-  local wf = win:frame()
-  win:setFrame({x=wf.x+stepw, y=wf.y+steph, w=wf.w-(stepw*2), h=wf.h-(steph*2)})
-  -- hs.alert.show("W_SMALLER")
-  -- elseif option == "center" then
-  --     cwin:centerOnScreen()
-  -- elseif option == "expand" then
-  --     cwin:setFrame({x=wf.x-stepw, y=wf.y-steph, w=wf.w+(stepw*2), h=wf.h+(steph*2)})
-  -- elseif option == "shrink" then
-  --     cwin:setFrame({x=wf.x+stepw, y=wf.y+steph, w=wf.w-(stepw*2), h=wf.h-(steph*2)})
-  -- end
+  spoon.WinWin:moveAndResize("shrink")
 end)
 
 hs.hotkey.bind(hyper, '=', 'W_EXPAND', function()
-  -- https://github.com/ashfinal/awesome-hammerspoon/blob/master/Spoons/WinWin.spoon/init.lua
-  local win = hs.window.focusedWindow()
-  win:centerOnScreen()
-  local cscreen = win:screen()
-  local cres = cscreen:fullFrame()
-  local stepw = cres.w/gridparts
-  local steph = cres.h/gridparts
-  local wf = win:frame()
-  win:setFrame({x=wf.x-stepw, y=wf.y-steph, w=wf.w+(stepw*2), h=wf.h+(steph*2)})
-  -- hs.alert.show("W_LARGE")
+  spoon.WinWin:moveAndResize("expand")
 end)
 
--- hs.hotkey.bind({"alt", "ctrl"}, "K","K", function()
---   hs.spotify.displayCurrentTrack()
--- end)
+hs.hotkey.bind(hyper, 'c', 'W_CENTER', function()
+  spoon.WinWin:moveAndResize("center")
+end)
 
 caffeine = hs.menubar.new()
 function setCaffeineDisplay(state)
