@@ -44,12 +44,15 @@ hs.hotkey.bind(hyper, "i", 'toggle-commander', function()
 end)
 
 -- window-search-switch
+local chooser = hs.chooser.new(function(choice)
+  hs.application.launchOrFocusByBundleID(choice.bundleID)
+end);
 hs.hotkey.bind(hyper, 'n', 'choose-and-split-vertical', function()
   -- https://github.com/evantravers/hammerspoon-config/blob/a85100b138/movewindows.lua
-  local chooser = hs.chooser.new(function(choice)
-    print(choice)
-    hs.application.launchOrFocusByBundleID(choice.bundleID)
-  end);
+  local visible = chooser:isVisible()
+  if visible then
+    return chooser:hide()
+  end
   local windows = hs.fnutils.map(hs.window.filter.new():getWindows(), function(win)
     if win ~= hs.window.focusedWindow() then
       return {
@@ -63,6 +66,7 @@ hs.hotkey.bind(hyper, 'n', 'choose-and-split-vertical', function()
   end)
   chooser:placeholderText('Search App to swtich')
   chooser:choices(windows)
+  chooser:rows(10)
   chooser:searchSubText(true)
   chooser:show()
 end)
