@@ -4,8 +4,10 @@ hs.window.animationDuration = 0
 
 hs.loadSpoon('SpoonInstall')
 local spoons_list = {
+  "AClock",
   "Caffeine",
   "ClipboardTool",
+  "Commander",
   "FadeLogo",
   "HoldToQuit",
   "KSheet",
@@ -17,42 +19,58 @@ for i = 1, #spoons_list do
   spoon.SpoonInstall:andUse(spoons_list[i])
 end
 
--- hs.hotkey.bind(hyper,'w', 'WINDOW_HINT', function()
---   spoon.KSheet:toggle()
--- end)
-
-hs.hotkey.bind(hyper, "R", 'CONFIG_RELOADED', function()
+hs.hotkey.bind(hyper, "r", 'CONFIG_RELOADED', function()
   spoon.SpoonInstall:asyncUpdateAllRepos()
   hs.reload()
 end)
 hs.loadSpoon('FadeLogo'):start()
 
--- set up your windowfilter
--- https://www.hammerspoon.org/docs/hs.window.switcher.html
--- default windowfilter: only visible windows, all Spaces
-switcher = hs.window.switcher.new()
-hs.window.switcher.ui.showThumbnails = false
-hs.window.switcher.ui.showSelectedThumbnail = false
-hs.window.switcher.ui.showSelectedTitle = true
-
-hs.hotkey.bind(hyper,'N','NEXT', function()
-  switcher:next()
+hs.hotkey.bind(hyper, "o", 'CONFIG_RELOADED', function()
+  hs.application.launchOrFocusByBundleID('org.hammerspoon.Hammerspoon')
 end)
 
-hs.hotkey.bind(hyper,'P','PREV', function()
-  switcher:previous()
+spoon.AClock.format = "%I:%M %p"
+spoon.AClock.width = 800
+hs.hotkey.bind(hyper, "t", 'SHOW-CLOCK', function()
+  spoon.AClock:toggleShowPersistent()
 end)
 
-hs.hotkey.bind('alt','tab','Next window',function()
-  switcher:next()
+hs.hotkey.bind(hyper, "y", 'toggle-clipboard', function()
+  spoon.ClipboardTool:toggleClipboard()
 end)
-hs.hotkey.bind('alt-shift','tab','Prev window',function()
-  switcher:previous()
+
+hs.hotkey.bind(hyper, "i", 'toggle-commander', function()
+  spoon.Commander:show()
+end)
+
+-- window-search-switch
+hs.hotkey.bind(hyper, 'n', 'choose-and-split-vertical', function()
+  -- https://github.com/evantravers/hammerspoon-config/blob/a85100b138/movewindows.lua
+  local chooser = hs.chooser.new(function(choice)
+    print(choice)
+    hs.application.launchOrFocusByBundleID(choice.bundleID)
+  end);
+  local windows = hs.fnutils.map(hs.window.filter.new():getWindows(), function(win)
+    if win ~= hs.window.focusedWindow() then
+      return {
+        text = win:title(),
+        subText = win:application():title(),
+        image = hs.image.imageFromAppBundle(win:application():bundleID()),
+        id = win:id(),
+        bundleID = win:application():bundleID()
+      }
+    end
+  end)
+  chooser:placeholderText('Search App to swtich')
+  chooser:choices(windows)
+  chooser:searchSubText(true)
+  chooser:show()
 end)
 
 ----------------------------------------------------------------------------------------------------
 -- https://github.com/ashfinal/awesome-hammerspoon
 ----------------------------------------------------------------------------------------------------
+
 spoon.ModalMgr:new("w_management")
 local w_management = spoon.ModalMgr.modal_list["w_management"]
 w_management:bind('', 'escape', 'w_management', function()
@@ -123,7 +141,31 @@ w_management:bind('', 'i', 'W_SOUTHEAST_CORNER', function()
   spoon.WinWin:moveAndResize("cornerSE")
 end)
 
-spoon.ModalMgr.supervisor:bind(hyper,'w', "enter w_management", function()
+w_management:bind('', 'left', 'W_LEFT_MOVE', function()
+  spoon.WinWin:stepMove("left")
+end,nil,function()
+  spoon.WinWin:stepMove("left")
+end)
+
+w_management:bind('', 'right', 'W_RIGHT_MOVE', function()
+  spoon.WinWin:stepMove("right")
+end,nil,function()
+  spoon.WinWin:stepMove("right")
+end)
+
+w_management:bind('', 'up', 'W_UP_MOVE', function()
+  spoon.WinWin:stepMove("up")
+end,nil,function()
+  spoon.WinWin:stepMove("up")
+end)
+
+w_management:bind('', 'down', 'W_DOWN_MOVE', function()
+  spoon.WinWin:stepMove("down")
+end,nil,function()
+  spoon.WinWin:stepMove("down")
+end)
+
+spoon.ModalMgr.supervisor:bind(hyper,'m', "enter w_management", function()
   spoon.ModalMgr:deactivateAll()
   spoon.ModalMgr:activate({"w_management"}, "#B22222")
 end)
