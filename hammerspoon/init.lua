@@ -169,6 +169,11 @@ end,nil,function()
   spoon.WinWin:stepMove("down")
 end)
 
+-- show window hint
+w_management:bind('w', 'h', nil, function()
+  spoon.KSheet:toggle()
+end)
+
 spoon.ModalMgr.supervisor:bind(hyper,'m', "enter w_management", function()
   spoon.ModalMgr:deactivateAll()
   spoon.ModalMgr:activate({"w_management"}, "#B22222")
