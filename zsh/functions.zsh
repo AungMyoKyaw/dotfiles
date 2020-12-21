@@ -58,6 +58,28 @@ adguarddns(){
   echo "dns servers are now successfully updated for $NETWORKNAME2"
 }
 
+cloudflare(){
+  # set networkname
+  NETWORKNAME="iPhone USB"
+
+  # set networkname
+  NETWORKNAME2="Wi-Fi"
+
+  # set dns servers
+  networksetup -setdnsservers "${NETWORKNAME}" 1.1.1.1 1.0.0.1
+
+  # get dns servers for verify
+  networksetup -getdnsservers "${NETWORKNAME}"
+
+  # set dns servers
+  networksetup -setdnsservers "${NETWORKNAME2}" 1.1.1.1 1.0.0.1
+
+  # get dns servers for verify
+  networksetup -getdnsservers "${NETWORKNAME2}"
+
+  echo "dns servers are now successfully updated for $NETWORKNAME2"
+}
+
 # set adguard self hosetd dns
 adguarddns_selfhosted(){
   # set networkname
@@ -67,13 +89,13 @@ adguarddns_selfhosted(){
   NETWORKNAME2="Wi-Fi"
 
   # set dns servers
-  networksetup -setdnsservers "${NETWORKNAME}" 127.0.0.1 172.17.0.2 94.140.14.14 94.140.15.15 1.1.1.1 1.0.0.1
+  networksetup -setdnsservers "${NETWORKNAME}" 127.0.0.1 172.17.0.3 94.140.14.14 94.140.15.15 1.1.1.1 1.0.0.1
 
   # get dns servers for verify
   networksetup -getdnsservers "${NETWORKNAME}"
 
   # set dns servers
-  networksetup -setdnsservers "${NETWORKNAME2}" 127.0.0.1 172.17.0.2 94.140.14.14 94.140.15.15 1.1.1.1 1.0.0.1
+  networksetup -setdnsservers "${NETWORKNAME2}" 127.0.0.1 172.17.0.3 94.140.14.14 94.140.15.15 1.1.1.1 1.0.0.1
 
   # get dns servers for verify
   networksetup -getdnsservers "${NETWORKNAME2}"
