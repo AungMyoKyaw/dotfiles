@@ -25,6 +25,10 @@ for i = 1, #spoons_list do
 end
 
 hs.hotkey.bind(hyper, "r", 'CONFIG_RELOADED', function()
+  if spoon.Seal.chooser then
+    spoon.Seal.chooser:hide()
+    spoon.Seal.chooser:delete()
+  end
   spoon.SpoonInstall:asyncUpdateAllRepos()
   hs.reload()
 end)
@@ -194,11 +198,6 @@ spoon.Seal:bindHotkeys({ toggle = { {"cmd"}, "Space" }})
 spoon.Seal:loadPlugins({"apps", "screencapture", "calc", "useractions", "pasteboard"})
 spoon.Seal.plugins.useractions.actions =
 {
-  ["Hammerspoon docs webpage"] = {
-    url = "http://hammerspoon.org/docs/",
-    icon = hs.image.imageFromName(hs.image.systemImageNames.ApplicationIcon),
-    hotkey = { hyper, "h" }
-  },
   ["Tell me something"] = {
     keyword = "tellme",
     fn = function(str)
@@ -239,6 +238,7 @@ spoon.Seal.plugins.useractions.actions =
   },
 }
 spoon.Seal.plugins.pasteboard.historySize=4000
+spoon.Seal.chooser:placeholderText("Aung Myo Kyaw")
 spoon.Seal:start()
 
 -- hammerspoon rounded corners
