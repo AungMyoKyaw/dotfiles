@@ -20,6 +20,7 @@ karabiner/automatic_backups/
 # hammerspoon
 hammerspoon/Spoons/
 hammerspoon/*json
+hammerspoon/secret.lua
 !hammerspoon/Spoons/SpoonInstall.spoon
 
 # General
