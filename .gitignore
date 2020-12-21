@@ -6,6 +6,8 @@ zsh/aliases
 
 # Adguard Folder
 adguardHome/
+confdir/
+workdir/
 
 # trash
 trash/
