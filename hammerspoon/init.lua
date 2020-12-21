@@ -52,7 +52,8 @@ end)
 local chooser = hs.chooser.new(function(choice)
   hs.application.launchOrFocusByBundleID(choice.bundleID)
 end);
-hs.hotkey.bind(hyper, 'n', 'choose-and-split-vertical', function()
+
+local function winSwitcher ()
   -- https://github.com/evantravers/hammerspoon-config/blob/a85100b138/movewindows.lua
   local visible = chooser:isVisible()
   if visible then
@@ -74,7 +75,9 @@ hs.hotkey.bind(hyper, 'n', 'choose-and-split-vertical', function()
   chooser:rows(10)
   chooser:searchSubText(true)
   chooser:show()
-end)
+end
+
+hs.hotkey.bind(hyper, 'n', 'choose-and-split-vertical', winSwitcher)
 
 ----------------------------------------------------------------------------------------------------
 -- https://github.com/ashfinal/awesome-hammerspoon
@@ -236,6 +239,10 @@ spoon.Seal.plugins.useractions.actions =
       hs.alert.show(cur_datetime)
     end,
   },
+  ["win"] = {
+    keyword = "win",
+    fn = winSwitcher
+  }
 }
 spoon.Seal.plugins.pasteboard.historySize=4000
 spoon.Seal.chooser:placeholderText("Aung Myo Kyaw")
