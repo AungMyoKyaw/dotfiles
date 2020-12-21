@@ -1,3 +1,9 @@
+--------------------------------------------------------------------------------
+-- import
+--------------------------------------------------------------------------------
+local secret = require('secret')
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 local hyper = {"cmd", "alt", "ctrl", "shift"}
 local hswhints_keys = {"alt", "tab"}
 hs.window.animationDuration = 0
@@ -6,13 +12,12 @@ hs.loadSpoon('SpoonInstall')
 local spoons_list = {
   "AClock",
   "Caffeine",
-  "ClipboardTool",
-  "Commander",
   "FadeLogo",
   "HoldToQuit",
   "KSheet",
   "ModalMgr",
-  "SpeedMenu",
+  "RoundedCorners",
+  "Seal",
   "WinWin"
 }
 for i = 1, #spoons_list do
@@ -37,10 +42,6 @@ end)
 
 hs.hotkey.bind(hyper, "y", 'toggle-clipboard', function()
   spoon.ClipboardTool:toggleClipboard()
-end)
-
-hs.hotkey.bind(hyper, "i", 'toggle-commander', function()
-  spoon.Commander:show()
 end)
 
 -- window-search-switch
@@ -179,17 +180,66 @@ spoon.ModalMgr.supervisor:bind(hyper,'m', "enter w_management", function()
   spoon.ModalMgr:activate({"w_management"}, "#B22222")
 end)
 
+spoon.ModalMgr.supervisor:enter()
+
 -- CAFFEINE
 spoon.Caffeine:start()
 spoon.Caffeine:setState(true)
 
--- ClipboardTool
-spoon.ClipboardTool:start()
-
--- speedmenu
-spoon.SpeedMenu:start()
-
 -- hold to quit
 spoon.HoldToQuit:start()
 
-spoon.ModalMgr.supervisor:enter()
+-- seal
+spoon.Seal:bindHotkeys({ toggle = { {"cmd"}, "Space" }})
+spoon.Seal:loadPlugins({"apps", "screencapture", "calc", "useractions", "pasteboard"})
+spoon.Seal.plugins.useractions.actions =
+{
+  ["Hammerspoon docs webpage"] = {
+    url = "http://hammerspoon.org/docs/",
+    icon = hs.image.imageFromName(hs.image.systemImageNames.ApplicationIcon),
+    hotkey = { hyper, "h" }
+  },
+  ["Tell me something"] = {
+    keyword = "tellme",
+    fn = function(str)
+      hs.alert.show(str)
+    end,
+  },
+  ["Show Clock"] = {
+    keyword = "aclock",
+    fn = function(str)
+      spoon.AClock:toggleShowPersistent()
+    end,
+  },
+  ["amk"] = {
+    keyword = "amk",
+    fn = function(str)
+      local cur_datetime = os.date("%d+%m+%Y+%H+%M+%S")
+      local rdm_mail = string.format("%s+%s@%s",secret.username,cur_datetime,secret.tld)
+      hs.pasteboard.setContents(rdm_mail)
+      hs.alert.show(rdm_mail)
+    end,
+  },
+  ["random"] = {
+    keyword = "random",
+    fn = function(str)
+      local number = tonumber(str)
+      local random_number = math.random(number)
+      hs.pasteboard.setContents(random_number)
+      hs.alert.show(random_number)
+    end,
+  },
+  ["date"] = {
+    keyword = "date",
+    fn = function(str)
+      local cur_datetime = os.date("%d/%m/%Y %H:%M:%S")
+      hs.pasteboard.setContents(cur_datetime)
+      hs.alert.show(cur_datetime)
+    end,
+  },
+}
+spoon.Seal.plugins.pasteboard.historySize=4000
+spoon.Seal:start()
+
+-- hammerspoon rounded corners
+spoon.RoundedCorners:start()
