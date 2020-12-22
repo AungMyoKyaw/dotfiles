@@ -178,9 +178,9 @@ end,nil,function()
 end)
 
 -- show window hint
-w_management:bind('w', 'h', nil, function()
-  spoon.KSheet:toggle()
-end)
+-- w_management:bind('w', 'h', nil, function()
+--   spoon.KSheet:toggle()
+-- end)
 
 spoon.ModalMgr.supervisor:bind(hyper,'m', "enter w_management", function()
   spoon.ModalMgr:deactivateAll()
@@ -259,3 +259,6 @@ spoon.Seal:start()
 
 -- hammerspoon rounded corners
 spoon.RoundedCorners:start()
+
+-- playground
+hs.dockicon.setBadge('amk')
