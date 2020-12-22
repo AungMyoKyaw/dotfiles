@@ -250,6 +250,12 @@ spoon.Seal.plugins.useractions.actions =
       local codeblock = string.format("```\n%s\n```",pasteboard)
       hs.pasteboard.setContents(codeblock)
     end
+  },
+  ["Color Dialog"] = {
+    keyword = "color",
+    fn = function(str)
+      hs.dialog.color.show()
+    end
   }
 }
 spoon.Seal.plugins.pasteboard.historySize=4000
