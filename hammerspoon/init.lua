@@ -242,10 +242,19 @@ spoon.Seal.plugins.useractions.actions =
   ["win"] = {
     keyword = "win",
     fn = winSwitcher
+  },
+  ["Make Code Block"] = {
+    keyword = "cbl",
+    fn = function(str)
+      local pasteboard = hs.pasteboard.getContents()
+      local codeblock = string.format("```\n%s\n```",pasteboard)
+      hs.pasteboard.setContents(codeblock)
+    end
   }
 }
 spoon.Seal.plugins.pasteboard.historySize=4000
 spoon.Seal.chooser:placeholderText("Aung Myo Kyaw")
+spoon.Seal.chooser:searchSubText(true)
 spoon.Seal:start()
 
 -- hammerspoon rounded corners
