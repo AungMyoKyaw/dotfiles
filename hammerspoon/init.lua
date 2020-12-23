@@ -44,10 +44,6 @@ hs.hotkey.bind(hyper, "t", 'SHOW-CLOCK', function()
   spoon.AClock:toggleShowPersistent()
 end)
 
-hs.hotkey.bind(hyper, "y", 'toggle-clipboard', function()
-  spoon.ClipboardTool:toggleClipboard()
-end)
-
 -- window-search-switch
 local chooser = hs.chooser.new(function(choice)
   hs.application.launchOrFocusByBundleID(choice.bundleID)
@@ -222,6 +218,15 @@ spoon.Seal.plugins.useractions.actions =
       hs.alert.show(rdm_mail)
     end,
   },
+  ["fu"] = {
+    keyword = "fu",
+    fn = function(str)
+      local cur_datetime = os.date("%d+%m+%Y+%H+%M+%S")
+      local rdm_mail = string.format("%s+%s@%s","amk",cur_datetime,"amk")
+      hs.pasteboard.setContents(rdm_mail)
+      hs.alert.show(rdm_mail)
+    end,
+  },
   ["random"] = {
     keyword = "random",
     fn = function(str)
@@ -237,6 +242,21 @@ spoon.Seal.plugins.useractions.actions =
       local cur_datetime = os.date("%d/%m/%Y %H:%M:%S")
       hs.pasteboard.setContents(cur_datetime)
       hs.alert.show(cur_datetime)
+    end,
+  },
+  ["flb"] = {
+    keyword = "flb",
+    fn = function(str)
+      local minute = tonumber(str)
+      if minute == nil then
+        minute = 60
+      end
+      local cur_datetime = os.date("%d/%m/%Y %H:%M:%S")
+      local next_time = os.time()+minute*60;
+      local fu_datetime = os.date("%d/%m/%Y %H:%M:%S",next_time)
+      local my_date_time = string.format("%s - %s",cur_datetime,fu_datetime)
+      hs.pasteboard.setContents(my_date_time)
+      hs.alert.show(my_date_time)
     end,
   },
   ["win"] = {
@@ -266,5 +286,44 @@ spoon.Seal:start()
 -- hammerspoon rounded corners
 spoon.RoundedCorners:start()
 
--- playground
-hs.dockicon.setBadge('amk')
+-- work/life
+
+local function isInOfficeHours()
+  local no_of_sec_for_hour = 60*60
+  local current_hour = hs.timer.localTime()/no_of_sec_for_hour;
+  local inOfficeHours = current_hour >= 8.5 and current_hour <=17.5
+  return inOfficeHours
+end
+
+local function open_my_apps()
+  local my_apps = {}
+  if secret.my_apps then
+    my_apps = secret.my_apps
+  end
+  for i = 1, #my_apps do
+    hs.application.launchOrFocusByBundleID(my_apps[i])
+  end
+end
+
+local function open_my_life_apps()
+  local my_life_apps = {}
+  if secret.my_life_apps then
+    my_life_apps = secret.my_life_apps
+  end
+  for i = 1, #my_life_apps do
+    hs.application.launchOrFocusByBundleID(my_life_apps[i])
+  end
+end
+
+if isInOfficeHours() then
+  -- open_my_apps()
+  hs.dockicon.setBadge('WORK')
+else
+  -- open_my_life_apps()
+  hs.dockicon.setBadge('LIFE')
+end
+-- set time for switching life
+hs.timer.doAt("17:30",function()
+  hs.dockicon.bounce()
+  hs.dockicon.setBadge('LIFE')
+end)
