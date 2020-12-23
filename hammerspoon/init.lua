@@ -7,53 +7,60 @@ local secret = require('secret')
 local hyper = {"cmd", "alt", "ctrl", "shift"}
 local hswhints_keys = {"alt", "tab"}
 hs.window.animationDuration = 0
-
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 hs.loadSpoon('SpoonInstall')
-local spoons_list = {
-  "AClock",
-  "Caffeine",
-  "FadeLogo",
-  "HoldToQuit",
-  "KSheet",
-  "ModalMgr",
-  "RoundedCorners",
-  "Seal",
-  "WinWin"
-}
-for i = 1, #spoons_list do
-  spoon.SpoonInstall:andUse(spoons_list[i])
+local function installSpoons()
+  local spoons_list = {
+    "AClock",
+    "Caffeine",
+    "FadeLogo",
+    "HoldToQuit",
+    "KSheet",
+    "ModalMgr",
+    "RoundedCorners",
+    "Seal",
+    "WinWin"
+  }
+  for i = 1, #spoons_list do
+    spoon.SpoonInstall:andUse(spoons_list[i])
+  end
 end
+installSpoons()
 
-hs.hotkey.bind(hyper, "r", 'CONFIG_RELOADED', function()
+local function reloadConfig()
   if spoon.Seal.chooser then
     spoon.Seal.chooser:hide()
     spoon.Seal.chooser:delete()
   end
   spoon.SpoonInstall:asyncUpdateAllRepos()
   hs.reload()
-end)
+end
+hs.hotkey.bind(hyper, "r", 'reload config', reloadConfig)
 hs.loadSpoon('FadeLogo'):start()
 
-hs.hotkey.bind(hyper, "o", 'CONFIG_RELOADED', function()
+local function showConsole()
   hs.application.launchOrFocusByBundleID('org.hammerspoon.Hammerspoon')
-end)
+end
+hs.hotkey.bind(hyper, "o", 'show console', showConsole)
 
 spoon.AClock.format = "%I:%M %p"
 spoon.AClock.width = 800
-hs.hotkey.bind(hyper, "t", 'SHOW-CLOCK', function()
+local function toggleClock()
   spoon.AClock:toggleShowPersistent()
-end)
+end
+hs.hotkey.bind(hyper, "t", 'SHOW-CLOCK', toggleClock)
 
 -- window-search-switch
-local chooser = hs.chooser.new(function(choice)
+local windowSwitcherChooser = hs.chooser.new(function(choice)
   hs.application.launchOrFocusByBundleID(choice.bundleID)
 end);
 
 local function winSwitcher ()
   -- https://github.com/evantravers/hammerspoon-config/blob/a85100b138/movewindows.lua
-  local visible = chooser:isVisible()
+  local visible = windowSwitcherChooser:isVisible()
   if visible then
-    return chooser:hide()
+    return windowSwitcherChooser:hide()
   end
   local windows = hs.fnutils.map(hs.window.filter.new():getWindows(), function(win)
     if win ~= hs.window.focusedWindow() then
@@ -66,18 +73,17 @@ local function winSwitcher ()
       }
     end
   end)
-  chooser:placeholderText('Search App to swtich')
-  chooser:choices(windows)
-  chooser:rows(10)
-  chooser:searchSubText(true)
-  chooser:show()
+  windowSwitcherChooser:placeholderText('Search App to swtich')
+  windowSwitcherChooser:choices(windows)
+  windowSwitcherChooser:rows(10)
+  windowSwitcherChooser:searchSubText(true)
+  windowSwitcherChooser:show()
 end
+hs.hotkey.bind(hyper, 'n', 'window switcher', winSwitcher)
 
-hs.hotkey.bind(hyper, 'n', 'choose-and-split-vertical', winSwitcher)
-
-----------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 -- https://github.com/ashfinal/awesome-hammerspoon
-----------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 spoon.ModalMgr:new("w_management")
 local w_management = spoon.ModalMgr.modal_list["w_management"]
@@ -276,6 +282,10 @@ spoon.Seal.plugins.useractions.actions =
     fn = function(str)
       hs.dialog.color.show()
     end
+  },
+  ["Open Apps"] = {
+    keyword = "apps",
+    fn = openApps
   }
 }
 spoon.Seal.plugins.pasteboard.historySize=4000
@@ -315,15 +325,22 @@ local function open_my_life_apps()
   end
 end
 
+local function openApps()
+  if isInOfficeHours() then
+    open_my_apps()
+  else
+    open_my_life_apps()
+  end
+end
+
 if isInOfficeHours() then
-  -- open_my_apps()
   hs.dockicon.setBadge('WORK')
 else
-  -- open_my_life_apps()
   hs.dockicon.setBadge('LIFE')
 end
 -- set time for switching life
-hs.timer.doAt("17:30",function()
+-- https://github.com/Hammerspoon/hammerspoon/issues/2416
+mytimer = hs.timer.doAt("17:30",function()
   hs.dockicon.bounce()
   hs.dockicon.setBadge('LIFE')
-end)
+end):start()
