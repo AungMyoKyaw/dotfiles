@@ -25,6 +25,9 @@ hammerspoon/*json
 hammerspoon/secret.lua
 !hammerspoon/Spoons/SpoonInstall.spoon
 
+# me
+draft.sh
+
 # General
 .DS_Store
 .AppleDouble
