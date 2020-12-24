@@ -346,3 +346,9 @@ spoon.Seal.plugins.pasteboard.historySize=4000
 spoon.Seal.chooser:placeholderText("Aung Myo Kyaw")
 spoon.Seal.chooser:searchSubText(true)
 spoon.Seal:start()
+
+local function hideAdguard()
+  local adguard = hs.application.find('com.adguard.safari.AdGuard')
+  adguard:hide()
+end
+hideAdguard()
