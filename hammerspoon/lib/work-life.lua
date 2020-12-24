@@ -4,7 +4,9 @@ local function isInOfficeHours()
   local no_of_sec_for_hour = 60*60
   local current_hour = hs.timer.localTime()/no_of_sec_for_hour;
   local inOfficeHours = current_hour >= 8.5 and current_hour <=17.5
-  return inOfficeHours
+  local weekday_no = os.date("%w")
+  local inWeekEnd = weekday_no == 0 or weekday_no == 6
+  return inOfficeHours and inWeekEnd
 end
 
 local function open_my_apps()
@@ -43,7 +45,12 @@ else
 end
 -- set time for switching life
 -- https://github.com/Hammerspoon/hammerspoon/issues/2416
-mytimer = hs.timer.doAt("17:30",function()
+lifetimenow = hs.timer.doAt("17:30",function()
   hs.dockicon.bounce()
   hs.dockicon.setBadge('LIFE')
+end):start()
+
+worktimenow = hs.timer.doAt("08:30",function()
+  hs.dockicon.bounce()
+  hs.dockicon.setBadge('WORK')
 end):start()
