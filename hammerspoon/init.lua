@@ -331,6 +331,15 @@ spoon.Seal.plugins.useractions.actions =
       hs.pasteboard.setContents(codeblock)
     end
   },
+  ["Make Code Block With Date"] = {
+    keyword = "cbld",
+    fn = function(str)
+      local pasteboard = hs.pasteboard.getContents()
+      local cur_datetime = os.date("%d/%m/%Y %H:%M:%S")
+      local codeblock = string.format("```\n%s\n%s\n```",cur_datetime,pasteboard)
+      hs.pasteboard.setContents(codeblock)
+    end
+  },
   ["Color Dialog"] = {
     keyword = "color",
     fn = function(str)
