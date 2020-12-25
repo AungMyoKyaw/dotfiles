@@ -105,12 +105,12 @@ if spoon.Seal then
       fn = function(str)
         -- စာအရှေကြီး
         if str==nil then
-          str = "1"
+          str = "3"
         end
         local no_of_line = tonumber(str);
         local pasteboard = hs.pasteboard.getContents()
         local spam = pasteboard
-        for i=0,no_of_line,1
+        for i=2,no_of_line,1
         do
           spam = spam .. '\n' .. pasteboard
         end
