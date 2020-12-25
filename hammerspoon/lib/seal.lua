@@ -77,6 +77,7 @@ if spoon.Seal then
         local pasteboard = hs.pasteboard.getContents()
         local codeblock = string.format("```\n%s\n```",pasteboard)
         hs.pasteboard.setContents(codeblock)
+        hs.alert.show(codeblock)
       end
     },
     ["Make Code Block With Date"] = {
@@ -86,6 +87,7 @@ if spoon.Seal then
         local cur_datetime = os.date("%d/%m/%Y %H:%M:%S")
         local codeblock = string.format("```\n%s\n%s\n```",cur_datetime,pasteboard)
         hs.pasteboard.setContents(codeblock)
+        hs.alert.show(codeblock)
       end
     },
     ["Color Dialog"] = {
@@ -97,7 +99,25 @@ if spoon.Seal then
     ["Open Apps"] = {
       keyword = "apps",
       fn = openApps
-    }
+    },
+    ["fspam"] = {
+      keyword = "fspam",
+      fn = function(str)
+        -- စာအရှေကြီး
+        if str==nil then
+          str = "1"
+        end
+        local no_of_line = tonumber(str);
+        local pasteboard = hs.pasteboard.getContents()
+        local spam = pasteboard
+        for i=0,no_of_line,1
+        do
+          spam = spam .. '\n' .. pasteboard
+        end
+        hs.pasteboard.setContents(spam)
+        hs.alert.show(pasteboard..no_of_line)
+      end
+    },
   }
   spoon.Seal.plugins.pasteboard.historySize=4000
   spoon.Seal.chooser:placeholderText("Aung Myo Kyaw")
