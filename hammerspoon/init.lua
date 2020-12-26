@@ -6,6 +6,9 @@ hs.window.animationDuration = 0
 -- SPOON INSTALL
 require "lib/spoon-install"
 
+-- SECRET
+secret = require('secret')
+
 -- ME
 require "lib/me"
 

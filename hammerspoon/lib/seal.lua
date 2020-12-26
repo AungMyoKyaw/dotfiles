@@ -1,5 +1,4 @@
 -- SEAL
-local secret = require('secret')
 if spoon.Seal then
   spoon.Seal:bindHotkeys({ toggle = { {"cmd"}, "Space" }})
   spoon.Seal:loadPlugins({"apps", "screencapture", "calc", "useractions", "pasteboard"})

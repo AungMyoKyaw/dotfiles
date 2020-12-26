@@ -29,7 +29,7 @@ local function open_my_life_apps()
   end
 end
 
-local function openApps()
+function openApps()
   if isInOfficeHours() then
     open_my_apps()
   else
