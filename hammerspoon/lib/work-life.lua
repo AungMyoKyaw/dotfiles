@@ -6,7 +6,7 @@ local function isInOfficeHours()
   local inOfficeHours = current_hour >= 8.5 and current_hour <=17.5
   local weekday_no = os.date("%w")
   local inWeekEnd = weekday_no == 0 or weekday_no == 6
-  return inOfficeHours and inWeekEnd
+  return inOfficeHours and not inWeekEnd
 end
 
 local function open_my_apps()
