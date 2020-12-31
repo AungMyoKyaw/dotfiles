@@ -74,7 +74,9 @@ inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 
 " Nerd Tree
 map <C-n> :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1
+let NERDTreeShowHidden = 1
+let NERDTreeWinPos     = 'right'
+
 " autocmd StdinReadPre * let s:std_in=1
 " if argc() == 0 && !exists("s:std_in")
 "   autocmd vimenter * NERDTree
