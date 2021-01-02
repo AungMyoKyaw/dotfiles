@@ -43,10 +43,10 @@ if spoon.Seal then
         hs.alert.show(random_number)
       end,
     },
-    ["date"] = {
+    ["date and time"] = {
       keyword = "date",
       fn = function(str)
-        local cur_datetime = os.date("%d/%m/%Y %H:%M:%S")
+        local cur_datetime = os.date("%d-%b-%Y %H:%M:%S")
         hs.pasteboard.setContents(cur_datetime)
         hs.alert.show(cur_datetime)
       end,
