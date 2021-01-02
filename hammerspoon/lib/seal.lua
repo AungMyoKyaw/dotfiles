@@ -1,7 +1,7 @@
 -- SEAL
 if spoon.Seal then
   spoon.Seal:bindHotkeys({ toggle = { {"cmd"}, "Space" }})
-  spoon.Seal:loadPlugins({"apps", "screencapture", "calc", "useractions", "pasteboard"})
+  spoon.Seal:loadPlugins({"apps", "screencapture", "calc", "useractions", "pasteboard","urlformats"})
   spoon.Seal.plugins.useractions.actions =
   {
     ["Tell me something"] = {
@@ -119,6 +119,11 @@ if spoon.Seal then
     },
   }
   spoon.Seal.plugins.pasteboard.historySize=4000
+  local urlFormatsProvidersTable = {
+    google = { name = "Google", url = "http://google.com/search?q=%s"},
+  }
+  spoon.Seal.plugins.urlformats:providersTable(urlFormatsProvidersTable)
+
   spoon.Seal.chooser:placeholderText("Aung Myo Kyaw")
   spoon.Seal.chooser:searchSubText(true)
   spoon.Seal:start()
