@@ -4,7 +4,7 @@ local function isInOfficeHours()
   local no_of_sec_for_hour = 60*60
   local current_hour = hs.timer.localTime()/no_of_sec_for_hour;
   local inOfficeHours = current_hour >= 8.5 and current_hour <=17.5
-  local weekday_no = os.date("%w")
+  local weekday_no = tonumber(os.date("%w"))
   local inWeekEnd = weekday_no == 0 or weekday_no == 6
   return inOfficeHours and not inWeekEnd
 end
