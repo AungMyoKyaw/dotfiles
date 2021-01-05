@@ -101,7 +101,8 @@ let g:vrc_curl_opts = {}
 let g:vrc_curl_opts['-i'] = ''
 
 " vim polyglot
-let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal             = 0
+let g:vim_markdown_conceal_code_blocks = 0
 
 " ----------------------------------------------------------------------------------------------------
 " COC VIM
