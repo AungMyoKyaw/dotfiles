@@ -51,6 +51,14 @@ if spoon.Seal then
         hs.alert.show(cur_datetime)
       end,
     },
+    ["date only"] = {
+      keyword = "dateonly",
+      fn = function(str)
+        local cur_datetime = os.date("%d-%b-%Y")
+        hs.pasteboard.setContents(cur_datetime)
+        hs.alert.show(cur_datetime)
+      end,
+    },
     ["flb"] = {
       keyword = "flb",
       fn = function(str)
