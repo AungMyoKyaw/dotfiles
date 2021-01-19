@@ -71,6 +71,8 @@ nmap     <C-F>p <Plug>CtrlSFPwordPath
 nnoremap <C-F>o :CtrlSFOpen<CR>
 nnoremap <C-F>t :CtrlSFToggle<CR>
 inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
+nnoremap <C-F>u :CtrlSFUpdate<CR>
+let g:ctrlsf_confirm_save = 0
 
 " Nerd Tree
 map <C-n> :NERDTreeToggle<CR>
