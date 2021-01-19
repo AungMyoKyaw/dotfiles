@@ -66,10 +66,10 @@ if spoon.Seal then
         if minute == nil then
           minute = 60
         end
-        local cur_datetime = os.date("%d/%m/%Y %H:%M:%S")
+        local cur_datetime = os.date("%d/%b/%Y %H:%M:%S")
         local next_time = os.time()+minute*60;
-        local fu_datetime = os.date("%d/%m/%Y %H:%M:%S",next_time)
-        local my_date_time = string.format("%s - %s",cur_datetime,fu_datetime)
+        local fu_datetime = os.date("%d/%b/%Y %H:%M:%S",next_time)
+        local my_date_time = string.format("%s - %s []",cur_datetime,fu_datetime)
         hs.pasteboard.setContents(my_date_time)
         hs.alert.show(my_date_time)
       end,
