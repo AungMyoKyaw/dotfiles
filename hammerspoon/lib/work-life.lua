@@ -48,9 +48,13 @@ end
 lifetimenow = hs.timer.doAt("17:30",function()
   hs.dockicon.bounce()
   hs.dockicon.setBadge('LIFE')
+  local mynoti = hs.notify.new({title="LIFE", informativeText="LIFE 🥶"})
+  mynoti:send()
 end):start()
 
 worktimenow = hs.timer.doAt("08:30",function()
   hs.dockicon.bounce()
   hs.dockicon.setBadge('WORK')
+  local mynoti = hs.notify.new({title="WORK", informativeText="WORK 🤓"})
+  mynoti:send()
 end):start()
