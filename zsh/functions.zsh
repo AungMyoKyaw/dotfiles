@@ -35,6 +35,11 @@ dsdelete(){
   find . -name '.DS_Store' -type f -delete
 }
 
+# shada delete
+shadadelete(){
+  rm -rf ~/.local/share/nvim/shada
+}
+
 # set adguard dns
 adguarddns(){
   # set networkname
