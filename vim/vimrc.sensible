@@ -85,7 +85,7 @@ set lazyredraw
 set redrawtime=10000
 
 " nowrap
-" set nowrap
+set nowrap
 
 " thoughtbot
 set backspace=2   " Backspace deletes like most programs in insert mode
