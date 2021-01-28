@@ -119,3 +119,8 @@ http_server(){
     python -m SimpleHTTPServer
   fi
 }
+
+# mac update
+mac_update(){
+  softwareupdate --all --install --force
+}
