@@ -13,3 +13,15 @@ local function showConsole()
   hs.application.launchOrFocusByBundleID('org.hammerspoon.Hammerspoon')
 end
 hs.hotkey.bind(hyper, "o", 'show console', showConsole)
+
+-- cpu usage
+
+cpuUsageMenuBar = hs.menubar.new()
+local function  query()
+  hs.host.cpuUsage(1,function(data)
+    cpuUsageMenuBar:setTitle("cpu : "..string.format("%.4f", data.overall.active))
+  end)
+end
+query()
+cpuusageTimer = hs.timer.doEvery(1,query)
+cpuusageTimer:start()

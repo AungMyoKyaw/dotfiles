@@ -1,2 +1,7 @@
 " reload vim config
 nnoremap  <Leader>vr :source ~/.vim/vimrc<CR>
+
+" set default commentstring
+if !exists('b:commentary_format')
+  set commentstring=#%s
+end

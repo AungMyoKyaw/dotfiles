@@ -85,6 +85,53 @@ cloudflare(){
   echo "dns servers are now successfully updated for $NETWORKNAME2"
 }
 
+
+cloudflare_amk(){
+  # set networkname
+  NETWORKNAME="iPhone USB"
+
+  # set networkname
+  NETWORKNAME2="Wi-Fi"
+
+  # set dns servers
+  networksetup -setdnsservers "${NETWORKNAME}" 172.64.36.1 172.64.36.2
+
+  # get dns servers for verify
+  networksetup -getdnsservers "${NETWORKNAME}"
+
+  # set dns servers
+  networksetup -setdnsservers "${NETWORKNAME2}" 172.64.36.1 172.64.36.2
+
+  # get dns servers for verify
+  networksetup -getdnsservers "${NETWORKNAME2}"
+
+  echo "dns servers are now successfully updated for $NETWORKNAME2"
+}
+
+
+
+googledns(){
+  # set networkname
+  NETWORKNAME="iPhone USB"
+
+  # set networkname
+  NETWORKNAME2="Wi-Fi"
+
+  # set dns servers
+  networksetup -setdnsservers "${NETWORKNAME}" 8.8.8.8 8.8.4.4
+
+  # get dns servers for verify
+  networksetup -getdnsservers "${NETWORKNAME}"
+
+  # set dns servers
+  networksetup -setdnsservers "${NETWORKNAME2}" 8.8.8.8 8.8.4.4
+
+  # get dns servers for verify
+  networksetup -getdnsservers "${NETWORKNAME2}"
+
+  echo "dns servers are now successfully updated for $NETWORKNAME2"
+}
+
 # set adguard self hosetd dns
 adguarddns_selfhosted(){
   # set networkname

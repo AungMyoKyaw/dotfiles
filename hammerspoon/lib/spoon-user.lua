@@ -1,6 +1,9 @@
+-- SpeedMenu
+spoon.SpeedMenu.start()
+
 -- CAFFEINE
 spoon.Caffeine:start()
-spoon.Caffeine:setState(true)
+spoon.Caffeine:setState(false)
 
 -- HOLD TO QUIT
 spoon.HoldToQuit:start()

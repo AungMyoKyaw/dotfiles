@@ -1,3 +1,5 @@
+-- global var
+local startplaying = true
 -- SEAL
 if spoon.Seal then
   spoon.Seal:bindHotkeys({ toggle = { {"cmd"}, "Space" }})
@@ -74,6 +76,20 @@ if spoon.Seal then
         hs.alert.show(my_date_time)
       end,
     },
+    ["curweek"] = {
+      keyword = "curweek",
+      fn = function(str)
+        -- local cur_weekday = os.date("%w")
+        local cur_weekday = 6
+        local startOfDayTime = os.time()-(cur_weekday-1)*24*60;
+        if cur_weekday==0 then
+        end
+        local start_date_for_week = os.date("%d/%b/%Y",startOfDayTime)
+        local my_date_time = string.format("%s - %s []",start_date_for_week,start_date_for_week)
+        hs.pasteboard.setContents(my_date_time)
+        hs.alert.show(my_date_time)
+      end,
+    },
     ["win"] = {
       keyword = "win",
       fn = winSwitcher
@@ -123,6 +139,27 @@ if spoon.Seal then
         end
         hs.pasteboard.setContents(spam)
         hs.alert.show(pasteboard..no_of_line)
+      end
+    },
+    ["start-playing"] = {
+      keyword = "startplaying",
+      fn = function(str)
+        function playing()
+          local mylocation = hs.mouse.getAbsolutePosition()
+          mylocation.x = mylocation.x+math.random(-400,400)
+          mylocation.y = mylocation.y+math.random(-400,400)
+          hs.mouse.setAbsolutePosition(mylocation)
+        end
+        mouseplayer = hs.timer.new(1, playing)
+        mouseplayer:start()
+        hs.alert.show("start playing")
+      end
+    },
+    ["stop-playing"] = {
+      keyword = "stopplaying",
+      fn = function(str)
+        mouseplayer:stop()
+        hs.alert.show("stop playing")
       end
     },
   }

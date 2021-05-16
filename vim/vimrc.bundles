@@ -23,6 +23,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'mattn/emmet-vim'
 Plugin 'mengelbrecht/lightline-bufferline'
+Plugin 'neoclide/coc.nvim'
 Plugin 'prettier/vim-prettier'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'scrooloose/nerdtree'
@@ -34,7 +35,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/BufOnly.vim'
 Plugin 'vimwiki/vimwiki'
 Plugin 'wakatime/vim-wakatime'
-Plugin 'neoclide/coc.nvim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
