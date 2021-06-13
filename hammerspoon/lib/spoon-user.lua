@@ -1,6 +1,3 @@
--- SpeedMenu
-spoon.SpeedMenu.start()
-
 -- CAFFEINE
 spoon.Caffeine:start()
 spoon.Caffeine:setState(false)

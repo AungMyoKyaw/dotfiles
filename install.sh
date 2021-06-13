@@ -135,11 +135,22 @@ makesure_file_exist(){
   if [ ! -f "$HOME/.config/alacritty/alacritty.yml" ]; then
     touch $HOME/.config/alacritty/alacritty.yml
   fi
+
+  # MAKE SURE .CONFIG/KITTY DIR EXIST
+  if [ ! -d "$HOME/.config/kitty/" ]; then
+    mkdir $HOME/.config/kitty/
+  fi
+
+  # MAKE SURE kitty.conf FILE EXIST
+  if [ ! -f "$HOME/.config/kitty/kitty.conf" ]; then
+    touch $HOME/.config/kitty/kitty.conf
+  fi
 }
 
 # LINKING RC
 linking_rc(){
   ln -fs "$CURRENT_DIR/alacritty/alacritty.yml" "$HOME/.config/alacritty/alacritty.yml"
+  ln -fs "$CURRENT_DIR/kitty/kitty.conf" "$HOME/.config/kitty/kitty.conf"
   ln -fs "$CURRENT_DIR/git/gitconfig" "$HOME/.gitconfig"
   ln -fs "$CURRENT_DIR/hammerspoon" "$HOME/.hammerspoon"
   ln -fs "$CURRENT_DIR/karabiner" "$HOME/.config/karabiner"

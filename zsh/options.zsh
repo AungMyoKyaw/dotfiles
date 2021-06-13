@@ -5,7 +5,7 @@ export GPG_TTY=$(tty)
 export ENV FZF_DEFAULT_COMMAND='rg --files'
 
 # EDITOR OPTION
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # zsh ompletions
 autoload -U compinit && compinit

@@ -10,7 +10,6 @@ local function installSpoons()
     "ModalMgr",
     "RoundedCorners",
     "Seal",
-    "SpeedMenu",
     "WinWin"
   }
   for i = 1, #spoons_list do

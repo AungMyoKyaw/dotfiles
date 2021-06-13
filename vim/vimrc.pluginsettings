@@ -2,9 +2,9 @@
 runtime! plugin/sensible.vim
 
 " Themes
-colorscheme gruvbox
+colorscheme edge
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
+      \ 'colorscheme': 'edge',
       \ }
 let g:lightline.tabline          = {'left': [['buffers']]}
 let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
