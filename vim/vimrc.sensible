@@ -26,7 +26,7 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap zO zA
 nnoremap zo za
 set      fdm=indent
-set      nofoldenable
+set      foldenable
 
 " Line Number Setting
 set number
@@ -39,7 +39,7 @@ set number
 
 " Numbers
 set number
-set numberwidth=5
+set numberwidth=4
 
 set textwidth=80
 set colorcolumn=120
