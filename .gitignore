@@ -25,6 +25,10 @@ hammerspoon/*json
 hammerspoon/secret.lua
 !hammerspoon/Spoons/SpoonInstall.spoon
 
+# tmux-recurrect
+
+tmux/recurrect
+
 # me
 draft.sh
 
