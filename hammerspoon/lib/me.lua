@@ -18,7 +18,7 @@ hs.hotkey.bind(hyper, "o", 'show console', showConsole)
 cpuUsageMenuBar = hs.menubar.new()
 local function  query()
   hs.host.cpuUsage(1,function(data)
-    cpuUsageMenuBar:setTitle("cpu : "..string.format("%.2f", data.overall.active))
+    cpuUsageMenuBar:setTitle("cpu : "..string.format("%02d", math.floor(data.overall.active)))
   end)
 end
 query()
