@@ -23,6 +23,7 @@
 - [INSTALLATION](#INSTALLATION)
   - [Install Config](#install-config)
   - [Install TMUX Plugins](#install-tmux-plugins)
+  - [❄️](#❄️)
 - [LICENSE](#LICENSE)
 
 ---
