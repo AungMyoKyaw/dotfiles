@@ -3,6 +3,7 @@ hswhints_keys = {"alt", "tab"}
 hs.window.animationDuration = 0
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
+--
 -- SPOON INSTALL
 require "lib/spoon-install"
 
@@ -20,6 +21,7 @@ require "lib/spoon-user"
 
 -- WORK/LIFE
 require "lib/work-life"
+
 
 -- SEAL
 require "lib/seal"

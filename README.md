@@ -117,6 +117,13 @@ docker run -it --rm \
   dnvim
 ```
 
+### ❄️
+
+- install [hammerspoon](https://www.hammerspoon.org)
+- install [karabiner](https://karabiner-elements.pqrs.org)
+- install [luarocks](https://luarocks.org)
+- install [faker](https://luarocks.org/modules/hectorvido/faker),[date](https://luarocks.org/modules/tieske/date)
+
 ## LICENSE
 
 MIT © [Aung Myo Kyaw](https://github.com/AungMyoKyaw)
