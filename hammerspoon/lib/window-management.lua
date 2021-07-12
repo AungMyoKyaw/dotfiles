@@ -143,6 +143,8 @@ end
 -- HIDE ADGUARD
 local function hideAdguard()
   local adguard = hs.application.find('com.adguard.safari.AdGuard')
-  adguard:hide()
+  if adguard then
+    adguard:hide()
+  end
 end
 hideAdguard()
