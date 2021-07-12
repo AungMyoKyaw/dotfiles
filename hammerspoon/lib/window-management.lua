@@ -26,7 +26,14 @@ local function winSwitcher ()
   windowSwitcherChooser:searchSubText(true)
   windowSwitcherChooser:show()
 end
-hs.hotkey.bind(hyper, 'n', 'window switcher', winSwitcher)
+
+-- hs.hotkey.bind(hyper, 'n', 'window switcher', winSwitcher)
+hs.hotkey.bind(hyper, 'n', 'window-switcher-next', function()
+  hs.window.switcher.nextWindow()
+end)
+hs.hotkey.bind(hyper, 'p', 'window-switcher-prev', function()
+  hs.window.switcher.previousWindow()
+end)
 
 --------------------------------------------------------------------------------
 -- https://github.com/ashfinal/awesome-hammerspoon
