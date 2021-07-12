@@ -1,3 +1,4 @@
+date = require('date')
 local function reloadConfig()
   if spoon.Seal.chooser then
     spoon.Seal.chooser:hide()
@@ -21,7 +22,13 @@ local function  query()
     cpuUsageMenuBar:setTitle("cpu : "..string.format("%02d", math.floor(data.overall.active)))
   end)
 end
-query()
-cpuusageTimer = hs.timer.doEvery(1,query)
-cpuusageTimer:start()
+-- query()
+-- cpuusageTimer = hs.timer.doEvery(1,query)
+-- cpuusageTimer:start()
 
+local function  clock()
+  hs.dockicon.setBadge(date():fmt("%I:%M %p"))
+end
+clock()
+dockclock = hs.timer.doEvery(1,clock)
+dockclock:start()

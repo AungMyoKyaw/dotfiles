@@ -33,9 +33,10 @@ Plugin 'vimwiki/vimwiki'
 Plugin 'wakatime/vim-wakatime'
 " themes
 Plugin 'sainnhe/edge'
-Plugin 'ryanoasis/vim-devicons'
 Plugin 'itchyny/lightline.vim'
 Plugin 'mengelbrecht/lightline-bufferline'
+Plugin 'kyazdani42/nvim-web-devicons'
+" Plugin 'akinsho/nvim-bufferline.lua'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
