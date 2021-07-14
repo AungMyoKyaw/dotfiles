@@ -80,10 +80,8 @@ vimp.nnoremap('<leader>fg',"<cmd>lua require('telescope.builtin').live_grep()<cr
 -- telescope commands
 vimp.nnoremap('<leader>fc',"<cmd>lua require('telescope.builtin').commands()<cr>")
 
--- " Nerd Tree
-g.NERDTreeShowHidden = 1
-g.NERDTreeWinPos     = 'left'
-vimp.nnoremap('<C-n>',[[:NERDTreeToggle<cr>]])
+-- " nvim-Tree
+vimp.nnoremap('<C-n>',[[:NvimTreeToggle<cr>]])
 
 -- ----------------------------------------------------------------------------------------------------
 -- VIM WIKI
