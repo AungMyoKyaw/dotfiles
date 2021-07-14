@@ -15,6 +15,10 @@
 
 ---
 
+<img src="./assets/amk-dotfiles.gif" alt="dotfiles_ss" align="center" width="100%">
+
+---
+
 _i have switched to init.lua_
 
 - [PREREQUISITES](#PREREQUISITES)
@@ -29,8 +33,6 @@ _i have switched to init.lua_
 - [LICENSE](#LICENSE)
 
 ---
-
-<img src="./assets/amk-dotfiles.gif" alt="dotfiles_ss" align="center" width="100%">
 
 ## PREREQUISITES
 
