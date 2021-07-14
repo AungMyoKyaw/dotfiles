@@ -1,4 +1,4 @@
-# [.]files
+# {.}files
 
 > My vim and tmux config
 
