@@ -6,13 +6,6 @@
 [![License: MIT][license]][license-url]
 [![Docker Cloud Build Status][docker-build-status]][docker-build-url]
 
-```shell
-    _   __  __ _  __  ___      _    __ _ _
-   /_\ |  \/  | |/ / |   \ ___| |_ / _(_) |___ ___
-  / _ \| |\/| | ' <  | |) / _ \  _|  _| | / -_|_-<
- /_/ \_\_|  |_|_|\_\ |___/\___/\__|_| |_|_\___/__/
-```
-
 ---
 
 <img src="./assets/amk-dotfiles.gif" alt="dotfiles_ss" align="center" width="100%">
