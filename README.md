@@ -1,6 +1,6 @@
 # {.}files
 
-> My vim and tmux config
+> My NEOVim, tmux and zsh config
 
 [![dotfiles][dotfiles]][dotfiles-url]
 [![License: MIT][license]][license-url]
