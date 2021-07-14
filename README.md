@@ -21,6 +21,7 @@ _i have switched to init.lua_
   - [Install TMUX](#install-tmux)
   - [Install TMUX Plugin Manager](#install-tmux-plugin-manager)
   - [Install NEOVIM](#install-neovim)
+  - [Install NEOVIM Plugin](#install-neovim-plugin)
 - [INSTALLATION](#INSTALLATION)
   - [Install Config](#install-config)
   - [Install TMUX Plugins](#install-tmux-plugins)
@@ -49,6 +50,12 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ```shell
 brew install neovim
+```
+
+### Install NEOVIM Plugin
+
+```
+:PackerInstall
 ```
 
 ---

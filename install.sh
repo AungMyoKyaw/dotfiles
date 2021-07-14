@@ -196,11 +196,11 @@ reload_zshrc(){
 }
 
 showSuccessMessage(){
-  echo "☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭"
-  echo "☭                        ☭"
-  echo "☭ INSTALLATION COMPLETED ☭"
-  echo "☭                        ☭"
-  echo "☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭☭"
+  echo "--------------------------"
+  echo "-                        -"
+  echo "- INSTALLATION COMPLETED -"
+  echo "-                        -"
+  echo "--------------------------"
   exit 0
 }
 
