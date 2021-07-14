@@ -160,7 +160,11 @@ linking_rc(){
   ln -fs "$CURRENT_DIR/hammerspoon" "$HOME/.hammerspoon"
   ln -fs "$CURRENT_DIR/karabiner" "$HOME/.config/karabiner"
   ln -fs "$CURRENT_DIR/nvim/coc-settings.json" "$HOME/.config/nvim/coc-settings.json"
-  ln -fs "$CURRENT_DIR/nvim/nvimrc" "$HOME/.config/nvim/init.vim"
+  ln -fs "$CURRENT_DIR/nvim/nvimrc" "$HOME/.config/nvim/init_backup.vim"
+  ln -fs "$CURRENT_DIR/nvim-lua/init.lua" "$HOME/.config/nvim/init.lua"
+  if [ ! -d "$HOME/.config/nvim/lua" ]; then
+    ln -fs "$CURRENT_DIR/nvim-lua/lua" "$HOME/.config/nvim/lua"
+  fi
   ln -fs "$CURRENT_DIR/ssh/config" "$HOME/.ssh/config"
   ln -fs "$CURRENT_DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
   ln -fs "$CURRENT_DIR/tmuxinator" "$HOME/.config/tmuxinator"
