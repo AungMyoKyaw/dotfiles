@@ -15,11 +15,12 @@
 
 ---
 
-<img src="./assets/ss.gif" alt="dotfiles_ss" align="right" width="400">
+_i have switched to init.lua_
 
 - [PREREQUISITES](#PREREQUISITES)
   - [Install TMUX](#install-tmux)
   - [Install TMUX Plugin Manager](#install-tmux-plugin-manager)
+  - [Install NEOVIM](#install-neovim)
 - [INSTALLATION](#INSTALLATION)
   - [Install Config](#install-config)
   - [Install TMUX Plugins](#install-tmux-plugins)
@@ -27,6 +28,8 @@
 - [LICENSE](#LICENSE)
 
 ---
+
+<img src="./assets/amk-dotfiles.gif" alt="dotfiles_ss" align="center" width="100%">
 
 ## PREREQUISITES
 
@@ -40,6 +43,12 @@ brew install tmux
 
 ```shell
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
+### Install [NEOVIM](https://neovim.io)
+
+```shell
+brew install neovim
 ```
 
 ---
