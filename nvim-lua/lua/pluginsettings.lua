@@ -15,6 +15,8 @@ g.material_borders            = true
 g.material_disable_background = false
 require('material').set()
 
+g.dashboard_default_executive ='telescope'
+
 -- gitsigns
 gitsigns.setup()
 
@@ -61,7 +63,8 @@ g.jsdoc_enable_es6         = 1
 g.jsdoc_input_description  = 1
 
 -- CtrlP
-vimp.nmap('<C-p>',"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({}))<cr>")
+-- vimp.nmap('<C-p>',"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({}))<cr>")
+vimp.nmap('<C-p>',"<cmd>lua require('telescope.builtin').find_files()<cr>")
 
 -- " ALE Settings
 g.ale_fixers                               = {'prettier', 'eslint', 'trim_whitespace'}

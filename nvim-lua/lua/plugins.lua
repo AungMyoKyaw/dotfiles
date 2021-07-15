@@ -28,6 +28,7 @@ startup({function(use)
   use	{'wakatime/vim-wakatime'}
   use	{'yamatsum/nvim-cursorline'}
   use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
+  use {'glepnir/dashboard-nvim'}
   use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
   use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'},{'nvim-lua/plenary.nvim'}}}
   use {'svermeulen/vimpeccable'}

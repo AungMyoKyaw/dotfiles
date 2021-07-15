@@ -51,7 +51,8 @@ end)
 
 -- buffer list
 vimp.nnoremap('<leader>bb', function()
-  vim.cmd("lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown({}))")
+  -- vim.cmd("lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown({}))")
+  vim.cmd("lua require('telescope.builtin').buffers()")
 end)
 
 -- reload vimrc
