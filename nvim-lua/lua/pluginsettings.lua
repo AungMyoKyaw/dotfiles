@@ -20,6 +20,15 @@ g.dashboard_default_executive ='telescope'
 -- gitsigns
 gitsigns.setup()
 
+-- fterm
+require("FTerm").setup()
+vimp.nmap('<leader>ft',"<cmd>lua require('FTerm').toggle()<cr>")
+
+-- status line setup
+require('lualine').setup{
+    options = {theme = 'material'}
+}
+
 local configure_language = require('kommentary.config').configure_language
 configure_language("nim", {
     single_line_comment_string = "#",
@@ -69,6 +78,7 @@ g.jsdoc_input_description  = 1
 -- CtrlP
 -- vimp.nmap('<C-p>',"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({}))<cr>")
 vimp.nmap('<C-p>',"<cmd>lua require('telescope.builtin').find_files()<cr>")
+vimp.nmap('<leader>ff',"<cmd>lua require('telescope.builtin').find_files()<cr>")
 
 -- " ALE Settings
 g.ale_fixers                               = {'prettier', 'eslint', 'trim_whitespace'}
