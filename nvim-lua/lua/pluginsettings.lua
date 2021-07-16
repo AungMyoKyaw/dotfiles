@@ -20,10 +20,14 @@ g.dashboard_default_executive ='telescope'
 -- gitsigns
 gitsigns.setup()
 
-local configure_comment = require('kommentary.config').configure_language
-configure_comment("nim", {
+local configure_language = require('kommentary.config').configure_language
+configure_language("nim", {
     single_line_comment_string = "#",
     multi_line_comment_strings = {"#[", "]#"},
+    prefer_single_line_comments = true,
+})
+configure_language("default", {
+    prefer_single_line_comments = true,
 })
 
 -- Themes
