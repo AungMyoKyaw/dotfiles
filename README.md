@@ -5,6 +5,9 @@
 [![dotfiles][dotfiles]][dotfiles-url]
 [![term][term]][term-url]
 [![env][env]][env-url]
+[![editor][editor]][editor-url]
+[![multiplexer][multiplexer]][multiplexer-url]
+[![shell][shell]][shell-url]
 [![License: MIT][license]][license-url]
 [![Docker Cloud Build Status][docker-build-status]][docker-build-url]
 
@@ -145,12 +148,18 @@ MIT © [Aung Myo Kyaw](https://github.com/AungMyoKyaw)
 [screenshot]: ./assets/screenshot.png
 [license]: https://img.shields.io/badge/License-MIT-brightgreen.svg?style=flat-square
 [license-url]: https://opensource.org/licenses/MIT
-[dotfiles]: https://img.shields.io/badge/Dotfiles-AMK-brightgreen.svg?style=flat-square
+[dotfiles]: https://img.shields.io/badge/{.}files-AMK-brightgreen.svg?style=flat-square
 [dotfiles-url]: #
 [term]: https://img.shields.io/badge/term-iterm2-brightgreen.svg?style=flat-square
 [term-url]: https://iterm2.com
 [env]: https://img.shields.io/badge/env-macOS-brightgreen.svg?style=flat-square
 [env-url]: https://www.apple.com/macos
+[editor]: https://img.shields.io/badge/editor-neovim-brightgreen.svg?style=flat-square
+[editor-url]: https://neovim.io
+[multiplexer]: https://img.shields.io/badge/multiplexer-tmux-brightgreen.svg?style=flat-square
+[multiplexer-url]: https://github.com/tmux/tmux/wiki
+[shell]: https://img.shields.io/badge/shell-zsh-brightgreen.svg?style=flat-square
+[shell-url]: https://zsh.sourceforge.io
 [asciicast-screenshot]: https://asciinema.org/a/LrBeUcO83YmxixOFCTBi8sQIT.svg
 [asciicast-screenshot-url]: https://asciinema.org/a/LrBeUcO83YmxixOFCTBi8sQIT
 [docker-build-status]: https://img.shields.io/docker/cloud/build/aungmyokyaw/dnvim?style=flat-square
