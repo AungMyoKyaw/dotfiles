@@ -1,5 +1,6 @@
 # UTF 8/256 COLOR SUPPORT TMUX
-alias tmux='tmux -2u'
+# alias tmux='tmux -2u'
+alias tmux='tmux -2'
 
 # git
 alias g='git'

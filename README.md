@@ -3,6 +3,7 @@
 > My NEOVim, tmux and zsh config
 
 [![dotfiles][dotfiles]][dotfiles-url]
+[![term][term]][term-url]
 [![License: MIT][license]][license-url]
 [![Docker Cloud Build Status][docker-build-status]][docker-build-url]
 
@@ -145,6 +146,8 @@ MIT © [Aung Myo Kyaw](https://github.com/AungMyoKyaw)
 [license-url]: https://opensource.org/licenses/MIT
 [dotfiles]: https://img.shields.io/badge/Dotfiles-AMK-brightgreen.svg?style=flat-square
 [dotfiles-url]: #
+[term]: https://img.shields.io/badge/term-iterm2-brightgreen.svg?style=flat-square
+[term-url]: https://iterm2.com
 [asciicast-screenshot]: https://asciinema.org/a/LrBeUcO83YmxixOFCTBi8sQIT.svg
 [asciicast-screenshot-url]: https://asciinema.org/a/LrBeUcO83YmxixOFCTBi8sQIT
 [docker-build-status]: https://img.shields.io/docker/cloud/build/aungmyokyaw/dnvim?style=flat-square
