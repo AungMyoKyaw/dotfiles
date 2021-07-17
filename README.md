@@ -3,8 +3,8 @@
 > My NEOVim, tmux and zsh config
 
 [![dotfiles][dotfiles]][dotfiles-url]
-[![term][term]][term-url]
 [![env][env]][env-url]
+[![term][term]][term-url]
 [![editor][editor]][editor-url]
 [![multiplexer][multiplexer]][multiplexer-url]
 [![shell][shell]][shell-url]
