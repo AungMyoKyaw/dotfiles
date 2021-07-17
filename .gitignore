@@ -27,6 +27,10 @@ hammerspoon/secret.lua
 hammerspoon/hammerspoon
 !hammerspoon/Spoons/SpoonInstall.spoon
 
+# iterm2
+iterm2/
+!iterm2/iterm2.txt
+
 # tmux-recurrect
 
 tmux/recurrect
