@@ -146,7 +146,7 @@ docker run -it --rm \
 MIT © [Aung Myo Kyaw](https://github.com/AungMyoKyaw)
 
 [screenshot]: ./assets/screenshot.png
-[license]: https://img.shields.io/badge/License-MIT-brightgreen.svg?style=flat-square
+[license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
 [license-url]: https://opensource.org/licenses/MIT
 [dotfiles]: https://img.shields.io/badge/{.}files-AMK-brightgreen.svg?style=flat-square
 [dotfiles-url]: #
