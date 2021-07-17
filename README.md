@@ -4,6 +4,7 @@
 
 [![dotfiles][dotfiles]][dotfiles-url]
 [![term][term]][term-url]
+[![env][env]][env-url]
 [![License: MIT][license]][license-url]
 [![Docker Cloud Build Status][docker-build-status]][docker-build-url]
 
@@ -148,6 +149,8 @@ MIT © [Aung Myo Kyaw](https://github.com/AungMyoKyaw)
 [dotfiles-url]: #
 [term]: https://img.shields.io/badge/term-iterm2-brightgreen.svg?style=flat-square
 [term-url]: https://iterm2.com
+[env]: https://img.shields.io/badge/env-macOS-brightgreen.svg?style=flat-square
+[env-url]: https://www.apple.com/macos
 [asciicast-screenshot]: https://asciinema.org/a/LrBeUcO83YmxixOFCTBi8sQIT.svg
 [asciicast-screenshot-url]: https://asciinema.org/a/LrBeUcO83YmxixOFCTBi8sQIT
 [docker-build-status]: https://img.shields.io/docker/cloud/build/aungmyokyaw/dnvim?style=flat-square
