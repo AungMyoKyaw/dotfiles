@@ -17,7 +17,7 @@ startup({function(use)
   use	{'lukas-reineke/indent-blankline.nvim'}
   use	{'marko-cerovac/material.nvim'}
   use	{'mattn/emmet-vim'}
-  use	{'neoclide/coc.nvim'}
+  use	{'neoclide/coc.nvim',branch='release'}
   use	{'prettier/vim-prettier'}
   use	{'sheerun/vim-polyglot'}
   use	{'tpope/vim-fugitive'}
