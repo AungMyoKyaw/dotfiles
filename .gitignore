@@ -32,8 +32,10 @@ iterm2/
 !iterm2/iterm2.txt
 
 # tmux-recurrect
-
 tmux/recurrect
+
+# tmuxinator
+tmux/tmuxinator
 
 # me
 draft.sh
