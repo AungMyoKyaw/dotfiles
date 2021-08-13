@@ -150,12 +150,6 @@ makesure_file_exist(){
   if [ ! -d "$HOME/tmux-resurrect/" ]; then
     mkdir $HOME/tmux-resurrect/
   fi
-
-  # MAKE SURE tmuxinator DIR EXIST
-  if [ ! -d "$HOME/.config/tmuxinator/" ]; then
-    mkdir $HOME/.config/tmuxinator/
-  fi
-
 }
 
 # LINKING RC
@@ -174,7 +168,7 @@ linking_rc(){
   ln -fs "$CURRENT_DIR/ssh/config" "$HOME/.ssh/config"
   ln -fs "$CURRENT_DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
   ln -fs "$CURRENT_DIR/tmux/recurrect" "$HOME/tmux-resurrect"
-  ln -fs "$CURRENT_DIR/tmux/tmuxinator" "$HOME/.config/tmuxinator/"
+  ln -fs "$CURRENT_DIR/tmux/tmuxinator" "$HOME/.tmuxinator"
   ln -fs "$CURRENT_DIR/vim/vimrc" "$HOME/.vim/vimrc"
   ln -fs "$CURRENT_DIR/vim/vimrc.bundles" "$HOME/.vim/vimrc.bundles"
   ln -fs "$CURRENT_DIR/vim/vimrc.me" "$HOME/.vim/vimrc.me"
