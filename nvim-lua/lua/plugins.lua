@@ -33,6 +33,7 @@ startup({function(use)
   use {'numtostr/FTerm.nvim'}
   use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'},{'nvim-lua/plenary.nvim'}}}
   use {'svermeulen/vimpeccable'}
+  use {'jidn/vim-dbml'}
 end,
 config = {
   ensure_dependencies = true,
