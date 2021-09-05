@@ -21,3 +21,6 @@ alias dnvim='docker run -it --rm \
 
 # COPYTO SYSTEM CLIPBOARD
 alias dcp='cat ./dcp.txt | pbcopy'
+
+# nwjs
+alias nw='/Applications/nwjs.app/Contents/MacOS/nwjs'
