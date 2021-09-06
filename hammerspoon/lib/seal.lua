@@ -1,4 +1,4 @@
-Faker = require('faker')
+-- Faker = require('faker')
 date = require('date')
 
 -- global var
@@ -165,49 +165,49 @@ if spoon.Seal then
     --     hs.alert.show("stop playing")
     --   end
     -- },
-    ["faker"] = {
-      keyword = "faker",
-      fn = function(str)
-        local faker = Faker:new({locale = 'en_US'})
-        -- faker = Faker:init()
-        if str == "name" then
-          local randomName = faker:name()
-          hs.pasteboard.setContents(randomName)
-          hs.alert.show(randomName)
-        end
-        if str == "randstring" then
-          local randstring = faker:randstring()
-          hs.pasteboard.setContents(randstring)
-          hs.alert.show(randstring)
-        end
-        if str == "email" then
-          local facker = Faker:new()
-          local data = facker:randstring()
-          hs.pasteboard.setContents(data)
-          hs.alert.show(data)
-        end
-        if str == "country" then
-          local data = faker:country()
-          hs.pasteboard.setContents(data)
-          hs.alert.show(data)
-        end
-        if str == "state" then
-          local data = faker:state()
-          hs.pasteboard.setContents(data)
-          hs.alert.show(data)
-        end
-        if str == "city" then
-          local data = faker:city()
-          hs.pasteboard.setContents(data)
-          hs.alert.show(data)
-        end
-        if str == "ssn" then
-          local data = faker:city()
-          hs.pasteboard.setContents(data)
-          hs.alert.show(data)
-        end
-      end
-    }
+    -- ["faker"] = {
+    --   keyword = "faker",
+    --   fn = function(str)
+    --     local faker = Faker:new({locale = 'en_US'})
+    --     -- faker = Faker:init()
+    --     if str == "name" then
+    --       local randomName = faker:name()
+    --       hs.pasteboard.setContents(randomName)
+    --       hs.alert.show(randomName)
+    --     end
+    --     if str == "randstring" then
+    --       local randstring = faker:randstring()
+    --       hs.pasteboard.setContents(randstring)
+    --       hs.alert.show(randstring)
+    --     end
+    --     if str == "email" then
+    --       local facker = Faker:new()
+    --       local data = facker:randstring()
+    --       hs.pasteboard.setContents(data)
+    --       hs.alert.show(data)
+    --     end
+    --     if str == "country" then
+    --       local data = faker:country()
+    --       hs.pasteboard.setContents(data)
+    --       hs.alert.show(data)
+    --     end
+    --     if str == "state" then
+    --       local data = faker:state()
+    --       hs.pasteboard.setContents(data)
+    --       hs.alert.show(data)
+    --     end
+    --     if str == "city" then
+    --       local data = faker:city()
+    --       hs.pasteboard.setContents(data)
+    --       hs.alert.show(data)
+    --     end
+    --     if str == "ssn" then
+    --       local data = faker:city()
+    --       hs.pasteboard.setContents(data)
+    --       hs.alert.show(data)
+    --     end
+    --   end
+    -- }
   }
 
   spoon.Seal.plugins.pasteboard.historySize=4000

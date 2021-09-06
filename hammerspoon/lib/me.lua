@@ -67,11 +67,11 @@ function resetPomodoroBreakMenu()
 end
 
 menuTable =  {
-  { title = "STOPWATCH", fn = setStopWatch },
-  { title = "TIMER", fn = setTimer },
-  { title = "-" },
   { title = "START POMODORO", fn = startPomodoroMenu },
   { title = "START POMODORO BREAK", fn = startPomodoroBreakMenu },
+  { title = "-" },
+  { title = "STOPWATCH", fn = setStopWatch },
+  { title = "TIMER", fn = setTimer },
   { title = "-" },
   { title = "RESET", fn = resetPomodoroBreakMenu },
 }
