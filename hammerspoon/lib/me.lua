@@ -47,6 +47,7 @@ end
 
 function setStopWatch()
   stopWatch = true
+  timersec = -1
 end
 
 function setPomodoroMin(num)
