@@ -50,8 +50,7 @@ function setStopWatch()
 end
 
 function setPomodoroMin(num)
-  -- timersec = num*60
-  timersec = 90
+  timersec = num*60
   spoon.FadeLogo.image = hs.image.imageFromURL("https://avatars.githubusercontent.com/u/9404824?v=4")
   spoon.FadeLogo:start()
 end
