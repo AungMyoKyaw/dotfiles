@@ -18,22 +18,21 @@ end
 hs.hotkey.bind(hyper, "o", 'show console', showConsole)
 
 -- cpu usage
-cpuUsageMenuBar = hs.menubar.new()
 local function cpuTimer()
   hs.host.cpuUsage(1,function(data)
-    cpuUsageMenuBar:setTitle("cpu : "..string.format("%02d", math.floor(data.overall.active)))
+    hs.dockicon.setBadge(string.format("%02d", math.floor(data.overall.active)))
   end)
 end
--- cpuTimer()
--- cpuusageTimer = hs.timer.doEvery(1,cpuTimer)
--- cpuusageTimer:start()
+cpuTimer()
+cpuusageTimer = hs.timer.doEvery(1,cpuTimer)
+cpuusageTimer:start()
 
-local function  clock()
-  hs.dockicon.setBadge(date():fmt("%I:%M %p"))
-end
-clock()
-dockclock = hs.timer.doEvery(1,clock)
-dockclock:start()
+-- local function  clock()
+--   hs.dockicon.setBadge(date():fmt("%I:%M %p"))
+-- end
+-- clock()
+-- dockclock = hs.timer.doEvery(1,clock)
+-- dockclock:start()
 
 local timersec = -1
 local stopWatch = false
