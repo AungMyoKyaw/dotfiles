@@ -17,11 +17,16 @@ opt.clipboard="unnamed,unnamedplus"
 vimp.inoremap('jj','<esc>')
 
 -- Split Navigation
-vimp.nmap('<leader>j','<C-W><C-J>')
-vimp.nmap('<leader>k','<C-W><C-K>')
-vimp.nmap('<leader>l','<C-W><C-L>')
-vimp.nmap('<leader>h','<C-W><C-H>')
-vimp.nmap('<leader>o','<C-W><C-O>')
+vim.cmd[[nnoremap <C-L> <C-W><C-L>]]
+vim.cmd[[nnoremap <C-J> <C-W><C-J>]]
+vim.cmd[[nnoremap <C-K> <C-W><C-K>]]
+vim.cmd[[nnoremap <C-H> <C-W><C-H>]]
+vim.cmd[[nnoremap <C-O> <C-W><C-O>]]
+-- vimp.nnoremap('<C-j>','<C-W><C-J>')
+-- vimp.nnoremap('<C-k>','<C-W><C-K>')
+-- vimp.nnoremap('<C-l>','<C-W><C-L>')
+-- vimp.nnoremap('<C-h>','<C-W><C-H>')
+-- vimp.nnoremap('<C-o>','<C-W><C-O>')
 
 vimp.nmap('<leader>fh',':FocusSplitLeft<CR>')
 vimp.nmap('<leader>fj',':FocusSplitDown<CR>')

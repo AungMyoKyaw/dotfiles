@@ -115,3 +115,7 @@ end
 Pomodoro()
 pomodoroTimer = hs.timer.doEvery(1,Pomodoro)
 pomodoroTimer:start()
+
+hs.hotkey.bind(hyper, 'v', 'type-pastes', function()
+  hs.eventtap.keyStrokes(hs.pasteboard.getContents())
+end)
