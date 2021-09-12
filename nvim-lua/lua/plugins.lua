@@ -34,6 +34,8 @@ startup({function(use)
   use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'},{'nvim-lua/plenary.nvim'}}}
   use {'svermeulen/vimpeccable'}
   use {'jidn/vim-dbml'}
+  use {'dyng/ctrlsf.vim'}
+  use { "beauwilliams/focus.nvim" }
 end,
 config = {
   ensure_dependencies = true,

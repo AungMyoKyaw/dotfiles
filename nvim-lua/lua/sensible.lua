@@ -1,6 +1,9 @@
 local vimp = require('vimp')
 local g    = vim.g
-local opt  = vim.o
+local opt  = vim.opt
+
+-- vim sensible
+vim.cmd('runtime! plugin/sensible.vim')
 
 -- Leader
 g.mapleader = " "
@@ -14,11 +17,17 @@ opt.clipboard="unnamed,unnamedplus"
 vimp.inoremap('jj','<esc>')
 
 -- Split Navigation
-vimp.nnoremap('<C-J>','<C-W><C-J>')
-vimp.nnoremap('<C-K>','<C-W><C-K>')
-vimp.nnoremap('<C-L>','<C-W><C-L>')
-vimp.nnoremap('<C-H>','<C-W><C-H>')
--- vimp.nnoremap('<C-O>','<C-W><C-O>')
+vimp.nmap('<leader>j','<C-W><C-J>')
+vimp.nmap('<leader>k','<C-W><C-K>')
+vimp.nmap('<leader>l','<C-W><C-L>')
+vimp.nmap('<leader>h','<C-W><C-H>')
+vimp.nmap('<leader>o','<C-W><C-O>')
+
+vimp.nmap('<leader>fh',':FocusSplitLeft<CR>')
+vimp.nmap('<leader>fj',':FocusSplitDown<CR>')
+vimp.nmap('<leader>fk',':FocusSplitUp<CR>')
+vimp.nmap('<leader>fl',':FocusSplitRight<CR>')
+vimp.nmap('<leader>fo',':FocusMaximise<CR>')
 
 -- Folding
 opt.fdm        = "indent"
@@ -102,5 +111,12 @@ opt.autowrite   = true
 opt.modelines   = 0
 opt.modeline    = false
 
--- vim sensible
-vim.cmd('runtime! plugin/sensible.vim')
+-- indent size
+opt.expandtab   = true
+opt.tabstop     = 2
+opt.softtabstop = 2                -- Tab key indents by 2 spaces.
+opt.shiftwidth  = 2                -- >> indents by 2 spaces.
+opt.shiftround  = true             -- >> indents to next multiple of 'shiftwidth'.
+opt.autoindent  = true
+opt.smartindent = true
+

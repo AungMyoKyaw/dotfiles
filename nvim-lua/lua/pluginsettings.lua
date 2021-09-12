@@ -5,15 +5,43 @@ local g          = vim.g
 local opt        = vim.o
 
 -- themes
-g.material_style              = "deep ocean"
-g.material_italic_comments    = true
-g.material_italic_keywords    = true
-g.material_italic_functions   = true
-g.material_italic_variables   = false
-g.material_contrast           = true
-g.material_borders            = true
-g.material_disable_background = false
-require('material').set()
+require('material.functions').change_style("oceanic")
+require('material').setup({
+        contrast = true,
+        borders = true,
+
+        italics = {
+            comments = true,
+            keywords = false,
+            functions = true,
+            strings = false,
+            variables = false
+        },
+
+        contrast_windows = {
+            "terminal",
+            "packer",
+            "qf" -- Darker qf list background
+        },
+
+        text_contrast = {
+            lighter = false,
+            darker = false
+        },
+
+        disable = {
+            background = false,
+            term_colors = false,
+            eob_lines = false
+        }
+
+    })
+
+require("focus").setup()
+
+-- vim.cmd('colorscheme material')
+vim.cmd[[colorscheme material]]
+--require('material').set()
 
 g.dashboard_default_executive ='telescope'
 g.dashboard_custom_header = {
@@ -45,7 +73,6 @@ g.indentLine_fileTypeExclude = {'dashboard'}
 gitsigns.setup()
 
 -- fterm
-require("FTerm").setup()
 vimp.nmap('<leader>ft',"<cmd>lua require('FTerm').toggle()<cr>")
 
 -- status line setup
@@ -55,13 +82,13 @@ require('lualine').setup{
 
 local configure_language = require('kommentary.config').configure_language
 configure_language("nim", {
-    single_line_comment_string = "#",
-    multi_line_comment_strings = {"#[", "]#"},
-    prefer_single_line_comments = true,
-})
+        single_line_comment_string = "#",
+        multi_line_comment_strings = {"#[", "]#"},
+        prefer_single_line_comments = true,
+    })
 configure_language("default", {
-    prefer_single_line_comments = true,
-})
+        prefer_single_line_comments = true,
+    })
 
 -- Themes
 opt.showtabline=2
@@ -109,13 +136,24 @@ g.ale_fixers                               = {'prettier', 'eslint', 'trim_whites
 g.ale_javascript_prettier_options          = '--single-quote --trailing-comma none'
 g.ale_javascript_prettier_use_local_config = 1
 g.ale_disable_lsp                          = 1
+g.ale_fixers.markdown                      = {'prettier'}
 -- " let g:ale_completion_enabled                   = 1
 -- " let g:ale_completion_autoimport                = 1
 -- " let g:ale_hover_cursor                         = 1
 -- " let g:ale_fix_on_save                          = 1
 
 -- ctrlsf
-vimp.nnoremap('<C-F>f',"<cmd>lua require('telescope.builtin').live_grep()<cr>")
+-- vimp.nnoremap('<C-F>f',"<cmd>lua require('telescope.builtin').live_grep()<cr>")
+--
+vimp.nmap('<C-F>f',"<Plug>CtrlSFPrompt")
+vimp.vmap('<C-F>f',"<Plug>CtrlSFVwordPath")
+vimp.vmap('<C-F>F',"<Plug>CtrlSFVwordExec")
+vimp.nmap('<C-F>n',"<Plug>CtrlSFCwordPath")
+vimp.nmap('<C-F>p',"<Plug>CtrlSFPwordPath")
+vimp.nnoremap('<C-F>o',":CtrlSFOpen<CR>")
+vimp.nnoremap('<C-F>t',":CtrlSFToggle<CR>")
+vimp.inoremap('<C-F>t',"<Esc>:CtrlSFToggle<CR>")
+
 vimp.nnoremap('<leader>fg',"<cmd>lua require('telescope.builtin').live_grep()<cr>")
 
 -- telescope commands
