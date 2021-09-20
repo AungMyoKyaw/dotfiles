@@ -144,27 +144,6 @@ if spoon.Seal then
         hs.alert.show(pasteboard..no_of_line)
       end
     },
-    -- ["start-playing"] = {
-    --   keyword = "startplaying",
-    --   fn = function(str)
-    --     function playing()
-    --       local mylocation = hs.mouse.getAbsolutePosition()
-    --       mylocation.x = mylocation.x+math.random(-400,400)
-    --       mylocation.y = mylocation.y+math.random(-400,400)
-    --       hs.mouse.setAbsolutePosition(mylocation)
-    --     end
-    --     mouseplayer = hs.timer.new(1, playing)
-    --     mouseplayer:start()
-    --     hs.alert.show("start playing")
-    --   end
-    -- },
-    -- ["stop-playing"] = {
-    --   keyword = "stopplaying",
-    --   fn = function(str)
-    --     mouseplayer:stop()
-    --     hs.alert.show("stop playing")
-    --   end
-    -- },
     -- ["faker"] = {
     --   keyword = "faker",
     --   fn = function(str)

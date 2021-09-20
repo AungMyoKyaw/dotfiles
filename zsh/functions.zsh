@@ -171,3 +171,22 @@ http_server(){
 mac_update(){
   softwareupdate --all --install --force
 }
+
+# brew update
+brew_update(){
+  brew update
+  brew upgrade
+}
+
+mxgen(){
+for file in *; do
+  if [ -d "$file" ]; then
+    filenamelowercase=$(echo "$file" | tr '[:upper:]' '[:lower:]')
+    cd $file
+    mx-yml-gen --name=${filenamelowercase} --cp=true
+    cd ..
+    echo $filenamelowercase
+  fi
+done
+}
+

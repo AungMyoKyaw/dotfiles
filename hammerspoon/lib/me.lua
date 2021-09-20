@@ -36,7 +36,7 @@ cpuusageTimer:start()
 
 local timersec = -1
 local stopWatch = false
-pomodoroTimerMenuBar = hs.menubar.new()
+local mybar = hs.menubar.new()
 function setTimer()
   -- todo: timer
   local textPromptMessage = "TIMER"
@@ -58,12 +58,36 @@ end
 function startPomodoroMenu()
   setPomodoroMin(45)
 end
+
 function startPomodoroBreakMenu()
   setPomodoroMin(10)
 end
+
 function resetPomodoroBreakMenu()
   setPomodoroMin(-1)
   stopWatch = false
+end
+
+local function startPlay()
+  function playing()
+    local mylocation = hs.mouse.getAbsolutePosition()
+    mylocation.x = mylocation.x+math.random(-400,400)
+    mylocation.y = mylocation.y+math.random(-400,400)
+    -- hs.mouse.setAbsolutePosition(mylocation)
+    -- local lorem = hs.http.doRequest("http://metaphorpsum.com/sentences/3","GET")
+    local lorem = hs.execute("curl http://metaphorpsum.com/sentences/3")
+    -- local lorem = "A nest is a towered muscle."
+    -- hs.inspect.inspect(lorem)
+    hs.eventtap.keyStrokes(lorem)
+  end
+  typistplayer = hs.timer.new(10, playing)
+  typistplayer:start()
+  hs.alert.show("start playing")
+end
+
+local function stopPlay()
+  mouseplayer:stop()
+  hs.alert.show("stop playing")
 end
 
 menuTable =  {
@@ -74,8 +98,11 @@ menuTable =  {
   { title = "TIMER", fn = setTimer },
   { title = "-" },
   { title = "RESET", fn = resetPomodoroBreakMenu },
+  { title = "-" },
+  -- { title = "start-play", fn = startPlay },
+  -- { title = "stop-play", fn = stopPlay },
 }
-pomodoroTimerMenuBar:setMenu(menuTable)
+mybar:setMenu(menuTable)
 local function playSessionEndSound()
   print('playing')
 end
@@ -91,10 +118,10 @@ end
 
 local function updateTimeOnMenuBar()
   if timersec < 0 then
-    pomodoroTimerMenuBar:setTitle("POMODORO")
+    mybar:setTitle("👨🏻‍💻✨👩🏻‍💻")
   else
     -- todo: animate
-    pomodoroTimerMenuBar:setTitle("WORKING  => "..formatTime(timersec))
+    mybar:setTitle("working => "..formatTime(timersec))
   end
 end
 
@@ -119,3 +146,9 @@ pomodoroTimer:start()
 hs.hotkey.bind(hyper, 'v', 'type-pastes', function()
   hs.eventtap.keyStrokes(hs.pasteboard.getContents())
 end)
+
+hs.hotkey.bind(hyper, 'a', 'type-pastes', function()
+  hs.alert("updating brew")
+  local shellresult = hs.execute("brew_update")
+end)
+
