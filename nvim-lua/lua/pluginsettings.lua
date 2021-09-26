@@ -39,6 +39,10 @@ require('material').setup({
 
 require("focus").setup()
 
+-- nvim tree setup
+require'nvim-tree'.setup()
+vimp.nnoremap('<C-n>',[[:NvimTreeToggle<cr>]])
+
 -- vim.cmd('colorscheme material')
 vim.cmd[[colorscheme material]]
 --require('material').set()
@@ -158,9 +162,6 @@ vimp.nnoremap('<leader>fg',"<cmd>lua require('telescope.builtin').live_grep()<cr
 
 -- telescope commands
 vimp.nnoremap('<leader>fc',"<cmd>lua require('telescope.builtin').commands()<cr>")
-
--- " nvim-Tree
-vimp.nnoremap('<C-n>',[[:NvimTreeToggle<cr>]])
 
 -- ----------------------------------------------------------------------------------------------------
 -- VIM WIKI
