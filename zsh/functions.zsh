@@ -169,6 +169,8 @@ http_server(){
 
 # mac update
 mac_update(){
+  brew_update
+  updateplugin
   softwareupdate --all --install --force
 }
 

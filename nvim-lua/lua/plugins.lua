@@ -10,14 +10,12 @@ startup({function(use)
   use	{'dense-analysis/ale'}
   use	{'easymotion/vim-easymotion'}
   use	{'editorconfig/editorconfig-vim'}
-  use	{'heavenshell/vim-jsdoc'}
   use	{'jiangmiao/auto-pairs'}
   use	{'junegunn/vim-easy-align'}
   use	{'kyazdani42/nvim-tree.lua'}
   use	{'lukas-reineke/indent-blankline.nvim'}
-  use	{'marko-cerovac/material.nvim'}
+  use	{'bluz71/vim-nightfly-guicolors'}
   use	{'mattn/emmet-vim'}
-  use	{'neoclide/coc.nvim',branch='release'}
   use	{'prettier/vim-prettier'}
   use	{'sheerun/vim-polyglot'}
   use	{'tpope/vim-fugitive'}
@@ -35,12 +33,14 @@ startup({function(use)
   use {'svermeulen/vimpeccable'}
   use {'jidn/vim-dbml'}
   use {'dyng/ctrlsf.vim'}
-  use { "beauwilliams/focus.nvim" }
+  use {'zhaozg/vim-diagram'}
+  use {'github/copilot.vim'}
+  -- use { "beauwilliams/focus.nvim" }
 end,
 config = {
   ensure_dependencies = true,
-  max_jobs = 4,
+  -- max_jobs = 0,
   git = {
-    clone_timeout = 60*3, -- Timeout, in seconds, for git clones
+    clone_timeout = 60*10, -- Timeout, in seconds, for git clones
   },
 }})

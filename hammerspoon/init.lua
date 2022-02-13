@@ -20,8 +20,7 @@ require "lib/window-management"
 require "lib/spoon-user"
 
 -- WORK/LIFE
-require "lib/work-life"
-
+-- require "lib/work-life"
 
 -- SEAL
 require "lib/seal"

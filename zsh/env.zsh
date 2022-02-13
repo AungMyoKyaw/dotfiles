@@ -8,3 +8,7 @@ export HOMEBREW_NO_ANALYTICS=1
 
 # nim
 export PATH=$HOME/.nimble/bin:$PATH
+
+# brew doctor
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/sbin:$PATH"

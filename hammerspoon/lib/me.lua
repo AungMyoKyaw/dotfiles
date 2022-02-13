@@ -1,4 +1,4 @@
-date = require('date')
+-- date = require('date')
 local function reloadConfig()
   if spoon.Seal.chooser then
     spoon.Seal.chooser:hide()
@@ -18,14 +18,14 @@ end
 hs.hotkey.bind(hyper, "o", 'show console', showConsole)
 
 -- cpu usage
-local function cpuTimer()
-  hs.host.cpuUsage(1,function(data)
-    hs.dockicon.setBadge(string.format("%02d", math.floor(data.overall.active)))
-  end)
-end
-cpuTimer()
-cpuusageTimer = hs.timer.doEvery(1,cpuTimer)
-cpuusageTimer:start()
+-- local function cpuTimer()
+--   hs.host.cpuUsage(1,function(data)
+--     hs.dockicon.setBadge(string.format("%02d", math.floor(data.overall.active)))
+--   end)
+-- end
+-- cpuTimer()
+-- cpuusageTimer = hs.timer.doEvery(1,cpuTimer)
+-- cpuusageTimer:start()
 
 -- local function  clock()
 --   hs.dockicon.setBadge(date():fmt("%I:%M %p"))
@@ -36,7 +36,7 @@ cpuusageTimer:start()
 
 local timersec = -1
 local stopWatch = false
-local mybar = hs.menubar.new()
+-- local mybar = hs.menubar.new()
 function setTimer()
   -- todo: timer
   local textPromptMessage = "TIMER"
@@ -90,19 +90,34 @@ local function stopPlay()
   hs.alert.show("stop playing")
 end
 
+local function brewupdate()
+  hs.alert("updating brew")
+  local shellresult = hs.execute("brew_update")
+  hs.alert.show(shellresult)
+end
+
+local function mxgen()
+  hs.alert("mxgen")
+  local shellresult = hs.execute([[work && mxgen]])
+  print(shellresult)
+  hs.alert.show(shellresult)
+end
+
 menuTable =  {
-  { title = "START POMODORO", fn = startPomodoroMenu },
-  { title = "START POMODORO BREAK", fn = startPomodoroBreakMenu },
-  { title = "-" },
-  { title = "STOPWATCH", fn = setStopWatch },
-  { title = "TIMER", fn = setTimer },
-  { title = "-" },
-  { title = "RESET", fn = resetPomodoroBreakMenu },
-  { title = "-" },
+  -- { title = "START POMODORO", fn = startPomodoroMenu },
+  -- { title = "START POMODORO BREAK", fn = startPomodoroBreakMenu },
+  -- { title = "-" },
+  -- { title = "STOPWATCH", fn = setStopWatch },
+  -- { title = "TIMER", fn = setTimer },
+  -- { title = "-" },
+  -- { title = "RESET", fn = resetPomodoroBreakMenu },
+  -- { title = "-" },
+  -- { title = "UPDATE-BREW", fn = brewupdate },
+  -- { title = "MXGEN", fn = mxgen },
   -- { title = "start-play", fn = startPlay },
   -- { title = "stop-play", fn = stopPlay },
 }
-mybar:setMenu(menuTable)
+-- mybar:setMenu(menuTable)
 local function playSessionEndSound()
   print('playing')
 end
@@ -139,16 +154,11 @@ local function Pomodoro()
   end
   updateTimeOnMenuBar()
 end
-Pomodoro()
-pomodoroTimer = hs.timer.doEvery(1,Pomodoro)
-pomodoroTimer:start()
+-- Pomodoro()
+-- pomodoroTimer = hs.timer.doEvery(1,Pomodoro)
+-- pomodoroTimer:start()
 
 hs.hotkey.bind(hyper, 'v', 'type-pastes', function()
   hs.eventtap.keyStrokes(hs.pasteboard.getContents())
-end)
-
-hs.hotkey.bind(hyper, 'a', 'type-pastes', function()
-  hs.alert("updating brew")
-  local shellresult = hs.execute("brew_update")
 end)
 

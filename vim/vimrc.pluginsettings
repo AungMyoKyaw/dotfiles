@@ -93,7 +93,7 @@ let NERDTreeWinPos     = 'left'
 " ----------------------------------------------------------------------------------------------------
 let g:vimwiki_global_ext = 0
 let mywiki               = {}
-let mywiki.path          = '~/Dropbox/MyWiki/'
+let mywiki.path          = '/Users/aungmyokyaw/Library/CloudStorage/Dropbox/MyWiki'
 let mywiki.syntax        = 'markdown'
 let mywiki.ext           = '.md'
 let g:vimwiki_list       = [mywiki]

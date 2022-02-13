@@ -158,7 +158,7 @@ linking_rc(){
   ln -fs "$CURRENT_DIR/kitty/kitty.conf" "$HOME/.config/kitty/kitty.conf"
   ln -fs "$CURRENT_DIR/git/gitconfig" "$HOME/.gitconfig"
   ln -fs "$CURRENT_DIR/hammerspoon" "$HOME/.hammerspoon"
-  ln -fs "$CURRENT_DIR/karabiner" "$HOME/.config/karabiner"
+  # ln -fs "$CURRENT_DIR/karabiner" "$HOME/.config/karabiner"
   ln -fs "$CURRENT_DIR/nvim/coc-settings.json" "$HOME/.config/nvim/coc-settings.json"
   ln -fs "$CURRENT_DIR/nvim/nvimrc" "$HOME/.config/nvim/init_backup.vim"
   ln -fs "$CURRENT_DIR/nvim-lua/init.lua" "$HOME/.config/nvim/init.lua"

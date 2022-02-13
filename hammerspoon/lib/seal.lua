@@ -1,10 +1,11 @@
 -- Faker = require('faker')
-date = require('date')
+-- date = require('date')
 
 -- global var
 local startplaying = true
 -- SEAL
-if spoon.Seal then
+-- if spoon.Seal then
+if false then
   spoon.Seal:bindHotkeys({ toggle = { {"cmd"}, "Space" }})
   spoon.Seal:loadPlugins({"apps", "screencapture", "calc", "useractions", "pasteboard","urlformats"})
   spoon.Seal.plugins.useractions.actions =
