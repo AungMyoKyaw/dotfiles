@@ -58,11 +58,23 @@ brew install neovim
 :PackerInstall
 ```
 
----
+### install Z shell
 
-_[Z shell](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH) and [antibody](https://github.com/getantibody/antibody) should also need to be installed._
+```
+https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH
+```
 
----
+### install antibody
+
+```
+https://github.com/getantibody/antibody
+```
+
+### install starship
+
+```
+https://github.com/starship/starship
+```
 
 ## INSTALLATION
 

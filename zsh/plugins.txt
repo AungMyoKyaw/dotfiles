@@ -1,6 +1,5 @@
 # Theme
-# denysdovhan/spaceship-prompt
-romkatv/powerlevel10k
+# https://github.com/starship/starship
 # - - - - - - - - - -
 AungMyoKyaw/docker-run-zsh
 Tarrasch/zsh-bd
