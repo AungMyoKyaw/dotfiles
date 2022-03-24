@@ -76,6 +76,12 @@ https://github.com/getantibody/antibody
 https://github.com/starship/starship
 ```
 
+### install fnm [Fast Node Manager ]
+
+```
+https://github.com/Schniz/fnm
+```
+
 ## INSTALLATION
 
 ### Install Config
