@@ -7,4 +7,4 @@ source ~/.theme.zsh
 source ~/.zsh_plugins.sh
 
 eval $(thefuck --alias)
-eval "$(fnm env --use-on-cd)"
+eval "$(fnm env)"
