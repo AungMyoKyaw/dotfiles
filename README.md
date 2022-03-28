@@ -168,8 +168,8 @@ MIT © [Aung Myo Kyaw](https://github.com/AungMyoKyaw)
 [license-url]: https://opensource.org/licenses/MIT
 [dotfiles]: https://img.shields.io/badge/{.}files-AMK-brightgreen.svg?style=flat-square
 [dotfiles-url]: #
-[term]: https://img.shields.io/badge/term-iterm2-brightgreen.svg?style=flat-square&logo=iterm2
-[term-url]: https://iterm2.com
+[term]: https://img.shields.io/badge/term-alacritty-brightgreen.svg?style=flat-square&logo=alacritty
+[term-url]: https://alacritty.org
 [env]: https://img.shields.io/badge/env-macOS-brightgreen.svg?style=flat-square&logo=macos
 [env-url]: https://www.apple.com/macos
 [editor]: https://img.shields.io/badge/editor-nvim%200.5%2B-brightgreen.svg?style=flat-square&logo=neovim
