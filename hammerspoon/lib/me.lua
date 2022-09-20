@@ -9,7 +9,8 @@ local function reloadConfig()
 end
 hs.hotkey.bind(hyper, "r", 'reload config', reloadConfig)
 
-spoon.FadeLogo.image = hs.image.imageFromName(hs.image.systemImageNames.ApplicationIcon)
+spoon.FadeLogo.image = hs.image.imageFromName(
+                           hs.image.systemImageNames.ApplicationIcon)
 spoon.FadeLogo:start()
 
 local function showConsole()
@@ -41,7 +42,8 @@ function setTimer()
   -- todo: timer
   local textPromptMessage = "TIMER"
   local promptInformativeText = "SET IN MIN"
-  local minute = hs.dialog.textPrompt(textPromptMessage, promptInformativeText, "0")
+  local minute = hs.dialog.textPrompt(textPromptMessage, promptInformativeText,
+                                      "0")
 end
 
 function setStopWatch()
@@ -50,18 +52,15 @@ function setStopWatch()
 end
 
 function setPomodoroMin(num)
-  timersec = num*60
-  spoon.FadeLogo.image = hs.image.imageFromURL("https://avatars.githubusercontent.com/u/9404824?v=4")
+  timersec = num * 60
+  spoon.FadeLogo.image = hs.image.imageFromURL(
+                             "https://avatars.githubusercontent.com/u/9404824?v=4")
   spoon.FadeLogo:start()
 end
 
-function startPomodoroMenu()
-  setPomodoroMin(45)
-end
+function startPomodoroMenu() setPomodoroMin(45) end
 
-function startPomodoroBreakMenu()
-  setPomodoroMin(10)
-end
+function startPomodoroBreakMenu() setPomodoroMin(10) end
 
 function resetPomodoroBreakMenu()
   setPomodoroMin(-1)
@@ -71,8 +70,8 @@ end
 local function startPlay()
   function playing()
     local mylocation = hs.mouse.getAbsolutePosition()
-    mylocation.x = mylocation.x+math.random(-400,400)
-    mylocation.y = mylocation.y+math.random(-400,400)
+    mylocation.x = mylocation.x + math.random(-400, 400)
+    mylocation.y = mylocation.y + math.random(-400, 400)
     -- hs.mouse.setAbsolutePosition(mylocation)
     -- local lorem = hs.http.doRequest("http://metaphorpsum.com/sentences/3","GET")
     local lorem = hs.execute("curl http://metaphorpsum.com/sentences/3")
@@ -103,7 +102,7 @@ local function mxgen()
   hs.alert.show(shellresult)
 end
 
-menuTable =  {
+menuTable = {
   -- { title = "START POMODORO", fn = startPomodoroMenu },
   -- { title = "START POMODORO BREAK", fn = startPomodoroBreakMenu },
   -- { title = "-" },
@@ -118,16 +117,15 @@ menuTable =  {
   -- { title = "stop-play", fn = stopPlay },
 }
 -- mybar:setMenu(menuTable)
-local function playSessionEndSound()
-  print('playing')
-end
+local function playSessionEndSound() print('playing') end
 
 local function formatTime(num)
   local timeFormatStr = ""
   local noOfSecondsInMinute = 60
-  local minute = math.floor(num/noOfSecondsInMinute)
-  local second = num%noOfSecondsInMinute
-  timeFormatStr = string.format("%02d",minute) .. ":".. string.format("%02d",second)
+  local minute = math.floor(num / noOfSecondsInMinute)
+  local second = num % noOfSecondsInMinute
+  timeFormatStr = string.format("%02d", minute) .. ":" ..
+                      string.format("%02d", second)
   return timeFormatStr
 end
 
@@ -136,18 +134,14 @@ local function updateTimeOnMenuBar()
     mybar:setTitle("👨🏻‍💻✨👩🏻‍💻")
   else
     -- todo: animate
-    mybar:setTitle("working => "..formatTime(timersec))
+    mybar:setTitle("working => " .. formatTime(timersec))
   end
 end
 
 local function Pomodoro()
   -- todo: persistent data
-  if timersec > 0 and not stopWatch then
-    timersec = timersec - 1
-  end
-  if stopWatch then
-    timersec = timersec + 1
-  end
+  if timersec > 0 and not stopWatch then timersec = timersec - 1 end
+  if stopWatch then timersec = timersec + 1 end
   if timersec == 0 and not stopWatch then
     spoon.FadeLogo:start()
     timersec = -1

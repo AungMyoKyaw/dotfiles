@@ -11,7 +11,5 @@ spoon.RoundedCorners:start()
 -- ACLOCK
 spoon.AClock.format = "%I:%M %p"
 spoon.AClock.width = 800
-local function toggleClock()
-  spoon.AClock:toggleShowPersistent()
-end
+local function toggleClock() spoon.AClock:toggleShowPersistent() end
 hs.hotkey.bind(hyper, "t", 'SHOW-CLOCK', toggleClock)
