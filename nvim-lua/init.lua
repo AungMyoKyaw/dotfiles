@@ -1,3 +1,4 @@
+require("impatient")
 require("bootstraping")
 require("plugins")
 require("sensible")

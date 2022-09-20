@@ -60,7 +60,8 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Maximized
+  # startup_mode: Maximized
+  startup_mode: SimpleFullscreen
 
   # Window title
   #title: Alacritty
@@ -108,11 +109,14 @@ font:
     #   - (Linux) monospace
     #   - (Windows) Consolas
     # family: "SauceCodePro Nerd Font"
-    family: "FiraCode Nerd Font Mono"
+    # family: "FiraCode Nerd Font Mono"
+    # family: "Cascadia Code PL"
+    family: "CaskaydiaCove Nerd Font"
 
     # The `style` can be specified to pick a specific face.
-    style: Retina
-    # style: Regular
+    # style: Retina
+    style: Regular
+    # style: Book
 
   # Bold font face
   bold:
@@ -124,7 +128,8 @@ font:
 
     # The `style` can be specified to pick a specific face.
     # family: "SauceCodePro Nerd Font"
-    family: "FiraCode Nerd Font Mono"
+    # family: "FiraCode Nerd Font Mono"
+    family: "CaskaydiaCove Nerd Font"
     style: Bold
 
   # Italic font face
@@ -137,7 +142,8 @@ font:
 
     # The `style` can be specified to pick a specific face.
     # family: "SauceCodePro Nerd Font"
-    family: "FiraCode Nerd Font Mono"
+    # family: "FiraCode Nerd Font Mono"
+    family: "CaskaydiaCove Nerd Font"
     style: Italic
 
   # Point size
@@ -170,40 +176,44 @@ font:
   #
   # This is a global setting and will require a log out or restart to take
   # effect.
-  use_thin_strokes: true
+  # use_thin_strokes: true
+  AppleFontSmoothing: true
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# https://github.com/eendroroy/alacritty-theme/blob/master/themes/dracula.yaml
-# Colors (Dracula)
+# https://github.com/eendroroy/alacritty-theme/blob/master/themes/hyper.yaml
+# Colors (Hyper)
 colors:
   # Default colors
   primary:
-    background: '0x282a36'
-    foreground: '0xf8f8f2'
+    background: '0x000000'
+    foreground: '0xffffff'
+  cursor:
+    text: '0xF81CE5'
+    cursor: '0xffffff'
 
   # Normal colors
   normal:
     black:   '0x000000'
-    red:     '0xff5555'
-    green:   '0x50fa7b'
-    yellow:  '0xf1fa8c'
-    blue:    '0xbd93f9'
-    magenta: '0xff79c6'
-    cyan:    '0x8be9fd'
-    white:   '0xbbbbbb'
+    red:     '0xfe0100'
+    green:   '0x33ff00'
+    yellow:  '0xfeff00'
+    blue:    '0x0066ff'
+    magenta: '0xcc00ff'
+    cyan:    '0x00ffff'
+    white:   '0xd0d0d0'
 
   # Bright colors
   bright:
-    black:   '0x555555'
-    red:     '0xff5555'
-    green:   '0x50fa7b'
-    yellow:  '0xf1fa8c'
-    blue:    '0xcaa9fa'
-    magenta: '0xff79c6'
-    cyan:    '0x8be9fd'
-    white:   '0xffffff'
+    black:   '0x808080'
+    red:     '0xfe0100'
+    green:   '0x33ff00'
+    yellow:  '0xfeff00'
+    blue:    '0x0066ff'
+    magenta: '0xcc00ff'
+    cyan:    '0x00ffff'
+    white:   '0xFFFFFF'
 
 # Visual Bell
 #

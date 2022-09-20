@@ -154,35 +154,87 @@ makesure_file_exist(){
 
 # LINKING RC
 linking_rc(){
-  ln -fs "$CURRENT_DIR/alacritty/alacritty.yml" "$HOME/.config/alacritty/alacritty.yml"
-  ln -fs "$CURRENT_DIR/kitty/kitty.conf" "$HOME/.config/kitty/kitty.conf"
-  ln -fs "$CURRENT_DIR/git/gitconfig" "$HOME/.gitconfig"
-  ln -fs "$CURRENT_DIR/hammerspoon" "$HOME/.hammerspoon"
-  # ln -fs "$CURRENT_DIR/karabiner" "$HOME/.config/karabiner"
-  ln -fs "$CURRENT_DIR/nvim/coc-settings.json" "$HOME/.config/nvim/coc-settings.json"
-  ln -fs "$CURRENT_DIR/nvim/nvimrc" "$HOME/.config/nvim/init_backup.vim"
-  ln -fs "$CURRENT_DIR/nvim-lua/init.lua" "$HOME/.config/nvim/init.lua"
-  if [ ! -d "$HOME/.config/nvim/lua" ]; then
-    ln -fs "$CURRENT_DIR/nvim-lua/lua" "$HOME/.config/nvim/lua"
+  if [ ! -L "$HOME/.config/alacritty/alacritty.yml" ]; then
+    ln -s "$CURRENT_DIR/alacritty/alacritty.yml" "$HOME/.config/alacritty/alacritty.yml"
   fi
-  ln -fs "$CURRENT_DIR/ssh/config" "$HOME/.ssh/config"
-  ln -fs "$CURRENT_DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
-  ln -fs "$CURRENT_DIR/tmux/recurrect" "$HOME/tmux-resurrect"
-  ln -fs "$CURRENT_DIR/tmux/tmuxinator" "$HOME/.tmuxinator"
-  ln -fs "$CURRENT_DIR/vim/vimrc" "$HOME/.vim/vimrc"
-  ln -fs "$CURRENT_DIR/vim/vimrc.bundles" "$HOME/.vim/vimrc.bundles"
-  ln -fs "$CURRENT_DIR/vim/vimrc.me" "$HOME/.vim/vimrc.me"
-  ln -fs "$CURRENT_DIR/vim/vimrc.pluginsettings" "$HOME/.vim/vimrc.pluginsettings"
-  ln -fs "$CURRENT_DIR/vim/vimrc.sensible" "$HOME/.vim/vimrc.sensible"
-  ln -fs "$CURRENT_DIR/vim/xvimrc" "$HOME/.xvimrc"
-  ln -fs "$CURRENT_DIR/zsh/aliases" "$HOME/.aliases.zsh"
-  ln -fs "$CURRENT_DIR/zsh/default_aliases.zsh" "$HOME/.default_aliases.zsh"
-  ln -fs "$CURRENT_DIR/zsh/env.zsh" "$HOME/.env.zsh"
-  ln -fs "$CURRENT_DIR/zsh/functions.zsh" "$HOME/.functions.zsh"
-  ln -fs "$CURRENT_DIR/zsh/options.zsh" "$HOME/.options.zsh"
-  ln -fs "$CURRENT_DIR/zsh/plugins.txt" "$HOME/.zsh_plugins.txt"
-  ln -fs "$CURRENT_DIR/zsh/theme.zsh" "$HOME/.theme.zsh"
-  ln -fs "$CURRENT_DIR/zsh/zshrc.zsh" "$HOME/.zshrc"
+  if [ ! -L "$HOME/.config/kitty/kitty.conf" ]; then
+    ln -s "$CURRENT_DIR/kitty/kitty.conf" "$HOME/.config/kitty/kitty.conf"
+  fi
+  if [ ! -L "$HOME/.gitconfig" ]; then
+    ln -s "$CURRENT_DIR/git/gitconfig" "$HOME/.gitconfig"
+  fi
+  if [ ! -L "$HOME/.hammerspoon" ]; then
+    ln -s "$CURRENT_DIR/hammerspoon" "$HOME/.hammerspoon"
+  fi
+  if [ ! -L "$HOME/.config/karabiner" ]; then
+    ln -s "$CURRENT_DIR/karabiner" "$HOME/.config/karabiner"
+  fi
+  if [ ! -L "$HOME/.config/nvim/coc-settings.json" ]; then
+    ln -s "$CURRENT_DIR/nvim/coc-settings.json" "$HOME/.config/nvim/coc-settings.json"
+  fi
+  if [ ! -L "$HOME/.config/nvim/init_backup.vim" ]; then
+    ln -s "$CURRENT_DIR/nvim/nvimrc" "$HOME/.config/nvim/init_backup.vim"
+  fi
+  if [ ! -L "$HOME/.config/nvim/init.lua" ]; then
+    ln -s "$CURRENT_DIR/nvim-lua/init.lua" "$HOME/.config/nvim/init.lua"
+  fi
+  if [ ! -d "$HOME/.config/nvim/lua" ]; then
+    ln -s "$CURRENT_DIR/nvim-lua/lua" "$HOME/.config/nvim/lua"
+  fi
+  if [ ! -d "$HOME/.ssh/config" ]; then
+    ln -s "$CURRENT_DIR/ssh/config" "$HOME/.ssh/config"
+  fi
+  if [ ! -d "$HOME/.tmux.conf" ]; then
+    ln -s "$CURRENT_DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
+  fi
+  if [ ! -d "$HOME/tmux-resurrect" ]; then
+    ln -s "$CURRENT_DIR/tmux/recurrect" "$HOME/tmux-resurrect"
+  fi
+  if [ ! -d "$HOME/.tmuxinator" ]; then
+    ln -s "$CURRENT_DIR/tmux/tmuxinator" "$HOME/.tmuxinator"
+  fi
+  if [ ! -d "$HOME/.vim/vimrc" ]; then
+    ln -s "$CURRENT_DIR/vim/vimrc" "$HOME/.vim/vimrc"
+  fi
+  if [ ! -d "$HOME/.vim/vimrc.bundles" ]; then
+    ln -s "$CURRENT_DIR/vim/vimrc.bundles" "$HOME/.vim/vimrc.bundles"
+  fi
+  if [ ! -d "$HOME/.vim/vimrc.me" ]; then
+    ln -s "$CURRENT_DIR/vim/vimrc.me" "$HOME/.vim/vimrc.me"
+  fi
+  if [ ! -d "$HOME/.vim/vimrc.pluginsettings" ]; then
+    ln -s "$CURRENT_DIR/vim/vimrc.pluginsettings" "$HOME/.vim/vimrc.pluginsettings"
+  fi
+  if [ ! -d "$HOME/.vim/vimrc.sensible" ]; then
+    ln -s "$CURRENT_DIR/vim/vimrc.sensible" "$HOME/.vim/vimrc.sensible"
+  fi
+  if [ ! -d "$HOME/.xvimrc" ]; then
+    ln -s "$CURRENT_DIR/vim/xvimrc" "$HOME/.xvimrc"
+  fi
+  if [ ! -d "$HOME/.aliases.zsh" ]; then
+    ln -s "$CURRENT_DIR/zsh/aliases" "$HOME/.aliases.zsh"
+  fi
+  if [ ! -d "$HOME/.default_aliases.zsh" ]; then
+    ln -s "$CURRENT_DIR/zsh/default_aliases.zsh" "$HOME/.default_aliases.zsh"
+  fi
+  if [ ! -d "$HOME/.env.zsh" ]; then
+    ln -s "$CURRENT_DIR/zsh/env.zsh" "$HOME/.env.zsh"
+  fi
+  if [ ! -d "$HOME/.functions.zsh" ]; then
+    ln -s "$CURRENT_DIR/zsh/functions.zsh" "$HOME/.functions.zsh"
+  fi
+  if [ ! -d "$HOME/.options.zsh" ]; then
+    ln -s "$CURRENT_DIR/zsh/options.zsh" "$HOME/.options.zsh"
+  fi
+  if [ ! -d "$HOME/.zsh_plugins.txt" ]; then
+    ln -s "$CURRENT_DIR/zsh/plugins.txt" "$HOME/.zsh_plugins.txt"
+  fi
+  if [ ! -d "$HOME/.theme.zsh" ]; then
+    ln -s "$CURRENT_DIR/zsh/theme.zsh" "$HOME/.theme.zsh"
+  fi
+  if [ ! -d "$HOME/.zshrc" ]; then
+    ln -s "$CURRENT_DIR/zsh/zshrc.zsh" "$HOME/.zshrc"
+  fi
 }
 
 # INSTALLING REQUIRED TMUX PLUGIN

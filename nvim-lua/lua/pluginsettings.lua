@@ -1,49 +1,37 @@
 local vimp       = require('vimp')
 local gitsigns   = require('gitsigns')
-local bufferline = require('bufferline')
 local g          = vim.g
 local opt        = vim.o
 
 -- themes
-vim.cmd [[colorscheme nightfly]]
+vim.cmd[[colorscheme tokyonight]]
 vim.cmd [[set termguicolors]]
 vim.cmd [[let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"]]
 vim.cmd [[let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"]]
 vim.opt.termguicolors = true
-vim.g.nightflyCursorColor = 1
+vim.g.tokyonight_style = "night"
 ----------
+
+require('nvim-cursorline').setup {
+  cursorline = {
+    enable = true,
+    timeout = 1000,
+    number = false,
+  },
+  cursorword = {
+    enable = true,
+    min_length = 3,
+    hl = { underline = true },
+  }
+}
+
+-- vim.cmd [[call FlutterMenu()]]
 
 -- require("focus").setup()
 
 -- nvim tree setup
 require'nvim-tree'.setup()
 vimp.nnoremap('<C-n>',[[:NvimTreeToggle<cr>]])
-
-g.dashboard_default_executive ='telescope'
-g.dashboard_custom_header = {
-    '    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠤⠖⠚⢉⣩⣭⡭⠛⠓⠲⠦⣄⡀⠀⠀⠀⠀⠀⠀⠀  ',
-    '    ⠀⠀⠀⠀⠀⠀⢀⡴⠋⠁⠀⠀⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠳⢦⡀⠀⠀⠀⠀  ',
-    '    ⠀⠀⠀⠀⢀⡴⠃⢀⡴⢳⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⣆⠀⠀⠀  ',
-    '    ⠀⠀⠀⠀⡾⠁⣠⠋⠀⠈⢧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢧⠀⠀  ',
-    '    ⠀⠀⠀⣸⠁⢰⠃⠀⠀⠀⠈⢣⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣇⠀  ',
-    '    ⠀⠀⠀⡇⠀⡾⡀⠀⠀⠀⠀⣀⣹⣆⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⠀  ',
-    '    ⠀⠀⢸⠃⢀⣇⡈⠀⠀⠀⠀⠀⠀⢀⡑⢄⡀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇  ',
-    '    ⠀⠀⢸⠀⢻⡟⡻⢶⡆⠀⠀⠀⠀⡼⠟⡳⢿⣦⡑⢄⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇  ',
-    '    ⠀⠀⣸⠀⢸⠃⡇⢀⠇⠀⠀⠀⠀⠀⡼⠀⠀⠈⣿⡗⠂⠀⠀⠀⠀⠀⠀⠀⢸⠁  ',
-    '    ⠀⠀⡏⠀⣼⠀⢳⠊⠀⠀⠀⠀⠀⠀⠱⣀⣀⠔⣸⠁⠀⠀⠀⠀⠀⠀⠀⢠⡟⠀  ',
-    '    ⠀⠀⡇⢀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⢸⠃⠀  ',
-    '    ⠀⢸⠃⠘⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠁⠀⠀⢀⠀⠀⠀⠀⠀⣾⠀⠀  ',
-    '    ⠀⣸⠀⠀⠹⡄⠀⠀⠈⠁⠀⠀⠀⠀⠀⠀⠀⡞⠀⠀⠀⠸⠀⠀⠀⠀⠀⡇⠀⠀  ',
-    '    ⠀⡏⠀⠀⠀⠙⣆⠀⠀⠀⠀⠀⠀⠀⢀⣠⢶⡇⠀⠀⢰⡀⠀⠀⠀⠀⠀⡇⠀⠀  ',
-    '    ⢰⠇⡄⠀⠀⠀⡿⢣⣀⣀⣀⡤⠴⡞⠉⠀⢸⠀⠀⠀⣿⡇⠀⠀⠀⠀⠀⣧⠀⠀  ',
-    '    ⣸⠀⡇⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀⢹⠀⠀⢸⠀⠀⢀⣿⠇⠀⠀⠀⠁⠀⢸⠀⠀  ',
-    '    ⣿⠀⡇⠀⠀⠀⠀⠀⢀⡤⠤⠶⠶⠾⠤⠄⢸⠀⡀⠸⣿⣀⠀⠀⠀⠀⠀⠈⣇⠀  ',
-    '    ⡇⠀⡇⠀⠀⡀⠀⡴⠋⠀⠀⠀⠀⠀⠀⠀⠸⡌⣵⡀⢳⡇⠀⠀⠀⠀⠀⠀⢹⡀  ',
-    '    ⡇⠀⠇⠀⠀⡇⡸⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠮⢧⣀⣻⢂⠀⠀⠀⠀⠀⠀⢧  ',
-    '    ⣇⠀⢠⠀⠀⢳⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡎⣆⠀⠀⠀⠀⠀⠘  '
-}
-g.indentLine_fileTypeExclude = {'dashboard'}
--- g.dashboard_custom_shortcut={}
 
 -- gitsigns
 gitsigns.setup()
@@ -52,9 +40,7 @@ gitsigns.setup()
 vimp.nmap('<leader>ft',"<cmd>lua require('FTerm').toggle()<cr>")
 
 -- status line setup
-require('lualine').setup{
-    options = {theme = 'nightfly'}
-}
+require('feline').setup()
 
 local configure_language = require('kommentary.config').configure_language
 configure_language("nim", {
@@ -68,7 +54,10 @@ configure_language("default", {
 
 -- Themes
 opt.showtabline=2
-bufferline.setup{}
+
+--bufferline
+vim.opt.termguicolors = true
+require("bufferline").setup{}
 
 -- macvim  conf
 opt.background = "dark"
@@ -139,7 +128,7 @@ vimp.nnoremap('<leader>fc',"<cmd>lua require('telescope.builtin').commands()<cr>
 -- ----------------------------------------------------------------------------------------------------
 g.vimwiki_global_ext = 0
 local mywiki         = {}
-mywiki.path          = '/Users/aungmyokyaw/Library/CloudStorage/Dropbox/MyWiki'
+mywiki.path          = '/Users/aungmyokyaw/MEGAsync/aungmyokyaw/MyWiki'
 mywiki.syntax        = 'markdown'
 mywiki.ext           = '.md'
 g.vimwiki_list       = {mywiki}
@@ -152,3 +141,7 @@ g.vrc_curl_opts['-i'] = ''
 -- " vim polyglot
 g.vim_markdown_conceal             = 0
 g.vim_markdown_conceal_code_blocks = 0
+
+-- code completiong
+g.coq_settings = { auto_start= 'shut-up'}
+require("coq")

@@ -19,3 +19,6 @@ export CHROME_EXECUTABLE="/Applications/Google Chrome Dev.app/Contents/MacOS/Goo
 export FLUTTER_GIT_URL="ssh://git@github.com/flutter/flutter.git"
 
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
+# mongo
+export PATH="/opt/homebrew/opt/mongodb-community@4.2/bin:$PATH"

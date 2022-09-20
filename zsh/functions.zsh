@@ -185,7 +185,7 @@ for file in *; do
   if [ -d "$file" ]; then
     filenamelowercase=$(echo "$file" | tr '[:upper:]' '[:lower:]')
     cd $file
-    mx-yml-gen --name=${filenamelowercase} --cp=true --mode=amk
+    mx-yml-gen --name=${filenamelowercase} --cp=true --mode=amk --editor=none
     cd ..
     echo $filenamelowercase
   fi
