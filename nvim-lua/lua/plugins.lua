@@ -16,7 +16,8 @@ startup({
     use {'junegunn/vim-easy-align'}
     use {'kyazdani42/nvim-tree.lua'}
     use {'lukas-reineke/indent-blankline.nvim'}
-    use {'folke/tokyonight.nvim'}
+    -- use {'folke/tokyonight.nvim'}
+    use {'rafamadriz/neon'}
     use {'mattn/emmet-vim'}
     use {'prettier/vim-prettier'}
     use {'sheerun/vim-polyglot'}
@@ -49,10 +50,6 @@ startup({
     use {'jidn/vim-dbml'}
     use {'dyng/ctrlsf.vim'}
     use {'zhaozg/vim-diagram'}
-    use {
-      'declancm/cinnamon.nvim',
-      config = function() require('cinnamon').setup() end
-    }
     -- use {'github/copilot.vim'}
     ----------------------------
     use {'dart-lang/dart-vim-plugin'}
