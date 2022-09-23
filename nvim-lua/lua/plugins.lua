@@ -28,7 +28,7 @@ startup({
     use {'vimwiki/vimwiki'}
     use {'yamatsum/nvim-cursorline'}
     use {'feline-nvim/feline.nvim'}
-    use { 'folke/which-key.nvim' }
+    use {'folke/which-key.nvim'}
     use {
       'akinsho/bufferline.nvim',
       tag = "v2.*",
