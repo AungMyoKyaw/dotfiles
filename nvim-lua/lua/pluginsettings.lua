@@ -5,6 +5,9 @@ local opt = vim.o
 
 -- themes
 -- vim.cmd [[colorscheme tokyonight]]
+vim.g.neon_style = "default"
+-- default, doom, dark and light
+vim.g.neon_bold = true
 vim.cmd [[colorscheme neon]]
 vim.cmd [[set termguicolors]]
 vim.cmd [[let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"]]
@@ -16,6 +19,13 @@ vim.g.tokyonight_style = "night"
 require('nvim-cursorline').setup {
   cursorline = {enable = true, timeout = 1000, number = false},
   cursorword = {enable = true, min_length = 3, hl = {underline = true}}
+}
+
+-- which key
+require("which-key").setup {
+  -- your configuration comes here
+  -- or leave it empty to use the default settings
+  -- refer to the configuration section below
 }
 
 -- vim.cmd [[call FlutterMenu()]]
