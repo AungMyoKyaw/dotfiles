@@ -192,3 +192,6 @@ for file in *; do
 done
 }
 
+ip(){
+  curl https://ipinfo.io/json | jq
+}

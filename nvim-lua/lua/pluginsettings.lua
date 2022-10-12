@@ -58,7 +58,16 @@ opt.showtabline = 2
 
 -- bufferline
 vim.opt.termguicolors = true
-require("bufferline").setup {}
+require("bufferline").setup {
+  options = {
+    show_tab_indicators = true,
+    separator_style = 'thick',
+    indicator = {
+      -- icon = '▎', -- this should be omitted if indicator style is not 'icon'
+      style = 'underline'
+    }
+  }
+}
 
 -- macvim  conf
 opt.background = "dark"

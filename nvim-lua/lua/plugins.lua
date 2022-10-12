@@ -51,6 +51,7 @@ startup({
     use {'jidn/vim-dbml'}
     use {'dyng/ctrlsf.vim'}
     use {'zhaozg/vim-diagram'}
+    use {'lervag/vimtex'}
     -- use {'github/copilot.vim'}
     ----------------------------
     use {'dart-lang/dart-vim-plugin'}
