@@ -17,7 +17,8 @@ startup({
     use {'kyazdani42/nvim-tree.lua'}
     use {'lukas-reineke/indent-blankline.nvim'}
     -- use {'folke/tokyonight.nvim'}
-    use {'rafamadriz/neon'}
+    -- use {'rafamadriz/neon'}
+    use {'projekt0n/github-nvim-theme'}
     use {'mattn/emmet-vim'}
     use {'prettier/vim-prettier'}
     use {'sheerun/vim-polyglot'}
