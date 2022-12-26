@@ -13,7 +13,7 @@
 
 ---
 
-<img src="./assets/amk-dotfiles.gif" alt="dotfiles_ss" align="center" width="100%">
+<img src="./assets/amk-dotfiles-27-Dec-2022.gif" alt="dotfiles_ss" align="center" width="100%">
 
 ---
 
