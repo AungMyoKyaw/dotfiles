@@ -4,7 +4,7 @@ local g = vim.g
 local opt = vim.o
 
 -- themes
-vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[colorscheme tokyonight-moon]]
 -- vim.g.neon_style = "default"
 -- default, doom, dark and light
 -- vim.g.neon_bold = true
@@ -13,7 +13,6 @@ vim.cmd [[set termguicolors]]
 vim.cmd [[let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"]]
 vim.cmd [[let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"]]
 vim.opt.termguicolors = true
-vim.g.tokyonight_style = "night"
 -- require('github-theme').setup({
 --   theme_style = "dark",
 --   function_style = "italic",
