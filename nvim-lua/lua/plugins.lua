@@ -60,6 +60,29 @@ startup({
     use {'othree/html5.vim'}
     use {'evanleck/vim-svelte'}
     --------
+    -- auto complete deps
+    use {'neovim/nvim-lspconfig'}
+    use {'hrsh7th/cmp-nvim-lsp'}
+    use {'hrsh7th/cmp-buffer'}
+    use {'hrsh7th/cmp-path'}
+    use {'hrsh7th/cmp-cmdline'}
+    use {'hrsh7th/nvim-cmp'}
+
+    -- " For vsnip users.
+    use {'hrsh7th/cmp-vsnip'}
+    use {'hrsh7th/vim-vsnip'}
+
+    -- " For luasnip users.
+    -- " Plug 'L3MON4D3/LuaSnip'
+    -- " Plug 'saadparwaiz1/cmp_luasnip'
+
+    -- " For ultisnips users.
+    -- " Plug 'SirVer/ultisnips'
+    -- " Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+
+    -- " For snippy users.
+    -- " Plug 'dcampos/nvim-snippy'
+    -- " Plug 'dcampos/cmp-snippy'
   end,
   config = {
     ensure_dependencies = true,

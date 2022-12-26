@@ -68,7 +68,8 @@ vimp.nnoremap('<leader>bD', function() vim.cmd('BufOnly') end)
 vimp.nnoremap('<leader>bb', function()
   -- vim.cmd("lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown({}))")
   -- vim.cmd("lua require('telescope.builtin').buffers({ sort_lastused = true, ignore_current_buffer = true })")
-  vim.cmd("lua require('telescope.builtin').buffers({ sort_mru = true, ignore_current_buffer = true })")
+  vim.cmd(
+      "lua require('telescope.builtin').buffers({ sort_mru = true, ignore_current_buffer = true })")
 end)
 
 -- reload vimrc

@@ -161,8 +161,6 @@ g.vim_markdown_conceal_code_blocks = 0
 
 -- telescope
 require('telescope').setup({
-  defaults = {
-    theme = "dropdown"
-  },
+  defaults = {theme = "dropdown"}
   -- other configuration values here
 })
