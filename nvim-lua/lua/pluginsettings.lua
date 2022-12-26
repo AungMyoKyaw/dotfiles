@@ -4,7 +4,7 @@ local g = vim.g
 local opt = vim.o
 
 -- themes
--- vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[colorscheme tokyonight]]
 -- vim.g.neon_style = "default"
 -- default, doom, dark and light
 -- vim.g.neon_bold = true
@@ -13,12 +13,12 @@ vim.cmd [[set termguicolors]]
 vim.cmd [[let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"]]
 vim.cmd [[let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"]]
 vim.opt.termguicolors = true
--- vim.g.tokyonight_style = "night"
-require('github-theme').setup({
-  theme_style = "dark",
-  function_style = "italic",
-  sidebars = {"qf", "vista_kind", "terminal", "packer"}
-})
+vim.g.tokyonight_style = "night"
+-- require('github-theme').setup({
+--   theme_style = "dark",
+--   function_style = "italic",
+--   sidebars = {"qf", "vista_kind", "terminal", "packer"}
+-- })
 ----------
 
 require('nvim-cursorline').setup {
@@ -159,6 +159,10 @@ g.vrc_curl_opts['-i'] = ''
 g.vim_markdown_conceal = 0
 g.vim_markdown_conceal_code_blocks = 0
 
--- code completiong
-g.coq_settings = {auto_start = 'shut-up'}
-require("coq")
+-- telescope
+require('telescope').setup({
+  defaults = {
+    theme = "dropdown"
+  },
+  -- other configuration values here
+})

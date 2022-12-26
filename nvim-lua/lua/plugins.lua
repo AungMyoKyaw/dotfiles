@@ -16,9 +16,9 @@ startup({
     use {'junegunn/vim-easy-align'}
     use {'kyazdani42/nvim-tree.lua'}
     use {'lukas-reineke/indent-blankline.nvim'}
-    -- use {'folke/tokyonight.nvim'}
+    use {'folke/tokyonight.nvim'}
     -- use {'rafamadriz/neon'}
-    use {'projekt0n/github-nvim-theme'}
+    -- use {'projekt0n/github-nvim-theme'}
     use {'mattn/emmet-vim'}
     use {'prettier/vim-prettier'}
     use {'sheerun/vim-polyglot'}
@@ -60,19 +60,6 @@ startup({
     use {'othree/html5.vim'}
     use {'evanleck/vim-svelte'}
     --------
-    -- code completion
-    -- " main one
-    use {'ms-jpq/coq_nvim', branch = 'coq'}
-    -- " 9000+ Snippets
-    use {'ms-jpq/coq.artifacts', branch = 'artifacts'}
-    -- " lua & third party sources -- See https://github.com/ms-jpq/coq.thirdparty
-    -- " Need to **configure separately**
-    use {'ms-jpq/coq.thirdparty', branch = '3p'}
-    -- " - shell repl
-    -- " - nvim lua api
-    -- " - scientific calculator
-    -- " - comment banner
-    -- " - etc
   end,
   config = {
     ensure_dependencies = true,
