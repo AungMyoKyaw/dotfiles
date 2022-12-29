@@ -7,24 +7,24 @@
 
 CURRENT_DIR=$PWD
 
-prerequisite(){
+prerequisite() {
   # INSTALLING TMUX
-  if ! hash "tmux" &>/dev/null; then
-    echo "☭ INSTALLING TMUX"
+  if ! hash "tmux" &> /dev/null; then
+    echo "🌸 INSTALLING TMUX"
     brew install tmux
     exit 1
   fi
 
   # INSTALLING TMUX PLUGIN MANAGER
   if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then
-    echo "☭ INSTALLING TMUX PLUGIN MANAGER"
+    echo "🌸 INSTALLING TMUX PLUGIN MANAGER"
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   fi
 }
 
 # todo
 # prerequisite check
-install_dotfiles(){
+install_dotfiles() {
   backup_vim_rc
   backup_tmux_conf
   backup_zsh_rc
@@ -36,42 +36,42 @@ install_dotfiles(){
 }
 
 # BACKUP VIMRC
-backup_vim_rc(){
+backup_vim_rc() {
   if [ -f "$HOME/.vim/vimrc" ]; then
     cp "$HOME/.vim/vimrc" "$HOME/.vim/vimrc.bk"
   fi
 }
 
 # BACKUP TMUX.CONF
-backup_tmux_conf(){
+backup_tmux_conf() {
   if [ -f "$HOME/.tmux.conf" ]; then
     cp "$HOME/.tmux.conf" "$HOME/.tmux.conf.bk"
   fi
 }
 
 # BACKUP ZSHRC
-backup_zsh_rc(){
+backup_zsh_rc() {
   if [ -f "$HOME/.zshrc" ]; then
     cp "$HOME/.zshrc" "$HOME/.zshrc.bk"
   fi
 }
 
 # BACKUP ALIASES
-backup_aliases(){
+backup_aliases() {
   if [ -f "$HOME/.aliases" ]; then
     cp "$HOME/.aliases" "$HOME/.aliases.bk"
   fi
 }
 
 # BACKUP ssh config
-backup_aliases(){
+backup_aliases() {
   if [ -f "$HOME/.ssh" ]; then
     cp "$HOME/.ssh/config" "$HOME/.ssh/config.bk"
   fi
 }
 
 # MAKE SURE REQUIRED FILE EXISTS
-makesure_file_exist(){
+makesure_file_exist() {
   if [ ! -d "$HOME/.vim/" ]; then
     mkdir $HOME/.vim/
   fi
@@ -153,7 +153,7 @@ makesure_file_exist(){
 }
 
 # LINKING RC
-linking_rc(){
+linking_rc() {
   if [ ! -L "$HOME/.config/alacritty/alacritty.yml" ]; then
     ln -s "$CURRENT_DIR/alacritty/alacritty.yml" "$HOME/.config/alacritty/alacritty.yml"
   fi
@@ -238,16 +238,16 @@ linking_rc(){
 }
 
 # INSTALLING REQUIRED TMUX PLUGIN
-install_tmux_plugin(){
+install_tmux_plugin() {
   tmux source-file ~/.tmux.conf
 }
 
 # reload zsh config
-reload_zshrc(){
+reload_zshrc() {
   source ~/.zshrc
 }
 
-showSuccessMessage(){
+showSuccessMessage() {
   echo "--------------------------"
   echo "-                        -"
   echo "- INSTALLATION COMPLETED -"
@@ -256,7 +256,7 @@ showSuccessMessage(){
   exit 0
 }
 
-main(){
+main() {
   install_dotfiles
 }
 

@@ -27,7 +27,7 @@ _i have switched to init.lua_
 - [INSTALLATION](#INSTALLATION)
   - [Install Config](#install-config)
   - [Install TMUX Plugins](#install-tmux-plugins)
-  - [❄️](#❄️)
+  - [🌸](#🌸)
 - [LICENSE](#LICENSE)
 
 ---
@@ -152,7 +152,7 @@ docker run -it --rm \
   dnvim
 ```
 
-### ❄️
+### 🌸
 
 - install [hammerspoon](https://www.hammerspoon.org)
 - install [karabiner](https://karabiner-elements.pqrs.org)
