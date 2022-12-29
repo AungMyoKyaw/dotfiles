@@ -8,7 +8,7 @@ startup({
     ---------------------------
     use {'lewis6991/impatient.nvim'}
     -- treesiter
-    use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'})
+    use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdateSync'})
     -- themes
     use {'folke/tokyonight.nvim'}
     use {'feline-nvim/feline.nvim'}
