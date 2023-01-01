@@ -9,7 +9,6 @@
 [![multiplexer][multiplexer]][multiplexer-url]
 [![shell][shell]][shell-url]
 [![License: MIT][license]][license-url]
-[![Docker Cloud Build Status][docker-build-status]][docker-build-url]
 
 ---
 
@@ -42,5 +41,3 @@ MIT © [Aung Myo Kyaw](https://github.com/AungMyoKyaw)
 [shell-url]: https://zsh.sourceforge.io
 [asciicast-screenshot]: https://asciinema.org/a/LrBeUcO83YmxixOFCTBi8sQIT.svg
 [asciicast-screenshot-url]: https://asciinema.org/a/LrBeUcO83YmxixOFCTBi8sQIT
-[docker-build-status]: https://img.shields.io/docker/cloud/build/aungmyokyaw/dnvim?style=flat-square
-[docker-build-url]: https://hub.docker.com/r/aungmyokyaw/dnvim
