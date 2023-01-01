@@ -26,7 +26,7 @@ require("which-key").setup {
 -- require("focus").setup()
 
 -- nvim tree setup
-require'nvim-tree'.setup()
+require("nvim-tree").setup {renderer = {highlight_opened_files = "all"}}
 vimp.nnoremap('<C-n>', [[:NvimTreeToggle<cr>]])
 
 -- gitsigns
