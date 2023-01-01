@@ -5,23 +5,12 @@ local opt = vim.o
 
 -- themes
 vim.cmd [[colorscheme tokyonight-moon]]
--- vim.g.neon_style = "default"
--- default, doom, dark and light
--- vim.g.neon_bold = true
--- vim.cmd [[colorscheme neon]]
-vim.cmd [[set termguicolors]]
 vim.cmd [[let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"]]
 vim.cmd [[let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"]]
-vim.opt.termguicolors = true
--- require('github-theme').setup({
---   theme_style = "dark",
---   function_style = "italic",
---   sidebars = {"qf", "vista_kind", "terminal", "packer"}
--- })
 ----------
 
 require('nvim-cursorline').setup {
-  cursorline = {enable = true, timeout = 1000, number = false},
+  cursorline = {enable = true, timeout = 0000, number = false},
   cursorword = {enable = true, min_length = 3, hl = {underline = true}}
 }
 
@@ -44,10 +33,11 @@ vimp.nnoremap('<C-n>', [[:NvimTreeToggle<cr>]])
 gitsigns.setup()
 
 -- fterm
-vimp.nmap('<leader>ft', "<cmd>lua require('FTerm').toggle()<cr>")
+local fterm = require("FTerm")
+vimp.nnoremap('<leader>ft', fterm.toggle)
 
 -- status line setup
-require('feline').setup()
+require('lualine').setup {options = {theme = 'tokyonight'}}
 
 local configure_language = require('kommentary.config').configure_language
 configure_language("nim", {
@@ -57,21 +47,8 @@ configure_language("nim", {
 })
 configure_language("default", {prefer_single_line_comments = true})
 
--- Themes
-opt.showtabline = 2
-
--- bufferline
-vim.opt.termguicolors = true
-require("bufferline").setup {
-  options = {
-    show_tab_indicators = true,
-    separator_style = 'thick',
-    indicator = {
-      -- icon = '▎', -- this should be omitted if indicator style is not 'icon'
-      style = 'underline'
-    }
-  }
-}
+-- no more bufferline
+opt.showtabline = 0
 
 -- macvim  conf
 opt.background = "dark"
@@ -104,25 +81,14 @@ g.jsdoc_allow_input_prompt = 1
 g.jsdoc_enable_es6 = 1
 g.jsdoc_input_description = 1
 
--- CtrlP
--- vimp.nmap('<C-p>',"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({}))<cr>")
-vimp.nmap('<C-p>', "<cmd>lua require('telescope.builtin').find_files()<cr>")
-vimp.nmap('<leader>ff', "<cmd>lua require('telescope.builtin').find_files()<cr>")
-
--- " ALE Settings
-g.ale_fixers = {'prettier', 'eslint', 'trim_whitespace'}
-g.ale_javascript_prettier_options = '--single-quote --trailing-comma none'
-g.ale_javascript_prettier_use_local_config = 1
-g.ale_disable_lsp = 1
-g.ale_fixers.markdown = {'prettier'}
--- " let g:ale_completion_enabled                   = 1
--- " let g:ale_completion_autoimport                = 1
--- " let g:ale_hover_cursor                         = 1
--- " let g:ale_fix_on_save                          = 1
+-- telescope
+local builtin = require('telescope.builtin')
+vimp.nnoremap('<C-p>', builtin.find_files)
+vimp.nnoremap('<leader>ff', builtin.find_files)
+vimp.nnoremap('<leader>fg', builtin.live_grep)
+vimp.nnoremap('<leader>fc', builtin.commands)
 
 -- ctrlsf
--- vimp.nnoremap('<C-F>f',"<cmd>lua require('telescope.builtin').live_grep()<cr>")
---
 vimp.nmap('<C-F>f', "<Plug>CtrlSFPrompt")
 vimp.vmap('<C-F>f', "<Plug>CtrlSFVwordPath")
 vimp.vmap('<C-F>F', "<Plug>CtrlSFVwordExec")
@@ -131,13 +97,6 @@ vimp.nmap('<C-F>p', "<Plug>CtrlSFPwordPath")
 vimp.nnoremap('<C-F>o', ":CtrlSFOpen<CR>")
 vimp.nnoremap('<C-F>t', ":CtrlSFToggle<CR>")
 vimp.inoremap('<C-F>t', "<Esc>:CtrlSFToggle<CR>")
-
-vimp.nnoremap('<leader>fg',
-              "<cmd>lua require('telescope.builtin').live_grep()<cr>")
-
--- telescope commands
-vimp.nnoremap('<leader>fc',
-              "<cmd>lua require('telescope.builtin').commands()<cr>")
 
 -- ----------------------------------------------------------------------------------------------------
 -- VIM WIKI
@@ -154,12 +113,44 @@ g.vimwiki_folding = 'expr'
 g.vrc_curl_opts = {}
 g.vrc_curl_opts['-i'] = ''
 
--- " vim polyglot
-g.vim_markdown_conceal = 0
-g.vim_markdown_conceal_code_blocks = 0
-
 -- telescope
 require('telescope').setup({
   defaults = {theme = "dropdown"}
   -- other configuration values here
 })
+
+-- nvim-treesitter
+
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all"
+  ensure_installed = {
+    "help", "javascript", "typescript", "c", "lua", "rust", "svelte", "vim",
+    "css", "html", "json", "markdown"
+  },
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- Automatically install missing parsers when entering buffer
+  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+  auto_install = true,
+
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    disable = function(lang, buf)
+      local max_filesize = 100 * 1024 -- 100 KB
+      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+      if ok and stats and stats.size > max_filesize then return true end
+    end,
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your esditor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = {"nim"}
+  }
+}
+
+------------------------------

@@ -128,3 +128,6 @@ opt.shiftround = true -- >> indents to next multiple of 'shiftwidth'.
 opt.autoindent = true
 opt.smartindent = true
 
+--- nvim tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1

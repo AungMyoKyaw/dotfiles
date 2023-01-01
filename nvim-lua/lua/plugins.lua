@@ -11,19 +11,7 @@ startup({
     use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdateSync'})
     -- themes
     use {'folke/tokyonight.nvim'}
-    use {'feline-nvim/feline.nvim'}
-    use {
-      'akinsho/bufferline.nvim',
-      tag = "v2.*",
-      requires = 'kyazdani42/nvim-web-devicons'
-    }
-    use {
-      'goolord/alpha-nvim',
-      requires = {'kyazdani42/nvim-web-devicons'},
-      config = function()
-        require'alpha'.setup(require'alpha.themes.startify'.config)
-      end
-    }
+    use {'nvim-lualine/lualine.nvim'}
     use {'kyazdani42/nvim-tree.lua'}
     use {'yamatsum/nvim-cursorline'}
     use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
@@ -49,9 +37,12 @@ startup({
     use {'folke/which-key.nvim'}
     use {'numtostr/FTerm.nvim'}
     use {'svermeulen/vimpeccable'}
-    use {'jidn/vim-dbml'}
     use {'dyng/ctrlsf.vim'}
+    -- lan plugins
+    use {'jidn/vim-dbml'}
     use {'zhaozg/vim-diagram'}
+    -- use {'alaviss/nim.nvim'}
+    --------------------
     -- use {'github/copilot.vim'}
     -- auto complete deps
     use {
