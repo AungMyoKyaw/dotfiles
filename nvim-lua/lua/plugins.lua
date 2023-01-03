@@ -43,7 +43,7 @@ startup({
     use {'zhaozg/vim-diagram'}
     use {'alaviss/nim.nvim'}
     --------------------
-    -- auto complete deps
+    -- lsp and completion plugins
     use {
       'VonHeikemen/lsp-zero.nvim',
       requires = {
