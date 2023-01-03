@@ -3,8 +3,11 @@ local gitsigns = require('gitsigns')
 local g = vim.g
 local opt = vim.o
 
--- themes
-vim.cmd [[colorscheme tokyonight-moon]]
+-- Theme
+require("tokyonight").setup({
+  style = "moon" -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+})
+vim.cmd [[colorscheme tokyonight]]
 vim.cmd [[let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"]]
 vim.cmd [[let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"]]
 ----------
@@ -119,8 +122,7 @@ require('telescope').setup({
   -- other configuration values here
 })
 
--- nvim-treesitter
-
+-- Treesitter
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
   ensure_installed = {
@@ -152,5 +154,4 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = {"nim"}
   }
 }
-
 ------------------------------
