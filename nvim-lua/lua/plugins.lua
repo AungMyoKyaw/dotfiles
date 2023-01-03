@@ -11,10 +11,11 @@ startup({
     use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdateSync'})
     -- Themes
     use {'folke/tokyonight.nvim'}
-    use {'nvim-lualine/lualine.nvim'}
     use {'kyazdani42/nvim-tree.lua'}
-    use {'yamatsum/nvim-cursorline'}
     use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
+    use {'lukas-reineke/indent-blankline.nvim'}
+    use {'nvim-lualine/lualine.nvim'}
+    use {'yamatsum/nvim-cursorline'}
     use {
       'nvim-telescope/telescope.nvim',
       requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
@@ -26,7 +27,6 @@ startup({
     use {'editorconfig/editorconfig-vim'}
     use {'jiangmiao/auto-pairs'}
     use {'junegunn/vim-easy-align'}
-    use {'lukas-reineke/indent-blankline.nvim'}
     use {'mattn/emmet-vim'}
     use {'prettier/vim-prettier'}
     use {'tpope/vim-fugitive'}
