@@ -41,9 +41,8 @@ startup({
     -- lan plugins
     use {'jidn/vim-dbml'}
     use {'zhaozg/vim-diagram'}
-    -- use {'alaviss/nim.nvim'}
+    use {'alaviss/nim.nvim'}
     --------------------
-    -- use {'github/copilot.vim'}
     -- auto complete deps
     use {
       'VonHeikemen/lsp-zero.nvim',
@@ -57,6 +56,7 @@ startup({
         {'L3MON4D3/LuaSnip'}, {'rafamadriz/friendly-snippets'}
       }
     }
+    use {'github/copilot.vim'}
     ----------------------------
   end,
   config = {
