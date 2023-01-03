@@ -183,37 +183,39 @@ font:
 draw_bold_text_with_bright_colors: true
 
 # https://github.com/eendroroy/alacritty-theme/blob/master/themes/hyper.yaml
-# Colors (Hyper)
+# https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/alacritty/tokyonight_moon.yml
+# TokyoNight Alacritty Colors
 colors:
   # Default colors
   primary:
-    background: '0x000000'
-    foreground: '0xffffff'
-  cursor:
-    text: '0xF81CE5'
-    cursor: '0xffffff'
+    background: "0x222436"
+    foreground: "0xc8d3f5"
 
   # Normal colors
   normal:
-    black:   '0x000000'
-    red:     '0xfe0100'
-    green:   '0x33ff00'
-    yellow:  '0xfeff00'
-    blue:    '0x0066ff'
-    magenta: '0xcc00ff'
-    cyan:    '0x00ffff'
-    white:   '0xd0d0d0'
+    black: "0x1b1d2b"
+    red: "0xff757f"
+    green: "0xc3e88d"
+    yellow: "0xffc777"
+    blue: "0x82aaff"
+    magenta: "0xc099ff"
+    cyan: "0x86e1fc"
+    white: "0x828bb8"
 
   # Bright colors
   bright:
-    black:   '0x808080'
-    red:     '0xfe0100'
-    green:   '0x33ff00'
-    yellow:  '0xfeff00'
-    blue:    '0x0066ff'
-    magenta: '0xcc00ff'
-    cyan:    '0x00ffff'
-    white:   '0xFFFFFF'
+    black: "0x444a73"
+    red: "0xff757f"
+    green: "0xc3e88d"
+    yellow: "0xffc777"
+    blue: "0x82aaff"
+    magenta: "0xc099ff"
+    cyan: "0x86e1fc"
+    white: "0xc8d3f5"
+
+  indexed_colors:
+    - { index: 16, color: "0xff966c" }
+    - { index: 17, color: "0xc53b53" }
 
 # Visual Bell
 #
