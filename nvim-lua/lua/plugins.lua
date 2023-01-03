@@ -7,9 +7,9 @@ startup({
     use {'wbthomason/packer.nvim'}
     ---------------------------
     use {'lewis6991/impatient.nvim'}
-    -- treesiter
+    -- Treesitter
     use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdateSync'})
-    -- themes
+    -- Themes
     use {'folke/tokyonight.nvim'}
     use {'nvim-lualine/lualine.nvim'}
     use {'kyazdani42/nvim-tree.lua'}
