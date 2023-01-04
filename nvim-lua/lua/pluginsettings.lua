@@ -1,5 +1,4 @@
 local vimp = require('vimp')
-local gitsigns = require('gitsigns')
 local g = vim.g
 local opt = vim.o
 
@@ -33,6 +32,7 @@ require("nvim-tree").setup {renderer = {highlight_opened_files = "all"}}
 vimp.nnoremap('<C-n>', [[:NvimTreeToggle<cr>]])
 
 -- gitsigns
+local gitsigns = require('gitsigns')
 gitsigns.setup()
 
 -- fterm
@@ -115,12 +115,6 @@ g.vimwiki_folding = 'expr'
 -- vim rest setting
 g.vrc_curl_opts = {}
 g.vrc_curl_opts['-i'] = ''
-
--- telescope
-require('telescope').setup({
-  defaults = {theme = "dropdown"}
-  -- other configuration values here
-})
 
 -- Treesitter
 require'nvim-treesitter.configs'.setup {
