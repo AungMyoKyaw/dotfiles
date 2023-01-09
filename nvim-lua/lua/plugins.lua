@@ -22,6 +22,7 @@ startup({
     }
     ----------------
     use {'b3nj5m1n/kommentary'}
+    use {'JoosepAlviste/nvim-ts-context-commentstring'}
     use {'dbeniamine/cheat.sh-vim'}
     use {'easymotion/vim-easymotion'}
     use {'editorconfig/editorconfig-vim'}

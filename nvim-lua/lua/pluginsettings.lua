@@ -48,7 +48,29 @@ configure_language("nim", {
   multi_line_comment_strings = {"#[", "]#"},
   prefer_single_line_comments = true
 })
+
+require('kommentary.config').configure_language('typescriptreact', {
+  single_line_comment_string = 'auto',
+  multi_line_comment_strings = 'auto',
+  hook_function = function()
+    require('ts_context_commentstring.internal').update_commentstring()
+  end
+})
+
+require('kommentary.config').configure_language('svelte', {
+  single_line_comment_string = 'auto',
+  multi_line_comment_strings = 'auto',
+  hook_function = function()
+    require('ts_context_commentstring.internal').update_commentstring()
+  end
+})
+
 configure_language("default", {prefer_single_line_comments = true})
+
+-- JoosepAlviste/nvim-ts-context-commentstring setting
+require'nvim-treesitter.configs'.setup {
+  context_commentstring = {enable = true, enable_autocmd = false}
+}
 
 -- no more bufferline
 opt.showtabline = 0
