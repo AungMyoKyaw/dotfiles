@@ -195,3 +195,13 @@ done
 ip(){
   curl https://ipinfo.io/json | jq
 }
+
+# fzfp(){
+#   fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'
+# }
+
+# fzf list with preview and sorted with mru
+
+fzfp(){
+  fzf --preview 'bat --style=numbers --color=always --line-range :500 {}' --bind 'ctrl-r:toggle-sort'
+}

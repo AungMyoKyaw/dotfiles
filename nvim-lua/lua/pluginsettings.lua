@@ -67,11 +67,6 @@ require('kommentary.config').configure_language('svelte', {
 
 configure_language("default", {prefer_single_line_comments = true})
 
--- JoosepAlviste/nvim-ts-context-commentstring setting
-require'nvim-treesitter.configs'.setup {
-  context_commentstring = {enable = true, enable_autocmd = false}
-}
-
 -- no more bufferline
 opt.showtabline = 0
 
@@ -105,6 +100,13 @@ g.EasyMotion_smartcase = 1
 g.jsdoc_allow_input_prompt = 1
 g.jsdoc_enable_es6 = 1
 g.jsdoc_input_description = 1
+
+-- neogen
+local neogen = require('neogen')
+neogen.setup({
+ snippet_engine = "luasnip"
+})
+vimp.nnoremap('<Leader>nf', [[:lua require('neogen').generate()<CR>]])
 
 -- telescope
 local builtin = require('telescope.builtin')
@@ -167,8 +169,11 @@ require'nvim-treesitter.configs'.setup {
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your esditor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false
+    additional_vim_regex_highlighting = false,
     -- additional_vim_regex_highlighting = {"nim"}
+    -- JoosepAlviste/nvim-ts-context-commentstring setting
+    context_commentstring = {enable = true, enable_autocmd = false}
   }
 }
+
 ------------------------------
