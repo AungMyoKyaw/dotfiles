@@ -4,11 +4,16 @@ local opt = vim.o
 
 -- Theme
 require("tokyonight").setup({
-  style = "moon" -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+  style = "moon", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+  -- transparent = true -- Enable this to disable setting the background color
 })
 vim.cmd [[colorscheme tokyonight]]
 vim.cmd [[let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"]]
 vim.cmd [[let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"]]
+
+require("transparent").setup({
+  enable = true, -- boolean: enable transparent
+})
 ----------
 
 require('nvim-cursorline').setup {
@@ -23,13 +28,21 @@ require("which-key").setup {
   -- refer to the configuration section below
 }
 
+-- start nvim colorizer lua
+require('colorizer').setup()
+
 -- vim.cmd [[call FlutterMenu()]]
 
 -- require("focus").setup()
 
 -- nvim tree setup
-require("nvim-tree").setup {renderer = {highlight_opened_files = "all"}}
-vimp.nnoremap('<C-n>', [[:NvimTreeToggle<cr>]])
+require("nvim-tree").setup {
+  renderer = {highlight_opened_files = "all" },
+  -- transparent_panel: true
+}
+vim.cmd [[autocmd Colorscheme * highlight NvimTreeNormal guibg=none guifg=#9da5b3]]
+-- vimp.nnoremap('<C-n>', [[:e .<CR>]])
+vimp.nnoremap('<C-n>', [[:NvimTreeToggle<CR>]])
 
 -- gitsigns
 local gitsigns = require('gitsigns')
@@ -103,9 +116,7 @@ g.jsdoc_input_description = 1
 
 -- neogen
 local neogen = require('neogen')
-neogen.setup({
- snippet_engine = "luasnip"
-})
+neogen.setup({snippet_engine = "luasnip"})
 vimp.nnoremap('<Leader>nf', [[:lua require('neogen').generate()<CR>]])
 
 -- telescope

@@ -20,6 +20,8 @@ startup({
       'nvim-telescope/telescope.nvim',
       requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
     }
+    use {'norcalli/nvim-colorizer.lua'}
+    use {'xiyaowong/nvim-transparent'}
     ----------------
     use {'b3nj5m1n/kommentary'}
     use {'JoosepAlviste/nvim-ts-context-commentstring'}
@@ -44,6 +46,19 @@ startup({
     use {'jidn/vim-dbml'}
     use {'zhaozg/vim-diagram'}
     use {'alaviss/nim.nvim'}
+    -- chat gpt
+    use({
+      "jackMort/ChatGPT.nvim",
+      config = function()
+        require("chatgpt").setup({
+          -- optional configuration
+        })
+      end,
+      requires = {
+        "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope.nvim"
+      }
+    })
     --------------------
     -- lsp and completion plugins
     use {
