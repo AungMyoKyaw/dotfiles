@@ -220,6 +220,9 @@ linking_rc() {
   if [ ! -d "$HOME/.env.zsh" ]; then
     ln -s "$CURRENT_DIR/zsh/env.zsh" "$HOME/.env.zsh"
   fi
+  if [ ! -d "$HOME/.secret-env.zsh" ]; then
+    ln -s "$CURRENT_DIR/zsh/secret-env.zsh" "$HOME/.secret-env.zsh"
+  fi
   if [ ! -d "$HOME/.functions.zsh" ]; then
     ln -s "$CURRENT_DIR/zsh/functions.zsh" "$HOME/.functions.zsh"
   fi
