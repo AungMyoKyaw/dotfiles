@@ -4,6 +4,9 @@ git/gitconfig
 # aliases
 zsh/aliases
 
+# secret key
+zsh/secret-env.zsh
+
 # Adguard Folder
 adguardHome/
 confdir/
