@@ -11,7 +11,7 @@ startup({
     use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdateSync'})
     -- Themes
     -- use {'folke/tokyonight.nvim'}
-    use {"catppuccin/nvim", as = "catppuccin"}
+    use {'catppuccin/nvim', as = 'catppuccin'}
     use {'kyazdani42/nvim-tree.lua'}
     use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
     use {'lukas-reineke/indent-blankline.nvim'}
@@ -47,20 +47,6 @@ startup({
     use {'jidn/vim-dbml'}
     use {'zhaozg/vim-diagram'}
     use {'alaviss/nim.nvim'}
-    -- chat gpt
-    use({
-      "jackMort/ChatGPT.nvim",
-      config = function()
-        require("chatgpt").setup({
-          -- optional configuration
-        })
-      end,
-      requires = {
-        "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim",
-        "nvim-telescope/telescope.nvim"
-      }
-    })
-    --------------------
     -- lsp and completion plugins
     use {
       'VonHeikemen/lsp-zero.nvim',
