@@ -3,16 +3,36 @@ local g = vim.g
 local opt = vim.o
 
 -- Theme
-require("tokyonight").setup({
-  style = "moon", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-  -- transparent = true -- Enable this to disable setting the background color
+-- require("tokyonight").setup({
+--   style = "moon", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+--   -- transparent = true -- Enable this to disable setting the background color
+-- })
+-- vim.cmd [[colorscheme tokyonight]]
+
+require("catppuccin").setup({
+  flavour = "mocha", -- latte, frappe, macchiato, mocha
+  integrations = {
+    cmp = true,
+    gitsigns = true,
+    mason = true,
+    nvimtree = true,
+    nvimtree = true,
+    telescope = true,
+    treesitter = true,
+    treesitter_context = true,
+    vimwiki = true,
+    which_key = true
+    -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+  }
 })
-vim.cmd [[colorscheme tokyonight]]
+-- setup must be called before loading
+vim.cmd.colorscheme "catppuccin"
+
 vim.cmd [[let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"]]
 vim.cmd [[let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"]]
 
 require("transparent").setup({
-  enable = true, -- boolean: enable transparent
+  enable = false -- boolean: enable transparent
 })
 ----------
 
@@ -36,10 +56,7 @@ require('colorizer').setup()
 -- require("focus").setup()
 
 -- nvim tree setup
-require("nvim-tree").setup {
-  renderer = {highlight_opened_files = "all" },
-  -- transparent_panel: true
-}
+require("nvim-tree").setup {renderer = {highlight_opened_files = "all"}}
 vim.cmd [[autocmd Colorscheme * highlight NvimTreeNormal guibg=none guifg=#9da5b3]]
 -- vimp.nnoremap('<C-n>', [[:e .<CR>]])
 vimp.nnoremap('<C-n>', [[:NvimTreeToggle<CR>]])
@@ -53,7 +70,16 @@ local fterm = require("FTerm")
 vimp.nnoremap('<leader>ft', fterm.toggle)
 
 -- status line setup
-require('lualine').setup {options = {theme = 'tokyonight'}}
+-- require('lualine').setup {options = {theme = 'tokyonight'}}
+require('lualine').setup {
+  options = {
+    theme = "catppuccin",
+    -- component_separators = { left = '', right = ''},
+    -- section_separators = { left = '', right = ''},
+    section_separators = {left = '', right = ''},
+    component_separators = {left = '', right = ''}
+  }
+}
 
 local configure_language = require('kommentary.config').configure_language
 configure_language("nim", {
