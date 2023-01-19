@@ -57,7 +57,7 @@ require('colorizer').setup()
 
 -- nvim tree setup
 require("nvim-tree").setup {renderer = {highlight_opened_files = "all"}}
-vim.cmd [[autocmd Colorscheme * highlight NvimTreeNormal guibg=none guifg=#9da5b3]]
+-- vim.cmd [[autocmd Colorscheme * highlight NvimTreeNormal guibg=none guifg=#9da5b3]]
 -- vimp.nnoremap('<C-n>', [[:e .<CR>]])
 vimp.nnoremap('<C-n>', [[:NvimTreeToggle<CR>]])
 
