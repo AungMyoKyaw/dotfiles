@@ -11,11 +11,12 @@ local opt = vim.o
 
 require("catppuccin").setup({
   flavour = "mocha", -- latte, frappe, macchiato, mocha
+  -- styles = {comments = {"italic"}, conditionals = {"italic"}},
+  no_italic = true, -- Force no italic
   integrations = {
     cmp = true,
     gitsigns = true,
     mason = true,
-    nvimtree = true,
     nvimtree = true,
     telescope = true,
     treesitter = true,
