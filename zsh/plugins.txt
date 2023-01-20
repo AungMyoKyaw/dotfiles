@@ -2,12 +2,12 @@
 # https://github.com/starship/starship
 # - - - - - - - - - -
 AungMyoKyaw/docker-run-zsh
-# Tarrasch/zsh-bd
+Tarrasch/zsh-bd
 # bobthecow/git-flow-completion
-# chrissicool/zsh-256color
+chrissicool/zsh-256color
 # junegunn/fzf
-# zsh-users/zsh-completions
-# zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-completions
+zsh-users/zsh-syntax-highlighting
 
 # ohmyzsh/ohmyzsh path:plugins/aws
 # ohmyzsh/ohmyzsh path:plugins/battery
