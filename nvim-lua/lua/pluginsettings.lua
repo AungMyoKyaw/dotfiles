@@ -3,12 +3,6 @@ local g = vim.g
 local opt = vim.o
 
 -- Theme
--- require("tokyonight").setup({
---   style = "moon", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
---   -- transparent = true -- Enable this to disable setting the background color
--- })
--- vim.cmd [[colorscheme tokyonight]]
-
 require("catppuccin").setup({
   flavour = "mocha", -- latte, frappe, macchiato, mocha
   integrations = {
@@ -69,7 +63,6 @@ local fterm = require("FTerm")
 vimp.nnoremap('<leader>ft', fterm.toggle)
 
 -- status line setup
--- require('lualine').setup {options = {theme = 'tokyonight'}}
 require('lualine').setup {
   options = {
     theme = "catppuccin",
@@ -110,7 +103,7 @@ opt.showtabline = 0
 
 -- macvim  conf
 opt.background = "dark"
-opt.guifont = "FiraCode Nerd Font Mono:h25"
+-- opt.guifont = "FiraCode Nerd Font Mono:h25"
 
 -- vim easy align
 -- Start interactive EasyAlign in visual mode (e.g. vipga)

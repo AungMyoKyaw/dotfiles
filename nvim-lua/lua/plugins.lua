@@ -10,7 +10,6 @@ startup({
     -- Treesitter
     use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdateSync'})
     -- Themes
-    -- use {'folke/tokyonight.nvim'}
     use {'catppuccin/nvim', as = 'catppuccin'}
     use {'kyazdani42/nvim-tree.lua'}
     use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
