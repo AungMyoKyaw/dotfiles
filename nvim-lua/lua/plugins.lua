@@ -42,6 +42,7 @@ startup({
     use {'svermeulen/vimpeccable'}
     use {'dyng/ctrlsf.vim'}
     use {'danymat/neogen'}
+    use {'mhartington/formatter.nvim'}
     -- languages plugins that not supported by treesitter
     use {'jidn/vim-dbml'}
     use {'zhaozg/vim-diagram'}

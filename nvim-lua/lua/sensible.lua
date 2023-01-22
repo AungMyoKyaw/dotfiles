@@ -6,12 +6,12 @@ local opt = vim.opt
 vim.cmd('runtime! plugin/sensible.vim')
 
 -- Leader
-g.mapleader = " "
+g.mapleader = ' '
 
 g.termguicolors = true
 
 -- clipboard
-opt.clipboard = "unnamed,unnamedplus"
+opt.clipboard = 'unnamed,unnamedplus'
 
 -- remap jj to <esc>
 vimp.inoremap('jj', '<esc>')
@@ -40,7 +40,7 @@ vimp.nmap('<leader>fl', ':FocusSplitRight<CR>')
 vimp.nmap('<leader>fo', ':FocusMaximise<CR>')
 
 -- Folding
-opt.fdm = "indent"
+opt.fdm = 'indent'
 opt.foldenable = false
 vimp.nnoremap('zO', 'zA')
 vimp.nnoremap('zo', 'za')
@@ -49,7 +49,7 @@ vimp.nnoremap('zo', 'za')
 opt.number = true
 opt.numberwidth = 4
 opt.textwidth = 80
-opt.colorcolumn = "120"
+opt.colorcolumn = '120'
 
 -- Control + s for vim
 vimp.inoremap('<C-S>', '<esc>:w<cr>i')
@@ -69,7 +69,7 @@ vimp.nnoremap('<leader>bb', function()
   -- vim.cmd("lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown({}))")
   -- vim.cmd("lua require('telescope.builtin').buffers({ sort_lastused = true, ignore_current_buffer = true })")
   vim.cmd(
-      "lua require('telescope.builtin').buffers({ sort_mru = true, ignore_current_buffer = true })")
+      'lua require(\'telescope.builtin\').buffers({ sort_mru = true, ignore_current_buffer = true })')
 end)
 
 -- reload vimrc
@@ -83,7 +83,7 @@ vimp.nnoremap('<leader>vr', function()
   vim.cmd('silent wa')
   -- Execute our vimrc lua file again to add back our maps
   dofile(vim.fn.stdpath('config') .. '/init.lua')
-  print("Reloaded vimrc!")
+  print('Reloaded vimrc!')
 end)
 
 opt.cul = true

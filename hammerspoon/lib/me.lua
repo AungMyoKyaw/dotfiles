@@ -7,7 +7,7 @@ local function reloadConfig()
   spoon.SpoonInstall:asyncUpdateAllRepos()
   hs.reload()
 end
-hs.hotkey.bind(hyper, "r", 'reload config', reloadConfig)
+hs.hotkey.bind(hyper, 'r', 'reload config', reloadConfig)
 
 spoon.FadeLogo.image = hs.image.imageFromName(
                            hs.image.systemImageNames.ApplicationIcon)
@@ -16,7 +16,7 @@ spoon.FadeLogo:start()
 local function showConsole()
   hs.application.launchOrFocusByBundleID('org.hammerspoon.Hammerspoon')
 end
-hs.hotkey.bind(hyper, "o", 'show console', showConsole)
+hs.hotkey.bind(hyper, 'o', 'show console', showConsole)
 
 -- cpu usage
 -- local function cpuTimer()
@@ -40,10 +40,10 @@ local stopWatch = false
 -- local mybar = hs.menubar.new()
 function setTimer()
   -- todo: timer
-  local textPromptMessage = "TIMER"
-  local promptInformativeText = "SET IN MIN"
+  local textPromptMessage = 'TIMER'
+  local promptInformativeText = 'SET IN MIN'
   local minute = hs.dialog.textPrompt(textPromptMessage, promptInformativeText,
-                                      "0")
+                                      '0')
 end
 
 function setStopWatch()
@@ -54,7 +54,7 @@ end
 function setPomodoroMin(num)
   timersec = num * 60
   spoon.FadeLogo.image = hs.image.imageFromURL(
-                             "https://avatars.githubusercontent.com/u/9404824?v=4")
+                             'https://avatars.githubusercontent.com/u/9404824?v=4')
   spoon.FadeLogo:start()
 end
 
@@ -74,29 +74,29 @@ local function startPlay()
     mylocation.y = mylocation.y + math.random(-400, 400)
     -- hs.mouse.setAbsolutePosition(mylocation)
     -- local lorem = hs.http.doRequest("http://metaphorpsum.com/sentences/3","GET")
-    local lorem = hs.execute("curl http://metaphorpsum.com/sentences/3")
+    local lorem = hs.execute('curl http://metaphorpsum.com/sentences/3')
     -- local lorem = "A nest is a towered muscle."
     -- hs.inspect.inspect(lorem)
     hs.eventtap.keyStrokes(lorem)
   end
   typistplayer = hs.timer.new(10, playing)
   typistplayer:start()
-  hs.alert.show("start playing")
+  hs.alert.show('start playing')
 end
 
 local function stopPlay()
   mouseplayer:stop()
-  hs.alert.show("stop playing")
+  hs.alert.show('stop playing')
 end
 
 local function brewupdate()
-  hs.alert("updating brew")
-  local shellresult = hs.execute("brew_update")
+  hs.alert('updating brew')
+  local shellresult = hs.execute('brew_update')
   hs.alert.show(shellresult)
 end
 
 local function mxgen()
-  hs.alert("mxgen")
+  hs.alert('mxgen')
   local shellresult = hs.execute([[work && mxgen]])
   print(shellresult)
   hs.alert.show(shellresult)
@@ -120,21 +120,21 @@ menuTable = {
 local function playSessionEndSound() print('playing') end
 
 local function formatTime(num)
-  local timeFormatStr = ""
+  local timeFormatStr = ''
   local noOfSecondsInMinute = 60
   local minute = math.floor(num / noOfSecondsInMinute)
   local second = num % noOfSecondsInMinute
-  timeFormatStr = string.format("%02d", minute) .. ":" ..
-                      string.format("%02d", second)
+  timeFormatStr = string.format('%02d', minute) .. ':' ..
+                      string.format('%02d', second)
   return timeFormatStr
 end
 
 local function updateTimeOnMenuBar()
   if timersec < 0 then
-    mybar:setTitle("👨🏻‍💻✨👩🏻‍💻")
+    mybar:setTitle('👨🏻‍💻✨👩🏻‍💻')
   else
     -- todo: animate
-    mybar:setTitle("working => " .. formatTime(timersec))
+    mybar:setTitle('working => ' .. formatTime(timersec))
   end
 end
 

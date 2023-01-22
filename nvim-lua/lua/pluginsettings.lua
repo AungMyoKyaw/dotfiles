@@ -3,8 +3,8 @@ local g = vim.g
 local opt = vim.o
 
 -- Theme
-require("catppuccin").setup({
-  flavour = "mocha", -- latte, frappe, macchiato, mocha
+require('catppuccin').setup({
+  flavour = 'mocha', -- latte, frappe, macchiato, mocha
   integrations = {
     cmp = true,
     gitsigns = true,
@@ -19,12 +19,12 @@ require("catppuccin").setup({
   }
 })
 -- setup must be called before loading
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme 'catppuccin'
 
 vim.cmd [[let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"]]
 vim.cmd [[let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"]]
 
-require("transparent").setup({
+require('transparent').setup({
   enable = false -- boolean: enable transparent
 })
 ----------
@@ -35,7 +35,7 @@ require('nvim-cursorline').setup {
 }
 
 -- which key
-require("which-key").setup {
+require('which-key').setup {
   -- your configuration comes here
   -- or leave it empty to use the default settings
   -- refer to the configuration section below
@@ -49,7 +49,7 @@ require('colorizer').setup()
 -- require("focus").setup()
 
 -- nvim tree setup
-require("nvim-tree").setup {renderer = {highlight_opened_files = "all"}}
+require('nvim-tree').setup {renderer = {highlight_opened_files = 'all'}}
 -- vim.cmd [[autocmd Colorscheme * highlight NvimTreeNormal guibg=none guifg=#9da5b3]]
 -- vimp.nnoremap('<C-n>', [[:e .<CR>]])
 vimp.nnoremap('<C-n>', [[:NvimTreeToggle<CR>]])
@@ -59,13 +59,13 @@ local gitsigns = require('gitsigns')
 gitsigns.setup()
 
 -- fterm
-local fterm = require("FTerm")
+local fterm = require('FTerm')
 vimp.nnoremap('<leader>ft', fterm.toggle)
 
 -- status line setup
 require('lualine').setup {
   options = {
-    theme = "catppuccin",
+    theme = 'catppuccin',
     -- component_separators = { left = '', right = ''},
     -- section_separators = { left = '', right = ''},
     section_separators = {left = '', right = ''},
@@ -74,9 +74,9 @@ require('lualine').setup {
 }
 
 local configure_language = require('kommentary.config').configure_language
-configure_language("nim", {
-  single_line_comment_string = "#",
-  multi_line_comment_strings = {"#[", "]#"},
+configure_language('nim', {
+  single_line_comment_string = '#',
+  multi_line_comment_strings = {'#[', ']#'},
   prefer_single_line_comments = true
 })
 
@@ -96,13 +96,13 @@ require('kommentary.config').configure_language('svelte', {
   end
 })
 
-configure_language("default", {prefer_single_line_comments = true})
+configure_language('default', {prefer_single_line_comments = true})
 
 -- no more bufferline
 opt.showtabline = 0
 
 -- macvim  conf
-opt.background = "dark"
+opt.background = 'dark'
 -- opt.guifont = "FiraCode Nerd Font Mono:h25"
 
 -- vim easy align
@@ -134,7 +134,7 @@ g.jsdoc_input_description = 1
 
 -- neogen
 local neogen = require('neogen')
-neogen.setup({snippet_engine = "luasnip"})
+neogen.setup({snippet_engine = 'luasnip'})
 vimp.nnoremap('<Leader>nf', [[:lua require('neogen').generate()<CR>]])
 
 -- telescope
@@ -145,14 +145,14 @@ vimp.nnoremap('<leader>fg', builtin.live_grep)
 vimp.nnoremap('<leader>fc', builtin.commands)
 
 -- ctrlsf
-vimp.nmap('<C-F>f', "<Plug>CtrlSFPrompt")
-vimp.vmap('<C-F>f', "<Plug>CtrlSFVwordPath")
-vimp.vmap('<C-F>F', "<Plug>CtrlSFVwordExec")
-vimp.nmap('<C-F>n', "<Plug>CtrlSFCwordPath")
-vimp.nmap('<C-F>p', "<Plug>CtrlSFPwordPath")
-vimp.nnoremap('<C-F>o', ":CtrlSFOpen<CR>")
-vimp.nnoremap('<C-F>t', ":CtrlSFToggle<CR>")
-vimp.inoremap('<C-F>t', "<Esc>:CtrlSFToggle<CR>")
+vimp.nmap('<C-F>f', '<Plug>CtrlSFPrompt')
+vimp.vmap('<C-F>f', '<Plug>CtrlSFVwordPath')
+vimp.vmap('<C-F>F', '<Plug>CtrlSFVwordExec')
+vimp.nmap('<C-F>n', '<Plug>CtrlSFCwordPath')
+vimp.nmap('<C-F>p', '<Plug>CtrlSFPwordPath')
+vimp.nnoremap('<C-F>o', ':CtrlSFOpen<CR>')
+vimp.nnoremap('<C-F>t', ':CtrlSFToggle<CR>')
+vimp.inoremap('<C-F>t', '<Esc>:CtrlSFToggle<CR>')
 
 -- ----------------------------------------------------------------------------------------------------
 -- VIM WIKI
@@ -173,8 +173,8 @@ g.vrc_curl_opts['-i'] = ''
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
   ensure_installed = {
-    "help", "javascript", "typescript", "c", "lua", "rust", "svelte", "vim",
-    "css", "html", "json", "markdown"
+    'help', 'javascript', 'typescript', 'c', 'lua', 'rust', 'svelte', 'vim',
+    'css', 'html', 'json', 'markdown'
   },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -206,3 +206,45 @@ require'nvim-treesitter.configs'.setup {
 }
 
 ------------------------------
+-- code formatter
+-- Utilities for creating configurations
+local util = require 'formatter.util'
+
+-- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
+require('formatter').setup {
+  -- Enable or disable logging
+  logging = true,
+  -- Set the log level
+  log_level = vim.log.levels.WARN,
+  -- All formatter configurations are opt-in
+  filetype = {
+    lua = {
+      function()
+        -- Supports conditional formatting
+        if util.get_current_buffer_file_name() == 'special.lua' then
+          return nil
+        end
+
+        -- Full specification of configurations is down below and in Vim help
+        -- files
+        return {
+          exe = 'lua-format',
+          args = {
+            '--indent-width=2', '--column-limit=80', '--no-use-tab',
+            '--double-quote-to-single-quote',
+            util.escape_path(util.get_current_buffer_file_path())
+          },
+          stdin = true
+        }
+      end
+    },
+
+    -- Use the special "*" filetype for defining formatter configurations on
+    -- any filetype
+    ['*'] = {
+      -- "formatter.filetypes.any" defines default configurations for any
+      -- filetype
+      require('formatter.filetypes.any').remove_trailing_whitespace
+    }
+  }
+}
