@@ -12,7 +12,7 @@
 
 ---
 
-<img src="./assets/amk-dotfiles-04-Jan-2023.gif" alt="dotfiles_ss" align="center" width="100%">
+<img src="./assets/amk-dotfiles-23-Jan-2023.gif" alt="dotfiles_ss" align="center" width="100%">
 
 ---
 
