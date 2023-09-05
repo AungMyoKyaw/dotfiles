@@ -127,7 +127,7 @@ local neogen = require('neogen')
 neogen.setup({snippet_engine = 'luasnip'})
 vimp.nnoremap('<Leader>nf', [[:lua require('neogen').generate()<CR>]])
 
--- telescope
+-- fzf
 vimp.nnoremap('<C-p>', [[:Files<CR>]])
 vimp.nnoremap('<leader>ff', [[:Files<CR>]])
 vimp.nnoremap('<leader>fg', [[:Rg<CR>]])
@@ -303,7 +303,6 @@ require('formatter').setup {
 
 -- config for fzf vim
 g.fzf_buffers_jump = 1
-g.fzf_preview_window = {'right:0'}
+g.fzf_preview_window = {'right:50%', 'ctrl-/'}
 g.fzf_buffers_sort = 'mru'
--- increaase fzf window height
 g.fzf_layout = {window = {width = 0.9, height = 0.9}}
