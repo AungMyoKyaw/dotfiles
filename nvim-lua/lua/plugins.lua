@@ -6,7 +6,6 @@ startup({
     -- Packer can manage itself
     use {'wbthomason/packer.nvim'}
     ---------------------------
-    use {'lewis6991/impatient.nvim'}
     -- Treesitter
     use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdateSync'})
     -- Themes
@@ -15,11 +14,8 @@ startup({
     use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
     use {'lukas-reineke/indent-blankline.nvim'}
     use {'nvim-lualine/lualine.nvim'}
-    use {'yamatsum/nvim-cursorline'}
-    use {
-      'nvim-telescope/telescope.nvim',
-      requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
-    }
+    use {'junegunn/fzf'}
+    use {'junegunn/fzf.vim'}
     use {'norcalli/nvim-colorizer.lua'}
     use {'xiyaowong/nvim-transparent'}
     ----------------
@@ -43,6 +39,7 @@ startup({
     use {'dyng/ctrlsf.vim'}
     use {'danymat/neogen'}
     use {'mhartington/formatter.nvim'}
+    use {'nvim-pack/nvim-spectre'}
     -- languages plugins that not supported by treesitter
     use {'jidn/vim-dbml'}
     use {'zhaozg/vim-diagram'}

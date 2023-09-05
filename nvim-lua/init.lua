@@ -1,4 +1,4 @@
-require('impatient')
+vim.loader.enable()
 require('bootstraping')
 require('plugins')
 require('sensible')

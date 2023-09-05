@@ -66,10 +66,8 @@ vimp.nnoremap('<leader>bD', function() vim.cmd('BufOnly') end)
 
 -- buffer list
 vimp.nnoremap('<leader>bb', function()
-  -- vim.cmd("lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown({}))")
-  -- vim.cmd("lua require('telescope.builtin').buffers({ sort_lastused = true, ignore_current_buffer = true })")
-  vim.cmd(
-      'lua require(\'telescope.builtin\').buffers({ sort_mru = true, ignore_current_buffer = true })')
+  -- use fzf buffer
+  vim.cmd('Buffers')
 end)
 
 -- reload vimrc
@@ -100,7 +98,7 @@ opt.ttyfast = true
 opt.lazyredraw = true
 
 -- redrawtime
-opt.redrawtime = 10000
+-- opt.redrawtime = 1000
 
 -- nowrap
 opt.wrap = false
@@ -123,10 +121,12 @@ opt.modeline = false
 opt.expandtab = true
 opt.tabstop = 2
 opt.softtabstop = 2 -- Tab key indents by 2 spaces.
+vim.bo.softtabstop = 2
 opt.shiftwidth = 2 -- >> indents by 2 spaces.
 opt.shiftround = true -- >> indents to next multiple of 'shiftwidth'.
 opt.autoindent = true
 opt.smartindent = true
+opt.mouse = ''
 
 --- nvim tree
 -- vim.g.loaded_netrw = 1

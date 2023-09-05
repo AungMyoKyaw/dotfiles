@@ -10,7 +10,6 @@ require('catppuccin').setup({
     gitsigns = true,
     mason = true,
     nvimtree = true,
-    telescope = true,
     treesitter = true,
     treesitter_context = true,
     vimwiki = true,
@@ -24,16 +23,7 @@ vim.cmd.colorscheme 'catppuccin'
 vim.cmd [[let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"]]
 vim.cmd [[let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"]]
 
-require('transparent').setup({
-  enable = false -- boolean: enable transparent
-})
 ----------
-
-require('nvim-cursorline').setup {
-  cursorline = {enable = true, timeout = 0000, number = false},
-  cursorword = {enable = true, min_length = 3, hl = {underline = true}}
-}
-
 -- which key
 require('which-key').setup {
   -- your configuration comes here
@@ -138,21 +128,31 @@ neogen.setup({snippet_engine = 'luasnip'})
 vimp.nnoremap('<Leader>nf', [[:lua require('neogen').generate()<CR>]])
 
 -- telescope
-local builtin = require('telescope.builtin')
-vimp.nnoremap('<C-p>', builtin.find_files)
-vimp.nnoremap('<leader>ff', builtin.find_files)
-vimp.nnoremap('<leader>fg', builtin.live_grep)
-vimp.nnoremap('<leader>fc', builtin.commands)
+vimp.nnoremap('<C-p>', [[:Files<CR>]])
+vimp.nnoremap('<leader>ff', [[:Files<CR>]])
+vimp.nnoremap('<leader>fg', [[:Rg<CR>]])
+vimp.nnoremap('<leader>fc', [[:Commands<CR>]])
 
 -- ctrlsf
-vimp.nmap('<C-F>f', '<Plug>CtrlSFPrompt')
-vimp.vmap('<C-F>f', '<Plug>CtrlSFVwordPath')
-vimp.vmap('<C-F>F', '<Plug>CtrlSFVwordExec')
-vimp.nmap('<C-F>n', '<Plug>CtrlSFCwordPath')
-vimp.nmap('<C-F>p', '<Plug>CtrlSFPwordPath')
-vimp.nnoremap('<C-F>o', ':CtrlSFOpen<CR>')
-vimp.nnoremap('<C-F>t', ':CtrlSFToggle<CR>')
-vimp.inoremap('<C-F>t', '<Esc>:CtrlSFToggle<CR>')
+-- vimp.nmap('<C-F>f', '<Plug>CtrlSFPrompt')
+-- vimp.vmap('<C-F>f', '<Plug>CtrlSFVwordPath')
+-- vimp.vmap('<C-F>F', '<Plug>CtrlSFVwordExec')
+-- vimp.nmap('<C-F>n', '<Plug>CtrlSFCwordPath')
+-- vimp.nmap('<C-F>p', '<Plug>CtrlSFPwordPath')
+-- vimp.nnoremap('<C-F>o', ':CtrlSFOpen<CR>')
+-- vimp.nnoremap('<C-F>t', ':CtrlSFToggle<CR>')
+-- vimp.inoremap('<C-F>t', '<Esc>:CtrlSFToggle<CR>')
+
+vimp.nmap('<C-F>f', '<cmd>lua require("spectre").open()<CR>')
+-- vim.keymap.set('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+--     desc = "Search current word"
+-- })
+-- vim.keymap.set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+--     desc = "Search current word"
+-- })
+-- vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
+--     desc = "Search on current file"
+-- })
 
 -- ----------------------------------------------------------------------------------------------------
 -- VIM WIKI
@@ -172,10 +172,10 @@ g.vrc_curl_opts['-i'] = ''
 -- Treesitter
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = {
-    'help', 'javascript', 'typescript', 'c', 'lua', 'rust', 'svelte', 'vim',
-    'css', 'html', 'json', 'markdown'
-  },
+  -- ensure_installed = {
+  --   'help', 'javascript', 'typescript', 'c', 'lua', 'rust', 'svelte', 'vim',
+  --   'css', 'html', 'json', 'markdown'
+  -- },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -239,6 +239,58 @@ require('formatter').setup {
       end
     },
 
+    js = {
+      function()
+        return {
+          exe = 'prettierd',
+          args = {'--stdin-filepath', util.get_current_buffer_file_name()},
+          stdin = true
+        }
+      end
+    },
+
+    html = {
+      function()
+        return {
+          exe = 'prettierd',
+          args = {'--stdin-filepath', util.get_current_buffer_file_name()},
+          stdin = true
+        }
+      end
+    },
+
+    css = {
+      function()
+        return {
+          exe = 'prettierd',
+          args = {'--stdin-filepath', util.get_current_buffer_file_name()},
+          stdin = true
+        }
+      end
+    },
+
+    ts = {
+      function()
+        return {
+          exe = 'prettierd',
+          args = {'--stdin-filepath', util.get_current_buffer_file_name()},
+          stdin = true
+        }
+      end
+    },
+
+    json = {
+      function()
+        return {
+          exe = 'prettierd',
+          args = {'--stdin-filepath', util.get_current_buffer_file_name()},
+          stdin = true
+        }
+      end
+    },
+
+    python = {function() return {exe = 'yapf', stdin = true} end},
+
     -- Use the special "*" filetype for defining formatter configurations on
     -- any filetype
     ['*'] = {
@@ -248,3 +300,10 @@ require('formatter').setup {
     }
   }
 }
+
+-- config for fzf vim
+g.fzf_buffers_jump = 1
+g.fzf_preview_window = {'right:0'}
+g.fzf_buffers_sort = 'mru'
+-- increaase fzf window height
+g.fzf_layout = {window = {width = 0.9, height = 0.9}}
