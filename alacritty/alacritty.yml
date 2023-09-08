@@ -50,7 +50,7 @@ window:
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
   # decorations: buttonless
-  decorations: none
+  decorations: transparent
 
   # Startup Mode (changes require restart)
   #
@@ -115,11 +115,11 @@ font:
     # family: "SauceCodePro Nerd Font"
     # family: "FiraCode Nerd Font Mono"
     # family: "Cascadia Code PL"
-    family: "CaskaydiaCove Nerd Font"
+    family: "SFMono Nerd Font"
 
     # The `style` can be specified to pick a specific face.
     # style: Retina
-    style: Regular
+    style: Medium
     # style: Book
 
   # Bold font face
@@ -133,7 +133,7 @@ font:
     # The `style` can be specified to pick a specific face.
     # family: "SauceCodePro Nerd Font"
     # family: "FiraCode Nerd Font Mono"
-    family: "CaskaydiaCove Nerd Font"
+    family: "SFMono Nerd Font"
     style: Bold
 
   # Italic font face
@@ -147,7 +147,7 @@ font:
     # The `style` can be specified to pick a specific face.
     # family: "SauceCodePro Nerd Font"
     # family: "FiraCode Nerd Font Mono"
-    family: "CaskaydiaCove Nerd Font"
+    family: "SFMono Nerd Font"
     style: Italic
 
   # Point size
@@ -411,9 +411,6 @@ working_directory: None
 # Alacritty will fall back to the WinPTY automatically if the ConPTY
 # backend cannot be initialized.
 enable_experimental_conpty_backend: false
-
-# Send ESC (\x1b) before characters when alt is pressed.
-alt_send_esc: true
 
 debug:
   # Display the time it takes to redraw each frame.
