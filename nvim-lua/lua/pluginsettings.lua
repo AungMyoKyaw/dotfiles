@@ -166,6 +166,8 @@ g.vimwiki_list = {mywiki}
 g.vimwiki_folding = 'expr'
 -- stop stealing tab in vim wiki and enable auto completion
 g.vimwiki_key_mappings = {table_mappings = 0, table_format_mappings = 0}
+-- don't conceal link
+g.vimwiki_conceallevel = 0
 
 -- vim rest setting
 g.vrc_curl_opts = {}
@@ -306,6 +308,7 @@ require('formatter').setup {
 -- config for fzf vim
 g.fzf_vim = {}
 g.fzf_buffers_jump = 1
-g.fzf_preview_window = {'hidden,right,50%,<70(up,40%)', 'ctrl-/'}
+-- g.fzf_preview_window = {'hidden,right,50%,<70(up,40%)', 'ctrl-/'}
+g.fzf_preview_window = {'hidden', 'ctrl-/'}
 g.fzf_buffers_sort = 'mru'
 g.fzf_layout = {window = {width = 0.9, height = 0.9}}
