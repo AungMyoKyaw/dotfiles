@@ -19,8 +19,11 @@ require 'lib/window-management'
 -- SPOON USER
 require 'lib/spoon-user'
 
+-- vim mode
+require 'lib/vim-mode'
+
 -- WORK/LIFE
 -- require "lib/work-life"
 
 -- SEAL
-require 'lib/seal'
+-- require 'lib/seal'

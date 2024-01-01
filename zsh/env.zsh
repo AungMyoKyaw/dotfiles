@@ -22,3 +22,9 @@ export DOCKER_DEFAULT_PLATFORM=linux/amd64
 
 # mongo
 export PATH="/opt/homebrew/opt/mongodb-community@4.2/bin:$PATH"
+
+# rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# ruby
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"

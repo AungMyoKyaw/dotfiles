@@ -27,10 +27,10 @@ local function winSwitcher()
 end
 
 -- hs.hotkey.bind(hyper, 'n', 'window switcher', winSwitcher)
-hs.hotkey.bind(hyper, 'n', 'window-switcher-next',
-               function() hs.window.switcher.nextWindow() end)
-hs.hotkey.bind(hyper, 'p', 'window-switcher-prev',
-               function() hs.window.switcher.previousWindow() end)
+-- hs.hotkey.bind(hyper, 'n', 'window-switcher-next',
+--                function() hs.window.switcher.nextWindow() end)
+-- hs.hotkey.bind(hyper, 'p', 'window-switcher-prev',
+--                function() hs.window.switcher.previousWindow() end)
 
 --------------------------------------------------------------------------------
 -- https://github.com/ashfinal/awesome-hammerspoon
@@ -125,3 +125,11 @@ local function hideAdguard()
   if adguard then adguard:hide() end
 end
 hideAdguard()
+
+hs.hotkey.bind(hyper, 't', function()
+    local screen = hs.mouse.getCurrentScreen()
+    local nextScreen = screen:next()
+    local rect = nextScreen:fullFrame()
+    local center = hs.geometry.rectMidPoint(rect)
+hs.mouse.setAbsolutePosition(center)
+end)
