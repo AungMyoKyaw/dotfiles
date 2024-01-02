@@ -1,30 +1,27 @@
 local lsp = require('lsp-zero')
 lsp.preset('recommended')
 
-lsp.ensure_installed({
-  -- 'tsserver', 'rome', 'eslint','bashls', 'nimls', 'marksman'
-})
-
--- Fix Undefined global 'vim'
--- lsp.configure('lua_ls',
---               {settings = {Lua = {diagnostics = {globals = {'vim'}}}}})
-
 local cmp = require('cmp')
+local cmp_action = require('lsp-zero').cmp_action()
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
-local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-  -- user enter for select
-  ['<CR>'] = cmp.mapping.confirm({select = true}),
-  ['<C-Space>'] = cmp.mapping.complete()
+
+cmp.setup({
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+    -- user enter for select
+    ['<CR>'] = cmp.mapping.confirm({select = true}),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    -- disable completion with tab
+    -- this helps with copilot setup
+    ['<Tab>'] = nil,
+    ['<S-Tab>'] = nil
+  })
 })
-
--- disable completion with tab
--- this helps with copilot setup
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
-
-lsp.setup_nvim_cmp({mapping = cmp_mappings})
 
 lsp.set_preferences({
   suggest_lsp_servers = false,

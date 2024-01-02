@@ -159,7 +159,7 @@ vimp.nmap('<C-F>f', '<cmd>lua require("spectre").open()<CR>')
 -- ----------------------------------------------------------------------------------------------------
 g.vimwiki_global_ext = 0
 local mywiki = {}
-mywiki.path = '/Users/aungmyokyaw/MEGAsync/aungmyokyaw/MyWiki'
+mywiki.path = '/Users/aungmyokyaw/Library/CloudStorage/Dropbox/MyWiki'
 mywiki.syntax = 'markdown'
 mywiki.ext = '.md'
 g.vimwiki_list = {mywiki}
