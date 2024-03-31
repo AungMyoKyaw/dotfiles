@@ -1,51 +1,27 @@
-local lsp = require('lsp-zero')
-lsp.preset('recommended')
+local lsp_zero = require('lsp-zero')
 
-local cmp = require('cmp')
-local cmp_action = require('lsp-zero').cmp_action()
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
-
-cmp.setup({
-  window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
-  },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-    -- user enter for select
-    ['<CR>'] = cmp.mapping.confirm({select = true}),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    -- disable completion with tab
-    -- this helps with copilot setup
-    ['<Tab>'] = nil,
-    ['<S-Tab>'] = nil
-  })
-})
-
-lsp.set_preferences({
-  suggest_lsp_servers = false,
-  sign_icons = {error = 'E', warn = 'W', hint = 'H', info = 'I'}
-})
-
-lsp.on_attach(function(client, bufnr)
-  local opts = {buffer = bufnr, remap = false}
-
-  if client.name == 'eslint' then
-    vim.cmd.LspStop('eslint')
-    return
-  end
-
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-  vim.keymap.set('n', '<leader>vws', vim.lsp.buf.workspace_symbol, opts)
-  vim.keymap.set('n', '<leader>vd', vim.diagnostic.open_float, opts)
-  vim.keymap.set('n', '[d', vim.diagnostic.goto_next, opts)
-  vim.keymap.set('n', ']d', vim.diagnostic.goto_prev, opts)
-  vim.keymap.set('n', '<leader>vca', vim.lsp.buf.code_action, opts)
-  vim.keymap.set('n', '<leader>vrr', vim.lsp.buf.references, opts)
-  vim.keymap.set('n', '<leader>vrn', vim.lsp.buf.rename, opts)
-  vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
+lsp_zero.on_attach(function(client, bufnr)
+  -- see :help lsp-zero-keybindings
+  -- to learn the available actions
+  lsp_zero.default_keymaps({buffer = bufnr})
 end)
 
-lsp.setup()
+-- to learn how to use mason.nvim with lsp-zero
+-- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guide/integrate-with-mason-nvim.md
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  ensure_installed = {
+    'tsserver', 'eslint', 'bashls', 'emmet_language_server', 'vimls', 'html',
+    'cssls', 'lua_ls', 'tailwindcss'
+  },
+
+  handlers = {lsp_zero.default_setup}
+})
+
+local cmp = require('cmp')
+
+cmp.setup({
+  mapping = cmp.mapping.preset.insert({
+    ['<CR>'] = cmp.mapping.confirm({select = false})
+  })
+})
