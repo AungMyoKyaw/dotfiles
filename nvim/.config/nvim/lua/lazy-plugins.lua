@@ -62,7 +62,7 @@ local plugins = {
   },
 
   -- AI-powered coding assistance
-  {'github/copilot.vim', event = 'InsertEnter'},
+  {'github/copilot.vim'},
 
   -- Lightweight utilities and enhancements
   {'echasnovski/mini.nvim', event = 'VeryLazy'}

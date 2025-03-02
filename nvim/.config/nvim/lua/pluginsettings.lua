@@ -14,7 +14,8 @@ local mini = {
   tabline = require('mini.tabline'),
   jump = require('mini.jump'),
   bufremove = require('mini.bufremove'),
-  align = require('mini.align')
+  align = require('mini.align'),
+  animate = require('mini.animate')
 }
 
 local catppuccin = require('catppuccin')
