@@ -84,9 +84,20 @@ if personal_path and personal_path ~= '' then
     picker = {name = 'fzf-lua'},
     sort_by = 'modified',
     open_notes_in = 'vsplit',
-    ui = {enable = false}
+    ui = {enable = false},
+    note_id_func = function(title)
+      local timestamp = tostring(os.time()) -- Get the Unix timestamp
+      if title then
+        -- Convert title into a slug (replace spaces with dashes, remove special characters)
+        local slug = title:gsub('%s+', '-'):gsub('[^a-zA-Z0-9%-]', ''):lower()
+        return timestamp .. '-' .. slug
+      end
+      -- Fallback: Just use the timestamp if no title is provided
+      return timestamp
+    end
   })
 end
+
 map('n', '<leader>ww', ':ObsidianQuickSwitch<CR>',
     {noremap = true, silent = true})
 map('n', '<leader>ws', ':ObsidianSearch<CR>', {noremap = true, silent = true})

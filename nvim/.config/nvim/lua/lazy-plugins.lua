@@ -35,8 +35,8 @@ local plugins = {
   {
     'epwalsh/obsidian.nvim',
     version = '*',
-    dependencies = {'nvim-lua/plenary.nvim'},
-    ft = 'markdown'
+    ft = 'markdown',
+    dependencies = {'nvim-lua/plenary.nvim'}
   },
 
   -- Terminal integration
@@ -65,7 +65,13 @@ local plugins = {
   {'github/copilot.vim'},
 
   -- Lightweight utilities and enhancements
-  {'echasnovski/mini.nvim', event = 'VeryLazy'}
+  {'echasnovski/mini.nvim', event = 'VeryLazy'},
+
+  -- vim prettier
+  {
+    'prettier/vim-prettier',
+    ft = {'javascript', 'typescript', 'css', 'html', 'markdown'}
+  }
 }
 
 local opts = {
