@@ -1,9 +1,7 @@
+-- lua/plugins/pluginsettings.lua
 local map = vim.keymap.set
 
--- Ensure `vim` is recognized as a global
-_G.vim = vim
-
--- Load required modules
+-- Setup mini.nvim modules and integrations
 local mini = {
   statusline = require('mini.statusline'),
   surround = require('mini.surround'),
@@ -18,24 +16,8 @@ local mini = {
   animate = require('mini.animate')
 }
 
+-- Configure the Catppuccin theme
 local catppuccin = require('catppuccin')
-local gitsigns = require('gitsigns')
-local toggleterm = require('toggleterm')
-local treesitter = require('nvim-treesitter.configs')
-local fzf_lua = require('fzf-lua')
-local obsidian = require('obsidian')
-local jupytext = require('jupytext')
-local nvim_tree = require('nvim-tree')
-local grug_far = require('grug-far')
-
--- Grug-Far setup
-grug_far.setup({
-  engines = {
-    ripgrep = {path = 'rg', extraArgs = '--hidden --glob !.git --ignore-case'}
-  }
-})
-
--- Theme using catppuccin
 catppuccin.setup({
   flavour = 'mocha',
   integrations = {
@@ -51,34 +33,29 @@ catppuccin.setup({
 })
 vim.cmd.colorscheme 'catppuccin'
 
--- Setup mini.nvim modules
-for _, mod in pairs(mini) do mod.setup() end
-
 -- Gitsigns setup
+local gitsigns = require('gitsigns')
 gitsigns.setup()
 
--- Terminal setup
+-- Terminal integration
+local toggleterm = require('toggleterm')
 toggleterm.setup()
 map('n', '<leader>ft', ':ToggleTerm<CR>', {noremap = true, silent = true})
 
--- Use mini.statusline instead of lualine
-mini.statusline.setup()
-
--- Easymotion alternative using mini.jump
-map('n', '<Leader><Leader>f', function() mini.jump.jump('f') end,
-    {noremap = true, silent = true})
-
--- Treesitter setup
+-- Treesitter configuration
+local treesitter = require('nvim-treesitter.configs')
 treesitter.setup({
   auto_install = true,
   highlight = {enable = true, additional_vim_regex_highlighting = false}
 })
 
--- FZF-Lua and Obsidian setup
+-- FZF-Lua and Obsidian configuration
+local fzf_lua = require('fzf-lua')
 fzf_lua.setup({winopts = {preview = {hidden = 'right:0'}}})
-local personal_path = os.getenv('OBSIDIAN_PERSONAL_PATH')
 
+local personal_path = os.getenv('OBSIDIAN_PERSONAL_PATH')
 if personal_path and personal_path ~= '' then
+  local obsidian = require('obsidian')
   obsidian.setup({
     workspaces = {{name = 'personal', path = vim.fn.expand(personal_path)}},
     picker = {name = 'fzf-lua'},
@@ -86,50 +63,52 @@ if personal_path and personal_path ~= '' then
     open_notes_in = 'vsplit',
     ui = {enable = false},
     note_id_func = function(title)
-      local timestamp = tostring(os.time()) -- Get the Unix timestamp
+      local timestamp = tostring(os.time())
       if title then
-        -- Convert title into a slug (replace spaces with dashes, remove special characters)
         local slug = title:gsub('%s+', '-'):gsub('[^a-zA-Z0-9%-]', ''):lower()
         return timestamp .. '-' .. slug
       end
-      -- Fallback: Just use the timestamp if no title is provided
       return timestamp
     end
   })
+  map('n', '<leader>ww', ':ObsidianQuickSwitch<CR>',
+      {noremap = true, silent = true})
+  map('n', '<leader>ws', ':ObsidianSearch<CR>', {noremap = true, silent = true})
 end
 
-map('n', '<leader>ww', ':ObsidianQuickSwitch<CR>',
+-- Initialize all mini.nvim modules
+for _, mod in pairs(mini) do mod.setup() end
+
+-- Setup statusline and jump keymap
+mini.statusline.setup()
+map('n', '<Leader><Leader>f', function() mini.jump.jump('f') end,
     {noremap = true, silent = true})
-map('n', '<leader>ws', ':ObsidianSearch<CR>', {noremap = true, silent = true})
-
--- Mini.nvim bufferline and tabline
-mini.tabline.setup({show_icons = true})
-
--- Indent guides
-mini.indentscope.setup({symbol = '│', options = {try_as_border = true}})
-
--- Jupytext integration
-jupytext.setup({style = 'light', output_extension = 'auto'})
 
 -- Fuzzy file finding
 map('n', '<C-p>', ':FzfLua files<CR>', {noremap = true, silent = true})
 
 -- Nvim-tree setup
+local nvim_tree = require('nvim-tree')
 nvim_tree.setup({renderer = {highlight_opened_files = 'all'}})
 map('n', '<C-n>', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
 
 -- Grug-Far integration
+local grug_far = require('grug-far')
+grug_far.setup({
+  engines = {
+    ripgrep = {path = 'rg', extraArgs = '--hidden --glob !.git --ignore-case'}
+  }
+})
 map({'n', 'v'}, '<C-F>f', function()
   local mode, search_text = vim.fn.mode(), ''
-
   if mode == 'v' then
     vim.cmd('normal! "vy')
     search_text = vim.fn.getreg('v')
   else
-    search_text = vim.fn.expand('<cword>') ~= '' and vim.fn.expand('<cword>') or
-                      vim.fn.getreg('/')
+    search_text =
+        (vim.fn.expand('<cword>') ~= '' and vim.fn.expand('<cword>')) or
+            vim.fn.getreg('/')
   end
-
   grug_far.open({default_text = search_text})
 end, {
   noremap = true,
@@ -137,10 +116,9 @@ end, {
   desc = 'Open Grug-Far with selection or cursor word'
 })
 
--- Mini.bufremove keybindings (replacing BufOnly.vim)
+-- Buffer management with mini.bufremove
 map('n', '<leader>bd', function() mini.bufremove.delete(0, true) end,
     {noremap = true, silent = true, desc = 'Delete current buffer'})
-
 map('n', '<leader>bw', function() mini.bufremove.wipeout(0, true) end,
     {noremap = true, silent = true, desc = 'Wipeout current buffer'})
 
@@ -152,3 +130,10 @@ vim.api.nvim_create_user_command('BufOnly', function()
     end
   end
 end, {})
+
+-- Command to reload configuration
+map('n', '<leader>vr', function()
+  vim.cmd('silent wa')
+  dofile(vim.fn.stdpath('config') .. '/init.lua')
+  print('Configuration reloaded!')
+end, {noremap = true})

@@ -1,7 +1,8 @@
+-- lua/plugins/lazy-plugins.lua
 local lazy = require('lazy')
 
 local plugins = {
-  -- Treesitter for better syntax highlighting and parsing
+  -- Treesitter for enhanced syntax and parsing
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdateSync',
@@ -12,7 +13,7 @@ local plugins = {
   {
     'catppuccin/nvim',
     name = 'catppuccin',
-    lazy = false -- Load immediately to apply theme early
+    lazy = false -- Load immediately to apply the theme early
   },
   {'kyazdani42/nvim-tree.lua', cmd = 'NvimTreeToggle'},
   {
@@ -67,7 +68,7 @@ local plugins = {
   -- Lightweight utilities and enhancements
   {'echasnovski/mini.nvim', event = 'VeryLazy'},
 
-  -- vim prettier
+  -- vim-prettier for additional filetypes
   {
     'prettier/vim-prettier',
     ft = {'javascript', 'typescript', 'css', 'html', 'markdown'}

@@ -1,4 +1,4 @@
--- Bootstrap Lazy.nvim (Neovim Plugin Manager)
+-- lua/plugins/bootstrap.lua
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
