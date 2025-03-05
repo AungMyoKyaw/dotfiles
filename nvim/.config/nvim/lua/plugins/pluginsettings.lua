@@ -137,3 +137,10 @@ map('n', '<leader>vr', function()
   dofile(vim.fn.stdpath('config') .. '/init.lua')
   print('Configuration reloaded!')
 end, {noremap = true})
+
+-- Which-key configuration
+local which_key = require('which-key')
+which_key.setup({
+  plugins = {spelling = {enabled = true, suggestions = 20}},
+  win = {border = 'single'}
+})

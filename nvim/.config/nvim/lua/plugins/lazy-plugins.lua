@@ -22,7 +22,6 @@ local plugins = {
     event = 'BufReadPre'
   },
   {'ibhagwan/fzf-lua', cmd = 'FzfLua'},
-  {'prettier/vim-prettier', ft = {'javascript', 'typescript', 'css', 'html'}},
   {'tpope/vim-fugitive', cmd = 'Git'},
   {'jidn/vim-dbml', ft = 'dbml'},
   {
@@ -72,7 +71,11 @@ local plugins = {
   {
     'prettier/vim-prettier',
     ft = {'javascript', 'typescript', 'css', 'html', 'markdown'}
-  }
+  },
+
+  -- which-key for keybinding discovery
+  {'folke/which-key.nvim'}
+
 }
 
 local opts = {

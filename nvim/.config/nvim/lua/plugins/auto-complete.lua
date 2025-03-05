@@ -1,4 +1,6 @@
 -- lua/plugins/auto-complete.lua
+vim.lsp.set_log_level('off')
+
 local lsp_zero = require('lsp-zero')
 local cmp = require('cmp')
 local mason = require('mason')
