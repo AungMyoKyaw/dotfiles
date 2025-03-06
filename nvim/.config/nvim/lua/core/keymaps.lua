@@ -22,3 +22,7 @@ map('n', '<leader>w', ':w<CR>', {noremap = true, silent = true})
 map('n', '<leader>bn', ':bn<CR>', {noremap = true})
 map('n', '<leader>bp', ':bp<CR>', {noremap = true})
 map('n', '<leader>bd', ':bd<CR>', {noremap = true})
+
+-- Folding
+map('n', 'zO', 'zA', {noremap = true})
+map('n', 'zo', 'za', {noremap = true})

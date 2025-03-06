@@ -76,6 +76,8 @@ if personal_path and personal_path ~= '' then
   map('n', '<leader>ws', ':ObsidianSearch<CR>', {noremap = true, silent = true})
 end
 
+map('n', '<leader>bb', fzf_lua.buffers, {noremap = true, silent = true})
+
 -- Initialize all mini.nvim modules
 for _, mod in pairs(mini) do mod.setup() end
 
