@@ -18,19 +18,7 @@ local mini = {
 
 -- Configure the Catppuccin theme
 local catppuccin = require('catppuccin')
-catppuccin.setup({
-  flavour = 'mocha',
-  integrations = {
-    cmp = true,
-    gitsigns = true,
-    mason = true,
-    nvimtree = true,
-    treesitter = true,
-    treesitter_context = true,
-    vimwiki = true,
-    which_key = true
-  }
-})
+catppuccin.setup({flavour = 'mocha'})
 vim.cmd.colorscheme 'catppuccin'
 
 -- Gitsigns setup
