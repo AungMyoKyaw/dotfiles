@@ -7,9 +7,10 @@ DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 echo "DOTFILES_DIR is set to: $DOTFILES_DIR"
 ls -l "$DOTFILES_DIR"  # Check contents of dotfiles directory
 
-# List of dotfiles to symlink (no associative array)
+# List of dotfiles to symlink (Neovim + Tmux)
 FILES_TO_LINK=(
   "$DOTFILES_DIR/nvim/.config/nvim:$HOME/.config/nvim"
+  "$DOTFILES_DIR/tmux/.tmux.conf:$HOME/.tmux.conf"
 )
 
 # Backup directory
