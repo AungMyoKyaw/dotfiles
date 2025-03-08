@@ -68,10 +68,7 @@ local plugins = {
   {'echasnovski/mini.nvim', event = 'VeryLazy'},
 
   -- vim-prettier for additional filetypes
-  {
-    'prettier/vim-prettier',
-    ft = {'javascript', 'typescript', 'css', 'html', 'markdown'}
-  },
+  {'prettier/vim-prettier'},
 
   -- which-key for keybinding discovery
   {'folke/which-key.nvim'}
