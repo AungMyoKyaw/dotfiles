@@ -71,8 +71,11 @@ local plugins = {
   {'prettier/vim-prettier'},
 
   -- which-key for keybinding discovery
-  {'folke/which-key.nvim'}
+  {'folke/which-key.nvim'},
 
+  {'windwp/nvim-autopairs'},
+
+  {'kylechui/nvim-surround'}
 }
 
 local opts = {

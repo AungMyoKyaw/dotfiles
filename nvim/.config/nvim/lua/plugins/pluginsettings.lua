@@ -4,10 +4,8 @@ local map = vim.keymap.set
 -- Setup mini.nvim modules and integrations
 local mini = {
   statusline = require('mini.statusline'),
-  surround = require('mini.surround'),
   cursorword = require('mini.cursorword'),
   comment = require('mini.comment'),
-  pairs = require('mini.pairs'),
   indentscope = require('mini.indentscope'),
   tabline = require('mini.tabline'),
   jump = require('mini.jump'),
@@ -134,3 +132,11 @@ which_key.setup({
   plugins = {spelling = {enabled = true, suggestions = 20}},
   win = {border = 'single'}
 })
+
+-- Auto Pair
+local autopairs = require('nvim-autopairs')
+autopairs.setup({})
+
+-- nvim surround
+local surround = require('nvim-surround')
+surround.setup({})
