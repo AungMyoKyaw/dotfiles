@@ -3,11 +3,9 @@ local map = vim.keymap.set
 
 -- Setup mini.nvim modules and integrations
 local mini = {
-  statusline = require('mini.statusline'),
   cursorword = require('mini.cursorword'),
   comment = require('mini.comment'),
   indentscope = require('mini.indentscope'),
-  tabline = require('mini.tabline'),
   jump = require('mini.jump'),
   bufremove = require('mini.bufremove'),
   align = require('mini.align'),
@@ -18,6 +16,10 @@ local mini = {
 local catppuccin = require('catppuccin')
 catppuccin.setup({flavour = 'mocha'})
 vim.cmd.colorscheme 'catppuccin'
+
+-- Lualine statusline setup
+local lualine = require('lualine')
+lualine.setup({options = {theme = 'catppuccin'}})
 
 -- Gitsigns setup
 local gitsigns = require('gitsigns')
@@ -68,7 +70,6 @@ map('n', '<leader>bb', fzf_lua.buffers, {noremap = true, silent = true})
 for _, mod in pairs(mini) do mod.setup() end
 
 -- Setup statusline and jump keymap
-mini.statusline.setup()
 map('n', '<Leader><Leader>f', function() mini.jump.jump('f') end,
     {noremap = true, silent = true})
 

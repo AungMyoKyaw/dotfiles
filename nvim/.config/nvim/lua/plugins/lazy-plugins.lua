@@ -75,7 +75,9 @@ local plugins = {
 
   {'windwp/nvim-autopairs'},
 
-  {'kylechui/nvim-surround'}
+  {'kylechui/nvim-surround'},
+
+  {'nvim-lualine/lualine.nvim'}
 }
 
 local opts = {
