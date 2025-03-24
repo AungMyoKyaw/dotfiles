@@ -4,6 +4,9 @@ local map = vim.keymap.set
 -- Set leader key
 vim.g.mapleader = ' '
 
+-- Set Local Leader key
+vim.g.maplocalleader = ' '
+
 -- Insert mode: fast escape
 map('i', 'jj', '<Esc>', {noremap = true, silent = true})
 
