@@ -11,6 +11,7 @@ ls -l "$DOTFILES_DIR"  # Check contents of dotfiles directory
 FILES_TO_LINK=(
   "$DOTFILES_DIR/nvim/.config/nvim:$HOME/.config/nvim"
   "$DOTFILES_DIR/tmux/.tmux.conf:$HOME/.tmux.conf"
+  "$DOTFILES_DIR/hammerspoon:$HOME/.hammerspoon"
 )
 
 # Backup directory

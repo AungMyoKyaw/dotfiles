@@ -2,20 +2,20 @@
 vim.loader.enable()
 
 -- Load core settings and key mappings
-require('core.options')
-require('core.keymaps')
+require("core.options")
+require("core.keymaps")
 
 -- Bootstrap Lazy.nvim plugin manager
-require('plugins.bootstrap')
+require("plugins.bootstrap")
 
 -- Setup lazy plugins
-require('plugins.lazy-plugins')
+require("plugins.lazy-plugins")
 
 -- Configure plugins and integrations
-require('plugins.pluginsettings')
+require("plugins.pluginsettings")
 
 -- Setup LSP and autocompletion
-require('plugins.auto-complete')
+require("plugins.auto-complete")
 
 -- Load user-specific customizations
-require('user.me')
+require("user.me")

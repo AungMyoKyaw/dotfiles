@@ -9,11 +9,11 @@ opt.termguicolors = true
 opt.number = true
 opt.numberwidth = 4
 opt.cursorline = true
-opt.colorcolumn = '120'
+opt.colorcolumn = "120"
 opt.wrap = false
 
 -- Clipboard
-opt.clipboard = 'unnamedplus'
+opt.clipboard = "unnamedplus"
 
 -- Search settings
 opt.ignorecase = true
@@ -32,7 +32,7 @@ opt.showcmd = false
 opt.ttyfast = true
 
 -- Folding
-opt.foldmethod = 'indent'
+opt.foldmethod = "indent"
 opt.foldenable = false
 
 -- Indentation
@@ -43,11 +43,11 @@ opt.shiftwidth = 2
 opt.shiftround = true
 opt.autoindent = true
 opt.smartindent = true
-opt.backspace = 'indent,eol,start'
+opt.backspace = "indent,eol,start"
 opt.modeline = false
 
 -- Mouse support
-opt.mouse = 'a'
+opt.mouse = "a"
 
 -- Split behavior
 opt.splitbelow = true
