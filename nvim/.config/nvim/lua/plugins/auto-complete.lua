@@ -27,13 +27,27 @@ mason_lspconfig.setup({
 
 local function on_attach(_, bufnr) lsp_zero.default_keymaps({buffer = bufnr}) end
 
-mason_lspconfig.setup_handlers({
-  function(server_name)
-    lspconfig[server_name].setup({
-      on_attach = on_attach,
-      capabilities = lsp_zero.get_capabilities()
-    })
-  end
+mason_lspconfig.setup({
+  ensure_installed = {
+    "eslint",
+    "bashls",
+    "emmet_language_server",
+    "vimls",
+    "html",
+    "cssls",
+    "lua_ls",
+    "tailwindcss",
+    "biome"
+  },
+  automatic_installation = true,
+  handlers = {
+    function(server_name)
+      lspconfig[server_name].setup({
+        on_attach = on_attach,
+        capabilities = lsp_zero.get_capabilities()
+      })
+    end
+  }
 })
 
 cmp.setup({

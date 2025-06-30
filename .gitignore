@@ -79,6 +79,8 @@ web_modules/
 .env.production.local
 .env.local
 
+# Local Zsh environment variables (secret)
+zsh/.zshenv.local
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 .parcel-cache
@@ -128,3 +130,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Ignore SSH config as it contains sensitive information
+ssh/config

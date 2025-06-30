@@ -7,7 +7,7 @@ DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 echo "DOTFILES_DIR is set to: $DOTFILES_DIR"
 ls -l "$DOTFILES_DIR"  # Check contents of dotfiles directory
 
-# List of dotfiles to symlink (Neovim + Tmux)
+# List of dotfiles to symlink (now includes .zshenv and .zshenv.local)
 FILES_TO_LINK=(
   "$DOTFILES_DIR/nvim/.config/nvim:$HOME/.config/nvim"
   "$DOTFILES_DIR/tmux/.tmux.conf:$HOME/.tmux.conf"
@@ -35,6 +35,9 @@ for file in "${FILES_TO_LINK[@]}"; do
     echo "🔄 Backing up existing file/directory: $dest -> $BACKUP_DIR"
     mv "$dest" "$BACKUP_DIR/"
   fi
+
+  # Ensure parent directory exists
+  mkdir -p "$(dirname "$dest")"
 
   # Create the symlink
   ln -s "$src" "$dest"
