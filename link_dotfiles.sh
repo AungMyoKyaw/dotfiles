@@ -12,6 +12,7 @@ FILES_TO_LINK=(
   "$DOTFILES_DIR/nvim/.config/nvim:$HOME/.config/nvim"
   "$DOTFILES_DIR/tmux/.tmux.conf:$HOME/.tmux.conf"
   "$DOTFILES_DIR/hammerspoon:$HOME/.hammerspoon"
+  "$DOTFILES_DIR/gemini/settings.json:$HOME/.gemini/settings.json"
 )
 
 # Backup directory
