@@ -1,0 +1,82 @@
+{
+  "servers": {
+    "sequential-thinking": {
+      "id": "sequential-thinking",
+      "name": "sequential-thinking",
+      "version": "0.0.1",
+      "config": {
+        "type": "stdio",
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+      }
+    },
+    "context7": {
+      "id": "context7",
+      "name": "context7",
+      "version": "0.0.1",
+      "config": {
+        "type": "stdio",
+        "command": "npx",
+        "args": ["-y", "@upstash/context7-mcp"]
+      }
+    },
+    "filesystem": {
+      "id": "filesystem",
+      "name": "filesystem",
+      "version": "0.0.1",
+      "config": {
+        "type": "stdio",
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-filesystem",
+          "${workspaceFolder}"
+        ]
+      }
+    },
+    "git": {
+      "id": "git",
+      "name": "git",
+      "version": "0.0.1",
+      "config": {
+        "type": "stdio",
+        "command": "uvx",
+        "args": ["mcp-server-git", "--repository", "${workspaceFolder}"]
+      }
+    },
+    "memory": {
+      "id": "memory",
+      "name": "memory",
+      "version": "0.0.1",
+      "config": {
+        "type": "stdio",
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-memory"]
+      }
+    },
+    "fetch": {
+      "id": "fetch",
+      "name": "fetch",
+      "version": "0.0.1",
+      "config": {
+        "type": "stdio",
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-fetch"]
+      }
+    },
+    "brave-search": {
+      "id": "brave-search",
+      "name": "brave-search",
+      "version": "0.0.1",
+      "config": {
+        "type": "stdio",
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+        "env": {
+          "BRAVE_API_KEY": "${env:BRAVE_API_KEY}"
+        }
+      }
+    }
+  },
+  "inputs": []
+}

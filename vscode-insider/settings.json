@@ -1,0 +1,114 @@
+{
+  // Theme and UI
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.statusBar.visible": true,
+  "workbench.sideBar.location": "left",
+  "workbench.startupEditor": "none",
+  "workbench.activityBar.location": "hidden",
+
+  // Editor Appearance
+  "editor.minimap.enabled": false,
+  "editor.fontFamily": "JetBrains Mono, Fira Code, Menlo, monospace",
+  "editor.fontLigatures": true,
+
+  // Zen Mode
+  "zenMode.centerLayout": false,
+  "zenMode.hideLineNumbers": false,
+  "zenMode.showTabs": "single",
+
+  // Git
+  "git.openRepositoryInParentFolders": "always",
+
+  // Vim Extension Core
+  "vim.leader": "<space>",
+  "vim.useCtrlKeys": true,
+  "vim.clipboard": {
+    "useSystemClipboard": true
+  },
+  "vim.handleKeys": {
+    "<C-n>": false
+  },
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["y"],
+      "after": ["\"", "+", "y"]
+    }
+  ],
+
+  // Formatter
+  "[jsonc]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+
+  // Copilot Code Completion
+  "github.copilot.enable": {
+    "*": true
+  },
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.inlineSuggest.edits.allowCodeShifting": true,
+  "editor.inlineSuggest.edits.renderSideBySide": true,
+  "editor.inlineSuggest.syntaxHighlightingEnabled": true,
+  "github.copilot.editor.enableCodeActions": true,
+  "github.copilot.renameSuggestions.triggerAutomatically": true,
+
+  // Copilot Chat Agent (Full Experimental Suite)
+  "chat.agent.enabled": true,
+  "chat.agent.maxRequests": 1000,
+  "chat.mcp.enabled": true,
+  "chat.detectParticipant.enabled": true,
+  "chat.tools.autoApprove": true,
+  "chat.sendElementsToChat.enabled": true,
+  "chat.editing.confirmEditRequestRemoval": true,
+  "chat.editing.confirmEditRequestRetry": true,
+  "chat.editing.autoAcceptDelay": 0,
+
+  // Copilot Chat Enhancements
+  "github.copilot.chat.localeOverride": "en",
+  "github.copilot.chat.scopeSelection": true,
+  "github.copilot.chat.terminalChatLocation": "chatView",
+  "github.copilot.chat.agent.autoFix": true,
+  "github.copilot.chat.agent.runTasks": true,
+  "github.copilot.chat.codesearch.enabled": true,
+  "github.copilot.chat.editor.temporalContext.enabled": true,
+  "github.copilot.chat.edits.temporalContext.enabled": true,
+  "github.copilot.chat.edits.suggestRelatedFilesFromGitHistory": true,
+  "github.copilot.chat.reviewSelection.enabled": true,
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+  "github.copilot.chat.newWorkspaceCreation.enabled": true,
+  "github.copilot.chat.agent.thinkingTool": true,
+
+  // Inline Chat Experimental
+  "inlineChat.lineEmptyHint": true,
+  "inlineChat.lineNaturalLanguageHint": true,
+  "inlineChat.finishOnType": true,
+  "inlineChat.holdToSpeech": true,
+
+  // Debugging
+  "github.copilot.chat.startDebugging.enabled": true,
+  "github.copilot.chat.copilotDebugCommand.enabled": true,
+
+  // Testing
+  "github.copilot.chat.setupTests.enabled": true,
+  "github.copilot.chat.generateTests.codeLens": true,
+
+  // Notebooks
+  "notebook.experimental.generate": true,
+
+  // Accessibility
+  "accessibility.verbosity.inlineChat": true,
+  "accessibility.verbosity.inlineCompletions": true,
+  "accessibility.verbosity.panelChat": true,
+  "accessibility.voice.autoSynthesize": "on",
+  "accessibility.voice.speechTimeout": 5000,
+  "extensions.ignoreRecommendations": true,
+
+  "geminicodeassist.updateChannel": "Insiders",
+  "geminicodeassist.inlineSuggestions.enableAuto": false
+}

@@ -1,0 +1,175 @@
+// Place your key bindings in this file to override the defaults
+[
+  // Toggle Explorer with Ctrl+N
+  {
+    "key": "ctrl+n",
+    "command": "workbench.view.explorer",
+    "when": "!explorerViewletVisible"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "workbench.action.closeSidebar",
+    "when": "explorerViewletVisible"
+  },
+
+  // Copy with y in Visual Mode (Vim)
+  {
+    "key": "y",
+    "command": "editor.action.clipboardCopyAction",
+    "when": "editorTextFocus && vim.mode == 'Visual'"
+  },
+
+  // Ctrl+P for Quick File Open
+  {
+    "key": "ctrl+p",
+    "command": "workbench.action.quickOpen"
+  },
+
+  // (Optional) <leader>p for Quick File Open (Vim)
+  {
+    "key": "space p",
+    "command": "workbench.action.quickOpen",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+
+  // Tmux-style Ctrl+A prefix keybindings
+  // Pane Navigation (vim hjkl movement)
+  {
+    "key": "ctrl+a h",
+    "command": "workbench.action.focusLeftGroup",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+a j",
+    "command": "workbench.action.focusBelowGroup",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+a k",
+    "command": "workbench.action.focusAboveGroup",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+a l",
+    "command": "workbench.action.focusRightGroup",
+    "when": "editorTextFocus"
+  },
+
+  // Pane Management
+  {
+    "key": "ctrl+a shift+\\",
+    "command": "workbench.action.splitEditor",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+a -",
+    "command": "workbench.action.splitEditorDown",
+    "when": "editorTextFocus"
+  },
+
+  // Tab/Window Navigation
+  {
+    "key": "ctrl+a p",
+    "command": "workbench.action.previousEditor",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+a n",
+    "command": "workbench.action.nextEditor",
+    "when": "editorTextFocus"
+  },
+
+  // File Operations
+  {
+    "key": "ctrl+a c",
+    "command": "workbench.action.files.newUntitledFile"
+  },
+  {
+    "key": "ctrl+a x",
+    "command": "workbench.action.closeActiveEditor"
+  },
+  {
+    "key": "ctrl+a d",
+    "command": "workbench.action.files.save"
+  },
+  {
+    "key": "ctrl+a s",
+    "command": "workbench.action.files.saveAll"
+  },
+
+  // Terminal & Tools
+  {
+    "key": "ctrl+a t",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "ctrl+a [",
+    "command": "editor.action.clipboardCopyAction",
+    "when": "editorTextFocus && editorHasSelection"
+  },
+  {
+    "key": "ctrl+a shift+;",
+    "command": "workbench.action.showCommands"
+  },
+
+  // Advanced Pane Control
+  {
+    "key": "ctrl+a shift+h",
+    "command": "workbench.action.decreaseViewWidth"
+  },
+  {
+    "key": "ctrl+a shift+j",
+    "command": "workbench.action.decreaseViewHeight"
+  },
+  {
+    "key": "ctrl+a shift+k",
+    "command": "workbench.action.increaseViewHeight"
+  },
+  {
+    "key": "ctrl+a shift+l",
+    "command": "workbench.action.increaseViewWidth"
+  },
+
+  // Quick Pane Focus (1-5)
+  {
+    "key": "ctrl+a 1",
+    "command": "workbench.action.focusFirstEditorGroup"
+  },
+  {
+    "key": "ctrl+a 2",
+    "command": "workbench.action.focusSecondEditorGroup"
+  },
+  {
+    "key": "ctrl+a 3",
+    "command": "workbench.action.focusThirdEditorGroup"
+  },
+  {
+    "key": "ctrl+a 4",
+    "command": "workbench.action.focusFourthEditorGroup"
+  },
+  {
+    "key": "ctrl+a 5",
+    "command": "workbench.action.focusFifthEditorGroup"
+  },
+
+  // Copilot Integration
+  {
+    "key": "ctrl+a g",
+    "command": "workbench.panel.chat.view.copilot.focus"
+  },
+  {
+    "key": "ctrl+a i",
+    "command": "inlineChat.start",
+    "when": "editorTextFocus"
+  },
+
+  // Session Management
+  {
+    "key": "ctrl+a ctrl+s",
+    "command": "workbench.action.saveWorkspaceAs"
+  },
+  {
+    "key": "ctrl+a r",
+    "command": "workbench.action.reloadWindow"
+  }
+]

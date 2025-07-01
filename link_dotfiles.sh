@@ -13,6 +13,9 @@ FILES_TO_LINK=(
   "$DOTFILES_DIR/tmux/.tmux.conf:$HOME/.tmux.conf"
   "$DOTFILES_DIR/hammerspoon:$HOME/.hammerspoon"
   "$DOTFILES_DIR/gemini/settings.json:$HOME/.gemini/settings.json"
+  "$DOTFILES_DIR/vscode-insider/keybindings.json:$HOME/Library/Application Support/Code - Insiders/User/keybindings.json"
+  "$DOTFILES_DIR/vscode-insider/settings.json:$HOME/Library/Application Support/Code - Insiders/User/settings.json"
+  "$DOTFILES_DIR/vscode-insider/mcp.json:$HOME/Library/Application Support/Code - Insiders/User/mcp.json"
 )
 
 # Backup directory
