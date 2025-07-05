@@ -23,5 +23,10 @@
       "args": ["-y", "@modelcontextprotocol/server-memory"]
     }
   },
-  "selectedAuthType": "oauth-personal"
+  "selectedAuthType": "oauth-personal",
+  "checkpointing": {
+    "enabled": true
+  },
+  "usageStatisticsEnabled": false,
+  "hideTips": true
 }
