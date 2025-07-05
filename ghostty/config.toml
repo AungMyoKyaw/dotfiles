@@ -19,3 +19,4 @@ unfocused-split-opacity = 0.8
 focus-follows-mouse = true
 mouse-hide-while-typing = true
 font-feature = "-calt,-liga,-dlig"
+maximize = true
