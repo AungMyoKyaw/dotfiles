@@ -110,5 +110,6 @@
   "extensions.ignoreRecommendations": true,
 
   "geminicodeassist.updateChannel": "Insiders",
-  "geminicodeassist.inlineSuggestions.enableAuto": false
+  "geminicodeassist.inlineSuggestions.enableAuto": false,
+  "geminicodeassist.project": "gen-lang-client-0150521855"
 }
