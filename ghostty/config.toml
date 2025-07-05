@@ -1,9 +1,9 @@
 theme = catppuccin-mocha
-font-family = "JetBrains Mono"
+font-family = "CaskaydiaMono Nerd Font Mono"
 font-size = 16
 auto-update-channel = "tip"
 # Performance tweaks
-window-vsync = false
+# window-vsync = false
 resize-overlay = "never"
 scrollback-limit = 10485760
 
