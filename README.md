@@ -12,8 +12,8 @@ This repository contains all my personal dotfiles.
 - **hammerspoon/**: Hammerspoon configuration (`~/.hammerspoon`) for window management and automation.
 - **tmux/**: Tmux configuration (`~/.tmux.conf`) for terminal multiplexing.
 - **gemini/**: Gemini protocol client settings (`~/.gemini/settings.json`).
-- **ssh/**: SSH configuration files (`~/.ssh/`).
-- **vscode-insider/**: Visual Studio Code Insiders settings and keybindings.
+- **ssh/**: SSH configuration files (`~/.ssh/`). (Currently empty, but reserved for future SSH configurations.)
+- **vscode-insider/**: Visual Studio Code Insiders settings and keybindings, including custom tmux-style keybindings and extensive Copilot integration.
 
 ## 🛠️ Installation
 
