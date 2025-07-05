@@ -4,6 +4,8 @@ This repository contains my personal configuration files (dotfiles) for various 
 
 ## 📂 Repository Structure
 
+This repository contains all my personal dotfiles.
+
 - **link_dotfiles.sh**: Script to symlink dotfiles to their target locations in your home directory, with automatic backup of existing files.
 - **lua-format.sh**: Script to format all Lua files in the repository using `lua-format`.
 - **nvim/**: Neovim configuration (`~/.config/nvim`) with `lazy.nvim` plugin manager and custom settings.
