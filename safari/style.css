@@ -1,0 +1,43 @@
+/* Apply SF Pro only to readable text, not icons */
+html,
+body,
+p,
+span,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+ul,
+ol,
+div,
+td,
+th,
+input,
+textarea,
+button,
+select,
+label {
+  font-family:
+    "SF Pro Text",
+    "SF Pro Display",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif !important;
+}
+
+/* Exclude known icon fonts (Font Awesome, Material Icons, etc.) */
+[class*="fa-"],
+[class^="fa"],
+.material-icons,
+.icon,
+[data-icon],
+i {
+  font-family: inherit !important;
+}
