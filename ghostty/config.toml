@@ -1,5 +1,5 @@
 theme = catppuccin-mocha
-font-family = "CaskaydiaMono Nerd Font Mono"
+font-family = "SFMonoNerdFont"
 font-size = 16
 auto-update-channel = "tip"
 # Performance tweaks
