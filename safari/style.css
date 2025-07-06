@@ -1,26 +1,30 @@
-/* Apply SF Pro only to readable text, not icons */
+/* Main text elements only */
 html,
 body,
+div,
 p,
 span,
-a,
 h1,
 h2,
 h3,
 h4,
 h5,
 h6,
-li,
+a,
 ul,
 ol,
-div,
+li,
+dl,
+dt,
+dd,
+table,
 td,
 th,
+label,
 input,
 textarea,
-button,
 select,
-label {
+button {
   font-family:
     "SF Pro Text",
     "SF Pro Display",
@@ -32,7 +36,15 @@ label {
     sans-serif !important;
 }
 
-/* Exclude known icon fonts (Font Awesome, Material Icons, etc.) */
+/* Code & dev UI stuff */
+code,
+pre,
+kbd,
+samp {
+  font-family: "SF Mono", Menlo, Consolas, monospace !important;
+}
+
+/* Exclude icons */
 [class*="fa-"],
 [class^="fa"],
 .material-icons,
