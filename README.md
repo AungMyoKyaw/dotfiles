@@ -13,6 +13,8 @@ This repository contains all my personal dotfiles.
 - **tmux/**: Tmux configuration (`~/.tmux.conf`) for terminal multiplexing.
 - **gemini/**: Gemini protocol client settings (`~/.gemini/settings.json`).
 - **ssh/**: SSH configuration files (`~/.ssh/`). (Currently empty, but reserved for future SSH configurations.)
+- **ghostty/**: Ghostty terminal emulator configuration (`~/.config/ghostty`).
+- **safari/**: User-defined stylesheet for Safari.
 - **vscode-insider/**: Visual Studio Code Insiders settings and keybindings, including custom tmux-style keybindings and extensive Copilot integration.
 
 ## 🛠️ Installation
