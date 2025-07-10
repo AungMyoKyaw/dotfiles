@@ -68,6 +68,7 @@ Welcome to my personal collection of dotfiles! This repository contains my confi
     cd ~/dotfiles
     ```
 2.  **Run the installation script:**
+
     ```sh
     ./link_dotfiles.sh
     ```
