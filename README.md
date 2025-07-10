@@ -5,6 +5,28 @@
 
 Welcome to my personal collection of dotfiles! This repository contains my configurations for various development tools, all managed via symlinks for easy installation and maintenance.
 
+## 📑 Table of Contents
+
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Repository Structure](#repository-structure)
+- [Installation](#installation)
+- [Formatting Scripts](#formatting-scripts)
+- [Updating](#updating)
+- [Troubleshooting](#troubleshooting)
+- [Configuration Details](#configuration-details)
+  - [Neovim](#neovim)
+  - [Tmux](#tmux)
+  - [VS Code Insiders](#vs-code-insiders)
+  - [Hammerspoon](#hammerspoon)
+  - [Ghostty](#ghostty)
+  - [Safari](#safari)
+  - [Gemini](#gemini)
+  - [SSH](#ssh)
+- [Contributing](#contributing)
+- [License](#license)
+- [Author](#author)
+
 ## ✨ Features
 
 - **Automated Installation**: A simple script to symlink all configurations and back up existing files.
@@ -14,18 +36,29 @@ Welcome to my personal collection of dotfiles! This repository contains my confi
 - **Plugin-Managed**: Configurations managed with `lazy.nvim` for Neovim and TPM for tmux.
 - **AI-Powered**: Integrated with GitHub Copilot in both Neovim and VS Code Insiders.
 
+## ⚡ Prerequisites
+
+- macOS with [Homebrew](https://brew.sh/) for package management
+- Zsh as default shell (with optional `.zshenv` / `.zshenv.local`)
+- Neovim: `brew install neovim`
+- Tmux: `brew install tmux`
+- Hammerspoon: `brew install --cask hammerspoon`
+- [lua-format](https://github.com/Koihik/LuaFormatter): `brew install luaformatter`
+- [Node.js](https://nodejs.org/) and npm for formatting scripts: `brew install node`
+- Prettier: `npm install -g prettier`
+
 ## 📂 Repository Structure
 
-- **`link_dotfiles.sh`**: Script to symlink dotfiles to their target locations.
-- **`lua-format.sh`**: Script to format all Lua files in the repository.
-- **`nvim/`**: Neovim configuration with `lazy.nvim`, LSP, and custom plugins.
-- **`hammerspoon/`**: Hammerspoon configuration for macOS window management.
-- **`tmux/`**: Tmux configuration with TPM, Catppuccin theme, and custom keybindings.
-- **`ghostty/`**: Ghostty terminal emulator configuration.
-- **`vscode-insider/`**: VS Code Insiders settings and keybindings with tmux-style navigation.
-- **`safari/`**: Custom stylesheet for Safari.
-- **`gemini/`**: Gemini CLI settings.
-- **`ssh/`**: SSH configuration (currently empty).
+- **link_dotfiles.sh**: Script to symlink dotfiles to their target locations.
+- **lua-format.sh**: Script to format all Lua files and supported files via Prettier.
+- **nvim/**: Neovim configuration directory (`.config/nvim`).
+- **hammerspoon/**: Hammerspoon setup for macOS window management.
+- **tmux/**: Tmux configuration (`.tmux.conf`) with TPM and Catppuccin theme.
+- **ghostty/**: Ghostty terminal emulator configuration file.
+- **vscode-insider/**: VS Code Insiders user settings, keybindings, and chatmodes.
+- **safari/**: Custom CSS stylesheet for Safari.
+- **gemini/**: Gemini CLI settings (`settings.json`).
+- **ssh/**: SSH configuration directory.
 
 ## 🛠️ Installation
 
@@ -38,7 +71,35 @@ Welcome to my personal collection of dotfiles! This repository contains my confi
     ```sh
     ./link_dotfiles.sh
     ```
-    This will back up your existing dotfiles to `~/dotfiles_backup_*` and create the necessary symlinks.
+
+    - Backs up existing dotfiles to `~/dotfiles_backup_<timestamp>`
+    - Creates symlinks for all configured dotfiles and directories
+
+## 🧰 Formatting Scripts
+
+- **`lua-format.sh`**: Formats all Lua files (indent width 2, 80-col limit) and runs Prettier on supported files.
+  ```sh
+  ./lua-format.sh
+  ```
+
+## 🔄 Updating
+
+To update to the latest dotfiles:
+
+```sh
+cd ~/dotfiles
+git pull --rebase
+./link_dotfiles.sh
+```
+
+## 🐞 Troubleshooting
+
+- **Symlink Issues**: Ensure `link_dotfiles.sh` is executable (`chmod +x link_dotfiles.sh`) and run with proper permissions.
+- **Neovim**: After plugin changes, open Neovim and run `:Lazy sync` or `:PackerSync` depending on your setup.
+- **Tmux**: Restart tmux server with `tmux kill-server` and reattach; install plugins with `<prefix> I`.
+- **Hammerspoon**: Reload config via Hammerspoon menu or run `hs.reload()` in console.
+- **VS Code Insiders**: Reload window (`Cmd+Shift+P` → Reload Window) after updating settings.
+- **Formatting Errors**: Ensure `luaformatter` and `prettier` are installed; verify with `lua-format --version` and `prettier --version`.
 
 ## ⚙️ Configuration Details
 
@@ -89,6 +150,8 @@ My tmux setup is designed for efficient session management and navigation, with 
 | `C-a C-a`  | Send `C-a` to the terminal |
 | `C-a R`    | Reload the tmux config     |
 | `C-a y`    | Copy to system clipboard   |
+
+> After symlinking, install tmux plugins by launching tmux and pressing `<prefix> I` (Capital i) to fetch plugins via TPM.
 
 ### VS Code Insiders
 
