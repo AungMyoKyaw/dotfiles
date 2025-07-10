@@ -3,7 +3,7 @@ font-family = "SFMonoNerdFont"
 font-size = 16
 auto-update-channel = "tip"
 # Performance tweaks
-# window-vsync = false
+window-vsync = false
 resize-overlay = "never"
 scrollback-limit = 10485760
 
@@ -14,7 +14,7 @@ window-theme = "auto"
 macos-titlebar-style = "hidden"
 cursor-style = "block"
 cursor-style-blink = true
-font-synthetic-style = "no-bold,no-italic"
+# font-synthetic-style = "no-bold,no-italic"
 unfocused-split-opacity = 0.8
 focus-follows-mouse = true
 mouse-hide-while-typing = true

@@ -28,5 +28,9 @@
     "enabled": true
   },
   "usageStatisticsEnabled": false,
-  "hideTips": true
+  "hideTips": true,
+  "fileFiltering": {
+    "respectGitIgnore": false,
+    "enableRecursiveFileSearch": true
+  }
 }
