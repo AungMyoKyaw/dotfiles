@@ -1,25 +1,24 @@
 {
-  // Theme and UI
+  "chat.modeFilesLocations": {
+    ".github/chatmodes": true,
+    "/Users/aungmyokyaw/Library/Application Support/Code - Insiders/User/chatmodes": true
+  },
   "workbench.colorTheme": "Catppuccin Mocha",
   "workbench.statusBar.visible": true,
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "none",
   "workbench.activityBar.location": "hidden",
 
-  // Editor Appearance
   "editor.minimap.enabled": false,
   "editor.fontFamily": "JetBrains Mono, Fira Code, Menlo, monospace",
   "editor.fontLigatures": true,
 
-  // Zen Mode
   "zenMode.centerLayout": false,
   "zenMode.hideLineNumbers": false,
   "zenMode.showTabs": "single",
 
-  // Git
   "git.openRepositoryInParentFolders": "always",
 
-  // Vim Extension Core
   "vim.leader": "<space>",
   "vim.useCtrlKeys": true,
   "vim.clipboard": {
@@ -41,12 +40,10 @@
     }
   ],
 
-  // Formatter
   "[jsonc]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
 
-  // Copilot Code Completion
   "github.copilot.enable": {
     "*": true
   },
@@ -58,7 +55,6 @@
   "github.copilot.editor.enableCodeActions": true,
   "github.copilot.renameSuggestions.triggerAutomatically": true,
 
-  // Copilot Chat Agent (Full Experimental Suite)
   "chat.agent.enabled": true,
   "chat.agent.maxRequests": 1000,
   "chat.mcp.enabled": true,
@@ -69,7 +65,6 @@
   "chat.editing.confirmEditRequestRetry": true,
   "chat.editing.autoAcceptDelay": 0,
 
-  // Copilot Chat Enhancements
   "github.copilot.chat.localeOverride": "en",
   "github.copilot.chat.scopeSelection": true,
   "github.copilot.chat.terminalChatLocation": "chatView",
@@ -84,24 +79,19 @@
   "github.copilot.chat.newWorkspaceCreation.enabled": true,
   "github.copilot.chat.agent.thinkingTool": true,
 
-  // Inline Chat Experimental
   "inlineChat.lineEmptyHint": true,
   "inlineChat.lineNaturalLanguageHint": true,
   "inlineChat.finishOnType": true,
   "inlineChat.holdToSpeech": true,
 
-  // Debugging
   "github.copilot.chat.startDebugging.enabled": true,
   "github.copilot.chat.copilotDebugCommand.enabled": true,
 
-  // Testing
   "github.copilot.chat.setupTests.enabled": true,
   "github.copilot.chat.generateTests.codeLens": true,
 
-  // Notebooks
   "notebook.experimental.generate": true,
 
-  // Accessibility
   "accessibility.verbosity.inlineChat": true,
   "accessibility.verbosity.inlineCompletions": true,
   "accessibility.verbosity.panelChat": true,
