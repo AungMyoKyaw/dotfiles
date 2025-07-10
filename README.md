@@ -1,7 +1,7 @@
 # 🚀 My Personal Dotfiles
 
-![Made with Love in Myanmar](https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8F%20in-Myanmar-red)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Made with Love in Myanmar](https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8F%20in-Myanmar-2ecc71?style=flat-square)
+[![License: MIT](https://img.shields.io/badge/License-MIT-2ecc71?style=flat-square)](https://opensource.org/licenses/MIT)
 
 Welcome to my personal collection of dotfiles! This repository contains my configurations for various development tools, all managed via symlinks for easy installation and maintenance.
 
