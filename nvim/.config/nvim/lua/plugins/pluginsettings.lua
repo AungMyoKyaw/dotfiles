@@ -141,3 +141,22 @@ autopairs.setup({})
 -- nvim surround
 local surround = require("nvim-surround")
 surround.setup({})
+
+-- devcontainer
+local devcontainer = require("devcontainer")
+devcontainer.setup({
+  -- Optional: Customize container runtime (default: docker)
+  container_runtime = "docker",
+  -- Optional: Customize how Neovim is installed in the container
+  nvim_installation_commands_provider = function(path_binaries, version_string)
+    return {
+      "apt-get update",
+      "apt-get install -y neovim",
+      "mkdir -p /home/vscode/.config/nvim",
+      -- Optional: Copy local config to container (adjust path as needed)
+      "cp -r /workspace/.nvim-config/* /home/vscode/.config/nvim/"
+    }
+  end,
+  -- Optional: Specify workspace folder
+  workspace_folder_provider = function() return vim.loop.cwd() end
+})

@@ -1,7 +1,7 @@
 {
   "LuaSnip": {
     "branch": "master",
-    "commit": "eda5be8f0ce9816278671f0b578cdbb8b762c701"
+    "commit": "66b5c2707e624dcd2cd3605676c64a2efe47e9d1"
   },
   "catppuccin": {
     "branch": "main",
@@ -21,11 +21,11 @@
   },
   "fzf-lua": {
     "branch": "main",
-    "commit": "9be1552e7de8d72fa280b87ede3642e8bfb4c998"
+    "commit": "f8805989fc8f164ea3fab37bdec963add9576964"
   },
   "gitsigns.nvim": {
     "branch": "main",
-    "commit": "362fe61f9f19e9bceff178792780df5cce118a7d"
+    "commit": "7bbc674278f22376850576dfdddf43bbc17e62b5"
   },
   "grug-far.nvim": {
     "branch": "main",
@@ -49,7 +49,7 @@
   },
   "mason-lspconfig.nvim": {
     "branch": "main",
-    "commit": "c2465eb07db648026eee81005a659abe26e6d077"
+    "commit": "7815740f4d0afb74ada00956c36e18ad695ed9e3"
   },
   "mason.nvim": {
     "branch": "main",
@@ -57,7 +57,7 @@
   },
   "mini.nvim": {
     "branch": "main",
-    "commit": "48f48e4b3f317e9da34ee7a01958b4c5018e2d34"
+    "commit": "66d3cf727d7bf2ba59df02e710f39640d9af823f"
   },
   "nim.nvim": {
     "branch": "master",
@@ -71,9 +71,13 @@
     "branch": "main",
     "commit": "b5311ab3ed9c846b585c0c15b7559be131ec4be9"
   },
+  "nvim-dev-container": {
+    "branch": "main",
+    "commit": "664d31ed0f71f0ca7c6cf1dead281bc157d7d858"
+  },
   "nvim-lspconfig": {
     "branch": "master",
-    "commit": "1b6d7c3abf962cc392bcaf0dd7b92bdb9a1a5684"
+    "commit": "592916db3f4ecdf062962b3aa83583aebe3c4a14"
   },
   "nvim-surround": {
     "branch": "main",

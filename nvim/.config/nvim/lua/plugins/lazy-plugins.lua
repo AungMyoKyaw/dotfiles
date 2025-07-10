@@ -77,7 +77,12 @@ local plugins = {
 
   {"kylechui/nvim-surround"},
 
-  {"nvim-lualine/lualine.nvim"}
+  {"nvim-lualine/lualine.nvim"},
+
+  {
+    "https://codeberg.org/esensar/nvim-dev-container",
+    dependencies = {"nvim-treesitter/nvim-treesitter"}
+  }
 }
 
 local opts = {
