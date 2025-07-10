@@ -133,3 +133,6 @@ dist
 
 # Ignore SSH config as it contains sensitive information
 ssh/config
+
+# macOS metadata files
+.DS_Store
