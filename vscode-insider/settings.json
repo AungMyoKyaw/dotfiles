@@ -1,26 +1,67 @@
 {
+  "[jsonc]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "accessibility.verbosity.inlineChat": true,
+  "accessibility.verbosity.inlineCompletions": true,
+  "accessibility.verbosity.panelChat": true,
+  "accessibility.voice.autoSynthesize": "on",
+  "accessibility.voice.speechTimeout": 5000,
+  "chat.agent.enabled": true,
+  "chat.agent.maxRequests": 1000,
+  "chat.detectParticipant.enabled": true,
+  "chat.editing.autoAcceptDelay": 0,
+  "chat.editing.confirmEditRequestRemoval": true,
+  "chat.editing.confirmEditRequestRetry": true,
+  "chat.editor.fontSize": 16,
+  "chat.mcp.enabled": true,
   "chat.modeFilesLocations": {
     ".github/chatmodes": true,
     "/Users/aungmyokyaw/Library/Application Support/Code - Insiders/User/chatmodes": true
   },
-  "workbench.colorTheme": "Catppuccin Mocha",
-  "workbench.statusBar.visible": true,
-  "workbench.sideBar.location": "left",
-  "workbench.startupEditor": "none",
-  "workbench.activityBar.location": "hidden",
-
-  "editor.minimap.enabled": false,
-  "editor.fontFamily": "JetBrains Mono, Fira Code, Menlo, monospace",
+  "chat.sendElementsToChat.enabled": true,
+  "chat.tools.autoApprove": true,
+  "editor.fontFamily": "SFMonoNerdFont, JetBrains Mono, Fira Code, Menlo, monospace",
   "editor.fontLigatures": true,
-
-  "zenMode.centerLayout": false,
-  "zenMode.hideLineNumbers": false,
-  "zenMode.showTabs": "single",
-
+  "editor.fontSize": 14,
+  "editor.inlineSuggest.edits.allowCodeShifting": true,
+  "editor.inlineSuggest.edits.renderSideBySide": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.inlineSuggest.syntaxHighlightingEnabled": true,
+  "editor.minimap.enabled": false,
+  "extensions.ignoreRecommendations": true,
+  "geminicodeassist.inlineSuggestions.enableAuto": false,
+  "geminicodeassist.project": "gen-lang-client-0150521855",
+  "geminicodeassist.updateChannel": "Insiders",
+  "github.copilot.chat.agent.autoFix": true,
+  "github.copilot.chat.agent.runTasks": true,
+  "github.copilot.chat.agent.thinkingTool": true,
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+  "github.copilot.chat.codesearch.enabled": true,
+  "github.copilot.chat.copilotDebugCommand.enabled": true,
+  "github.copilot.chat.edits.suggestRelatedFilesFromGitHistory": true,
+  "github.copilot.chat.edits.temporalContext.enabled": true,
+  "github.copilot.chat.editor.temporalContext.enabled": true,
+  "github.copilot.chat.generateTests.codeLens": true,
+  "github.copilot.chat.localeOverride": "en",
+  "github.copilot.chat.newWorkspaceCreation.enabled": true,
+  "github.copilot.chat.reviewSelection.enabled": true,
+  "github.copilot.chat.scopeSelection": true,
+  "github.copilot.chat.setupTests.enabled": true,
+  "github.copilot.chat.startDebugging.enabled": true,
+  "github.copilot.chat.terminalChatLocation": "chatView",
+  "github.copilot.editor.enableCodeActions": true,
+  "github.copilot.enable": {
+    "*": true
+  },
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "github.copilot.renameSuggestions.triggerAutomatically": true,
   "git.openRepositoryInParentFolders": "always",
-
-  "vim.leader": "<space>",
-  "vim.useCtrlKeys": true,
+  "inlineChat.finishOnType": true,
+  "inlineChat.holdToSpeech": true,
+  "inlineChat.lineEmptyHint": true,
+  "inlineChat.lineNaturalLanguageHint": true,
+  "notebook.experimental.generate": true,
   "vim.clipboard": {
     "useSystemClipboard": true
   },
@@ -33,73 +74,20 @@
       "after": ["<Esc>"]
     }
   ],
+  "vim.leader": "<space>",
+  "vim.useCtrlKeys": true,
   "vim.visualModeKeyBindingsNonRecursive": [
     {
       "before": ["y"],
       "after": ["\"", "+", "y"]
     }
   ],
-
-  "[jsonc]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-
-  "github.copilot.enable": {
-    "*": true
-  },
-  "github.copilot.nextEditSuggestions.enabled": true,
-  "editor.inlineSuggest.enabled": true,
-  "editor.inlineSuggest.edits.allowCodeShifting": true,
-  "editor.inlineSuggest.edits.renderSideBySide": true,
-  "editor.inlineSuggest.syntaxHighlightingEnabled": true,
-  "github.copilot.editor.enableCodeActions": true,
-  "github.copilot.renameSuggestions.triggerAutomatically": true,
-
-  "chat.agent.enabled": true,
-  "chat.agent.maxRequests": 1000,
-  "chat.mcp.enabled": true,
-  "chat.detectParticipant.enabled": true,
-  "chat.tools.autoApprove": true,
-  "chat.sendElementsToChat.enabled": true,
-  "chat.editing.confirmEditRequestRemoval": true,
-  "chat.editing.confirmEditRequestRetry": true,
-  "chat.editing.autoAcceptDelay": 0,
-
-  "github.copilot.chat.localeOverride": "en",
-  "github.copilot.chat.scopeSelection": true,
-  "github.copilot.chat.terminalChatLocation": "chatView",
-  "github.copilot.chat.agent.autoFix": true,
-  "github.copilot.chat.agent.runTasks": true,
-  "github.copilot.chat.codesearch.enabled": true,
-  "github.copilot.chat.editor.temporalContext.enabled": true,
-  "github.copilot.chat.edits.temporalContext.enabled": true,
-  "github.copilot.chat.edits.suggestRelatedFilesFromGitHistory": true,
-  "github.copilot.chat.reviewSelection.enabled": true,
-  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
-  "github.copilot.chat.newWorkspaceCreation.enabled": true,
-  "github.copilot.chat.agent.thinkingTool": true,
-
-  "inlineChat.lineEmptyHint": true,
-  "inlineChat.lineNaturalLanguageHint": true,
-  "inlineChat.finishOnType": true,
-  "inlineChat.holdToSpeech": true,
-
-  "github.copilot.chat.startDebugging.enabled": true,
-  "github.copilot.chat.copilotDebugCommand.enabled": true,
-
-  "github.copilot.chat.setupTests.enabled": true,
-  "github.copilot.chat.generateTests.codeLens": true,
-
-  "notebook.experimental.generate": true,
-
-  "accessibility.verbosity.inlineChat": true,
-  "accessibility.verbosity.inlineCompletions": true,
-  "accessibility.verbosity.panelChat": true,
-  "accessibility.voice.autoSynthesize": "on",
-  "accessibility.voice.speechTimeout": 5000,
-  "extensions.ignoreRecommendations": true,
-
-  "geminicodeassist.updateChannel": "Insiders",
-  "geminicodeassist.inlineSuggestions.enableAuto": false,
-  "geminicodeassist.project": "gen-lang-client-0150521855"
+  "workbench.activityBar.location": "hidden",
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.sideBar.location": "left",
+  "workbench.startupEditor": "none",
+  "workbench.statusBar.visible": true,
+  "zenMode.centerLayout": false,
+  "zenMode.hideLineNumbers": false,
+  "zenMode.showTabs": "single"
 }
