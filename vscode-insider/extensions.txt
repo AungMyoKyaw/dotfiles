@@ -1,0 +1,14 @@
+alexcvzz.vscode-sqlite
+biomejs.biome
+bradlc.vscode-tailwindcss
+catppuccin.catppuccin-vsc
+editorconfig.editorconfig
+github.copilot
+github.copilot-chat
+google.geminicodeassist
+mechatroner.rainbow-csv
+ms-playwright.playwright
+ms-vscode.vscode-speech
+openai.openai-chatgpt-adhoc
+sonarsource.sonarlint-vscode
+vscodevim.vim
