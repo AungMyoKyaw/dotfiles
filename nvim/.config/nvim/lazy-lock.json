@@ -17,15 +17,15 @@
   },
   "copilot.vim": {
     "branch": "release",
-    "commit": "3955014c503b0cd7b30bc56c86c56c0736ca0951"
+    "commit": "12995dffe10282b29b8335650bf3e7457f4870e7"
   },
   "fzf-lua": {
     "branch": "main",
-    "commit": "f8805989fc8f164ea3fab37bdec963add9576964"
+    "commit": "bee05a6600ca5fe259d74c418ac9e016a6050cec"
   },
   "gitsigns.nvim": {
     "branch": "main",
-    "commit": "7bbc674278f22376850576dfdddf43bbc17e62b5"
+    "commit": "4666d040b60d1dc0e474ccd9a3fd3c4d67b4767c"
   },
   "grug-far.nvim": {
     "branch": "main",
@@ -57,7 +57,7 @@
   },
   "mini.nvim": {
     "branch": "main",
-    "commit": "66d3cf727d7bf2ba59df02e710f39640d9af823f"
+    "commit": "ae198e51b90d3bf930a1b0137642cdf7432f55d1"
   },
   "nim.nvim": {
     "branch": "master",
@@ -77,7 +77,7 @@
   },
   "nvim-lspconfig": {
     "branch": "master",
-    "commit": "592916db3f4ecdf062962b3aa83583aebe3c4a14"
+    "commit": "dbdb80d3bd311989d21029c63918d67a786d5013"
   },
   "nvim-surround": {
     "branch": "main",
