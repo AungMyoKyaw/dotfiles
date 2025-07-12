@@ -15,14 +15,22 @@ local plugins = {
     name = "catppuccin",
     lazy = false -- Load immediately to apply the theme early
   },
-  {"kyazdani42/nvim-tree.lua", cmd = "NvimTreeToggle"},
+  {"kyazdani42/nvim-tree.lua", cmd = {"NvimTreeToggle", "NvimTreeFocus"}},
   {
     "lewis6991/gitsigns.nvim",
     dependencies = {"nvim-lua/plenary.nvim"},
     event = "BufReadPre"
   },
   {"ibhagwan/fzf-lua", cmd = "FzfLua"},
-  {"tpope/vim-fugitive", cmd = "Git"},
+  {
+    "NeogitOrg/neogit",
+    cmd = "Neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+      "ibhagwan/fzf-lua"
+    }
+  },
   {"jidn/vim-dbml", ft = "dbml"},
   {
     "MagicDuck/grug-far.nvim",
@@ -68,20 +76,35 @@ local plugins = {
   {"echasnovski/mini.nvim", event = "VeryLazy"},
 
   -- vim-prettier for additional filetypes
-  {"prettier/vim-prettier"},
+  {
+    "stevearc/conform.nvim",
+    ft = {"javascript", "typescript", "css", "json", "markdown"},
+    config = function()
+      require("conform").setup({
+        formatters_by_ft = {
+          javascript = {"prettier"},
+          typescript = {"prettier"},
+          css = {"prettier"},
+          json = {"prettier"},
+          markdown = {"prettier"}
+        }
+      })
+    end
+  },
 
   -- which-key for keybinding discovery
-  {"folke/which-key.nvim"},
+  {"folke/which-key.nvim", event = "VeryLazy"},
 
-  {"windwp/nvim-autopairs"},
+  {"windwp/nvim-autopairs", event = "InsertEnter"},
 
-  {"kylechui/nvim-surround"},
+  {"kylechui/nvim-surround", event = "ModeChanged"},
 
-  {"nvim-lualine/lualine.nvim"},
+  {"nvim-lualine/lualine.nvim", event = "VeryLazy"},
 
   {
     "https://codeberg.org/esensar/nvim-dev-container",
-    dependencies = {"nvim-treesitter/nvim-treesitter"}
+    dependencies = {"nvim-treesitter/nvim-treesitter"},
+    ft = {"devcontainer.json", "Dockerfile"}
   }
 }
 

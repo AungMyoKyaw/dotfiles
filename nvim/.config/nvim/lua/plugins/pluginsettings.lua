@@ -142,7 +142,6 @@ autopairs.setup({})
 local surround = require("nvim-surround")
 surround.setup({})
 
--- devcontainer
 local devcontainer = require("devcontainer")
 devcontainer.setup({
   -- Optional: Customize container runtime (default: docker)
@@ -160,3 +159,31 @@ devcontainer.setup({
   -- Optional: Specify workspace folder
   workspace_folder_provider = function() return vim.loop.cwd() end
 })
+
+-- === Conform.nvim: :Format command and enhancements ===
+-- Add :Format user command for async formatting (with range support)
+vim.api.nvim_create_user_command("Format", function(args)
+  local range = nil
+  if args.count ~= -1 then
+    local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2,
+                                                true)[1]
+    range = {start = {args.line1, 0}, ["end"] = {args.line2, end_line:len()}}
+  end
+  require("conform").format({
+    async = true,
+    lsp_format = "fallback",
+    range = range
+  })
+end, {range = true})
+
+-- Optional: Set up format-on-save and formatexpr for best experience
+pcall(function() vim.o.formatexpr = "v:lua.require'conform'.formatexpr()" end)
+-- If you want format-on-save for all filetypes, you can add this (uncomment if desired):
+-- pcall(function()
+--   require("conform").setup({
+--     format_on_save = {
+--       timeout_ms = 500,
+--       lsp_format = "fallback",
+--     },
+--   })
+-- end)

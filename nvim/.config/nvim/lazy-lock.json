@@ -15,9 +15,17 @@
     "branch": "main",
     "commit": "e52e640b7befd8113b3350f46e8cfcfe98fcf730"
   },
+  "conform.nvim": {
+    "branch": "master",
+    "commit": "973f3cb73887d510321653044791d7937c7ec0fa"
+  },
   "copilot.vim": {
     "branch": "release",
     "commit": "12995dffe10282b29b8335650bf3e7457f4870e7"
+  },
+  "diffview.nvim": {
+    "branch": "main",
+    "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a"
   },
   "fzf-lua": {
     "branch": "main",
@@ -58,6 +66,10 @@
   "mini.nvim": {
     "branch": "main",
     "commit": "3f71fd3573981bf18f76b2bfb6518c4ae728638d"
+  },
+  "neogit": {
+    "branch": "master",
+    "commit": "59725524d25f9a8a9474f113d60db52bad8504d0"
   },
   "nim.nvim": {
     "branch": "master",
@@ -106,14 +118,6 @@
   "vim-dbml": {
     "branch": "master",
     "commit": "c684576d80542c52f888309b715c49bc69a02ed3"
-  },
-  "vim-fugitive": {
-    "branch": "master",
-    "commit": "d3e2b58dec75fc6012fecc82ce0d33a45ed0560e"
-  },
-  "vim-prettier": {
-    "branch": "master",
-    "commit": "7dbdbb12c50a9f4ba72390cce2846248e4368fd0"
   },
   "which-key.nvim": {
     "branch": "main",
