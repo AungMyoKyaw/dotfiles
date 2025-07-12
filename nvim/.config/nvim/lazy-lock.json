@@ -57,7 +57,7 @@
   },
   "mini.nvim": {
     "branch": "main",
-    "commit": "ae198e51b90d3bf930a1b0137642cdf7432f55d1"
+    "commit": "3f71fd3573981bf18f76b2bfb6518c4ae728638d"
   },
   "nim.nvim": {
     "branch": "master",
@@ -109,7 +109,7 @@
   },
   "vim-fugitive": {
     "branch": "master",
-    "commit": "593f831d6f6d779cbabb70a4d1e6b1b1936a88af"
+    "commit": "d3e2b58dec75fc6012fecc82ce0d33a45ed0560e"
   },
   "vim-prettier": {
     "branch": "master",
