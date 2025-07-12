@@ -13,7 +13,7 @@
   "chat.editing.autoAcceptDelay": 0,
   "chat.editing.confirmEditRequestRemoval": true,
   "chat.editing.confirmEditRequestRetry": true,
-  "chat.editor.fontSize": 16,
+  "chat.editor.fontSize": 14,
   "chat.mcp.enabled": true,
   "chat.modeFilesLocations": {
     ".github/chatmodes": true,
