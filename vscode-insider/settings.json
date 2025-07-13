@@ -82,12 +82,19 @@
       "after": ["\"", "+", "y"]
     }
   ],
-  "workbench.activityBar.location": "hidden",
   "workbench.colorTheme": "Catppuccin Mocha",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "none",
   "workbench.statusBar.visible": true,
   "zenMode.centerLayout": false,
   "zenMode.hideLineNumbers": false,
-  "zenMode.showTabs": "single"
+  "zenMode.showTabs": "single",
+  "sonarlint.connectedMode.connections.sonarcloud": [
+    {
+      "organizationKey": "aungmyokyaw",
+      "connectionId": "aungmyokyaw",
+      "region": "EU"
+    }
+  ],
+  "workbench.activityBar.location": "hidden"
 }
