@@ -1,24 +1,33 @@
-# 🚀 My Personal Dotfiles
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=2ecc71&height=180&section=header&text=My%20Personal%20Dotfiles&fontSize=40&fontAlign=50&fontColor=ffffff" alt="banner"/>
+</p>
 
-> **Purpose:**
-> This repository provides a secure, maintainable, and highly customized set of dotfiles for macOS, enabling fast setup, consistent development environments, and productivity across devices. All configurations are managed via symlinks for easy installation and rollback.
+<p align="center">
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-2ecc71?style=flat-square" alt="License"></a>
+  <img src="https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8F%20in-Myanmar-2ecc71?style=flat-square" alt="Made in Myanmar">
+  <img src="https://img.shields.io/badge/macOS%20Optimized-2ecc71?style=flat-square" alt="macOS Optimized">
+</p>
 
-![Made with Love in Myanmar](https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8F%20in-Myanmar-2ecc71?style=flat-square)
-[![License: MIT](https://img.shields.io/badge/License-MIT-2ecc71?style=flat-square)](https://opensource.org/licenses/MIT)
+<p align="center">
+  <b>Secure, maintainable, and highly customized dotfiles for macOS.<br>
+  Fast setup, consistent dev environments, and productivity across devices.<br>
+  All configs managed via symlinks for easy install and rollback.</b>
+</p>
 
-Welcome to my personal collection of dotfiles! This repository contains my configurations for various development tools, all managed via symlinks for easy installation and maintenance.
+---
 
 ## 📑 Table of Contents
 
-- [Quick Start](#quick-start)
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Repository Structure](#repository-structure)
-- [Installation](#installation)
-- [Formatting Scripts](#formatting-scripts)
-- [Updating](#updating)
-- [Troubleshooting](#troubleshooting)
-- [Configuration Details](#configuration-details)
+- [🚀 Quick Start](#-quick-start)
+- [✨ Features](#-features)
+- [⚡ Prerequisites](#-prerequisites)
+- [📂 Repository Structure](#-repository-structure)
+- [🛠️ Installation (Advanced)](#️-installation-advanced)
+- [🧰 Formatting Scripts](#-formatting-scripts)
+- [🔄 Updating](#-updating)
+- [🐞 Troubleshooting](#-troubleshooting)
+- [🔒 Security & Privacy Notes](#-security--privacy-notes)
+- [⚙️ Configuration Details](#️-configuration-details)
   - [Neovim](#neovim)
   - [Tmux](#tmux)
   - [VS Code Insiders](#vs-code-insiders)
@@ -27,11 +36,14 @@ Welcome to my personal collection of dotfiles! This repository contains my confi
   - [Safari](#safari)
   - [Gemini](#gemini)
   - [SSH](#ssh)
-- [Contributing](#contributing)
-- [License](#license)
-- [Author](#author)
+- [❓ FAQ](#-faq)
+- [🤝 Contributing](#-contributing)
+- [📜 License](#-license)
+- [👨‍💻 Author](#-author)
 
-## ⚡ Quick Start
+---
+
+## 🚀 Quick Start
 
 1. **Clone and enter the repo:**
    ```sh
@@ -46,7 +58,7 @@ Welcome to my personal collection of dotfiles! This repository contains my confi
    - Existing dotfiles are backed up to `~/dotfiles_backup_<timestamp>`
    - Symlinks are created for all managed configs
 3. **Install dependencies:**
-   - See [Prerequisites](#prerequisites) below for required tools
+   - See [⚡ Prerequisites](#-prerequisites) below for required tools
 4. **(Optional) Format configs:**
    ```sh
    ./lua-format.sh
@@ -54,12 +66,17 @@ Welcome to my personal collection of dotfiles! This repository contains my confi
 
 ---
 
-- **Automated Installation**: A simple script to symlink all configurations and back up existing files.
-- **Consistent Theming**: Catppuccin Mocha theme across Neovim, Ghostty, and tmux for a unified look.
-- **Modal Editing**: Vim-style keybindings and modal editing in Neovim, tmux, and VS Code Insiders.
-- **Extensive Keybindings**: Custom keybindings for efficient window management, pane navigation, and more.
-- **Plugin-Managed**: Configurations managed with `lazy.nvim` for Neovim and TPM for tmux.
+## ✨ Features
+
+- **Automated Installation**: One script to symlink all configs and back up existing files
+- **Consistent Theming**: Catppuccin Mocha theme across Neovim, Ghostty, and tmux
+- **Modal Editing**: Vim-style keybindings in Neovim, tmux, and VS Code Insiders
+- **Extensive Keybindings**: Custom shortcuts for window management, navigation, and more
+- **Plugin-Managed**: `lazy.nvim` for Neovim, TPM for tmux
+- **AI-Powered**: GitHub Copilot in Neovim and VS Code Insiders
 - **AI-Powered**: Integrated with GitHub Copilot in both Neovim and VS Code Insiders.
+
+---
 
 ## ⚡ Prerequisites
 
@@ -71,6 +88,8 @@ Welcome to my personal collection of dotfiles! This repository contains my confi
 - [lua-format](https://github.com/Koihik/LuaFormatter): `brew install luaformatter`
 - [Node.js](https://nodejs.org/) and npm for formatting scripts: `brew install node`
 - Prettier: `npm install -g prettier`
+
+---
 
 ## 📂 Repository Structure
 
@@ -84,6 +103,8 @@ Welcome to my personal collection of dotfiles! This repository contains my confi
 - **safari/**: Custom CSS stylesheet for Safari.
 - **gemini/**: Gemini CLI settings (`settings.json`).
 - **ssh/**: SSH configuration directory.
+
+---
 
 ## 🛠️ Installation (Advanced)
 
@@ -101,12 +122,16 @@ Welcome to my personal collection of dotfiles! This repository contains my confi
     - Backs up existing dotfiles to `~/dotfiles_backup_<timestamp>`
     - Creates symlinks for all configured dotfiles and directories
 
+---
+
 ## 🧰 Formatting Scripts
 
 - **`lua-format.sh`**: Formats all Lua files (indent width 2, 80-col limit) and runs Prettier on supported files.
   ```sh
   ./lua-format.sh
   ```
+
+---
 
 ## 🔄 Updating
 
@@ -118,6 +143,8 @@ git pull --rebase
 ./link_dotfiles.sh
 ```
 
+---
+
 ## 🐞 Troubleshooting
 
 - **Symlink Issues**: Ensure `link_dotfiles.sh` is executable (`chmod +x link_dotfiles.sh`) and run with proper permissions.
@@ -126,6 +153,8 @@ git pull --rebase
 - **Hammerspoon**: Reload config via Hammerspoon menu or run `hs.reload()` in console.
 - **VS Code Insiders**: Reload window (`Cmd+Shift+P` → Reload Window) after updating settings.
 - **Formatting Errors**: Ensure `luaformatter` and `prettier` are installed; verify with `lua-format --version` and `prettier --version`.
+
+---
 
 ## 🔒 Security & Privacy Notes
 
@@ -136,9 +165,11 @@ git pull --rebase
 
 ---
 
+---
+
 ## ⚙️ Configuration Details
 
-### Neovim
+### 📝 Neovim
 
 My Neovim setup is built around `lazy.nvim` for plugin management and LSP for intelligent code completion.
 
@@ -166,7 +197,7 @@ My Neovim setup is built around `lazy.nvim` for plugin management and LSP for in
 | `<leader> bp` | Go to the previous buffer |
 | `<leader> bd` | Close the current buffer  |
 
-### Tmux
+### 🪟 Tmux
 
 My tmux setup is designed for efficient session management and navigation, with a Catppuccin theme and custom keybindings.
 
@@ -188,7 +219,7 @@ My tmux setup is designed for efficient session management and navigation, with 
 
 > After symlinking, install tmux plugins by launching tmux and pressing `<prefix> I` (Capital i) to fetch plugins via TPM.
 
-### VS Code Insiders
+### 🖥️ VS Code Insiders
 
 My VS Code Insiders setup is customized with tmux-style keybindings for pane navigation and a Catppuccin theme.
 
@@ -206,7 +237,7 @@ My VS Code Insiders setup is customized with tmux-style keybindings for pane nav
 | `ctrl+a g`       | Open Copilot Chat             |
 | `ctrl+a i`       | Start an inline chat          |
 
-### Hammerspoon
+### 🍎 Hammerspoon
 
 I use Hammerspoon for window management on macOS, with vim-style keybindings for snapping and resizing windows.
 
@@ -222,6 +253,8 @@ I use Hammerspoon for window management on macOS, with vim-style keybindings for
 | `+`        | Increase window size           |
 | `=`        | Reset window size              |
 | `q`/`Esc`  | Exit Window Management mode    |
+
+---
 
 ## ❓ FAQ
 
@@ -244,9 +277,13 @@ A: Never store secrets in this repo. Use environment variables or `.local` files
 
 Feel free to submit issues or pull requests. Customizations and suggestions are always welcome!
 
+---
+
 ## 🤝 Contributing
 
 Contributions, suggestions, and issues are welcome! Please open a pull request or issue on GitHub.
+
+---
 
 ---
 
@@ -254,6 +291,12 @@ Contributions, suggestions, and issues are welcome! Please open a pull request o
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
+---
+
 ## 👨‍💻 Author
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=2ecc71&height=120&section=footer" alt="footer-banner"/>
+</p>
 
 Developed with ❤️ by [Aung Myo Kyaw](https://github.com/AungMyoKyaw).
