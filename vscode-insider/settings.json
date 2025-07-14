@@ -1,4 +1,22 @@
 {
+  "github.copilot.chat.instructionsFilesLocations": {
+    ".github/instructions": true,
+    "/Users/aungmyokyaw/Library/Application Support/Code - Insiders/User/instructions": true
+  },
+  "chat.promptFiles": true,
+  "chat.promptFilesLocations": {
+    ".github/prompts": true,
+    "/Users/aungmyokyaw/Library/Application Support/Code - Insiders/User/prompts": true
+  },
+  "github.copilot.chat.reviewSelection.instructions": [
+    { "text": "Review for code quality, security, and maintainability." }
+  ],
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    { "text": "Summarize the key changes and reference related issues if any." }
+  ],
+  "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
+    { "text": "Always include a list of key changes." }
+  ],
   "[jsonc]": {
     "editor.defaultFormatter": "biomejs.biome"
   },

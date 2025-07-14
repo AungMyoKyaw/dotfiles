@@ -99,13 +99,7 @@ local plugins = {
 
   {"kylechui/nvim-surround", event = "ModeChanged"},
 
-  {"nvim-lualine/lualine.nvim", event = "VeryLazy"},
-
-  {
-    "https://codeberg.org/esensar/nvim-dev-container",
-    dependencies = {"nvim-treesitter/nvim-treesitter"},
-    ft = {"devcontainer.json", "Dockerfile"}
-  }
+  {"nvim-lualine/lualine.nvim", event = "VeryLazy"}
 }
 
 local opts = {

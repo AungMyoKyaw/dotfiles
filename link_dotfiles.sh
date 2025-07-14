@@ -17,7 +17,10 @@ FILES_TO_LINK=(
   "$DOTFILES_DIR/vscode-insider/settings.json:$HOME/Library/Application Support/Code - Insiders/User/settings.json"
   "$DOTFILES_DIR/vscode-insider/mcp.json:$HOME/Library/Application Support/Code - Insiders/User/mcp.json"
   "$DOTFILES_DIR/vscode-insider/chatmodes:$HOME/Library/Application Support/Code - Insiders/User/chatmodes"
+  "$DOTFILES_DIR/vscode-insider/instructions:$HOME/Library/Application Support/Code - Insiders/User/instructions"
+  "$DOTFILES_DIR/vscode-insider/prompts:$HOME/Library/Application Support/Code - Insiders/User/prompts"
   "$DOTFILES_DIR/ghostty/config.toml:$HOME/.config/ghostty/config"
+  "$DOTFILES_DIR/gemini/GEMINI.md:$HOME/.gemini/GEMINI.md"
 )
 
 # Backup directory

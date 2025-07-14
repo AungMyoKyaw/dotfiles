@@ -30,7 +30,8 @@
   "usageStatisticsEnabled": false,
   "hideTips": true,
   "fileFiltering": {
-    "respectGitIgnore": false,
+    "respectGitIgnore": true,
     "enableRecursiveFileSearch": true
-  }
+  },
+  "maxSessionTurns": -1
 }

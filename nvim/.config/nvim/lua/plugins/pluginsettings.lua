@@ -23,7 +23,20 @@ lualine.setup({options = {theme = "catppuccin"}})
 
 -- Gitsigns setup
 local gitsigns = require("gitsigns")
-gitsigns.setup()
+gitsigns.setup({
+  current_line_blame = true, -- Enable blame by default
+  current_line_blame_opts = {
+    virt_text = true,
+    virt_text_pos = "eol",
+    delay = 500,
+    ignore_whitespace = false
+  },
+  current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>"
+})
+
+-- Keymap to toggle blame
+map("n", "<leader>tb", function() gitsigns.toggle_current_line_blame() end,
+    {noremap = true, silent = true, desc = "Toggle git blame"})
 
 -- Terminal integration
 local toggleterm = require("toggleterm")
@@ -141,24 +154,6 @@ autopairs.setup({})
 -- nvim surround
 local surround = require("nvim-surround")
 surround.setup({})
-
-local devcontainer = require("devcontainer")
-devcontainer.setup({
-  -- Optional: Customize container runtime (default: docker)
-  container_runtime = "docker",
-  -- Optional: Customize how Neovim is installed in the container
-  nvim_installation_commands_provider = function(path_binaries, version_string)
-    return {
-      "apt-get update",
-      "apt-get install -y neovim",
-      "mkdir -p /home/vscode/.config/nvim",
-      -- Optional: Copy local config to container (adjust path as needed)
-      "cp -r /workspace/.nvim-config/* /home/vscode/.config/nvim/"
-    }
-  end,
-  -- Optional: Specify workspace folder
-  workspace_folder_provider = function() return vim.loop.cwd() end
-})
 
 -- === Conform.nvim: :Format command and enhancements ===
 -- Add :Format user command for async formatting (with range support)
