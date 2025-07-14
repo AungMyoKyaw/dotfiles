@@ -1,5 +1,5 @@
 {
-  "github.copilot.chat.instructionsFilesLocations": {
+  "chat.instructionsFilesLocations": {
     ".github/instructions": true,
     "/Users/aungmyokyaw/Library/Application Support/Code - Insiders/User/instructions": true
   },
