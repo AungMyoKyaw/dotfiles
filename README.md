@@ -297,8 +297,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## 👨‍💻 Author
 
+Developed with ❤️ by [Aung Myo Kyaw](https://github.com/AungMyoKyaw).
+
 <p align="center">
   <img src="https://capsule-render-kappa.vercel.app/api?type=waving&color=2ecc71&height=120&section=footer" alt="footer-banner"/>
 </p>
-
-Developed with ❤️ by [Aung Myo Kyaw](https://github.com/AungMyoKyaw).
