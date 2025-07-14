@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=2ecc71&height=180&section=header&text=My%20Personal%20Dotfiles&fontSize=40&fontAlign=50&fontColor=ffffff" alt="banner"/>
+  <img src="https://capsule-render-kappa.vercel.app/api?type=waving&color=2ecc71&height=180&section=header&text=My%20Personal%20Dotfiles&fontSize=40&fontAlign=50&fontColor=ffffff" alt="banner"/>
 </p>
 
 <p align="center">
@@ -51,12 +51,14 @@
    cd ~/dotfiles
    ```
 2. **Run the installer:**
+
    ```sh
    ./link_dotfiles.sh
    ```
 
    - Existing dotfiles are backed up to `~/dotfiles_backup_<timestamp>`
    - Symlinks are created for all managed configs
+
 3. **Install dependencies:**
    - See [⚡ Prerequisites](#-prerequisites) below for required tools
 4. **(Optional) Format configs:**
@@ -296,7 +298,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## 👨‍💻 Author
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=2ecc71&height=120&section=footer" alt="footer-banner"/>
+  <img src="https://capsule-render-kappa.vercel.app/api?type=waving&color=2ecc71&height=120&section=footer" alt="footer-banner"/>
 </p>
 
 Developed with ❤️ by [Aung Myo Kyaw](https://github.com/AungMyoKyaw).
