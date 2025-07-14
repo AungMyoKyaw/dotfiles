@@ -1,5 +1,8 @@
 # 🚀 My Personal Dotfiles
 
+> **Purpose:**
+> This repository provides a secure, maintainable, and highly customized set of dotfiles for macOS, enabling fast setup, consistent development environments, and productivity across devices. All configurations are managed via symlinks for easy installation and rollback.
+
 ![Made with Love in Myanmar](https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8F%20in-Myanmar-2ecc71?style=flat-square)
 [![License: MIT](https://img.shields.io/badge/License-MIT-2ecc71?style=flat-square)](https://opensource.org/licenses/MIT)
 
@@ -7,6 +10,7 @@ Welcome to my personal collection of dotfiles! This repository contains my confi
 
 ## 📑 Table of Contents
 
+- [Quick Start](#quick-start)
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Repository Structure](#repository-structure)
@@ -27,7 +31,28 @@ Welcome to my personal collection of dotfiles! This repository contains my confi
 - [License](#license)
 - [Author](#author)
 
-## ✨ Features
+## ⚡ Quick Start
+
+1. **Clone and enter the repo:**
+   ```sh
+   git clone https://github.com/AungMyoKyaw/dotfiles.git ~/dotfiles
+   cd ~/dotfiles
+   ```
+2. **Run the installer:**
+   ```sh
+   ./link_dotfiles.sh
+   ```
+
+   - Existing dotfiles are backed up to `~/dotfiles_backup_<timestamp>`
+   - Symlinks are created for all managed configs
+3. **Install dependencies:**
+   - See [Prerequisites](#prerequisites) below for required tools
+4. **(Optional) Format configs:**
+   ```sh
+   ./lua-format.sh
+   ```
+
+---
 
 - **Automated Installation**: A simple script to symlink all configurations and back up existing files.
 - **Consistent Theming**: Catppuccin Mocha theme across Neovim, Ghostty, and tmux for a unified look.
@@ -60,7 +85,7 @@ Welcome to my personal collection of dotfiles! This repository contains my confi
 - **gemini/**: Gemini CLI settings (`settings.json`).
 - **ssh/**: SSH configuration directory.
 
-## 🛠️ Installation
+## 🛠️ Installation (Advanced)
 
 1.  **Clone the repository:**
     ```sh
@@ -101,6 +126,15 @@ git pull --rebase
 - **Hammerspoon**: Reload config via Hammerspoon menu or run `hs.reload()` in console.
 - **VS Code Insiders**: Reload window (`Cmd+Shift+P` → Reload Window) after updating settings.
 - **Formatting Errors**: Ensure `luaformatter` and `prettier` are installed; verify with `lua-format --version` and `prettier --version`.
+
+## 🔒 Security & Privacy Notes
+
+- **No secrets are stored in this repo.** Never commit API keys, tokens, or sensitive credentials.
+- All scripts and configs are designed for local use. Review scripts before running if you fork or modify.
+- SSH and other private configs are symlinked but not versioned—add your own as needed.
+- Always use secure permissions for SSH keys and sensitive files (`chmod 600`).
+
+---
 
 ## ⚙️ Configuration Details
 
@@ -189,9 +223,32 @@ I use Hammerspoon for window management on macOS, with vim-style keybindings for
 | `=`        | Reset window size              |
 | `q`/`Esc`  | Exit Window Management mode    |
 
-## 🤝 Contributing
+## ❓ FAQ
+
+**Q: Can I use these dotfiles on Linux or Windows?**
+A: They are optimized for macOS. Some configs may work on Linux, but paths and dependencies may differ. Windows is not supported.
+
+**Q: How do I add my own custom configs?**
+A: Place your overrides in the appropriate folder, or use `.local` files (e.g., `.zshenv.local`). These are ignored by git and not overwritten.
+
+**Q: How do I safely update my dotfiles?**
+A: Pull the latest changes and re-run `./link_dotfiles.sh`. Your previous configs are backed up automatically.
+
+**Q: What if something breaks after updating?**
+A: Restore from the backup in `~/dotfiles_backup_<timestamp>`, or review the troubleshooting section above.
+
+**Q: How do I keep my secrets safe?**
+A: Never store secrets in this repo. Use environment variables or `.local` files for sensitive data.
+
+---
 
 Feel free to submit issues or pull requests. Customizations and suggestions are always welcome!
+
+## 🤝 Contributing
+
+Contributions, suggestions, and issues are welcome! Please open a pull request or issue on GitHub.
+
+---
 
 ## 📜 License
 
