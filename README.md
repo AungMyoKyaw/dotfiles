@@ -39,7 +39,6 @@
 - [❓ FAQ](#-faq)
 - [🤝 Contributing](#-contributing)
 - [📜 License](#-license)
-- [👨‍💻 Author](#-author)
 
 ---
 
@@ -295,10 +294,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
-## 👨‍💻 Author
-
-Developed with ❤️ by [Aung Myo Kyaw](https://github.com/AungMyoKyaw).
-
 <p align="center">
-  <img src="https://capsule-render-kappa.vercel.app/api?type=waving&color=2ecc71&height=120&section=footer" alt="footer-banner"/>
+  <img src="https://capsule-render-kappa.vercel.app/api?type=waving&color=2ecc71&height=180&section=footer&text=Developed%20with%20%E2%9D%A4%EF%B8%8F%20by%20Aung%20Myo%20Kyaw.&fontSize=28&fontAlignX=50&fontAlignY=80&fontColor=ffffff" alt="footer-banner"/>
 </p>
