@@ -8,6 +8,11 @@
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-2ecc71?style=flat-square" alt="License"></a>
   <img src="https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8F%20in-Myanmar-2ecc71?style=flat-square" alt="Made in Myanmar">
   <img src="https://img.shields.io/badge/macOS%20Optimized-2ecc71?style=flat-square" alt="macOS Optimized">
+  <img src="https://img.shields.io/badge/Shell-zsh-blue?style=flat-square" alt="zsh">
+  <img src="https://img.shields.io/badge/Editor-Neovim-green?style=flat-square" alt="Neovim">
+  <img src="https://img.shields.io/badge/Editor-VSCode%20Insiders-blueviolet?style=flat-square" alt="VSCode Insiders">
+  <img src="https://img.shields.io/badge/Terminal-Ghostty-orange?style=flat-square" alt="Ghostty">
+  <img src="https://img.shields.io/badge/WindowManager-Hammerspoon-yellow?style=flat-square" alt="Hammerspoon">
 </p>
 
 <p align="center">
@@ -18,33 +23,7 @@
 
 ---
 
-## 📑 Table of Contents
-
-- [🚀 Quick Start](#-quick-start)
-- [✨ Features](#-features)
-- [⚡ Prerequisites](#-prerequisites)
-- [📂 Repository Structure](#-repository-structure)
-- [🛠️ Installation (Advanced)](#️-installation-advanced)
-- [🧰 Formatting Scripts](#-formatting-scripts)
-- [🔄 Updating](#-updating)
-- [🐞 Troubleshooting](#-troubleshooting)
-- [🔒 Security & Privacy Notes](#-security--privacy-notes)
-- [⚙️ Configuration Details](#️-configuration-details)
-  - [Neovim](#neovim)
-  - [Tmux](#tmux)
-  - [VS Code Insiders](#vs-code-insiders)
-  - [Hammerspoon](#hammerspoon)
-  - [Ghostty](#ghostty)
-  - [Safari](#safari)
-  - [Gemini](#gemini)
-  - [SSH](#ssh)
-- [❓ FAQ](#-faq)
-- [🤝 Contributing](#-contributing)
-- [📜 License](#-license)
-
----
-
-## 🚀 Quick Start
+## Quick Start
 
 1. **Clone and enter the repo:**
    ```sh
@@ -61,7 +40,7 @@
    - Symlinks are created for all managed configs
 
 3. **Install dependencies:**
-   - See [⚡ Prerequisites](#-prerequisites) below for required tools
+  - See [Prerequisites](#prerequisites) below for required tools
 4. **(Optional) Format configs:**
    ```sh
    ./lua-format.sh
@@ -69,7 +48,7 @@
 
 ---
 
-## ✨ Features
+## Features
 
 - **Automated Installation**: One script to symlink all configs and back up existing files
 - **Consistent Theming**: Catppuccin Mocha theme across Neovim, Ghostty, and tmux
@@ -81,7 +60,7 @@
 
 ---
 
-## ⚡ Prerequisites
+## Prerequisites
 
 - macOS with [Homebrew](https://brew.sh/) for package management
 - Zsh as default shell (with optional `.zshenv` / `.zshenv.local`)
@@ -94,7 +73,7 @@
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 - **link_dotfiles.sh**: Script to symlink dotfiles to their target locations.
 - **lua-format.sh**: Script to format all Lua files and supported files via Prettier.
@@ -109,7 +88,7 @@
 
 ---
 
-## 🛠️ Installation (Advanced)
+## Installation (Advanced)
 
 1.  **Clone the repository:**
     ```sh
@@ -127,7 +106,7 @@
 
 ---
 
-## 🧰 Formatting Scripts
+## Formatting Scripts
 
 - **`lua-format.sh`**: Formats all Lua files (indent width 2, 80-col limit) and runs Prettier on supported files.
   ```sh
@@ -136,7 +115,7 @@
 
 ---
 
-## 🔄 Updating
+## Updating
 
 To update to the latest dotfiles:
 
@@ -148,7 +127,7 @@ git pull --rebase
 
 ---
 
-## 🐞 Troubleshooting
+## Troubleshooting
 
 - **Symlink Issues**: Ensure `link_dotfiles.sh` is executable (`chmod +x link_dotfiles.sh`) and run with proper permissions.
 - **Neovim**: After plugin changes, open Neovim and run `:Lazy sync` or `:PackerSync` depending on your setup.
@@ -159,7 +138,7 @@ git pull --rebase
 
 ---
 
-## 🔒 Security & Privacy Notes
+## Security & Privacy Notes
 
 - **No secrets are stored in this repo.** Never commit API keys, tokens, or sensitive credentials.
 - All scripts and configs are designed for local use. Review scripts before running if you fork or modify.
@@ -170,9 +149,9 @@ git pull --rebase
 
 ---
 
-## ⚙️ Configuration Details
+## Configuration Details
 
-### 📝 Neovim
+### Neovim
 
 My Neovim setup is built around `lazy.nvim` for plugin management and LSP for intelligent code completion.
 
@@ -200,7 +179,7 @@ My Neovim setup is built around `lazy.nvim` for plugin management and LSP for in
 | `<leader> bp` | Go to the previous buffer |
 | `<leader> bd` | Close the current buffer  |
 
-### 🪟 Tmux
+### Tmux
 
 My tmux setup is designed for efficient session management and navigation, with a Catppuccin theme and custom keybindings.
 
@@ -222,7 +201,7 @@ My tmux setup is designed for efficient session management and navigation, with 
 
 > After symlinking, install tmux plugins by launching tmux and pressing `<prefix> I` (Capital i) to fetch plugins via TPM.
 
-### 🖥️ VS Code Insiders
+### VS Code Insiders
 
 My VS Code Insiders setup is customized with tmux-style keybindings for pane navigation and a Catppuccin theme.
 
@@ -240,7 +219,7 @@ My VS Code Insiders setup is customized with tmux-style keybindings for pane nav
 | `ctrl+a g`       | Open Copilot Chat             |
 | `ctrl+a i`       | Start an inline chat          |
 
-### 🍎 Hammerspoon
+### Hammerspoon
 
 I use Hammerspoon for window management on macOS, with vim-style keybindings for snapping and resizing windows.
 
@@ -259,7 +238,7 @@ I use Hammerspoon for window management on macOS, with vim-style keybindings for
 
 ---
 
-## ❓ FAQ
+## FAQ
 
 **Q: Can I use these dotfiles on Linux or Windows?**
 A: They are optimized for macOS. Some configs may work on Linux, but paths and dependencies may differ. Windows is not supported.
@@ -282,7 +261,7 @@ Feel free to submit issues or pull requests. Customizations and suggestions are 
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions, suggestions, and issues are welcome! Please open a pull request or issue on GitHub.
 
@@ -290,7 +269,7 @@ Contributions, suggestions, and issues are welcome! Please open a pull request o
 
 ---
 
-## 📜 License
+## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
