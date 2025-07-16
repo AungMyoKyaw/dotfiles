@@ -40,7 +40,9 @@
    - Symlinks are created for all managed configs
 
 3. **Install dependencies:**
-  - See [Prerequisites](#prerequisites) below for required tools
+
+- See [Prerequisites](#prerequisites) below for required tools
+
 4. **(Optional) Format configs:**
    ```sh
    ./lua-format.sh
