@@ -114,5 +114,6 @@
       "region": "EU"
     }
   ],
-  "workbench.activityBar.location": "hidden"
+  "workbench.activityBar.location": "hidden",
+  "workbench.secondarySideBar.defaultVisibility": "visible"
 }
