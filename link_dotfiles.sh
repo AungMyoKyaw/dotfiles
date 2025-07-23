@@ -21,6 +21,8 @@ FILES_TO_LINK=(
   "$DOTFILES_DIR/vscode-insider/prompts:$HOME/Library/Application Support/Code - Insiders/User/prompts"
   "$DOTFILES_DIR/ghostty/config.toml:$HOME/.config/ghostty/config"
   "$DOTFILES_DIR/gemini/GEMINI.md:$HOME/.gemini/GEMINI.md"
+  "$DOTFILES_DIR/rovodev/config.yml:$HOME/.rovodev/config.yml"
+  "$DOTFILES_DIR/rovodev/mcp.json:$HOME/.rovodev/mcp.json"
 )
 
 # Backup directory
