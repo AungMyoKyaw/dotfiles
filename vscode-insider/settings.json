@@ -26,11 +26,11 @@
   "accessibility.voice.autoSynthesize": "on",
   "accessibility.voice.speechTimeout": 5000,
   "chat.agent.enabled": true,
-  "chat.agent.maxRequests": 1000,
+  "chat.agent.maxRequests": 100,
   "chat.detectParticipant.enabled": true,
   "chat.editing.autoAcceptDelay": 0,
-  "chat.editing.confirmEditRequestRemoval": true,
-  "chat.editing.confirmEditRequestRetry": true,
+  "chat.editing.confirmEditRequestRemoval": false,
+  "chat.editing.confirmEditRequestRetry": false,
   "chat.editor.fontSize": 14,
   "chat.mcp.enabled": true,
   "chat.modeFilesLocations": {
@@ -115,5 +115,6 @@
     }
   ],
   "workbench.activityBar.location": "hidden",
-  "workbench.secondarySideBar.defaultVisibility": "visible"
+  "workbench.secondarySideBar.defaultVisibility": "visible",
+  "workbench.editor.enablePreview": false
 }
