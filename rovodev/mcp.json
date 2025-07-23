@@ -19,12 +19,6 @@
     "memory": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-memory"]
-    },
-    "hf-mcp-server": {
-      "url": "https://huggingface.co/mcp",
-      "headers": {
-        "Authorization": "Bearer $HF_TOKEN"
-      }
     }
   }
 }
