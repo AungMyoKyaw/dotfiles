@@ -13,6 +13,7 @@
   <img src="https://img.shields.io/badge/Editor-VSCode%20Insiders-blueviolet?style=flat-square" alt="VSCode Insiders">
   <img src="https://img.shields.io/badge/Terminal-Ghostty-orange?style=flat-square" alt="Ghostty">
   <img src="https://img.shields.io/badge/WindowManager-Hammerspoon-yellow?style=flat-square" alt="Hammerspoon">
+  <img src="https://img.shields.io/badge/AI%20Assistant-RovoDev-red?style=flat-square" alt="RovoDev">
 </p>
 
 <p align="center">
@@ -20,6 +21,29 @@
   Fast setup, consistent dev environments, and productivity across devices.<br>
   All configs managed via symlinks for easy install and rollback.</b>
 </p>
+
+---
+
+## Table of Contents
+
+- [Quick Start](#quick-start)
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Repository Structure](#repository-structure)
+- [Installation](#installation)
+- [Configuration Details](#configuration-details)
+  - [RovoDev AI Assistant](#rovodev-ai-assistant)
+  - [Neovim](#neovim)
+  - [Tmux](#tmux)
+  - [VS Code Insiders](#vs-code-insiders)
+  - [Hammerspoon](#hammerspoon)
+- [Formatting Scripts](#formatting-scripts)
+- [Updating](#updating)
+- [Troubleshooting](#troubleshooting)
+- [Security & Privacy Notes](#security--privacy-notes)
+- [FAQ](#faq)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
@@ -53,12 +77,12 @@
 ## Features
 
 - **Automated Installation**: One script to symlink all configs and back up existing files
+- **AI Development Assistant**: RovoDev integration with MCP servers for enhanced development workflow
 - **Consistent Theming**: Catppuccin Mocha theme across Neovim, Ghostty, and tmux
 - **Modal Editing**: Vim-style keybindings in Neovim, tmux, and VS Code Insiders
 - **Extensive Keybindings**: Custom shortcuts for window management, navigation, and more
 - **Plugin-Managed**: `lazy.nvim` for Neovim, TPM for tmux
-- **AI-Powered**: GitHub Copilot in Neovim and VS Code Insiders
-- **AI-Powered**: Integrated with GitHub Copilot in both Neovim and VS Code Insiders.
+- **AI-Powered**: GitHub Copilot integration in Neovim and VS Code Insiders
 
 ---
 
@@ -77,20 +101,20 @@
 
 ## Repository Structure
 
-- **link_dotfiles.sh**: Script to symlink dotfiles to their target locations.
-- **lua-format.sh**: Script to format all Lua files and supported files via Prettier.
-- **nvim/**: Neovim configuration directory (`.config/nvim`).
-- **hammerspoon/**: Hammerspoon setup for macOS window management.
-- **tmux/**: Tmux configuration (`.tmux.conf`) with TPM and Catppuccin theme.
-- **ghostty/**: Ghostty terminal emulator configuration file.
-- **vscode-insider/**: VS Code Insiders user settings, keybindings, and chatmodes.
-- **safari/**: Custom CSS stylesheet for Safari.
-- **gemini/**: Gemini CLI settings (`settings.json`).
-- **ssh/**: SSH configuration directory.
+- **link_dotfiles.sh**: Script to symlink dotfiles to their target locations
+- **lua-format.sh**: Script to format all Lua files and supported files via Prettier
+- **nvim/**: Neovim configuration directory (`.config/nvim`) with lazy.nvim and LSP setup
+- **rovodev/**: RovoDev AI assistant configuration with MCP servers and permissions
+- **hammerspoon/**: Hammerspoon setup for macOS window management with custom keybindings
+- **tmux/**: Tmux configuration (`.tmux.conf`) with TPM and Catppuccin theme
+- **ghostty/**: Ghostty terminal emulator configuration with Catppuccin theme
+- **vscode-insider/**: VS Code Insiders settings, keybindings, extensions, and AI chatmodes
+- **safari/**: Custom CSS stylesheet for Safari browser
+- **gemini/**: Gemini CLI settings and configuration
 
 ---
 
-## Installation (Advanced)
+## Installation
 
 1.  **Clone the repository:**
     ```sh
@@ -149,9 +173,38 @@ git pull --rebase
 
 ---
 
----
-
 ## Configuration Details
+
+### RovoDev AI Assistant
+
+RovoDev is an AI-powered development assistant that enhances your coding workflow with intelligent tools and automation.
+
+**Key Features:**
+
+- **MCP Server Integration**: Sequential thinking, context management, web fetching, browser automation, and persistent memory
+- **Smart Permissions**: Granular control over tool access with confirmation prompts for sensitive operations
+- **Session Management**: Persistent sessions with auto-save capabilities
+- **Streaming Responses**: Real-time AI interactions with optimized temperature settings
+
+**Configuration Files:**
+
+- `config.yml`: Main RovoDev settings including permissions, paths, and console output
+- `mcp.json`: Model Context Protocol server configurations and allowed tools
+
+**Security Features:**
+
+- Atlassian write operations require confirmation
+- Bash commands restricted to safe read-only operations
+- External file access limited to workspace and temp directories
+- Explicit allowlist for MCP servers
+
+**Usage:**
+
+```sh
+rovodev restart  # Apply configuration changes
+```
+
+For detailed configuration options, see the [rovodev README](rovodev/README.md).
 
 ### Neovim
 
@@ -259,15 +312,24 @@ A: Never store secrets in this repo. Use environment variables or `.local` files
 
 ---
 
-Feel free to submit issues or pull requests. Customizations and suggestions are always welcome!
-
----
-
 ## Contributing
 
-Contributions, suggestions, and issues are welcome! Please open a pull request or issue on GitHub.
+Feel free to submit issues or pull requests! Customizations and suggestions are always welcome.
 
----
+**How to Contribute:**
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+**Guidelines:**
+
+- Test your changes thoroughly
+- Update documentation as needed
+- Follow existing code style and conventions
+- Ensure compatibility with macOS
 
 ---
 
