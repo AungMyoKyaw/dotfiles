@@ -1,55 +1,140 @@
-/* Main text elements only */
+/* Main text elements with SF font */
 html,
 body,
-div,
-p,
-span,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a,
-ul,
-ol,
-li,
-dl,
-dt,
-dd,
-table,
-td,
-th,
-label,
-input,
-textarea,
-select,
-button {
+div:not([class*="font"]):not([class*="specimen"]):not([class*="glyph"]):not(
+    [class*="icon"]
+  ),
+p:not([class*="font"]):not([class*="specimen"]),
+span:not([class*="font"]):not([class*="specimen"]):not([class*="glyph"]):not(
+    [class*="icon"]
+  ),
+h1:not([class*="font"]):not([class*="specimen"]),
+h2:not([class*="font"]):not([class*="specimen"]),
+h3:not([class*="font"]):not([class*="specimen"]),
+h4:not([class*="font"]):not([class*="specimen"]),
+h5:not([class*="font"]):not([class*="specimen"]),
+h6:not([class*="font"]):not([class*="specimen"]),
+a:not([class*="font"]):not([class*="specimen"]),
+ul:not([class*="font"]):not([class*="specimen"]),
+ol:not([class*="font"]):not([class*="specimen"]),
+li:not([class*="font"]):not([class*="specimen"]),
+dl:not([class*="font"]):not([class*="specimen"]),
+dt:not([class*="font"]):not([class*="specimen"]),
+dd:not([class*="font"]):not([class*="specimen"]),
+table:not([class*="font"]):not([class*="specimen"]),
+td:not([class*="font"]):not([class*="specimen"]),
+th:not([class*="font"]):not([class*="specimen"]),
+label:not([class*="font"]):not([class*="specimen"]),
+input:not([class*="font"]):not([class*="specimen"]),
+textarea:not([class*="font"]):not([class*="specimen"]),
+select:not([class*="font"]):not([class*="specimen"]),
+button:not([class*="font"]):not([class*="specimen"]) {
   font-family:
     "SF Pro Text",
     "SF Pro Display",
     -apple-system,
     BlinkMacSystemFont,
+    "Segoe UI",
     "Helvetica Neue",
     Helvetica,
     Arial,
     sans-serif !important;
 }
 
-/* Code & dev UI stuff */
+/* Exclude font preview and specimen elements */
+[class*="font-preview"],
+[class*="font-specimen"],
+[class*="font-display"],
+[class*="font-sample"],
+[class*="font-demo"],
+[class*="specimen"],
+[class*="glyph"],
+[data-font-family],
+[data-font-name],
+.font-preview,
+.font-specimen,
+.font-display,
+.font-sample,
+.font-demo,
+.specimen,
+.glyph-preview,
+.typeface-specimen {
+  font-family: inherit !important;
+}
+
+/* Code & monospace elements */
 code,
 pre,
 kbd,
-samp {
-  font-family: "SF Mono", Menlo, Consolas, monospace !important;
+samp,
+.code,
+.monospace {
+  font-family:
+    "SF Mono", "Monaco", "Cascadia Code", "Roboto Mono", Menlo, Consolas,
+    "Courier New", monospace !important;
 }
 
-/* Exclude icons */
+/* Icon fonts - preserve their original font families */
 [class*="fa-"],
 [class^="fa"],
+[class*="fab"],
+[class*="far"],
+[class*="fas"],
+[class*="fal"],
+[class*="fad"],
 .material-icons,
+.material-icons-outlined,
+.material-icons-round,
+.material-icons-sharp,
+.material-symbols-outlined,
+.material-symbols-rounded,
+.material-symbols-sharp,
 .icon,
+.icons,
 [data-icon],
-i {
+.feather,
+.lucide,
+.tabler-icon,
+.heroicon,
+.phosphor-icon,
+i[class*="icon"],
+span[class*="icon"],
+.emoji {
   font-family: inherit !important;
+  font-feature-settings: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  line-height: 1 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Specific icon font families */
+.fa,
+.fas,
+.far,
+.fal,
+.fad,
+.fab,
+[class^="fa-"],
+[class*=" fa-"] {
+  font-family:
+    "Font Awesome 6 Free", "Font Awesome 5 Free", "FontAwesome" !important;
+}
+
+.material-icons,
+.material-icons-outlined,
+.material-icons-round,
+.material-icons-sharp {
+  font-family:
+    "Material Icons", "Material Icons Outlined", "Material Icons Round",
+    "Material Icons Sharp" !important;
+}
+
+.material-symbols-outlined,
+.material-symbols-rounded,
+.material-symbols-sharp {
+  font-family:
+    "Material Symbols Outlined", "Material Symbols Rounded",
+    "Material Symbols Sharp" !important;
 }

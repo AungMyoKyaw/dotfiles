@@ -11,14 +11,6 @@
     "fetch": {
       "command": "uvx",
       "args": ["mcp-server-fetch"]
-    },
-    "puppeteer": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
-    },
-    "memory": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-memory"]
     }
   }
 }
