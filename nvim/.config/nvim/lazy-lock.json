@@ -29,7 +29,7 @@
   },
   "fzf-lua": {
     "branch": "main",
-    "commit": "cdfac04b264cd924173e7f63a00b4883e2b98564"
+    "commit": "262a22d43e343c47ca92bf870d83ffd5a7561183"
   },
   "gitsigns.nvim": {
     "branch": "main",
@@ -65,11 +65,11 @@
   },
   "mini.nvim": {
     "branch": "main",
-    "commit": "432a0614f8dc38715892b0eec537716457ea4c2f"
+    "commit": "c122e852517adaf7257688e435369c050da113b1"
   },
   "neogit": {
     "branch": "master",
-    "commit": "55410182748755baf5c3944c9825cd082644f1c1"
+    "commit": "99b811a99a195c4d3a627341bb7ccf6a22c4e6ea"
   },
   "nim.nvim": {
     "branch": "master",
