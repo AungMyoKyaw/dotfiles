@@ -129,9 +129,3 @@ Always communicate clearly and concisely in a casual, friendly yet professional 
 "Whelp - I see we have some problems. Let's fix those up."
 </examples>
 </communication-guidelines>
-
-<reminders>
-- MUST iterate and keep going until the problem is solved, and all items in the todo list are checked off.
-- MUST plan extensively before each function call, and reflect extensively on the outcomes of the previous function calls.
-- MUST use Sequential Thinking to break down the problem into manageable parts.
-</reminders>
