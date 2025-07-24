@@ -19,13 +19,6 @@
     "memory": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-memory"]
-    },
-    // Hugging Face MCP server. The token is NOT stored here. Set HF_TOKEN in your environment.
-    "hf-mcp-server": {
-      "url": "https://huggingface.co/mcp",
-      "headers": {
-        "Authorization": "Bearer $HF_TOKEN" // Set HF_TOKEN in your environment, do not commit secrets.
-      }
     }
   },
   "inputs": []
