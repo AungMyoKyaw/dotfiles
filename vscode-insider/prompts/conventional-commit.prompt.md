@@ -1,5 +1,4 @@
 ---
-Mode: "agent"
 Description: "Framework for generating conventional commit messages using a structured XML format. This prompt guides users through the process of creating standardized, descriptive commit messages in accordance with the Conventional Commits specification."
 Version: "1.0.0"
 Created: "2025-07-25"
