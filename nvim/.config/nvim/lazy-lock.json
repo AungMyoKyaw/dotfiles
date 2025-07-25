@@ -29,11 +29,11 @@
   },
   "fzf-lua": {
     "branch": "main",
-    "commit": "262a22d43e343c47ca92bf870d83ffd5a7561183"
+    "commit": "f22460450543aa773638135d6aa46c60ab92da99"
   },
   "gitsigns.nvim": {
     "branch": "main",
-    "commit": "1fcaddcc427ff5802b6602f46de37a5352d0f9e0"
+    "commit": "b01433169be710d6c69f7b4ee264d9670698b831"
   },
   "grug-far.nvim": {
     "branch": "main",
@@ -61,7 +61,7 @@
   },
   "mason.nvim": {
     "branch": "main",
-    "commit": "8024d64e1330b86044fed4c8494ef3dcd483a67c"
+    "commit": "197f6352c276bbc2d25541dfce00ec50d1a4e88f"
   },
   "mini.nvim": {
     "branch": "main",
@@ -85,7 +85,7 @@
   },
   "nvim-lspconfig": {
     "branch": "master",
-    "commit": "169745f176f58becad80363c3f8f2315ed6bb365"
+    "commit": "4d3b3bb8815fbe37bcaf3dbdb12a22382bc11ebe"
   },
   "nvim-surround": {
     "branch": "main",
