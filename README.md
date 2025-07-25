@@ -13,11 +13,13 @@
   <img src="https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8F%20in-Myanmar-2ecc71?style=flat-square" alt="Made in Myanmar">
   <img src="https://img.shields.io/badge/macOS%20Optimized-2ecc71?style=flat-square" alt="macOS Optimized">
   <img src="https://img.shields.io/badge/Shell-zsh-blue?style=flat-square" alt="zsh">
-  <img src="https://img.shields.io/badge/Editor-Neovim-green?style=flat-square" alt="Neovim">
+  <img src="https://img.shields.io/badge/Primary%20Editor-Neovim-green?style=flat-square" alt="Neovim">
   <img src="https://img.shields.io/badge/Editor-VSCode%20Insiders-blueviolet?style=flat-square" alt="VSCode Insiders">
   <img src="https://img.shields.io/badge/Terminal-Ghostty-orange?style=flat-square" alt="Ghostty">
   <img src="https://img.shields.io/badge/WindowManager-Hammerspoon-yellow?style=flat-square" alt="Hammerspoon">
-  <img src="https://img.shields.io/badge/AI%20Assistant-RovoDev-red?style=flat-square" alt="RovoDev">
+  <img src="https://img.shields.io/badge/AI%20Agent-RovoDev-red?style=flat-square" alt="RovoDev">
+  <img src="https://img.shields.io/badge/Primary%20AI%20Agent-Copilot-blueviolet?style=flat-square" alt="VS Code Copilot">
+  <img src="https://img.shields.io/badge/AI%20Agent-Gemini%20CLI-00bfae?style=flat-square" alt="Gemini CLI">
 </p>
 
 <p align="center">
