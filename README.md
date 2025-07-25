@@ -1,9 +1,13 @@
 <p align="center">
-  <a href=".">
-    <img src="https://capsule-render-kappa.vercel.app/api?type=waving&color=2ecc71&height=180&section=header&text=My%20Personal%20Dotfiles&fontSize=40&fontAlign=50&fontColor=ffffff" alt="banner"/>
-  </a>
-</p>
 
+  <img src="https://capsule-render-kappa.vercel.app/api?type=waving&color=2ecc71&height=180&text=My%20Personal%20Dotfiles&fontSize=45&fontColor=ffffff" alt="Modern banner"/>
+
+</p>
+<p align="center">
+  <img src="https://img.shields.io/github/last-commit/AungMyoKyaw/dotfiles?style=flat-square" alt="Last Commit">
+  <img src="https://img.shields.io/github/contributors/AungMyoKyaw/dotfiles?style=flat-square" alt="Contributors">
+  <img src="https://img.shields.io/github/stars/AungMyoKyaw/dotfiles?style=flat-square" alt="GitHub Stars">
+</p>
 <p align="center">
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-2ecc71?style=flat-square" alt="License"></a>
   <img src="https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8F%20in-Myanmar-2ecc71?style=flat-square" alt="Made in Myanmar">
@@ -26,24 +30,32 @@
 
 ## Table of Contents
 
-- [Quick Start](#quick-start)
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Repository Structure](#repository-structure)
-- [Installation](#installation)
-- [Configuration Details](#configuration-details)
-  - [RovoDev AI Assistant](#rovodev-ai-assistant)
-  - [Neovim](#neovim)
-  - [Tmux](#tmux)
-  - [VS Code Insiders](#vs-code-insiders)
-  - [Hammerspoon](#hammerspoon)
-- [Formatting Scripts](#formatting-scripts)
-- [Updating](#updating)
-- [Troubleshooting](#troubleshooting)
-- [Security & Privacy Notes](#security--privacy-notes)
-- [FAQ](#faq)
-- [Contributing](#contributing)
-- [License](#license)
+<details>
+  <summary><strong>Table of Contents</strong> (click to expand)</summary>
+  <ul>
+    <li><a href="#quick-start">Quick Start</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#repository-structure">Repository Structure</a></li>
+    <li><a href="#installation">Installation</a></li>
+    <li><a href="#configuration-details">Configuration Details</a>
+      <ul>
+        <li><a href="#rovodev-ai-assistant">RovoDev AI Assistant</a></li>
+        <li><a href="#neovim">Neovim</a></li>
+        <li><a href="#tmux">Tmux</a></li>
+        <li><a href="#vs-code-insiders">VS Code Insiders</a></li>
+        <li><a href="#hammerspoon">Hammerspoon</a></li>
+      </ul>
+    </li>
+    <li><a href="#formatting-scripts">Formatting Scripts</a></li>
+    <li><a href="#updating">Updating</a></li>
+    <li><a href="#troubleshooting">Troubleshooting</a></li>
+    <li><a href="#security--privacy-notes">Security & Privacy Notes</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+  </ul>
+</details>
 
 ---
 
