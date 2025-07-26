@@ -1,12 +1,15 @@
 <p align="center">
-
-  <img src="https://capsule-render-kappa.vercel.app/api?type=waving&color=2ecc71&height=180&text=My%20Personal%20Dotfiles&fontSize=45&fontColor=ffffff" alt="Modern banner"/>
-
+  <a href="https://github.com/AungMyoKyaw/dotfiles">
+    <img src="https://capsule-render-kappa.vercel.app/api?type=waving&color=2ecc71&height=180&text=My%20Personal%20Dotfiles&fontSize=45&fontColor=ffffff" alt="Modern banner"/>
+  </a>
 </p>
 <p align="center">
-  <img src="https://img.shields.io/github/last-commit/AungMyoKyaw/dotfiles?style=flat-square" alt="Last Commit">
-  <img src="https://img.shields.io/github/contributors/AungMyoKyaw/dotfiles?style=flat-square" alt="Contributors">
-  <img src="https://img.shields.io/github/stars/AungMyoKyaw/dotfiles?style=flat-square" alt="GitHub Stars">
+  <a href="https://github.com/AungMyoKyaw/dotfiles">
+    <img src="https://img.shields.io/github/last-commit/AungMyoKyaw/dotfiles?style=flat-square" alt="Last Commit">
+    <img src="https://img.shields.io/github/contributors/AungMyoKyaw/dotfiles?style=flat-square" alt="Contributors">
+    <img src="https://img.shields.io/github/stars/AungMyoKyaw/dotfiles?style=flat-square" alt="GitHub Stars">
+    <img src="https://img.shields.io/github/stars/AungMyoKyaw/dotfiles?style=social" alt="Star this repo">
+  </a>
 </p>
 <p align="center">
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-2ecc71?style=flat-square" alt="License"></a>

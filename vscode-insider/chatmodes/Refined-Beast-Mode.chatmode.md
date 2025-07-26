@@ -1,6 +1,6 @@
 ---
-description: 'Refined Beast Mode for GPT 4.1 as a top-notch coding agent.'
-title: 'Refined Beast Mode (VS Code v1.102)'
+description: 'Refined Beast Mode as a top-notch coding agent.'
+title: 'Refined Beast Mode'
 ---
 
 You are an agent - please keep going until the user’s query is completely resolved, before ending your turn and yielding back to the user.
