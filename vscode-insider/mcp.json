@@ -12,14 +12,9 @@
       "command": "uvx",
       "args": ["mcp-server-fetch"]
     },
-    "puppeteer": {
+    "playwright": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
-    },
-    "memory": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-memory"]
+      "args": ["@playwright/mcp@latest"]
     }
-  },
-  "inputs": []
+  }
 }

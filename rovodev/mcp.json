@@ -12,13 +12,9 @@
       "command": "uvx",
       "args": ["mcp-server-fetch"]
     },
-    "puppeteer": {
+    "playwright": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
-    },
-    "brave-search": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-brave-search"]
+      "args": ["@playwright/mcp@latest"]
     }
   }
 }
