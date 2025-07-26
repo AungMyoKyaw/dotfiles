@@ -1,6 +1,5 @@
 ---
 description: "Universal planner: Takes any user input and generates a detailed, step-by-step plan for the request."
-tools: ["*"]
 ---
 
 # Universal Planner
