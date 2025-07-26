@@ -1,4 +1,5 @@
 ---
+mode: "agent"
 description: "Advanced Plan Expander: Takes markdown checklist output from create-planner and expands each item into detailed sub-topics with curated study materials and comprehensive action plans."
 ---
 
