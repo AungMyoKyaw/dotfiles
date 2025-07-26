@@ -25,6 +25,10 @@
       },
       "disabled": false,
       "autoApprove": []
+    },
+    "basic-memory": {
+      "command": "uvx",
+      "args": ["basic-memory", "mcp"]
     }
   }
 }
