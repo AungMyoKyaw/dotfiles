@@ -5,7 +5,7 @@
   },
   "catppuccin": {
     "branch": "main",
-    "commit": "0cf15babf716ed56593da425a236245f709dcbfb"
+    "commit": "84336e08415858f6d835835e81a4f79e585463c6"
   },
   "cmp-nvim-lsp": {
     "branch": "main",
