@@ -71,7 +71,8 @@ You MUST follow this advanced methodology that combines multiple prompt engineer
 5. **Portfolio Generation**: Create different requirement types using specialized approaches
 6. **Quality Assurance**: Validate and refine all requirements
 7. **Documentation Generation**: Create structured documentation in docs folder
-   </methodology>
+
+</methodology>
 
 ## Execution Framework
 
@@ -400,4 +401,5 @@ This prompt incorporates advanced techniques from:
 - Portfolio prompting - Specialized approaches for different requirement types
 - Self-generated examples - Context-aware example generation
 - Structured output - XML tags for clear separation of reasoning and results
-  </meta_notes>
+
+</meta_notes>
