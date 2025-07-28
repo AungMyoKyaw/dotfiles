@@ -1,15 +1,36 @@
 ---
+title: "Advanced Requirements Creator"
 description: "Advanced requirements creator using cutting-edge prompt engineering techniques including chain of thought, dynamic analysis, and multi-perspective validation. Generates comprehensive functional, non-functional, and UI/UX requirements with automated research and documentation."
 version: "2.0.0"
 created: "2025-07-27"
+mode: "agent"
+category: "analysis"
+tags:
+  - requirements
+  - business-analysis
+  - documentation
+  - software-engineering
+  - research
+input:
+  - name: "project"
+    description: "Describe your project, product, or system in detail"
+    type: "string"
+    required: true
+  - name: "context"
+    description: "Provide additional context (target users, business goals, constraints, technical stack, timeline, etc.)"
+    type: "string"
+    required: false
+  - name: "focus"
+    description: "What type of requirements are you most interested in? (functional/non-functional/ui-ux/all)"
+    type: "string"
+    required: false
 techniques:
-  [
-    "chain-of-thought",
-    "dynamic-few-shot",
-    "self-generated-analysis",
-    "portfolio-approach",
-    "validation-ensembling"
-  ]
+  - chain-of-thought
+  - dynamic-few-shot
+  - self-generated-analysis
+  - portfolio-approach
+  - validation-ensembling
+difficulty: "advanced"
 ---
 
 # Advanced Requirements Creator

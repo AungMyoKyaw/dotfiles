@@ -1,12 +1,19 @@
 ---
 title: "Code Formatter Setup"
 description: "Guide for setting up a code formatter in your project. Includes Prettier for JS/TS/HTML and general advice for other languages."
+version: "1.0.0"
+created: "2025-07-28"
+mode: "interactive"
+category: "development"
 tags:
   - formatter
   - prettier
   - setup
   - config
   - guide
+  - javascript
+  - typescript
+difficulty: "beginner"
 ---
 
 # Code Formatter Setup Prompt

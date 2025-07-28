@@ -1,6 +1,10 @@
 ---
 title: "Website UI/UX Inspector & Fixer"
 description: "Comprehensive website visual inspection and UI/UX optimization using Playwright MCP tools with responsive design testing across all devices"
+version: "1.0.0"
+created: "2025-07-28"
+mode: "agent"
+category: "testing"
 tags:
   - playwright
   - ui
@@ -10,8 +14,20 @@ tags:
   - inspector
   - accessibility
   - testing
-version: "1.0.0"
-created: "2025-07-28"
+input:
+  - name: "url"
+    description: "Enter the website URL to inspect (default: http://localhost:3000)"
+    type: "string"
+    required: true
+  - name: "username"
+    description: "Enter username for authentication (optional, leave empty if not required)"
+    type: "string"
+    required: false
+  - name: "password"
+    description: "Enter password for authentication (optional, leave empty if not required)"
+    type: "string"
+    required: false
+difficulty: "advanced"
 ---
 
 # Website UI/UX Inspector & Fixer
