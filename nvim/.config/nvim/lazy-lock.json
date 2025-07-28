@@ -61,7 +61,7 @@
   },
   "mason.nvim": {
     "branch": "main",
-    "commit": "197f6352c276bbc2d25541dfce00ec50d1a4e88f"
+    "commit": "3671ab0d40aa5bd24b1686562bd0a23391ecf76a"
   },
   "mini.nvim": {
     "branch": "main",
