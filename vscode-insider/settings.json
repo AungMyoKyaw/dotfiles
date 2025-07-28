@@ -114,7 +114,8 @@
       "region": "EU"
     }
   ],
-  "workbench.activityBar.location": "hidden",
   "workbench.secondarySideBar.defaultVisibility": "visible",
-  "workbench.editor.enablePreview": false
+  "workbench.editor.enablePreview": false,
+  "files.autoSave": "afterDelay",
+  "workbench.activityBar.location": "hidden"
 }

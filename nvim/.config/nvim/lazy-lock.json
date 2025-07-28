@@ -5,7 +5,7 @@
   },
   "catppuccin": {
     "branch": "main",
-    "commit": "84336e08415858f6d835835e81a4f79e585463c6"
+    "commit": "702d15f269777b8261f3b8904fb0db35f37a1cd9"
   },
   "cmp-nvim-lsp": {
     "branch": "main",
@@ -93,7 +93,7 @@
   },
   "nvim-tree.lua": {
     "branch": "master",
-    "commit": "543ed3cac212dc3993ef9f042f6c0812e34ddd43"
+    "commit": "a9156c013916d3c8a2905ab2e26e9dd74beb642e"
   },
   "nvim-treesitter": {
     "branch": "master",

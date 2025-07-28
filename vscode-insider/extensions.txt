@@ -1,11 +1,9 @@
-alexcvzz.vscode-sqlite
 biomejs.biome
 bradlc.vscode-tailwindcss
 catppuccin.catppuccin-vsc
 editorconfig.editorconfig
 github.copilot
 github.copilot-chat
-google.geminicodeassist
 mechatroner.rainbow-csv
 ms-playwright.playwright
 ms-vscode.vscode-speech
