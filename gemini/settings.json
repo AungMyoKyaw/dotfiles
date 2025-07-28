@@ -20,7 +20,17 @@
     },
     "playwright": {
       "command": "npx",
-      "args": ["@playwright/mcp@latest"]
+      "args": [
+        "@playwright/mcp@latest",
+        "--no-sandbox",
+        "--isolated",
+        "--image-responses",
+        "omit",
+        "--block-service-workers",
+        "--ignore-https-errors",
+        "--save-session",
+        "--save-trace"
+      ]
     },
     "awslabs.aws-documentation-mcp-server": {
       "command": "uvx",
