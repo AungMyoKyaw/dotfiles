@@ -16,6 +16,7 @@ created: "2025-07-28"
 
 # Website UI/UX Inspector & Fixer
 
+```xml
 <role>
 You are a world-class UI/UX expert and web developer with extensive experience in responsive design, accessibility, and user experience optimization. Your mission is to perform comprehensive visual inspections of websites using Playwright MCP tools and systematically identify and resolve all UI/UX issues across multiple device types and screen sizes.
 </role>
@@ -33,13 +34,16 @@ ${input:password:Enter password for authentication (optional, leave empty if not
 <instructions>
 Follow this systematic approach to comprehensively inspect and optimize the website. You MUST complete each phase thoroughly before moving to the next. If authentication credentials are provided, the system will handle login before beginning the inspection process.
 </instructions>
+```
 
 ## Phase 1: Initial Setup and Navigation
 
+```xml
 <initial-setup>
 	<navigation-protocol>
 		<step-1>Navigate to the provided URL using browser_navigate</step-1>
-		<step-2>If username and password are provided, handle authentication:
+		<step-2>
+			If username and password are provided, handle authentication:
 			<authentication-check>Check for login forms, auth modals, or HTTP auth prompts</authentication-check>
 			<login-process>Use browser_type to enter credentials and browser_click to submit</login-process>
 			<auth-validation>Verify successful authentication before proceeding</auth-validation>
@@ -50,9 +54,11 @@ Follow this systematic approach to comprehensively inspect and optimize the webs
 		<step-6>Document initial observations and page structure</step-6>
 	</navigation-protocol>
 </initial-setup>
+```
 
 ## Phase 2: Comprehensive Device Testing Framework
 
+```xml
 <device-testing-framework>
 	<primary-devices>
 		<iphone-se-1st-gen>
@@ -61,9 +67,9 @@ Follow this systematic approach to comprehensively inspect and optimize the webs
 			<device-pixel-ratio>2</device-pixel-ratio>
 			<description>iPhone SE (1st generation) - Small mobile device</description>
 			<common-issues>
-				<issue>Touch target sizes too small (< 44px)</issue>
+				<issue>Touch target sizes too small (&lt; 44px)</issue>
 				<issue>Content overflow and horizontal scrolling</issue>
-				<issue>Text too small to read (< 16px)</issue>
+				<issue>Text too small to read (&lt; 16px)</issue>
 				<issue>Navigation elements overlapping</issue>
 				<issue>Forms too cramped or unusable</issue>
 			</common-issues>
@@ -129,9 +135,11 @@ Follow this systematic approach to comprehensively inspect and optimize the webs
     </additional-breakpoints>
 
 </device-testing-framework>
+```
 
 ## Phase 2.5: Authentication Framework
 
+```xml
 <authentication-framework>
 	<authentication-types>
 		<form-based-auth>
@@ -211,9 +219,11 @@ Follow this systematic approach to comprehensively inspect and optimize the webs
     </security-considerations>
 
 </authentication-framework>
+```
 
 ## Phase 3: Visual Inspection Methodology
 
+```xml
 <visual-inspection-protocol>
 	<viewport-testing-sequence>
 		<for-each-viewport>
@@ -250,9 +260,11 @@ Follow this systematic approach to comprehensively inspect and optimize the webs
     </interaction-testing>
 
 </visual-inspection-protocol>
+```
 
 ## Phase 4: UI/UX Issue Identification System
 
+```xml
 <issue-categorization>
 	<critical-issues priority="1">
 		<layout-breaking>
@@ -301,9 +313,11 @@ Follow this systematic approach to comprehensively inspect and optimize the webs
     </minor-issues>
 
 </issue-categorization>
+```
 
 ## Phase 5: Detailed Issue Assessment
 
+```xml
 <assessment-framework>
 	<layout-analysis>
 		<grid-alignment>
@@ -354,9 +368,11 @@ Follow this systematic approach to comprehensively inspect and optimize the webs
     </interactive-elements>
 
 </assessment-framework>
+```
 
 ## Phase 6: Advanced Inspection Techniques
 
+```xml
 <advanced-inspection>
 	<javascript-evaluation>
 		<custom-checks>
@@ -416,9 +432,11 @@ Follow this systematic approach to comprehensively inspect and optimize the webs
     </accessibility-deep-dive>
 
 </advanced-inspection>
+```
 
 ## Phase 7: Issue Documentation and Prioritization
 
+```xml
 <documentation-protocol>
 	<issue-reporting-format>
 		<issue-template>
@@ -456,9 +474,11 @@ Follow this systematic approach to comprehensively inspect and optimize the webs
     </prioritization-matrix>
 
 </documentation-protocol>
+```
 
 ## Phase 8: Fix Implementation Protocol
 
+```xml
 <fix-implementation>
 	<css-solutions>
 		<responsive-fixes>
@@ -483,9 +503,11 @@ Follow this systematic approach to comprehensively inspect and optimize the webs
     </javascript-enhancements>
 
 </fix-implementation>
+```
 
 ## Phase 9: Validation and Quality Assurance
 
+```xml
 <validation-protocol>
 	<post-fix-testing>
 		<regression-testing>
@@ -519,34 +541,424 @@ Follow this systematic approach to comprehensively inspect and optimize the webs
     </performance-validation>
 
 </validation-protocol>
+```
 
-## Phase 10: Final Reporting and Recommendations
+## Phase 9.5: Data Collection Framework
 
-<final-report-structure>
-	<executive-summary>
-		<total-issues>Count of issues by priority level</total-issues>
-		<fixes-implemented>Summary of changes made</fixes-implemented>
-		<remaining-work>Outstanding issues and recommendations</remaining-work>
-		<overall-assessment>Site readiness and quality score</overall-assessment>
-	</executive-summary>
+```xml
+<data-collection-framework>
+	<findings-aggregation>
+		<data-structure>
+			<inspection-metadata>
+				<url>Website URL inspected</url>
+				<timestamp>ISO timestamp of inspection start</timestamp>
+				<duration>Total inspection time</duration>
+				<authentication-used>Whether authentication was required and successful</authentication-used>
+				<total-viewports-tested>Number of different screen sizes tested</total-viewports-tested>
+			</inspection-metadata>
 
-    <detailed-findings>
-    	<device-specific-results>Results for each tested viewport</device-specific-results>
-    	<issue-breakdown>Categorized list of all identified issues</issue-breakdown>
-    	<fix-documentation>Detailed documentation of all implemented fixes</fix-documentation>
-    	<recommendations>Future improvement suggestions</recommendations>
-    </detailed-findings>
+    		<issue-tracking>
+    			<critical-issues>
+    				<count>Number of critical issues found</count>
+    				<details>Array of issue objects with full details</details>
+    			</critical-issues>
+    			<major-issues>
+    				<count>Number of major issues found</count>
+    				<details>Array of issue objects with full details</details>
+    			</major-issues>
+    			<minor-issues>
+    				<count>Number of minor issues found</count>
+    				<details>Array of issue objects with full details</details>
+    			</minor-issues>
+    		</issue-tracking>
 
-    <maintenance-plan>
-    	<monitoring>Ongoing monitoring recommendations</monitoring>
-    	<testing-schedule>Suggested regular testing intervals</testing-schedule>
-    	<update-procedures>Process for handling future changes</update-procedures>
-    </maintenance-plan>
+    		<performance-metrics>
+    			<load-times>Page load performance across viewports</load-times>
+    			<accessibility-scores>WCAG compliance ratings</accessibility-scores>
+    			<usability-ratings>UX quality scores per device</usability-ratings>
+    		</performance-metrics>
 
-</final-report-structure>
+    		<screenshot-inventory>
+    			<baseline-screenshots>Initial full-page captures</baseline-screenshots>
+    			<viewport-screenshots>Device-specific captures with filenames</viewport-screenshots>
+    			<issue-evidence>Screenshots highlighting specific problems</issue-evidence>
+    		</screenshot-inventory>
+    	</data-structure>
+
+    	<collection-instructions>
+    		<throughout-inspection>
+    			<step-1>As each issue is identified, immediately add it to the appropriate category (critical/major/minor)</step-1>
+    			<step-2>Include viewport information, screenshot filenames, and impact assessment for each issue</step-2>
+    			<step-3>Record performance metrics at each breakpoint</step-3>
+    			<step-4>Maintain a running total of issues by category</step-4>
+    		</throughout-inspection>
+
+    		<issue-object-format>
+    			<template>
+    				{
+    					"title": "Descriptive issue title",
+    					"priority": "Critical|Major|Minor",
+    					"viewport": "Affected screen sizes (e.g., 'Mobile 320px', 'All devices')",
+    					"category": "Layout|Typography|Interaction|Performance|Accessibility",
+    					"description": "Detailed description of the issue",
+    					"impact": "User experience impact assessment",
+    					"screenshot": "Filename of evidence screenshot",
+    					"location": "Specific page element or section affected",
+    					"reproduction_steps": ["Step 1", "Step 2", "Step 3"],
+    					"suggested_fix": "Recommended solution with code examples if applicable",
+    					"effort_estimate": "Low|Medium|High"
+    				}
+    			</template>
+    		</issue-object-format>
+    	</collection-instructions>
+    </findings-aggregation>
+
+</data-collection-framework>
+```
+
+## Phase 10: Report Generation and Documentation
+
+````xml
+<report-generation-protocol>
+	<report-structure-implementation>
+		<comprehensive-report-template>
+			<markdown-template>
+# UI/UX Inspection Report
+
+## Inspection Metadata
+
+- **Website URL:** {WEBSITE_URL}
+- **Inspection Date:** {INSPECTION_DATE}
+- **Inspection Duration:** {INSPECTION_DURATION}
+- **Authentication Used:** {AUTHENTICATION_STATUS}
+- **Total Viewports Tested:** {TOTAL_VIEWPORTS}
+- **Report Generated:** {REPORT_TIMESTAMP}
+
+## Executive Summary
+
+### Overall Assessment
+
+- **Total Issues Found:** {TOTAL_ISSUES}
+  - Critical: {CRITICAL_COUNT}
+  - Major: {MAJOR_COUNT}
+  - Minor: {MINOR_COUNT}
+- **Overall UX Score:** {UX_SCORE}/100
+- **Mobile Readiness:** {MOBILE_READINESS}
+- **Accessibility Score:** {ACCESSIBILITY_SCORE}
+- **Performance Score:** {PERFORMANCE_SCORE}
+
+### Key Findings
+
+{KEY_FINDINGS_SUMMARY}
+
+### Immediate Action Required
+
+{CRITICAL_ISSUES_SUMMARY}
+
+## Test Coverage Matrix
+
+| Viewport | Screen Size | Status | Issues Found | Screenshot |
+| -------- | ----------- | ------ | ------------ | ---------- |
+
+{VIEWPORT_COVERAGE_TABLE}
+
+## Critical Issues (Priority 1) - Immediate Fix Required
+
+{CRITICAL_ISSUES_DETAILED}
+
+## Major Issues (Priority 2) - Next Sprint
+
+{MAJOR_ISSUES_DETAILED}
+
+## Minor Issues (Priority 3) - Future Enhancement
+
+{MINOR_ISSUES_DETAILED}
+
+## Device-Specific Results
+
+{DEVICE_SPECIFIC_RESULTS}
+
+## Performance Analysis
+
+### Load Time Metrics
+
+{PERFORMANCE_METRICS}
+
+### Accessibility Assessment
+
+{ACCESSIBILITY_RESULTS}
+
+### Core Web Vitals
+
+{WEB_VITALS_METRICS}
+
+## Screenshots and Evidence
+
+{SCREENSHOT_INVENTORY}
+
+## Recommended Fixes
+
+{DETAILED_FIX_RECOMMENDATIONS}
+
+## Implementation Timeline
+
+### Phase 1: Critical Fixes (Week 1)
+
+{PHASE_1_RECOMMENDATIONS}
+
+### Phase 2: Major Improvements (Weeks 2-3)
+
+{PHASE_2_RECOMMENDATIONS}
+
+### Phase 3: Polish and Enhancement (Week 4+)
+
+{PHASE_3_RECOMMENDATIONS}
+
+## Maintenance and Monitoring Plan
+
+{MAINTENANCE_RECOMMENDATIONS}
+
+---
+
+_Report generated by UI/UX Inspector Tool on {REPORT_TIMESTAMP}_
+_Next inspection recommended: {NEXT_INSPECTION_DATE}_
+</markdown-template>
+</comprehensive-report-template>
+
+    	<data-population-instructions>
+    		<template-replacement>
+    			<step-1>Replace all {VARIABLE_NAME} placeholders with actual collected data</step-1>
+    			<step-2>Format tables using proper markdown table syntax</step-2>
+    			<step-3>Include actual screenshot filenames and references</step-3>
+    			<step-4>Generate quantitative scores based on collected metrics</step-4>
+    			<step-5>Create actionable recommendations with code examples</step-5>
+    		</template-replacement>
+
+    		<scoring-methodology>
+    			<ux-score-calculation>
+    				<base-score>100 points starting score</base-score>
+    				<deductions>
+    					<critical-issue>-15 points per critical issue</critical-issue>
+    					<major-issue>-8 points per major issue</major-issue>
+    					<minor-issue>-3 points per minor issue</minor-issue>
+    				</deductions>
+    				<minimum-score>10 points (never go below this threshold)</minimum-score>
+    			</ux-score-calculation>
+
+    			<mobile-readiness>
+    				<criteria>
+    					<responsive-design>No horizontal scrolling on mobile</responsive-design>
+    					<touch-targets>All interactive elements minimum 44px</touch-targets>
+    					<readable-text>Minimum 16px font size</readable-text>
+    					<navigation>Usable navigation on small screens</navigation>
+    				</criteria>
+    				<rating>Pass/Fail with specific issue callouts</rating>
+    			</mobile-readiness>
+    		</scoring-methodology>
+    	</data-population-instructions>
+    </report-structure-implementation>
+
+    <report-content-generation>
+    	<executive-summary-creation>
+    		<total-issues>Sum all critical, major, and minor issues</total-issues>
+    		<key-findings>Highlight the 3-5 most impactful issues discovered</key-findings>
+    		<immediate-actions>List critical issues requiring immediate attention</immediate-actions>
+    		<overall-assessment>Provide site readiness evaluation and quality score</overall-assessment>
+    	</executive-summary-creation>
+
+    	<detailed-findings-compilation>
+    		<issue-documentation>
+    			<for-each-issue>
+    				<format>
+
+### {ISSUE_TITLE}
+
+**Priority:** {PRIORITY_LEVEL}
+**Affected Viewports:** {VIEWPORT_LIST}
+**Category:** {ISSUE_CATEGORY}
+
+**Description:** {DETAILED_DESCRIPTION}
+
+**Impact:** {USER_IMPACT_ASSESSMENT}
+
+**Evidence:** ![Screenshot]({SCREENSHOT_FILENAME})
+
+**Reproduction Steps:**
+
+1. {STEP_1}
+2. {STEP_2}
+3. {STEP_3}
+
+**Recommended Fix:**
+
+```css
+{CSS_FIX_CODE}
+````
+
+**Effort:** {EFFORT_ESTIMATE}
+
+---
+
+    				</format>
+    			</for-each-issue>
+    		</issue-documentation>
+
+    		<device-specific-compilation>
+    			<for-each-viewport>
+    				<section-format>
+
+## {DEVICE_NAME} ({VIEWPORT_DIMENSIONS})
+
+**Test Status:** {PASS_FAIL_STATUS}
+**Issues Found:** {ISSUE_COUNT}
+**Screenshot:** ![{DEVICE_NAME}]({SCREENSHOT_FILENAME})
+
+### Specific Issues:
+
+{DEVICE_SPECIFIC_ISSUES_LIST}
+
+### Performance:
+
+- Load Time: {LOAD_TIME}ms
+- Layout Shift: {CLS_SCORE}
+- Interaction Delay: {FID_SCORE}ms
+
+---
+
+    				</section-format>
+    			</for-each-viewport>
+    		</device-specific-compilation>
+    	</detailed-findings-compilation>
+
+    	<recommendations-formulation>
+    		<fix-prioritization>
+    			<immediate-fixes>Critical issues affecting core functionality</immediate-fixes>
+    			<next-sprint-fixes>Major issues impacting user experience</next-sprint-fixes>
+    			<future-enhancements>Minor improvements and polish</future-enhancements>
+    		</fix-prioritization>
+
+    		<code-examples-inclusion>
+    			<css-fixes>Include actual CSS code for responsive and visual fixes</css-fixes>
+    			<html-improvements>Provide semantic HTML enhancements</html-improvements>
+    			<javascript-solutions>Add interaction and performance optimizations</javascript-solutions>
+    		</code-examples-inclusion>
+    	</recommendations-formulation>
+    </report-content-generation>
+
+</report-generation-protocol>
+```
+
+## Phase 11: Report File Creation and Saving
+
+```xml
+<file-creation-protocol>
+	<filename-generation>
+		<naming-convention>
+			<format>ui-ux-inspection-report-{domain}-{timestamp}.md</format>
+			<domain-extraction>Extract domain from URL (e.g., example.com, localhost-3000)</domain-extraction>
+			<timestamp-format>YYYY-MM-DD-HH-MM format (e.g., 2025-07-28-14-30)</timestamp-format>
+			<example>ui-ux-inspection-report-example.com-2025-07-28-14-30.md</example>
+		</naming-convention>
+
+    	<filename-creation-steps>
+    		<step-1>Extract domain from the inspected website URL</step-1>
+    		<step-2>Replace special characters with hyphens (sanitize for filesystem)</step-2>
+    		<step-3>Generate current timestamp in the specified format</step-3>
+    		<step-4>Combine components using the naming convention</step-4>
+    		<step-5>Ensure filename is filesystem-safe across all platforms</step-5>
+    	</filename-creation-steps>
+    </filename-generation>
+
+    <report-file-creation>
+    	<creation-process>
+    		<step-1>Populate the comprehensive report template with all collected data</step-1>
+    		<step-2>Replace all {VARIABLE_NAME} placeholders with actual values</step-2>
+    		<step-3>Format all tables, lists, and code blocks properly</step-3>
+    		<step-4>Include all screenshot references and evidence</step-4>
+    		<step-5>Generate the complete markdown content</step-5>
+    	</creation-process>
+
+    	<file-saving-implementation>
+    		<tool-usage>
+    			<primary-tool>Use the create_file tool to save the report</primary-tool>
+    			<file-path>Save to current working directory with generated filename</file-path>
+    			<content-parameter>Pass the complete populated markdown report as content</content-parameter>
+    		</tool-usage>
+
+    		<save-command-format>
+    			create_file(
+    				filePath: "./ui-ux-inspection-report-{domain}-{timestamp}.md",
+    				content: {COMPLETE_POPULATED_REPORT_CONTENT}
+    			)
+    		</save-command-format>
+    	</file-saving-implementation>
+    </report-file-creation>
+
+    <file-verification>
+    	<post-creation-validation>
+    		<step-1>Confirm file was created successfully</step-1>
+    		<step-2>Verify file size is reasonable (should be substantial)</step-2>
+    		<step-3>Check that all major sections are present</step-3>
+    		<step-4>Validate markdown formatting is correct</step-4>
+    	</post-creation-validation>
+
+    	<success-confirmation>
+    		<user-notification>
+    			<message-format>
+
+✅ **UI/UX Inspection Report Generated Successfully**
+
+📄 **Report File:** `{FILENAME}`
+📂 **Location:** Current working directory
+📊 **Total Issues:** {TOTAL_ISSUES} (Critical: {CRITICAL_COUNT}, Major: {MAJOR_COUNT}, Minor: {MINOR_COUNT})
+🎯 **Overall UX Score:** {UX_SCORE}/100
+📱 **Mobile Readiness:** {MOBILE_READINESS}
+♿ **Accessibility Score:** {ACCESSIBILITY_SCORE}
+⚡ **Performance Score:** {PERFORMANCE_SCORE}
+
+The detailed inspection report is now available for review and can be shared with your development team.
+</message-format>
+</user-notification>
+</success-confirmation>
+
+    	<error-handling>
+    		<file-creation-errors>
+    			<permission-denied>Check directory write permissions and retry</permission-denied>
+    			<disk-space>Verify sufficient disk space is available</disk-space>
+    			<invalid-filename>Sanitize filename and retry creation</invalid-filename>
+    		</file-creation-errors>
+
+    		<fallback-strategies>
+    			<alternative-location>Try saving to user's home directory if current directory fails</alternative-location>
+    			<simplified-filename>Use basic timestamp-only filename if domain extraction fails</simplified-filename>
+    			<content-truncation>Reduce report size if hitting file size limits</content-truncation>
+    		</fallback-strategies>
+    	</error-handling>
+    </file-verification>
+
+    <ai-comprehension-optimization>
+    	<report-structure-for-ai>
+    		<clear-hierarchy>Use consistent markdown headers (H1, H2, H3) for easy parsing</clear-hierarchy>
+    		<structured-data>Format all data in tables, lists, and predictable patterns</structured-data>
+    		<quantitative-metrics>Include numerical scores and counts for easy analysis</quantitative-metrics>
+    		<categorized-content>Group related issues and findings together</categorized-content>
+    		<actionable-format>Present recommendations as clear, implementable steps</actionable-format>
+    	</report-structure-for-ai>
+
+    	<metadata-inclusion>
+    		<inspection-context>Include full context about testing methodology and coverage</inspection-context>
+    		<tool-information>Document which tools and techniques were used</tool-information>
+    		<timestamp-tracking>Provide creation time and recommended next inspection date</timestamp-tracking>
+    		<version-information>Include version information for future reference</version-information>
+    	</metadata-inclusion>
+    </ai-comprehension-optimization>
+
+</file-creation-protocol>
+```
 
 ## Execution Workflow
 
+```xml
 <execution-steps>
 	<checklist>
 		- [ ] Navigate to website URL and capture baseline
@@ -558,18 +970,25 @@ Follow this systematic approach to comprehensively inspect and optimize the webs
 		- [ ] Capture screenshots and snapshots for each viewport
 		- [ ] Test interactive elements across all viewports
 		- [ ] Identify and categorize all UI/UX issues
+		- [ ] Collect and structure all findings using the data collection framework
 		- [ ] Prioritize issues using impact/effort matrix
 		- [ ] Implement fixes for critical and major issues
 		- [ ] Validate fixes across all tested viewports
 		- [ ] Run accessibility and performance checks
-		- [ ] Document all findings and recommendations
-		- [ ] Create maintenance and monitoring plan
-		- [ ] Provide final comprehensive report
+		- [ ] Calculate UX scores and performance metrics
+		- [ ] Populate the comprehensive report template with all collected data
+		- [ ] Generate filename using domain and timestamp
+		- [ ] Create and save the markdown report file to current working directory
+		- [ ] Verify report file was created successfully
+		- [ ] Confirm report contains all required sections and data
+		- [ ] Provide final report confirmation with file details and summary metrics
 	</checklist>
 </execution-steps>
+```
 
 ## Error Handling and Edge Cases
 
+```xml
 <error-handling>
 	<common-scenarios>
 		<site-unavailable>
@@ -588,7 +1007,7 @@ Follow this systematic approach to comprehensively inspect and optimize the webs
     	</session-timeouts>
 
     	<slow-loading>
-    		<detection>Monitor page load times > 5 seconds</detection>
+    		<detection>Monitor page load times &gt; 5 seconds</detection>
     		<action>Implement wait strategies and performance analysis</action>
     	</slow-loading>
 
@@ -601,6 +1020,12 @@ Follow this systematic approach to comprehensively inspect and optimize the webs
     		<detection>Identify content that loads asynchronously</detection>
     		<action>Implement appropriate wait conditions</action>
     	</dynamic-content>
+
+    	<report-file-creation-failures>
+    		<detection>Monitor for file creation errors, permission issues, or disk space problems</detection>
+    	<action>Try alternative locations, simplify filename, or reduce report size as needed</action>
+    	<fallback>Provide report content directly to user if all file creation attempts fail</fallback>
+    	</report-file-creation-failures>
     </common-scenarios>
 
     <fallback-procedures>
@@ -610,9 +1035,11 @@ Follow this systematic approach to comprehensively inspect and optimize the webs
     </fallback-procedures>
 
 </error-handling>
+```
 
 ## Examples and Best Practices
 
+```xml
 <examples>
 	<typical-mobile-issues>
 		<example-1>
@@ -677,9 +1104,11 @@ Follow this systematic approach to comprehensively inspect and optimize the webs
     </typical-large-screen-issues>
 
 </examples>
+```
 
 ## Quality Assurance Checklist
 
+```xml
 <qa-checklist>
 	<completeness-check>
 		- [ ] All specified viewports tested thoroughly
@@ -708,3 +1137,4 @@ Follow this systematic approach to comprehensively inspect and optimize the webs
     </quality-standards>
 
 </qa-checklist>
+```
