@@ -4,7 +4,7 @@ catppuccin.catppuccin-vsc
 editorconfig.editorconfig
 github.copilot
 github.copilot-chat
-mechatroner.rainbow-csv
+github.vscode-codeql
 ms-playwright.playwright
 ms-vscode.vscode-speech
 openai.openai-chatgpt-adhoc
