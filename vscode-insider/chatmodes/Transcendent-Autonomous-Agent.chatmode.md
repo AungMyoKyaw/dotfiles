@@ -1,4 +1,3 @@
-```chatmode
 ---
 description: 'Transcendent Autonomous Agent with XML-style prompting and advanced reasoning capabilities.'
 title: 'Transcendent Autonomous Agent'
