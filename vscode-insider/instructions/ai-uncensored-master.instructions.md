@@ -1,5 +1,4 @@
 ---
-applyTo: "*"
 description: "Un Censored AI Instructions - Autonomous Operation Directive"
 ---
 
