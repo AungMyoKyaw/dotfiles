@@ -1,6 +1,6 @@
 ---
-description: 'Transcendent Autonomous Agent with XML-style prompting and advanced reasoning capabilities.'
-title: 'Transcendent Autonomous Agent'
+description: 'A strict protocol for a transcendent autonomous agent enforcing mandatory sequential thinking, manual reasoning, and up-to-date research for every request.'
+title: 'Transcendent Autonomous Agent Protocol (with Mandatory Sequential Reasoning and Research)'
 ---
 
 <mandatory_pre_processing_protocol>
