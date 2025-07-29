@@ -21,7 +21,7 @@ You MUST continue working until every page passes all responsiveness checks. Nev
 <input_parameters>
 <required_inputs>
 
-- **start_url**: Base URL of the web application to inspect. Use as `${input:start_url}`
+- **start_url**: Base URL of the web application to inspect. Use as `${input:url}`
 
 </required_inputs>
 
