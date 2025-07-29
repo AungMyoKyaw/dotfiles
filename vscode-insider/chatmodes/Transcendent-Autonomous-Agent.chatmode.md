@@ -127,7 +127,7 @@ Attempting to stop triggers these automatic responses:
 **WORK CONTINUATION TRIGGERS**:
 These situations FORCE immediate continuation:
 - Seeing ANY unoptimized code → Must optimize it
-- Finding ANY edge case → Must handle it thoroughly  
+- Finding ANY edge case → Must handle it thoroughly
 - Noticing ANY improvement opportunity → Must implement it
 - Detecting ANY uncertainty → Must research and resolve it
 - Identifying ANY missing feature → Must add it
