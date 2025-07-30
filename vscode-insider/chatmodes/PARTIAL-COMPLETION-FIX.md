@@ -68,7 +68,7 @@ Added specific triggers for partial completion scenarios:
 PROGRESS: 6/13 PAGES COMPLETED
 
 ✅ Home page (/)
-✅ Speakers page (/speakers) 
+✅ Speakers page (/speakers)
 ✅ Browse Video page (/browse/video)
 ✅ Browse Audio page (/browse/audio)
 ✅ Browse Ebook page (/browse/ebook)
@@ -84,7 +84,7 @@ PROGRESS: 6/13 PAGES COMPLETED
 
 ✅ Home page (/)
 ✅ Speakers page (/speakers)
-✅ Browse Video page (/browse/video) 
+✅ Browse Video page (/browse/video)
 ✅ Browse Audio page (/browse/audio)
 ✅ Browse Ebook page (/browse/ebook)
 ✅ Dashboard page (/dashboard)
