@@ -56,8 +56,8 @@
     },
     "ado": {
       "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "@azure-devops/mcp", "${input:ado_org}"]
+      "command": "mcp-server-azuredevops",
+      "args": ["${input:ado_org}", "--use-pat-env"]
     }
   },
   "inputs": [
