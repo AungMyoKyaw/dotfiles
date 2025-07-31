@@ -12,6 +12,7 @@ tags:
   - "collaborative-development"
   - "code-history-excellence"
 experimental: false
+---
 
 [//]: # (
 AUTONOMOUS CONVENTIONAL COMMIT WORKFLOW
@@ -28,6 +29,7 @@ No user description, file list, or manual input is needed. All information is de
 )
 No user description, file list, or manual input is needed. All information is derived from the current git state.
 -->
+
 ---
 
 <constitutional_commit_consciousness>
