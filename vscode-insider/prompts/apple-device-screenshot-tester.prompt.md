@@ -57,7 +57,6 @@ Take screenshots at the following Apple device screen dimensions:
 - **MacBook Pro 14-inch**: 1728×1117 pixels
 - **MacBook Pro 16-inch**: 1920×1200 pixels
 
-
 ### 3. Screenshot Organization
 
 For each device size:
@@ -192,9 +191,8 @@ Provide results in this structure:
 - **Screenshot failures**: Log specific errors and continue with remaining devices
 - **Network issues**: Handle timeouts and connection problems gracefully
 
-
 **Important:**
- You must use the Playwright MCP tool for all browser automation, device emulation, and screenshot capture steps.
- Do not write or run any custom scripts—use only the Playwright MCP tool for the entire process.
+You must use the Playwright MCP tool for all browser automation, device emulation, and screenshot capture steps.
+Do not write or run any custom scripts—use only the Playwright MCP tool for the entire process.
 
 Execute this testing protocol comprehensively to provide thorough Apple device compatibility analysis for any website.
