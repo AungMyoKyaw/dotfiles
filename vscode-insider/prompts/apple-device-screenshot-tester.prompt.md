@@ -57,12 +57,14 @@ Take screenshots at the following Apple device screen dimensions:
 - **MacBook Pro 14-inch**: 1728×1117 pixels
 - **MacBook Pro 16-inch**: 1920×1200 pixels
 
+
 ### 3. Screenshot Organization
 
 For each device size:
 
 - **File naming**: `{website-name}_{device-name}_{width}x{height}_{timestamp}.png`
 - **Folder structure**: Organize by device category (iPhone/iPad/MacBook)
+- **Saving files**: Use the `mv` command to move each screenshot file to the current repository after capture.
 - **Full page capture**: Take both viewport and full-page screenshots when relevant
 - **Quality settings**: Use high-quality PNG format for crisp detail
 
@@ -189,5 +191,9 @@ Provide results in this structure:
 - **Page load issues**: Implement retry logic with timeouts
 - **Screenshot failures**: Log specific errors and continue with remaining devices
 - **Network issues**: Handle timeouts and connection problems gracefully
+
+
+**Important:**
+- Do not stop the process until screenshots for all mobile (iPhone) devices listed above are fully captured and saved as specified.
 
 Execute this testing protocol comprehensively to provide thorough Apple device compatibility analysis for any website.
