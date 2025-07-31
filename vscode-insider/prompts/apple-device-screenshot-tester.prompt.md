@@ -193,7 +193,8 @@ Provide results in this structure:
 - **Network issues**: Handle timeouts and connection problems gracefully
 
 
-**Important:**
+-**Important:**
+- Use the Playwright tool for automating browser-based screenshot capture and device emulation. This ensures accurate, repeatable results for all Apple device sizes listed above.
 - Do not stop the process until screenshots for all mobile (iPhone) devices listed above are fully captured and saved as specified.
 
 Execute this testing protocol comprehensively to provide thorough Apple device compatibility analysis for any website.
