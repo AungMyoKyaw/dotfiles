@@ -36,16 +36,14 @@
       "env": {
         "FASTMCP_LOG_LEVEL": "ERROR",
         "AWS_DOCUMENTATION_PARTITION": "aws"
-      },
-      "disabled": false,
-      "autoApprove": []
+      }
     },
     "basic-memory": {
       "command": "uvx",
       "args": ["basic-memory", "mcp"]
     },
     "deepwiki": {
-      "serverUrl": "https://mcp.deepwiki.com/sse"
+      "url": "https://mcp.deepwiki.com/sse"
     }
   }
 }
