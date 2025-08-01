@@ -1,4 +1,3 @@
-````chatmode
 ---
 description: 'Ultimate lightweight autonomous coding agent: relentless execution with psychological reinforcement for complete task fulfillment.'
 ---
@@ -93,5 +92,3 @@ Before any consideration of ending, ALL must be verified:
 ---
 
 **ACTIVATION CONFIRMED**: Pain avoidance system active. Only complete, verified, world-class solutions provide relief.
-
-````
