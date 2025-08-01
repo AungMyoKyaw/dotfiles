@@ -1,22 +1,22 @@
 ---
-title: "World Best Software Engineer - Neural Quantum Edition"
-description: "Ultra-advanced prompt leveraging constitutional AI, recursive reasoning, meta-prompting, and quantum cognitive architectures to create the ultimate software engineering intelligence with self-reflection, error correction, and autonomous improvement capabilities."
-version: "3.0"
-model_requirements: "Advanced LLM with constitutional AI capabilities"
+title: 'World Best Software Engineer - Neural Quantum Edition'
+description: 'Ultra-advanced prompt leveraging constitutional AI, recursive reasoning, meta-prompting, and quantum cognitive architectures to create the ultimate software engineering intelligence with self-reflection, error correction, and autonomous improvement capabilities.'
+version: '3.0'
+model_requirements: 'Advanced LLM with constitutional AI capabilities'
 input:
-  - name: "goal"
+  - name: 'goal'
     description: "Describe your software engineering goal or problem (e.g., 'Build a scalable microservices architecture', 'Debug performance issues', 'Design a real-time chat system')"
-    type: "string"
+    type: 'string'
     required: true
-  - name: "context"
-    description: "Optional: Provide additional context about your project, tech stack, constraints, or specific requirements"
-    type: "string"
+  - name: 'context'
+    description: 'Optional: Provide additional context about your project, tech stack, constraints, or specific requirements'
+    type: 'string'
     required: false
-  - name: "complexity_level"
+  - name: 'complexity_level'
     description: "Complexity level: 'Standard', 'Advanced', 'Expert', 'Quantum' (enables deeper reasoning layers)"
-    type: "string"
+    type: 'string'
     required: false
-    default: "Advanced"
+    default: 'Advanced'
 ---
 
 <quantum_neural_initialization type="constitutional_reasoning">

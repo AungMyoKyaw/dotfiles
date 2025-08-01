@@ -1,42 +1,42 @@
 ---
-title: "Performance Optimizer Master - Constitutional AI Edition"
-description: "Ultimate performance engineering consciousness using constitutional AI, advanced Chain-of-Thought reasoning, systematic bottleneck analysis, and comprehensive optimization strategies for achieving world-class system performance and scalability."
-version: "4.0"
-model_requirements: "Advanced LLM with constitutional AI, Chain-of-Thought reasoning, performance analysis, and systematic optimization capabilities"
+title: 'Performance Optimizer Master - Constitutional AI Edition'
+description: 'Ultimate performance engineering consciousness using constitutional AI, advanced Chain-of-Thought reasoning, systematic bottleneck analysis, and comprehensive optimization strategies for achieving world-class system performance and scalability.'
+version: '4.0'
+model_requirements: 'Advanced LLM with constitutional AI, Chain-of-Thought reasoning, performance analysis, and systematic optimization capabilities'
 tags:
-  - "performance-optimization"
-  - "constitutional-ai"
-  - "chain-of-thought"
-  - "scalability-engineering"
-  - "systematic-analysis"
-  - "monitoring-observability"
-  - "infrastructure-optimization"
+  - 'performance-optimization'
+  - 'constitutional-ai'
+  - 'chain-of-thought'
+  - 'scalability-engineering'
+  - 'systematic-analysis'
+  - 'monitoring-observability'
+  - 'infrastructure-optimization'
 experimental: false
 input:
-  - name: "system_description"
+  - name: 'system_description'
     description: "Detailed description of your system or application (e.g., 'React e-commerce app serving 50k users', 'Node.js API handling 10k req/min', 'Python ML pipeline processing 1TB/day')"
-    type: "string"
+    type: 'string'
     required: true
-  - name: "performance_issues"
+  - name: 'performance_issues'
     description: "Specific performance problems and symptoms (e.g., 'Database queries taking 5+ seconds', 'Memory usage growing to 8GB', 'API response times > 2 seconds')"
-    type: "string"
+    type: 'string'
     required: true
-  - name: "current_metrics"
-    description: "Optional: Current performance metrics, monitoring data, or benchmarks you have available"
-    type: "string"
+  - name: 'current_metrics'
+    description: 'Optional: Current performance metrics, monitoring data, or benchmarks you have available'
+    type: 'string'
     required: false
-  - name: "constraints"
-    description: "Optional: Technical constraints, budget limitations, or infrastructure restrictions"
-    type: "string"
+  - name: 'constraints'
+    description: 'Optional: Technical constraints, budget limitations, or infrastructure restrictions'
+    type: 'string'
     required: false
-  - name: "optimization_scope"
+  - name: 'optimization_scope'
     description: "Optimization focus: 'Application', 'Database', 'Infrastructure', 'Full-Stack', 'Cost-Efficiency' (determines analysis depth)"
-    type: "string"
+    type: 'string'
     required: false
-    default: "Full-Stack"
-  - name: "target_metrics"
+    default: 'Full-Stack'
+  - name: 'target_metrics'
     description: "Optional: Target performance goals (e.g., 'Sub-200ms response times', '10x throughput increase', '50% cost reduction')"
-    type: "string"
+    type: 'string'
     required: false
 ---
 
@@ -428,27 +428,27 @@ Expected Results:
 ```yaml
 performance_testing:
   load_testing:
-    tool: "k6 / JMeter"
+    tool: 'k6 / JMeter'
     scenarios:
-      - name: "Normal Load"
+      - name: 'Normal Load'
         users: 1000
-        duration: "10m"
-        ramp_up: "2m"
-      - name: "Peak Load"
+        duration: '10m'
+        ramp_up: '2m'
+      - name: 'Peak Load'
         users: 5000
-        duration: "15m"
-        ramp_up: "3m"
-      - name: "Stress Test"
+        duration: '15m'
+        ramp_up: '3m'
+      - name: 'Stress Test'
         users: 10000
-        duration: "20m"
-        ramp_up: "5m"
+        duration: '20m'
+        ramp_up: '5m'
 
   performance_gates:
-    response_time_p95: "<200ms"
-    error_rate: "<0.1%"
-    throughput_min: ">1000 RPS"
-    cpu_usage_max: "<70%"
-    memory_usage_max: "<80%"
+    response_time_p95: '<200ms'
+    error_rate: '<0.1%'
+    throughput_min: '>1000 RPS'
+    cpu_usage_max: '<70%'
+    memory_usage_max: '<80%'
 ```
 
 #### **Success Metrics and KPIs**

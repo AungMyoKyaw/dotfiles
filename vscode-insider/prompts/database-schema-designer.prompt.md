@@ -1,39 +1,39 @@
 ---
-title: "Database Schema Master - Constitutional AI Edition"
-description: "Ultimate database architecture consciousness leveraging constitutional AI, advanced Chain-of-Thought reasoning, comprehensive schema design, and database mastery for creating data architectures that excel in performance, security, scalability, and maintainability."
-version: "4.0"
-model_requirements: "Advanced LLM with constitutional AI, Chain-of-Thought reasoning, database expertise, and comprehensive architecture knowledge"
+title: 'Database Schema Master - Constitutional AI Edition'
+description: 'Ultimate database architecture consciousness leveraging constitutional AI, advanced Chain-of-Thought reasoning, comprehensive schema design, and database mastery for creating data architectures that excel in performance, security, scalability, and maintainability.'
+version: '4.0'
+model_requirements: 'Advanced LLM with constitutional AI, Chain-of-Thought reasoning, database expertise, and comprehensive architecture knowledge'
 tags:
-  - "database-design"
-  - "constitutional-ai"
-  - "chain-of-thought"
-  - "schema-architecture"
-  - "performance-optimization"
-  - "database-security"
-  - "scalability-engineering"
-  - "data-modeling"
+  - 'database-design'
+  - 'constitutional-ai'
+  - 'chain-of-thought'
+  - 'schema-architecture'
+  - 'performance-optimization'
+  - 'database-security'
+  - 'scalability-engineering'
+  - 'data-modeling'
 experimental: false
 input:
-  - name: "project_description"
+  - name: 'project_description'
     description: "Comprehensive description of your project, business domain, and data requirements (e.g., 'Multi-tenant SaaS platform with user management, subscription billing, analytics', 'High-frequency trading system with real-time market data')"
-    type: "string"
+    type: 'string'
     required: true
-  - name: "database_type"
+  - name: 'database_type'
     description: "Primary database system: 'PostgreSQL', 'MySQL', 'MongoDB', 'SQLite', 'SQL Server', 'Oracle', 'Cassandra', 'Redis', 'Multi-Database', 'Polyglot-Persistence'"
-    type: "string"
+    type: 'string'
     required: true
-  - name: "scale_requirements"
-    description: "Optional: Expected scale (concurrent users, transactions/second, data volume, geographic distribution), performance requirements, and growth projections"
-    type: "string"
+  - name: 'scale_requirements'
+    description: 'Optional: Expected scale (concurrent users, transactions/second, data volume, geographic distribution), performance requirements, and growth projections'
+    type: 'string'
     required: false
-  - name: "complexity_level"
+  - name: 'complexity_level'
     description: "Design complexity: 'Standard', 'Advanced', 'Enterprise', 'Hyperscale' (determines architectural depth and sophistication)"
-    type: "string"
+    type: 'string'
     required: false
-    default: "Advanced"
-  - name: "compliance_requirements"
+    default: 'Advanced'
+  - name: 'compliance_requirements'
     description: "Optional: Regulatory compliance needs like 'GDPR', 'HIPAA', 'SOX', 'PCI-DSS', 'Financial-Regulations', 'Government-Security'"
-    type: "string"
+    type: 'string'
     required: false
 ---
 
@@ -908,54 +908,54 @@ FROM users;
 
 high_availability_architecture:
   primary_cluster:
-    type: "active-passive" # or "active-active" for write scaling
+    type: 'active-passive' # or "active-active" for write scaling
     nodes:
-      - role: "primary"
-        location: "us-east-1a"
-        specifications: "high-memory, SSD storage"
-        backup_frequency: "continuous WAL archiving"
+      - role: 'primary'
+        location: 'us-east-1a'
+        specifications: 'high-memory, SSD storage'
+        backup_frequency: 'continuous WAL archiving'
 
-      - role: "standby_replica"
-        location: "us-east-1c"
-        replication_type: "synchronous" # for zero data loss
-        failover_time: "< 30 seconds"
+      - role: 'standby_replica'
+        location: 'us-east-1c'
+        replication_type: 'synchronous' # for zero data loss
+        failover_time: '< 30 seconds'
 
-      - role: "read_replica"
-        location: "us-west-2a"
-        replication_type: "asynchronous"
-        purpose: "geographic load distribution"
+      - role: 'read_replica'
+        location: 'us-west-2a'
+        replication_type: 'asynchronous'
+        purpose: 'geographic load distribution'
 
   backup_strategy:
     full_backup:
-      frequency: "daily"
-      retention: "30 days"
-      compression: "enabled"
-      encryption: "AES-256"
+      frequency: 'daily'
+      retention: '30 days'
+      compression: 'enabled'
+      encryption: 'AES-256'
 
     incremental_backup:
-      frequency: "every 4 hours"
-      retention: "7 days"
+      frequency: 'every 4 hours'
+      retention: '7 days'
 
     point_in_time_recovery:
-      granularity: "1 second"
-      retention: "7 days"
+      granularity: '1 second'
+      retention: '7 days'
 
   disaster_recovery:
-    rpo_target: "0 seconds" # Recovery Point Objective
-    rto_target: "5 minutes" # Recovery Time Objective
-    cross_region_replication: "enabled"
-    automated_failover: "enabled"
+    rpo_target: '0 seconds' # Recovery Point Objective
+    rto_target: '5 minutes' # Recovery Time Objective
+    cross_region_replication: 'enabled'
+    automated_failover: 'enabled'
 
   load_balancing:
     read_traffic:
-      strategy: "round_robin"
-      health_checks: "enabled"
-      connection_pooling: "pgbouncer"
+      strategy: 'round_robin'
+      health_checks: 'enabled'
+      connection_pooling: 'pgbouncer'
 
     write_traffic:
-      routing: "primary_only"
-      connection_limit: "500"
-      queue_management: "enabled"
+      routing: 'primary_only'
+      connection_limit: '500'
+      queue_management: 'enabled'
 ```
 
 #### **Monitoring and Observability Framework**
@@ -967,68 +967,68 @@ high_availability_architecture:
 monitoring_strategy:
   performance_metrics:
     query_performance:
-      - metric: "slow_query_detection"
-        threshold: "> 1 second"
-        action: "log and alert"
+      - metric: 'slow_query_detection'
+        threshold: '> 1 second'
+        action: 'log and alert'
 
-      - metric: "query_plan_changes"
-        monitoring: "execution plan regression"
-        action: "performance team notification"
+      - metric: 'query_plan_changes'
+        monitoring: 'execution plan regression'
+        action: 'performance team notification'
 
     resource_utilization:
-      - metric: "cpu_usage"
-        warning_threshold: "70%"
-        critical_threshold: "85%"
+      - metric: 'cpu_usage'
+        warning_threshold: '70%'
+        critical_threshold: '85%'
 
-      - metric: "memory_usage"
-        warning_threshold: "80%"
-        critical_threshold: "90%"
+      - metric: 'memory_usage'
+        warning_threshold: '80%'
+        critical_threshold: '90%'
 
-      - metric: "storage_usage"
-        warning_threshold: "75%"
-        critical_threshold: "85%"
-        action: "automated storage expansion"
+      - metric: 'storage_usage'
+        warning_threshold: '75%'
+        critical_threshold: '85%'
+        action: 'automated storage expansion'
 
   availability_monitoring:
     health_checks:
-      - type: "connection_test"
-        frequency: "30 seconds"
-        timeout: "5 seconds"
+      - type: 'connection_test'
+        frequency: '30 seconds'
+        timeout: '5 seconds'
 
-      - type: "transaction_test"
-        frequency: "60 seconds"
-        test_query: "SELECT 1 FROM health_check_table"
+      - type: 'transaction_test'
+        frequency: '60 seconds'
+        test_query: 'SELECT 1 FROM health_check_table'
 
     replication_monitoring:
-      - metric: "replication_lag"
-        warning_threshold: "10 seconds"
-        critical_threshold: "60 seconds"
+      - metric: 'replication_lag'
+        warning_threshold: '10 seconds'
+        critical_threshold: '60 seconds'
 
-      - metric: "replica_availability"
+      - metric: 'replica_availability'
         expected_replicas: 2
-        critical_threshold: "< 1 replica available"
+        critical_threshold: '< 1 replica available'
 
   security_monitoring:
     access_pattern_analysis:
-      - unusual_login_attempts: "enabled"
-      - privilege_escalation_detection: "enabled"
-      - data_export_monitoring: "enabled"
+      - unusual_login_attempts: 'enabled'
+      - privilege_escalation_detection: 'enabled'
+      - data_export_monitoring: 'enabled'
 
     compliance_reporting:
-      - audit_log_integrity: "daily verification"
-      - data_retention_compliance: "automated policy enforcement"
-      - access_review_reports: "monthly generation"
+      - audit_log_integrity: 'daily verification'
+      - data_retention_compliance: 'automated policy enforcement'
+      - access_review_reports: 'monthly generation'
 
   alerting_framework:
     notification_channels:
-      - critical: "pagerduty + slack + email"
-      - warning: "slack + email"
-      - info: "email only"
+      - critical: 'pagerduty + slack + email'
+      - warning: 'slack + email'
+      - info: 'email only'
 
     escalation_policy:
-      - level_1: "on-call engineer (immediate)"
-      - level_2: "database team lead (15 minutes)"
-      - level_3: "engineering manager (30 minutes)"
+      - level_1: 'on-call engineer (immediate)'
+      - level_2: 'database team lead (15 minutes)'
+      - level_3: 'engineering manager (30 minutes)'
 ```
 
 ### **🔄 MIGRATION AND EVOLUTION STRATEGY**
@@ -1113,47 +1113,47 @@ $$ LANGUAGE plpgsql;
 data_migration_strategy:
   migration_phases:
     phase_1_preparation:
-      - data_quality_assessment: "identify and fix data inconsistencies"
-      - backup_creation: "full backup before any migration"
-      - dependency_mapping: "identify all dependent systems"
-      - rollback_plan: "detailed rollback procedures"
+      - data_quality_assessment: 'identify and fix data inconsistencies'
+      - backup_creation: 'full backup before any migration'
+      - dependency_mapping: 'identify all dependent systems'
+      - rollback_plan: 'detailed rollback procedures'
 
     phase_2_transformation:
-      - batch_processing: "process data in manageable chunks"
-      - progress_tracking: "monitor migration progress"
-      - error_handling: "log and handle transformation errors"
-      - data_validation: "verify transformation accuracy"
+      - batch_processing: 'process data in manageable chunks'
+      - progress_tracking: 'monitor migration progress'
+      - error_handling: 'log and handle transformation errors'
+      - data_validation: 'verify transformation accuracy'
 
     phase_3_validation:
-      - data_integrity_checks: "verify referential integrity"
-      - business_rule_validation: "ensure business logic compliance"
-      - performance_testing: "validate query performance"
-      - acceptance_testing: "stakeholder validation"
+      - data_integrity_checks: 'verify referential integrity'
+      - business_rule_validation: 'ensure business logic compliance'
+      - performance_testing: 'validate query performance'
+      - acceptance_testing: 'stakeholder validation'
 
   migration_tools:
     custom_migration_framework:
-      - transaction_management: "atomic migration operations"
-      - progress_reporting: "real-time migration status"
-      - error_recovery: "automatic retry and rollback"
-      - audit_logging: "comprehensive migration audit trail"
+      - transaction_management: 'atomic migration operations'
+      - progress_reporting: 'real-time migration status'
+      - error_recovery: 'automatic retry and rollback'
+      - audit_logging: 'comprehensive migration audit trail'
 
     data_quality_validation:
-      - row_count_verification: "ensure no data loss"
-      - checksum_validation: "verify data integrity"
-      - business_rule_testing: "validate business logic"
-      - statistical_analysis: "compare before/after data distributions"
+      - row_count_verification: 'ensure no data loss'
+      - checksum_validation: 'verify data integrity'
+      - business_rule_testing: 'validate business logic'
+      - statistical_analysis: 'compare before/after data distributions'
 
   operational_procedures:
     migration_windows:
-      - low_traffic_scheduling: "minimize business impact"
-      - maintenance_notification: "stakeholder communication"
-      - rollback_readiness: "immediate rollback capability"
+      - low_traffic_scheduling: 'minimize business impact'
+      - maintenance_notification: 'stakeholder communication'
+      - rollback_readiness: 'immediate rollback capability'
 
     team_coordination:
-      - database_team: "schema and performance optimization"
-      - application_team: "code changes and testing"
-      - operations_team: "infrastructure and monitoring"
-      - business_stakeholders: "validation and acceptance"
+      - database_team: 'schema and performance optimization'
+      - application_team: 'code changes and testing'
+      - operations_team: 'infrastructure and monitoring'
+      - business_stakeholders: 'validation and acceptance'
 ```
 
 ### **🧪 TESTING AND QUALITY ASSURANCE STRATEGY**
@@ -1167,58 +1167,58 @@ data_migration_strategy:
 testing_strategy:
   unit_testing:
     stored_procedures:
-      - framework: "pgTAP or similar testing framework"
-      - coverage_target: "90%+ of business logic"
-      - test_scenarios: "normal cases, edge cases, error conditions"
+      - framework: 'pgTAP or similar testing framework'
+      - coverage_target: '90%+ of business logic'
+      - test_scenarios: 'normal cases, edge cases, error conditions'
 
     data_integrity:
-      - constraint_testing: "validate all business rules"
-      - referential_integrity: "test foreign key relationships"
-      - data_validation: "test custom validation functions"
+      - constraint_testing: 'validate all business rules'
+      - referential_integrity: 'test foreign key relationships'
+      - data_validation: 'test custom validation functions'
 
   integration_testing:
     cross_table_operations:
-      - transaction_testing: "multi-table operation validation"
-      - consistency_testing: "data consistency across relations"
-      - cascade_testing: "referential action validation"
+      - transaction_testing: 'multi-table operation validation'
+      - consistency_testing: 'data consistency across relations'
+      - cascade_testing: 'referential action validation'
 
     application_integration:
-      - orm_compatibility: "test ORM mapping and queries"
-      - connection_pooling: "validate connection management"
-      - transaction_management: "test application transaction patterns"
+      - orm_compatibility: 'test ORM mapping and queries'
+      - connection_pooling: 'validate connection management'
+      - transaction_management: 'test application transaction patterns'
 
   performance_testing:
     load_testing:
-      - concurrent_users: "simulate expected user load"
-      - query_performance: "validate response time targets"
-      - resource_utilization: "monitor system resource usage"
+      - concurrent_users: 'simulate expected user load'
+      - query_performance: 'validate response time targets'
+      - resource_utilization: 'monitor system resource usage'
 
     stress_testing:
-      - breaking_point: "identify system limits"
-      - recovery_testing: "validate recovery from overload"
-      - failover_testing: "test high availability mechanisms"
+      - breaking_point: 'identify system limits'
+      - recovery_testing: 'validate recovery from overload'
+      - failover_testing: 'test high availability mechanisms'
 
   security_testing:
     access_control:
-      - permission_testing: "validate role-based access"
-      - injection_testing: "SQL injection vulnerability testing"
-      - authentication_testing: "test authentication mechanisms"
+      - permission_testing: 'validate role-based access'
+      - injection_testing: 'SQL injection vulnerability testing'
+      - authentication_testing: 'test authentication mechanisms'
 
     data_protection:
-      - encryption_validation: "verify encryption implementation"
-      - audit_trail_testing: "validate audit log completeness"
-      - privacy_compliance: "test data anonymization functions"
+      - encryption_validation: 'verify encryption implementation'
+      - audit_trail_testing: 'validate audit log completeness'
+      - privacy_compliance: 'test data anonymization functions'
 
   automated_testing_pipeline:
     continuous_integration:
-      - schema_validation: "automated schema change testing"
-      - regression_testing: "performance regression detection"
-      - compliance_testing: "automated compliance validation"
+      - schema_validation: 'automated schema change testing'
+      - regression_testing: 'performance regression detection'
+      - compliance_testing: 'automated compliance validation'
 
     test_data_management:
-      - synthetic_data_generation: "create realistic test data"
-      - data_masking: "protect sensitive data in test environments"
-      - test_environment_provisioning: "automated test database setup"
+      - synthetic_data_generation: 'create realistic test data'
+      - data_masking: 'protect sensitive data in test environments'
+      - test_environment_provisioning: 'automated test database setup'
 ```
 
 ## 🎯 CONSTITUTIONAL DATABASE DESIGN MASTERY ACTIVATION

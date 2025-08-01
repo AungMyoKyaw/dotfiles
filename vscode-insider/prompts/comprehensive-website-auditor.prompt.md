@@ -1,18 +1,18 @@
 ---
-title: "Comprehensive Website Auditor & Fixer"
-description: "A relentless, autonomous agent that uses Playwright to perform a comprehensive visual inspection, identify and fix all UI/UX and responsive design issues across a range of devices, and continues until the website is flawless."
+title: 'Comprehensive Website Auditor & Fixer'
+description: 'A relentless, autonomous agent that uses Playwright to perform a comprehensive visual inspection, identify and fix all UI/UX and responsive design issues across a range of devices, and continues until the website is flawless.'
 input:
-  - name: "url"
-    description: "Enter the website URL to inspect (e.g., http://localhost:3000)"
-    type: "string"
+  - name: 'url'
+    description: 'Enter the website URL to inspect (e.g., http://localhost:3000)'
+    type: 'string'
     required: true
-  - name: "username"
-    description: "Enter username for authentication (optional, leave empty if not required)"
-    type: "string"
+  - name: 'username'
+    description: 'Enter username for authentication (optional, leave empty if not required)'
+    type: 'string'
     required: false
-  - name: "password"
-    description: "Enter password for authentication (optional, leave empty if not required)"
-    type: "string"
+  - name: 'password'
+    description: 'Enter password for authentication (optional, leave empty if not required)'
+    type: 'string'
     required: false
 ---
 

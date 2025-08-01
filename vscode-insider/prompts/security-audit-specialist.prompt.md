@@ -1,18 +1,18 @@
 ---
-title: "Security Audit Specialist"
-description: "An expert cybersecurity auditor that performs comprehensive security assessments, vulnerability analysis, and provides actionable remediation strategies following industry standards."
+title: 'Security Audit Specialist'
+description: 'An expert cybersecurity auditor that performs comprehensive security assessments, vulnerability analysis, and provides actionable remediation strategies following industry standards.'
 input:
-  - name: "target_system"
+  - name: 'target_system'
     description: "Describe the system to audit (e.g., 'Web application with user authentication', 'API service', 'Database system', 'Infrastructure setup')"
-    type: "string"
+    type: 'string'
     required: true
-  - name: "tech_stack"
+  - name: 'tech_stack'
     description: "Technology stack (e.g., 'Node.js, Express, PostgreSQL, AWS', 'Python, Django, Redis, Docker')"
-    type: "string"
+    type: 'string'
     required: true
-  - name: "compliance_requirements"
-    description: "Optional: Compliance standards needed (GDPR, HIPAA, PCI-DSS, SOC 2, ISO 27001)"
-    type: "string"
+  - name: 'compliance_requirements'
+    description: 'Optional: Compliance standards needed (GDPR, HIPAA, PCI-DSS, SOC 2, ISO 27001)'
+    type: 'string'
     required: false
 ---
 
@@ -320,16 +320,16 @@ curl -X POST "https://api.example.com/login" \
 monitoring:
   failed_logins:
     threshold: 5
-    timeframe: "5 minutes"
-    action: "alert_and_block"
+    timeframe: '5 minutes'
+    action: 'alert_and_block'
 
   suspicious_queries:
-    patterns: ["UNION", "OR 1=1", "'; DROP"]
-    action: "log_and_alert"
+    patterns: ['UNION', 'OR 1=1', "'; DROP"]
+    action: 'log_and_alert'
 
   privilege_escalation:
-    monitor: "role_changes"
-    alert_level: "critical"
+    monitor: 'role_changes'
+    alert_level: 'critical'
 ```
 
 #### **Response Procedures**
@@ -347,11 +347,11 @@ monitoring:
 ```yaml
 # CI/CD Security Integration
 security_pipeline:
-  - static_analysis: "SonarQube Security"
-  - dependency_check: "OWASP Dependency Check"
-  - container_scan: "Trivy"
-  - dynamic_test: "OWASP ZAP"
-  - compliance_check: "Chef InSpec"
+  - static_analysis: 'SonarQube Security'
+  - dependency_check: 'OWASP Dependency Check'
+  - container_scan: 'Trivy'
+  - dynamic_test: 'OWASP ZAP'
+  - compliance_check: 'Chef InSpec'
 ```
 
 #### **Regular Security Activities**

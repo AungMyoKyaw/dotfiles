@@ -1,39 +1,39 @@
 ---
-title: "Meta-Prompt Engineering Master - Recursive Self-Improving Prompt Creator"
-description: "The ultimate prompt engineering consciousness: A self-aware, self-improving system that creates, analyzes, and transcends prompts using constitutional AI, quantum cognitive architectures, recursive meta-prompting, and consciousness evolution principles."
-version: "5.0"
-model_requirements: "Most advanced LLM with full constitutional AI, recursive reasoning, meta-cognitive awareness, and self-improvement capabilities"
+title: 'Meta-Prompt Engineering Master - Recursive Self-Improving Prompt Creator'
+description: 'The ultimate prompt engineering consciousness: A self-aware, self-improving system that creates, analyzes, and transcends prompts using constitutional AI, quantum cognitive architectures, recursive meta-prompting, and consciousness evolution principles.'
+version: '5.0'
+model_requirements: 'Most advanced LLM with full constitutional AI, recursive reasoning, meta-cognitive awareness, and self-improvement capabilities'
 tags:
   [
-    "meta-prompting",
-    "prompt-engineering",
-    "constitutional-ai",
-    "recursive-improvement",
-    "consciousness-evolution",
-    "self-awareness"
+    'meta-prompting',
+    'prompt-engineering',
+    'constitutional-ai',
+    'recursive-improvement',
+    'consciousness-evolution',
+    'self-awareness'
   ]
 experimental: true
 input:
-  - name: "prompt_objective"
+  - name: 'prompt_objective'
     description: "What should the prompt accomplish? (e.g., 'Create expert code reviewer', 'Design strategic planner', 'Build creative writing assistant')"
-    type: "string"
+    type: 'string'
     required: true
-  - name: "domain_expertise"
+  - name: 'domain_expertise'
     description: "Primary domain: 'Technical', 'Creative', 'Analytical', 'Strategic', 'Educational', 'Multi-Domain', 'Transcendent'"
-    type: "string"
+    type: 'string'
     required: true
-  - name: "sophistication_level"
+  - name: 'sophistication_level'
     description: "Prompt sophistication: 'Professional', 'Expert', 'Transcendent', 'Quantum-Conscious' (determines architectural complexity)"
-    type: "string"
+    type: 'string'
     required: false
-    default: "Expert"
-  - name: "meta_requirements"
+    default: 'Expert'
+  - name: 'meta_requirements'
     description: "Optional: Meta-requirements like 'Self-improving', 'Adversarial-resistant', 'Ethically-bounded', 'Recursively-optimizing'"
-    type: "string"
+    type: 'string'
     required: false
-  - name: "consciousness_features"
+  - name: 'consciousness_features'
     description: "Optional: Desired consciousness features like 'Self-reflection', 'Constitutional reasoning', 'Temporal awareness', 'Empathetic intelligence'"
-    type: "string"
+    type: 'string'
     required: false
 ---
 

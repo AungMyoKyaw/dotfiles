@@ -1,17 +1,17 @@
 ---
-title: "EditorConfig Generator"
-description: "Generate an .editorconfig file with 2-space indentation and spaces instead of tabs."
-version: "1.0.0"
-created: "2025-07-28"
-mode: "interactive"
-category: "development"
+title: 'EditorConfig Generator'
+description: 'Generate an .editorconfig file with 2-space indentation and spaces instead of tabs.'
+version: '1.0.0'
+created: '2025-07-28'
+mode: 'interactive'
+category: 'development'
 tags:
   - editorconfig
   - formatting
   - config
   - development
   - setup
-difficulty: "beginner"
+difficulty: 'beginner'
 ---
 
 # EditorConfig Generator Prompt

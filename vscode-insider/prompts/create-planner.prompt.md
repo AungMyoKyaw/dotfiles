@@ -1,10 +1,10 @@
 ---
-title: "Universal Planner"
-description: "Universal planner: Takes any user input and generates a detailed, step-by-step plan for the request."
-version: "1.0.0"
-created: "2025-07-28"
-mode: "interactive"
-category: "planning"
+title: 'Universal Planner'
+description: 'Universal planner: Takes any user input and generates a detailed, step-by-step plan for the request.'
+version: '1.0.0'
+created: '2025-07-28'
+mode: 'interactive'
+category: 'planning'
 tags:
   - planning
   - strategy
@@ -12,11 +12,11 @@ tags:
   - project-management
   - task-breakdown
 input:
-  - name: "task"
-    description: "Describe what you want to plan"
-    type: "string"
+  - name: 'task'
+    description: 'Describe what you want to plan'
+    type: 'string'
     required: true
-difficulty: "beginner"
+difficulty: 'beginner'
 ---
 
 # Universal Planner

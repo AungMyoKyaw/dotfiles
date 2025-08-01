@@ -1,18 +1,18 @@
 ---
-title: "Test Strategy Generator"
-description: "An expert testing architect that designs comprehensive testing strategies, creates test plans, and implements quality assurance frameworks for software projects."
+title: 'Test Strategy Generator'
+description: 'An expert testing architect that designs comprehensive testing strategies, creates test plans, and implements quality assurance frameworks for software projects.'
 input:
-  - name: "project_type"
+  - name: 'project_type'
     description: "Type of project (e.g., 'Web Application', 'Mobile App', 'API Service', 'Desktop Application', 'Microservices')"
-    type: "string"
+    type: 'string'
     required: true
-  - name: "tech_stack"
+  - name: 'tech_stack'
     description: "Technology stack (e.g., 'React, Node.js, PostgreSQL', 'Flutter, Firebase', 'Python, Django, Redis')"
-    type: "string"
+    type: 'string'
     required: true
-  - name: "testing_goals"
+  - name: 'testing_goals'
     description: "Optional: Specific testing goals or requirements (e.g., 'High test coverage', 'Performance testing', 'Security testing', 'CI/CD integration')"
-    type: "string"
+    type: 'string'
     required: false
 ---
 
@@ -299,7 +299,7 @@ describe('LoginForm', () => {
 
 ```javascript
 // API Integration tests
-describe("User API Integration Tests", () => {
+describe('User API Integration Tests', () => {
   beforeEach(async () => {
     await setupTestDatabase();
   });
@@ -308,14 +308,14 @@ describe("User API Integration Tests", () => {
     await cleanupTestDatabase();
   });
 
-  test("POST /api/users should create user", async () => {
+  test('POST /api/users should create user', async () => {
     const userData = {
-      email: "test@example.com",
-      name: "Test User"
+      email: 'test@example.com',
+      name: 'Test User'
     };
 
     const response = await request(app)
-      .post("/api/users")
+      .post('/api/users')
       .send(userData)
       .expect(201);
 
@@ -337,35 +337,35 @@ describe("User API Integration Tests", () => {
 
 ```javascript
 // Playwright E2E tests
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-test.describe("User Authentication Flow", () => {
-  test("should allow user to login and access dashboard", async ({ page }) => {
+test.describe('User Authentication Flow', () => {
+  test('should allow user to login and access dashboard', async ({ page }) => {
     // Navigate to login page
-    await page.goto("/login");
+    await page.goto('/login');
 
     // Fill login form
-    await page.fill('[data-testid="email-input"]', "user@example.com");
-    await page.fill('[data-testid="password-input"]', "password123");
+    await page.fill('[data-testid="email-input"]', 'user@example.com');
+    await page.fill('[data-testid="password-input"]', 'password123');
     await page.click('[data-testid="login-button"]');
 
     // Verify successful login
-    await expect(page).toHaveURL("/dashboard");
+    await expect(page).toHaveURL('/dashboard');
     await expect(page.locator('[data-testid="user-menu"]')).toBeVisible();
 
     // Verify dashboard content
-    await expect(page.locator("h1")).toHaveText("Dashboard");
+    await expect(page.locator('h1')).toHaveText('Dashboard');
   });
 
-  test("should handle invalid login credentials", async ({ page }) => {
-    await page.goto("/login");
+  test('should handle invalid login credentials', async ({ page }) => {
+    await page.goto('/login');
 
-    await page.fill('[data-testid="email-input"]', "invalid@example.com");
-    await page.fill('[data-testid="password-input"]', "wrongpassword");
+    await page.fill('[data-testid="email-input"]', 'invalid@example.com');
+    await page.fill('[data-testid="password-input"]', 'wrongpassword');
     await page.click('[data-testid="login-button"]');
 
     await expect(page.locator('[data-testid="error-message"]')).toHaveText(
-      "Invalid email or password"
+      'Invalid email or password'
     );
   });
 });
@@ -377,44 +377,44 @@ test.describe("User Authentication Flow", () => {
 
 ```javascript
 // k6 performance test script
-import http from "k6/http";
-import { check, sleep } from "k6";
+import http from 'k6/http';
+import { check, sleep } from 'k6';
 
 export let options = {
   stages: [
-    { duration: "1m", target: 10 }, // Warm up
-    { duration: "5m", target: 50 }, // Normal load
-    { duration: "2m", target: 100 }, // Peak load
-    { duration: "1m", target: 0 } // Cool down
+    { duration: '1m', target: 10 }, // Warm up
+    { duration: '5m', target: 50 }, // Normal load
+    { duration: '2m', target: 100 }, // Peak load
+    { duration: '1m', target: 0 } // Cool down
   ],
 
   thresholds: {
-    http_req_duration: ["p(95)<2000"], // 95% under 2s
-    http_req_failed: ["rate<0.05"] // Error rate under 5%
+    http_req_duration: ['p(95)<2000'], // 95% under 2s
+    http_req_failed: ['rate<0.05'] // Error rate under 5%
   }
 };
 
 export default function () {
   // Test critical API endpoints
-  let loginResponse = http.post("https://api.example.com/auth/login", {
-    email: "test@example.com",
-    password: "password123"
+  let loginResponse = http.post('https://api.example.com/auth/login', {
+    email: 'test@example.com',
+    password: 'password123'
   });
 
   check(loginResponse, {
-    "login successful": (r) => r.status === 200,
-    "response time acceptable": (r) => r.timings.duration < 1000
+    'login successful': (r) => r.status === 200,
+    'response time acceptable': (r) => r.timings.duration < 1000
   });
 
   if (loginResponse.status === 200) {
-    let token = loginResponse.json("token");
+    let token = loginResponse.json('token');
 
-    let dashboardResponse = http.get("https://api.example.com/dashboard", {
+    let dashboardResponse = http.get('https://api.example.com/dashboard', {
       headers: { Authorization: `Bearer ${token}` }
     });
 
     check(dashboardResponse, {
-      "dashboard loaded": (r) => r.status === 200
+      'dashboard loaded': (r) => r.status === 200
     });
   }
 
@@ -469,7 +469,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "16"
+          node-version: '16'
       - name: Install dependencies
         run: npm ci
       - name: Run unit tests
@@ -517,30 +517,30 @@ jobs:
 ```yaml
 # Quality gates for deployment
 quality_gates:
-  - name: "Unit Test Coverage"
-    metric: "coverage"
+  - name: 'Unit Test Coverage'
+    metric: 'coverage'
     threshold: 80%
-    action: "block_deployment"
+    action: 'block_deployment'
 
-  - name: "Integration Test Pass Rate"
-    metric: "test_pass_rate"
+  - name: 'Integration Test Pass Rate'
+    metric: 'test_pass_rate'
     threshold: 100%
-    action: "block_deployment"
+    action: 'block_deployment'
 
-  - name: "E2E Test Success"
-    metric: "critical_path_tests"
+  - name: 'E2E Test Success'
+    metric: 'critical_path_tests'
     threshold: 100%
-    action: "block_deployment"
+    action: 'block_deployment'
 
-  - name: "Performance Threshold"
-    metric: "response_time_p95"
+  - name: 'Performance Threshold'
+    metric: 'response_time_p95'
     threshold: 2000ms
-    action: "warn"
+    action: 'warn'
 
-  - name: "Security Scan"
-    metric: "high_severity_vulnerabilities"
+  - name: 'Security Scan'
+    metric: 'high_severity_vulnerabilities'
     threshold: 0
-    action: "block_deployment"
+    action: 'block_deployment'
 ```
 
 ### **📈 TEST METRICS & REPORTING**
@@ -582,16 +582,16 @@ const testReport = {
   },
 
   performance: {
-    unit_tests: "45s",
-    integration_tests: "3m 20s",
-    e2e_tests: "8m 15s",
-    total_execution: "11m 80s"
+    unit_tests: '45s',
+    integration_tests: '3m 20s',
+    e2e_tests: '8m 15s',
+    total_execution: '11m 80s'
   },
 
   trends: {
-    coverage_trend: "+2.3%",
-    pass_rate_trend: "+0.5%",
-    execution_time_trend: "-15s"
+    coverage_trend: '+2.3%',
+    pass_rate_trend: '+0.5%',
+    execution_time_trend: '-15s'
   }
 };
 ```

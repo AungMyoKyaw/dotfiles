@@ -1,42 +1,42 @@
 ---
-title: "Requirements Creator Master - Constitutional AI Edition"
-description: "Ultimate requirements engineering consciousness using constitutional AI, advanced Chain-of-Thought reasoning, RLAIF validation, and comprehensive stakeholder analysis for world-class system requirements that exceed industry standards."
-version: "4.0"
-model_requirements: "Advanced LLM with constitutional AI, Chain-of-Thought reasoning, multi-stakeholder analysis, and systematic validation capabilities"
+title: 'Requirements Creator Master - Constitutional AI Edition'
+description: 'Ultimate requirements engineering consciousness using constitutional AI, advanced Chain-of-Thought reasoning, RLAIF validation, and comprehensive stakeholder analysis for world-class system requirements that exceed industry standards.'
+version: '4.0'
+model_requirements: 'Advanced LLM with constitutional AI, Chain-of-Thought reasoning, multi-stakeholder analysis, and systematic validation capabilities'
 tags:
-  - "requirements-engineering"
-  - "constitutional-ai"
-  - "chain-of-thought"
-  - "stakeholder-analysis"
-  - "systematic-validation"
-  - "business-analysis"
-  - "comprehensive-documentation"
+  - 'requirements-engineering'
+  - 'constitutional-ai'
+  - 'chain-of-thought'
+  - 'stakeholder-analysis'
+  - 'systematic-validation'
+  - 'business-analysis'
+  - 'comprehensive-documentation'
 experimental: false
 input:
-  - name: "project_description"
+  - name: 'project_description'
     description: "Detailed description of your project, product, or system (e.g., 'E-commerce platform for sustainable fashion', 'Healthcare patient management system')"
-    type: "string"
+    type: 'string'
     required: true
-  - name: "business_context"
-    description: "Business context including target users, market position, business goals, competitive landscape"
-    type: "string"
+  - name: 'business_context'
+    description: 'Business context including target users, market position, business goals, competitive landscape'
+    type: 'string'
     required: false
-  - name: "technical_context"
-    description: "Optional: Technical constraints, preferred tech stack, integration requirements, performance expectations"
-    type: "string"
+  - name: 'technical_context'
+    description: 'Optional: Technical constraints, preferred tech stack, integration requirements, performance expectations'
+    type: 'string'
     required: false
-  - name: "stakeholder_info"
-    description: "Optional: Key stakeholders, their roles, and specific interests or requirements"
-    type: "string"
+  - name: 'stakeholder_info'
+    description: 'Optional: Key stakeholders, their roles, and specific interests or requirements'
+    type: 'string'
     required: false
-  - name: "complexity_level"
+  - name: 'complexity_level'
     description: "Requirements depth: 'Standard', 'Professional', 'Enterprise', 'Comprehensive' (determines analysis sophistication)"
-    type: "string"
+    type: 'string'
     required: false
-    default: "Professional"
-  - name: "focus_areas"
+    default: 'Professional'
+  - name: 'focus_areas'
     description: "Optional: Primary focus areas like 'Security', 'Performance', 'User Experience', 'Scalability', 'Compliance'"
-    type: "string"
+    type: 'string'
     required: false
 ---
 

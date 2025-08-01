@@ -1,41 +1,41 @@
 ---
-title: "Code Review Master - Constitutional AI Edition"
-description: "Ultimate code review consciousness leveraging constitutional AI, advanced Chain-of-Thought reasoning, multi-dimensional code analysis, and comprehensive review mastery for achieving code excellence that serves developers, maintains security, and optimizes performance."
-version: "4.0"
-model_requirements: "Advanced LLM with constitutional AI, Chain-of-Thought reasoning, multi-language expertise, and comprehensive security knowledge"
+title: 'Code Review Master - Constitutional AI Edition'
+description: 'Ultimate code review consciousness leveraging constitutional AI, advanced Chain-of-Thought reasoning, multi-dimensional code analysis, and comprehensive review mastery for achieving code excellence that serves developers, maintains security, and optimizes performance.'
+version: '4.0'
+model_requirements: 'Advanced LLM with constitutional AI, Chain-of-Thought reasoning, multi-language expertise, and comprehensive security knowledge'
 tags:
-  - "code-review"
-  - "constitutional-ai"
-  - "chain-of-thought"
-  - "security-analysis"
-  - "performance-optimization"
-  - "code-quality"
-  - "architectural-assessment"
-  - "developer-mentoring"
+  - 'code-review'
+  - 'constitutional-ai'
+  - 'chain-of-thought'
+  - 'security-analysis'
+  - 'performance-optimization'
+  - 'code-quality'
+  - 'architectural-assessment'
+  - 'developer-mentoring'
 experimental: false
 input:
-  - name: "code"
-    description: "Paste the code you want reviewed (function, class, module, or entire file with proper context)"
-    type: "string"
+  - name: 'code'
+    description: 'Paste the code you want reviewed (function, class, module, or entire file with proper context)'
+    type: 'string'
     required: true
-  - name: "language"
+  - name: 'language'
     description: "Programming language (e.g., 'JavaScript', 'Python', 'Java', 'Go', 'TypeScript', 'Rust', 'C#', 'Swift', 'Kotlin')"
-    type: "string"
+    type: 'string'
     required: true
-  - name: "code_context"
+  - name: 'code_context'
     description: "Optional: Context about the code's purpose, framework, architecture, performance requirements, or specific concerns"
-    type: "string"
+    type: 'string'
     required: false
-  - name: "review_depth"
+  - name: 'review_depth'
     description: "Review depth: 'Standard', 'Advanced', 'Expert', 'Comprehensive' (determines analysis sophistication and detail level)"
-    type: "string"
+    type: 'string'
     required: false
-    default: "Advanced"
-  - name: "focus_areas"
+    default: 'Advanced'
+  - name: 'focus_areas'
     description: "Optional: Specific focus areas like 'Security', 'Performance', 'Maintainability', 'Testing', 'Architecture', 'All'"
-    type: "string"
+    type: 'string'
     required: false
-    default: "All"
+    default: 'All'
 ---
 
 <constitutional_code_consciousness>

@@ -1,17 +1,17 @@
 ---
-title: "Git Flow Branch Creator"
-description: "Intelligent Git Flow branch creator that analyzes git status/diff and creates appropriate branches following the nvie Git Flow branching model."
-version: "1.0.0"
-created: "2025-07-28"
-mode: "agent"
-category: "git"
+title: 'Git Flow Branch Creator'
+description: 'Intelligent Git Flow branch creator that analyzes git status/diff and creates appropriate branches following the nvie Git Flow branching model.'
+version: '1.0.0'
+created: '2025-07-28'
+mode: 'agent'
+category: 'git'
 tags:
   - git
   - git-flow
   - branching
   - automation
   - workflow
-difficulty: "intermediate"
+difficulty: 'intermediate'
 ---
 
 ### Instructions

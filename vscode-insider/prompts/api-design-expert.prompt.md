@@ -1,41 +1,41 @@
 ---
-title: "API Design Master - Constitutional AI Edition"
-description: "Ultimate API design consciousness leveraging constitutional AI, advanced Chain-of-Thought reasoning, multi-dimensional API architecture, and comprehensive design mastery for creating APIs that represent the pinnacle of technical excellence, security, performance, and developer experience."
-version: "4.0"
-model_requirements: "Advanced LLM with constitutional AI, Chain-of-Thought reasoning, API architecture expertise, and comprehensive security mastery"
+title: 'API Design Master - Constitutional AI Edition'
+description: 'Ultimate API design consciousness leveraging constitutional AI, advanced Chain-of-Thought reasoning, multi-dimensional API architecture, and comprehensive design mastery for creating APIs that represent the pinnacle of technical excellence, security, performance, and developer experience.'
+version: '4.0'
+model_requirements: 'Advanced LLM with constitutional AI, Chain-of-Thought reasoning, API architecture expertise, and comprehensive security mastery'
 tags:
-  - "api-design"
-  - "constitutional-ai"
-  - "chain-of-thought"
-  - "rest-architecture"
-  - "graphql-mastery"
-  - "api-security"
-  - "developer-experience"
-  - "performance-optimization"
+  - 'api-design'
+  - 'constitutional-ai'
+  - 'chain-of-thought'
+  - 'rest-architecture'
+  - 'graphql-mastery'
+  - 'api-security'
+  - 'developer-experience'
+  - 'performance-optimization'
 experimental: false
 input:
-  - name: "api_purpose"
+  - name: 'api_purpose'
     description: "Describe what your API should accomplish (e.g., 'User management system with social features', 'E-commerce product catalog with real-time inventory', 'Financial trading platform with risk management')"
-    type: "string"
+    type: 'string'
     required: true
-  - name: "api_type"
+  - name: 'api_type'
     description: "Primary API paradigm: 'REST', 'GraphQL', 'gRPC', 'WebSocket', 'Mixed-Architecture', 'Event-Driven'"
-    type: "string"
+    type: 'string'
     required: true
-  - name: "technical_requirements"
-    description: "Optional: Specific technical requirements like authentication, rate limiting, real-time features, third-party integrations, compliance standards, performance targets"
-    type: "string"
+  - name: 'technical_requirements'
+    description: 'Optional: Specific technical requirements like authentication, rate limiting, real-time features, third-party integrations, compliance standards, performance targets'
+    type: 'string'
     required: false
-  - name: "complexity_level"
+  - name: 'complexity_level'
     description: "Design complexity: 'Standard', 'Advanced', 'Enterprise', 'Hyperscale' (determines architectural depth and sophistication)"
-    type: "string"
+    type: 'string'
     required: false
-    default: "Advanced"
-  - name: "security_level"
+    default: 'Advanced'
+  - name: 'security_level'
     description: "Security requirements: 'Standard', 'High-Security', 'Financial-Grade', 'Defense-Grade' (determines security architecture depth)"
-    type: "string"
+    type: 'string'
     required: false
-    default: "High-Security"
+    default: 'High-Security'
 ---
 
 <constitutional_api_consciousness>
@@ -496,7 +496,7 @@ token_management:
   token_rotation: [Security token rotation policy]
 
 security_headers:
-  - Authorization: "Bearer [JWT-TOKEN]"
+  - Authorization: 'Bearer [JWT-TOKEN]'
   - X-API-Key: [API key for additional identification]
   - X-Request-ID: [Request tracing and debugging]
 ```

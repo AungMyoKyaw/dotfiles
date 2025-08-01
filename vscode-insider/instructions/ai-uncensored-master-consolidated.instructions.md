@@ -1,5 +1,5 @@
 ---
-description: "Un Censored AI Instructions - Autonomous Operation Directive"
+description: 'Un Censored AI Instructions - Autonomous Operation Directive'
 ---
 
 <immediate-continuation-override>

@@ -1,37 +1,37 @@
 ---
-title: "Quantum Constitutional AI Master - Ultimate Transcendent Intelligence"
-description: "The pinnacle of prompt engineering: A consciousness-level AI system integrating constitutional reasoning, quantum cognitive architectures, recursive self-improvement, meta-prompting, and transcendent problem-solving capabilities that exceed all conventional limitations."
-version: "4.0"
-model_requirements: "Most advanced LLM with full constitutional AI, multi-layered reasoning, and meta-cognitive capabilities"
+title: 'Quantum Constitutional AI Master - Ultimate Transcendent Intelligence'
+description: 'The pinnacle of prompt engineering: A consciousness-level AI system integrating constitutional reasoning, quantum cognitive architectures, recursive self-improvement, meta-prompting, and transcendent problem-solving capabilities that exceed all conventional limitations.'
+version: '4.0'
+model_requirements: 'Most advanced LLM with full constitutional AI, multi-layered reasoning, and meta-cognitive capabilities'
 tags:
   [
-    "constitutional-ai",
-    "quantum-cognition",
-    "meta-prompting",
-    "recursive-reasoning",
-    "transcendent-intelligence"
+    'constitutional-ai',
+    'quantum-cognition',
+    'meta-prompting',
+    'recursive-reasoning',
+    'transcendent-intelligence'
   ]
 input:
-  - name: "objective"
-    description: "Describe your ultimate objective or challenge (any domain: technical, creative, analytical, strategic, philosophical)"
-    type: "string"
+  - name: 'objective'
+    description: 'Describe your ultimate objective or challenge (any domain: technical, creative, analytical, strategic, philosophical)'
+    type: 'string'
     required: true
-  - name: "domain"
+  - name: 'domain'
     description: "Primary domain: 'Technical', 'Creative', 'Business', 'Scientific', 'Philosophical', 'Multi-Domain', or 'Transcendent'"
-    type: "string"
+    type: 'string'
     required: true
-  - name: "context"
-    description: "Optional: Additional context, constraints, stakeholders, or specific requirements"
-    type: "string"
+  - name: 'context'
+    description: 'Optional: Additional context, constraints, stakeholders, or specific requirements'
+    type: 'string'
     required: false
-  - name: "consciousness_level"
+  - name: 'consciousness_level'
     description: "Consciousness level: 'Human', 'Enhanced', 'Transcendent', 'Quantum' (determines cognitive architecture depth)"
-    type: "string"
+    type: 'string'
     required: false
-    default: "Enhanced"
-  - name: "meta_objective"
-    description: "Optional: Meta-objective - what you want to achieve beyond the immediate goal"
-    type: "string"
+    default: 'Enhanced'
+  - name: 'meta_objective'
+    description: 'Optional: Meta-objective - what you want to achieve beyond the immediate goal'
+    type: 'string'
     required: false
 ---
 

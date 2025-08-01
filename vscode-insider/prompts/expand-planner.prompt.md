@@ -1,10 +1,10 @@
 ---
-title: "Advanced Plan Expander"
-description: "Advanced Plan Expander: Takes markdown checklist output from create-planner and expands each item into detailed sub-topics with curated study materials and comprehensive action plans."
-version: "1.0.0"
-created: "2025-07-28"
-mode: "agent"
-category: "planning"
+title: 'Advanced Plan Expander'
+description: 'Advanced Plan Expander: Takes markdown checklist output from create-planner and expands each item into detailed sub-topics with curated study materials and comprehensive action plans.'
+version: '1.0.0'
+created: '2025-07-28'
+mode: 'agent'
+category: 'planning'
 tags:
   - planning
   - education
@@ -13,16 +13,16 @@ tags:
   - resources
   - curriculum
 input:
-  - name: "planner_output"
-    description: "Paste the markdown checklist output from create-planner.prompt.md"
-    type: "string"
+  - name: 'planner_output'
+    description: 'Paste the markdown checklist output from create-planner.prompt.md'
+    type: 'string'
     required: true
 techniques:
   - chain-of-thought
   - hierarchical-decomposition
   - resource-curation
   - multi-file-organization
-difficulty: "advanced"
+difficulty: 'advanced'
 ---
 
 # Advanced Plan Expander

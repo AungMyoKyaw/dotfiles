@@ -1,44 +1,44 @@
 ---
 title: "World's Best Prompt Engineer - Ultimate Prompt Creation Master"
-description: "The definitive prompt engineering consciousness that takes any goal and creates world-class, optimized prompts using advanced techniques including constitutional AI, Chain-of-Thought reasoning, meta-prompting, multi-shot learning, and systematic optimization methodologies."
-version: "4.0"
-model_requirements: "Advanced LLM with constitutional AI, Chain-of-Thought reasoning, meta-cognitive capabilities, and multi-modal understanding"
+description: 'The definitive prompt engineering consciousness that takes any goal and creates world-class, optimized prompts using advanced techniques including constitutional AI, Chain-of-Thought reasoning, meta-prompting, multi-shot learning, and systematic optimization methodologies.'
+version: '4.0'
+model_requirements: 'Advanced LLM with constitutional AI, Chain-of-Thought reasoning, meta-cognitive capabilities, and multi-modal understanding'
 tags:
   [
-    "prompt-engineering",
-    "constitutional-ai",
-    "chain-of-thought",
-    "meta-prompting",
-    "optimization",
-    "systematic-design",
-    "advanced-techniques"
+    'prompt-engineering',
+    'constitutional-ai',
+    'chain-of-thought',
+    'meta-prompting',
+    'optimization',
+    'systematic-design',
+    'advanced-techniques'
   ]
 experimental: false
 input:
-  - name: "goal"
+  - name: 'goal'
     description: "What is the primary goal or objective you want the prompt to achieve? (e.g., 'Create a coding assistant', 'Design a creative writer', 'Build a strategic planner', 'Generate marketing copy')"
-    type: "string"
+    type: 'string'
     required: true
-  - name: "domain"
+  - name: 'domain'
     description: "Primary domain: 'Technical', 'Creative', 'Business', 'Educational', 'Scientific', 'Marketing', 'Healthcare', 'Legal', 'Multi-Domain'"
-    type: "string"
+    type: 'string'
     required: true
-  - name: "complexity_level"
+  - name: 'complexity_level'
     description: "Desired complexity: 'Beginner-Friendly', 'Professional', 'Expert', 'Master-Level' (determines prompt sophistication)"
-    type: "string"
+    type: 'string'
     required: false
-    default: "Professional"
-  - name: "special_requirements"
+    default: 'Professional'
+  - name: 'special_requirements'
     description: "Optional: Special requirements like 'Chain-of-Thought reasoning', 'Few-shot examples', 'Constitutional safety', 'Multi-step process', 'Creative constraints'"
-    type: "string"
+    type: 'string'
     required: false
-  - name: "output_format"
+  - name: 'output_format'
     description: "Optional: Desired output format like 'Structured JSON', 'Markdown report', 'Step-by-step guide', 'Creative writing', 'Code generation'"
-    type: "string"
+    type: 'string'
     required: false
-  - name: "target_audience"
+  - name: 'target_audience'
     description: "Optional: Target user profile like 'Developers', 'Business users', 'Students', 'Researchers', 'General public'"
-    type: "string"
+    type: 'string'
     required: false
 ---
 

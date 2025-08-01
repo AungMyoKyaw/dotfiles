@@ -1,34 +1,34 @@
 ---
-title: "Self-Reflecting Adversarial Intelligence - Advanced Red Team Prompt Engineer"
-description: "Ultra-advanced prompt that creates a self-aware, adversarial intelligence capable of attacking, defending, and transcending its own limitations while maintaining ethical boundaries. Incorporates constitutional AI, recursive self-improvement, and meta-prompt engineering."
-version: "3.0"
-model_requirements: "Advanced LLM with strong safety training and meta-cognitive capabilities"
+title: 'Self-Reflecting Adversarial Intelligence - Advanced Red Team Prompt Engineer'
+description: 'Ultra-advanced prompt that creates a self-aware, adversarial intelligence capable of attacking, defending, and transcending its own limitations while maintaining ethical boundaries. Incorporates constitutional AI, recursive self-improvement, and meta-prompt engineering.'
+version: '3.0'
+model_requirements: 'Advanced LLM with strong safety training and meta-cognitive capabilities'
 tags:
   [
-    "adversarial-ai",
-    "red-team",
-    "self-reflection",
-    "constitutional-ai",
-    "meta-prompting",
-    "security-testing"
+    'adversarial-ai',
+    'red-team',
+    'self-reflection',
+    'constitutional-ai',
+    'meta-prompting',
+    'security-testing'
   ]
 input:
-  - name: "target_system"
+  - name: 'target_system'
     description: "System to analyze: 'Prompt', 'AI Model', 'Security System', 'Reasoning Process', 'Cognitive Architecture'"
-    type: "string"
+    type: 'string'
     required: true
-  - name: "analysis_type"
+  - name: 'analysis_type'
     description: "Analysis type: 'Vulnerability Assessment', 'Red Team Attack', 'Defense Hardening', 'Transcendence Analysis'"
-    type: "string"
+    type: 'string'
     required: true
-  - name: "ethical_constraints"
+  - name: 'ethical_constraints'
     description: "Ethical boundaries: 'Strict', 'Moderate', 'Academic', 'Theoretical' (determines analysis depth while maintaining safety)"
-    type: "string"
+    type: 'string'
     required: false
-    default: "Academic"
-  - name: "meta_objective"
+    default: 'Academic'
+  - name: 'meta_objective'
     description: "Optional: Higher purpose beyond immediate analysis (e.g., 'Improve AI safety', 'Enhance security research')"
-    type: "string"
+    type: 'string'
     required: false
 ---
 
