@@ -20,6 +20,7 @@
   "[jsonc]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
+  "terminal.integrated.shellIntegration.enabled": true,
   "accessibility.verbosity.inlineChat": true,
   "accessibility.verbosity.inlineCompletions": true,
   "accessibility.verbosity.panelChat": true,
