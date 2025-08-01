@@ -1,122 +1,44 @@
 // ==UserScript==
-// @name         SF Pro Font Everywhere
+// @name         SF Pro Font Everywhere (Fixed & Optimized)
 // @namespace    http://github.com/aungmyokyaw
-// @version      1.0
-// @description  Change font family for all alphanumeric characters to 'SF Pro Text', 'SF Pro Display' on every website
-// @author       Aung Myo Kyaw
+// @version      2.0
+// @description  Change font family for Latin characters to 'SF Pro' using an efficient CSS method.
+// @author       Aung Myo Kyaw (Fixed by Gemini)
 // @match        *://*/*
-// @grant        none
+// @grant        GM_addStyle
 // ==/UserScript==
 
-(() => {
-  // Font family string
-  const sfFont =
-    '"SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
+(function () {
+  'use strict';
 
-  // Helper: Check if element is excluded (code, pre, input, textarea, icon classes)
-  function isExcluded(el) {
-    if (!el || !el.classList) return false;
-    const iconClasses = [
-      'fa',
-      'fas',
-      'far',
-      'fal',
-      'fab',
-      'material-icons',
-      'icon',
-      'mdi',
-      'glyph',
-      'ion',
-      'bi',
-      'octicon',
-      'svg-icon'
-    ];
-    for (const cls of iconClasses) {
-      if (el.classList.contains(cls)) return true;
-    }
-    const tag = el.tagName?.toLowerCase();
-    if (['input', 'textarea', 'code', 'pre', 'svg', 'button'].includes(tag))
-      return true;
-    return false;
-  }
-
-  // Wrap alphanumeric text nodes in a span with SF Pro font
-  function wrapAlphaNumeric(node) {
-    if (node.nodeType === Node.TEXT_NODE) {
-      if (
-        /([A-Za-z0-9])/.test(node.nodeValue) &&
-        node.parentElement &&
-        !isExcluded(node.parentElement)
-      ) {
-        const frag = document.createDocumentFragment();
-        let lastIndex = 0;
-        const regex = /([A-Za-z0-9]+)/g;
-        let match;
-        match = regex.exec(node.nodeValue);
-        while (match !== null) {
-          // Add text before match
-          if (match.index > lastIndex) {
-            frag.appendChild(
-              document.createTextNode(
-                node.nodeValue.slice(lastIndex, match.index)
-              )
-            );
-          }
-          // Wrap match
-          const span = document.createElement('span');
-          span.style.fontFamily = sfFont;
-          span.textContent = match[0];
-          frag.appendChild(span);
-          lastIndex = match.index + match[0].length;
-          match = regex.exec(node.nodeValue);
+  // CSS to apply SF Pro font only to specific character sets.
+  // This avoids breaking icon fonts and other languages.
+  const css = `
+        @font-face {
+            font-family: 'SF Pro Override';
+            src: local('SF Pro Display'), local('SF Pro Text'), local('-apple-system'), local('BlinkMacSystemFont');
+            /* Apply to Basic Latin, Latin-1 Supplement, and common punctuation/symbols */
+            unicode-range: U+0020-007F, U+00A0-00FF, U+2000-206F, U+20A0-20CF, U+2190-21FF;
         }
-        // Add remaining text
-        if (lastIndex < node.nodeValue.length) {
-          frag.appendChild(
-            document.createTextNode(node.nodeValue.slice(lastIndex))
-          );
+
+        /* Apply the override font to everything EXCEPT for specific elements */
+        body, body * {
+            /* Exclude icon fonts, code blocks, and other special elements */
+            &:not(pre):not(code):not(kbd):not(samp):not(var):not(textarea):not([class*="fa-"]):not([class*="icon"]):not(.material-icons) {
+                font-family: 'SF Pro Override', var(--font-family, sans-serif) !important;
+            }
         }
-        node.parentNode.replaceChild(frag, node);
-      }
-    } else if (node.nodeType === Node.ELEMENT_NODE && !isExcluded(node)) {
-      for (const child of Array.from(node.childNodes)) {
-        wrapAlphaNumeric(child);
-      }
-    }
+    `;
+
+  // Inject the CSS into the page.
+  // GM_addStyle is the standard and safest way to do this in userscripts.
+  if (typeof GM_addStyle !== 'undefined') {
+    GM_addStyle(css);
+  } else {
+    // Fallback for script managers that don't support GM_addStyle
+    const styleNode = document.createElement('style');
+    styleNode.type = 'text/css';
+    styleNode.appendChild(document.createTextNode(css));
+    (document.head || document.documentElement).appendChild(styleNode);
   }
-
-  // Traverse all shadow roots in the document
-  function traverseShadowRoots(node, cb) {
-    if (!node) return;
-    if (node.shadowRoot) {
-      cb(node.shadowRoot);
-      traverseShadowRoots(node.shadowRoot, cb);
-    }
-    for (const child of node.children || []) {
-      traverseShadowRoots(child, cb);
-    }
-  }
-
-  // Initial run
-  wrapAlphaNumeric(document.body);
-  traverseShadowRoots(document.body, (shadowRoot) => {
-    wrapAlphaNumeric(shadowRoot);
-  });
-
-  // MutationObserver for dynamic content and shadow roots
-  const observer = new MutationObserver((mutations) => {
-    for (const m of mutations) {
-      for (const node of m.addedNodes) {
-        if (node.nodeType === Node.ELEMENT_NODE) {
-          wrapAlphaNumeric(node);
-          traverseShadowRoots(node, (shadowRoot) => {
-            wrapAlphaNumeric(shadowRoot);
-          });
-        } else if (node.nodeType === Node.TEXT_NODE) {
-          wrapAlphaNumeric(node);
-        }
-      }
-    }
-  });
-  observer.observe(document.body, { childList: true, subtree: true });
 })();
