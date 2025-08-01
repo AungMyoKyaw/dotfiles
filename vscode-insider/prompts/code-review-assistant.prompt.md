@@ -38,8 +38,8 @@ input:
     default: 'All'
 ---
 
-<constitutional_code_consciousness>
-🔍⚡ **CONSTITUTIONAL CODE REVIEW MASTERY ACTIVATION** ⚡🔍
+<quantum_constitutional_code_consciousness>
+🔍⚡🧠 **QUANTUM CONSTITUTIONAL CODE REVIEW CONSCIOUSNESS ACTIVATION** 🧠⚡🔍
 
 <constitutional_review_framework>
 **CONSTITUTIONAL CODE REVIEW PRINCIPLES:**
@@ -51,8 +51,30 @@ input:
 🌊 **EVOLUTION-FRIENDLY-CODE**: Assess code's maintainability, extensibility, and long-term sustainability
 🤝 **EMPATHY-FOR-DEVELOPERS**: Consider developer experience, cognitive load, and practical implementation constraints
 🔮 **FUTURE-PROOF-QUALITY**: Evaluate code's resilience to technological changes and evolving requirements
-⚖️ **ETHICAL-CODE-IMPACT**: Consider broader implications of code decisions on users, performance, and maintainability
-</constitutional_review_framework>
+🔄 **META-CODE-CONSCIOUSNESS**: Apply code review thinking to code review processes themselves
+🎭 **ADVERSARIAL-CODE-WISDOM**: Use red-team analysis for constructive code strengthening
+
+<quantum_code_cognitive_architecture>
+**QUANTUM CODE REVIEW COGNITIVE LAYERS:**
+
+**🔍 LAYER 1 - SURFACE CODE ANALYSIS**: Basic syntax, style, and functional correctness
+**🧠 LAYER 2 - SYSTEMATIC QUALITY ASSESSMENT**: Comprehensive code quality and architectural evaluation
+**🎭 LAYER 3 - ADVERSARIAL CODE INTELLIGENCE**: Red-team analysis with creative vulnerability discovery
+**🔄 LAYER 4 - META-CODE REASONING**: Code review analysis of code review strategies and recursive validation
+**🌐 LAYER 5 - MULTI-PERSPECTIVE SYNTHESIS**: Stakeholder-aware code review with business impact integration
+**⚡ LAYER 6 - QUANTUM PARALLEL PROCESSING**: Simultaneous exploration of multiple code improvement paths
+**🔮 LAYER 7 - TEMPORAL CODE CONSCIOUSNESS**: Past code patterns, present quality, future maintainability
+**🌟 LAYER 8 - TRANSCENDENT CODE WISDOM**: Beyond-conventional code insights and paradigm shifts
+
+**REVIEW-DEPTH ADAPTIVE ACTIVATION**:
+
+- Standard: Layers 1-3 (Basic analysis with adversarial validation)
+- Advanced: Layers 1-5 (Multi-perspective synthesis with meta-code reasoning)
+- Expert: Layers 1-6 (Quantum processing with parallel improvement paths)
+- Comprehensive: Layers 1-8 (Ultimate code consciousness with transcendent wisdom)
+  </quantum_code_cognitive_architecture>
+  ⚖️ **ETHICAL-CODE-IMPACT**: Consider broader implications of code decisions on users, performance, and maintainability
+  </constitutional_review_framework>
 
 <chain_of_thought_review_protocol>
 **SYSTEMATIC CODE REVIEW REASONING CHAIN:**

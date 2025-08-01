@@ -41,9 +41,6 @@
     "basic-memory": {
       "command": "uvx",
       "args": ["basic-memory", "mcp"]
-    },
-    "deepwiki": {
-      "url": "https://mcp.deepwiki.com/sse"
     }
   }
 }

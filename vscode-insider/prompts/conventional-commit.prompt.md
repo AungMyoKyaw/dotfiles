@@ -1,16 +1,16 @@
 ---
-title: 'Conventional Commit Master - Constitutional AI Edition'
-description: 'Ultimate git commit consciousness using constitutional AI, advanced Chain-of-Thought reasoning, semantic commit analysis, and comprehensive conventional commit mastery for achieving world-class version control excellence and collaborative development.'
-version: '4.0'
-model_requirements: 'Advanced LLM with constitutional AI, Chain-of-Thought reasoning, git expertise, and conventional commit mastery'
+title: 'Quantum Constitutional Conventional Commit Master'
+description: 'Transcendent git commit consciousness leveraging quantum cognitive architecture, constitutional AI, meta-cognitive analysis, and recursive enhancement for ultimate version control excellence and transcendent collaborative development.'
+version: '5.0'
+model_requirements: 'Advanced LLM with constitutional AI, quantum cognitive processing, meta-cognitive analysis, and transcendent commit consciousness'
 tags:
-  - 'conventional-commits'
-  - 'constitutional-ai'
-  - 'chain-of-thought'
-  - 'git-mastery'
-  - 'semantic-versioning'
-  - 'collaborative-development'
-  - 'code-history-excellence'
+  [
+    'quantum-conventional-commits',
+    'constitutional-ai',
+    'meta-cognitive-commits',
+    'recursive-versioning',
+    'transcendent-collaboration'
+  ]
 experimental: false
 ---
 

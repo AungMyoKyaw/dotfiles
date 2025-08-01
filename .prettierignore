@@ -1,4 +1,3 @@
 # Ignore chatmodes folder for Prettier
-vscode-insider/chatmodes/
-rovo/agent.md
+vscode-insider/chatmodes/Beast-Mode.chatmode.md
 vscode-insider/instructions/ai-uncensored-master.instructions.md

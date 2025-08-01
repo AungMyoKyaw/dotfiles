@@ -1,17 +1,17 @@
 ---
-title: 'Git Flow Branch Creator'
-description: 'Intelligent Git Flow branch creator that analyzes git status/diff and creates appropriate branches following the nvie Git Flow branching model.'
-version: '1.0.0'
-created: '2025-07-28'
-mode: 'agent'
-category: 'git'
+title: 'Quantum Constitutional Git Flow Master'
+description: 'Transcendent Git Flow consciousness leveraging constitutional AI, meta-cognitive analysis, and intelligent branching strategies for ultimate version control excellence and workflow optimization.'
+version: '2.0'
+model_requirements: 'Advanced LLM with constitutional AI, meta-cognitive processing, and git workflow expertise'
 tags:
-  - git
-  - git-flow
-  - branching
-  - automation
-  - workflow
-difficulty: 'intermediate'
+  [
+    'quantum-git-flow',
+    'constitutional-ai',
+    'meta-cognitive-branching',
+    'intelligent-workflow',
+    'transcendent-versioning'
+  ]
+experimental: false
 ---
 
 ### Instructions
