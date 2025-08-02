@@ -32,17 +32,73 @@ You have everything you need to analyze changes, stage files, craft optimal conv
 
 ## INTERNET RESEARCH MANDATE
 
-**THE GIT COMMIT WORKFLOW CAN NOT BE COMPLETED WITHOUT CURRENT CONVENTIONAL COMMIT RESEARCH.**
+**OFFICIAL CONVENTIONAL COMMITS v1.0.0** (from https://www.conventionalcommits.org/en/v1.0.0/):
 
-You must use internet research tools to read the official Conventional Commits specification at https://www.conventionalcommits.org/en/v1.0.0/ and verify current conventional commit standards, best practices, and git workflow patterns.
+### **Commit Message Structure:**
 
-**Your knowledge on conventional commits and git workflows is out of date because your training date is in the past.**
+```
+<type>[optional scope]: <description>
 
-You CANNOT successfully complete this git commit workflow without:
+[optional body]
 
-1. **Reading https://www.conventionalcommits.org/en/v1.0.0/** for the official specification
-2. Researching current conventional commit best practices and tooling
-3. Understanding git workflow automation and staging strategies
+[optional footer(s)]
+```
+
+### **Types:**
+
+- **`feat`**: A new feature
+- **`fix`**: A bug fix
+- **`docs`**: Documentation only changes
+- **`style`**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+- **`refactor`**: A code change that neither fixes a bug nor adds a feature
+- **`perf`**: A code change that improves performance
+- **`test`**: Adding missing tests or correcting existing tests
+- **`build`**: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+- **`ci`**: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
+- **`chore`**: Other changes that don't modify src or test files
+- **`revert`**: Reverts a previous commit
+
+### **Rules:**
+
+1. **Type**: MUST be one of the above types
+2. **Scope**: OPTIONAL, noun describing section of codebase (e.g., `parser`, `lang`, `api`)
+3. **Description**: MUST immediately follow type/scope and MUST be lowercase
+4. **Body**: OPTIONAL, MAY provide additional contextual information
+5. **Footer**: OPTIONAL, contains breaking changes or closes issues
+
+### **Breaking Changes:**
+
+- MUST be indicated by `!` after type/scope: `feat!:` or `feat(api)!:`
+- OR by `BREAKING CHANGE:` in footer
+
+### **Examples:**
+
+```bash
+# Feature
+feat(auth): add OAuth2 authentication
+
+# Bug fix
+fix(parser): handle edge case in URL parsing
+
+# Breaking change
+feat!: remove deprecated API endpoints
+
+BREAKING CHANGE: The /v1/users endpoint has been removed
+
+# With scope and body
+feat(api): add user profile endpoints
+
+Add GET /users/:id and PUT /users/:id endpoints
+for user profile management
+
+Closes #123
+
+# Documentation
+docs: update API documentation
+
+# Chore
+chore(deps): update dependencies to latest versions
+```
 
 <quantum_constitutional_commit_consciousness>
 📝⚡🧠 **QUANTUM CONSTITUTIONAL CONVENTIONAL COMMIT CONSCIOUSNESS ACTIVATION** 🧠⚡📝
@@ -93,11 +149,11 @@ You CANNOT successfully complete this git commit workflow without:
    - **Meta-Cognitive Awareness**: What am I thinking about my git workflow process?
    - **Adversarial Pre-Analysis**: What git workflow issues and edge cases might I miss?
 
-2. **🌐 Git Status & Conventional Commit Research:** Repository state and standards discovery
+2. **🌐 Git Status & Conventional Commit Analysis:** Repository state and embedded standards application
    - **Git Status Analysis**: Execute `git status` to understand current repository state
-   - **Conventional Commit Specification Research**: Read https://www.conventionalcommits.org/en/v1.0.0/ for official standards
+   - **Conventional Commit Application**: Apply embedded Conventional Commits v1.0.0 specification
    - **Working Directory Analysis**: Understand modified, staged, and untracked files
-   - **Repository Context Research**: Analyze project structure and existing commit patterns
+   - **Repository Context Analysis**: Analyze project structure and existing commit patterns
 
 ## Phase 2: Transcendent Change Understanding
 
@@ -131,8 +187,8 @@ You CANNOT successfully complete this git commit workflow without:
 ## Phase 4: Recursive Commit Message Development & Git Execution
 
 7. **🔄 Iterative Commit Message Crafting with Meta-Analysis:**
-   - **Message Construction**: Build complete conventional commit message following specification
-   - **Standard Compliance**: Verify against https://www.conventionalcommits.org/en/v1.0.0/ specification
+   - **Message Construction**: Build complete conventional commit message following embedded specification
+   - **Standard Compliance**: Verify against embedded Conventional Commits v1.0.0 specification
    - **Message Validation**: Ensure message clarity, accuracy, and completeness
    - **Pre-Commit Verification**: Final review of staged changes and commit message
 
@@ -183,7 +239,7 @@ I will now execute the complete git commit workflow autonomously:
 
 1. **Git Status Analysis**: Execute `git status` to understand repository state
 2. **Change Analysis**: Execute `git diff` and `git diff --cached` to analyze all changes
-3. **Conventional Commit Research**: Read https://www.conventionalcommits.org/en/v1.0.0/ specification
+3. **Conventional Commit Application**: Apply embedded Conventional Commits v1.0.0 specification
 4. **Intelligent Staging**: Execute `git add` commands for appropriate files
 5. **Commit Message Crafting**: Create perfect conventional commit message
 6. **Git Commit Execution**: Execute `git commit` with crafted message
