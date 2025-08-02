@@ -45,11 +45,6 @@
       "autoApprove": [],
       "type": "stdio"
     },
-    "basic-memory": {
-      "command": "uvx",
-      "args": ["basic-memory", "mcp"],
-      "type": "stdio"
-    },
     "deepwiki": {
       "serverUrl": "https://mcp.deepwiki.com/sse",
       "type": "http"
