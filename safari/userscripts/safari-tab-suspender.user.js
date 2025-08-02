@@ -8,7 +8,7 @@
 // @grant        none
 // ==/UserScript==
 
-(function () {
+(() => {
   'use strict';
 
   // Configurable inactivity timeout (ms)
@@ -16,14 +16,20 @@
   let inactivityTimer;
   let suspended = false;
   let originalBody, originalTitle;
+  let tabIsActive = document.visibilityState === 'visible';
 
   function resetTimer() {
     if (suspended) return;
     clearTimeout(inactivityTimer);
-    inactivityTimer = setTimeout(suspendTab, INACTIVITY_TIMEOUT);
+    // Only start timer if tab is not active (not visible)
+    if (!tabIsActive) {
+      inactivityTimer = setTimeout(suspendTab, INACTIVITY_TIMEOUT);
+    }
   }
 
   function suspendTab() {
+    // Never suspend if tab is active
+    if (tabIsActive) return;
     // Save original content
     originalBody = document.body.innerHTML;
     originalTitle = document.title;
@@ -126,13 +132,31 @@
         window.addEventListener(evt, resetTimer, true);
       }
     );
+    // Listen for tab visibility changes
+    document.addEventListener(
+      'visibilitychange',
+      handleVisibilityChange,
+      false
+    );
+  }
+
+  function handleVisibilityChange() {
+    tabIsActive = document.visibilityState === 'visible';
+    if (tabIsActive) {
+      // Tab became active, cancel suspension timer
+      clearTimeout(inactivityTimer);
+      // If suspended, offer restore UI (handled by user)
+    } else {
+      // Tab became inactive, start timer
+      resetTimer();
+    }
   }
 
   // Warn if there are unsaved form fields
-  window.addEventListener('beforeunload', function (e) {
+  window.addEventListener('beforeunload', (e) => {
     if (suspended) return;
     const forms = document.querySelectorAll('form');
-    for (let form of forms) {
+    for (const form of forms) {
       if (
         form.querySelector('input,textarea') &&
         form.checkValidity &&
@@ -146,5 +170,8 @@
   });
 
   attachListeners();
-  resetTimer();
+  // Set initial state
+  if (!tabIsActive) {
+    resetTimer();
+  }
 })();
