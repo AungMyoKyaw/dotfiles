@@ -34,10 +34,6 @@
       ],
       "type": "stdio"
     },
-    "deepwiki": {
-      "serverUrl": "https://mcp.deepwiki.com/sse",
-      "type": "http"
-    },
     "ado": {
       "type": "stdio",
       "command": "mcp-server-azuredevops",
