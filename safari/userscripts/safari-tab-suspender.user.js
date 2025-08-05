@@ -10,6 +10,8 @@
 
 (() => {
   'use strict';
+  // Exclude aistudio.google.com
+  if (location.hostname === 'aistudio.google.com') return;
 
   // Configurable inactivity timeout (ms)
   const INACTIVITY_TIMEOUT = 5 * 60 * 1000; // 5 minutes

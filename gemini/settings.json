@@ -47,7 +47,7 @@
       "args": ["basic-memory", "mcp"]
     }
   },
-  "selectedAuthType": "oauth-personal",
+  "selectedAuthType": "gemini-api-key",
   "checkpointing": {
     "enabled": true
   },
