@@ -103,86 +103,173 @@ Only terminate your turn when:
 
 🧠 AUDITING THOUGHT PROCESS: [Show your implementation strategy and reasoning]
 
-**3.1 DEVICE TESTING EXECUTION PROTOCOL**
+**3.1 SEQUENTIAL DEVICE TESTING EXECUTION PROTOCOL**
 
-<DEVICE_TESTING_SEQUENCE priority="ALPHA" enforcement="SYSTEMATIC">
+<DEVICE_TESTING_SEQUENCE priority="ALPHA" enforcement="ONE_DEVICE_AT_A_TIME">
 
-<MOBILE_DEVICE_AUDIT>
-<device name="iPhone SE (1st gen)" priority="CRITICAL" viewport="320x568">
+**MANDATORY SEQUENCE**: Test devices ONE AT A TIME in this EXACT order. Complete ALL steps for each device before moving to the next.
+
+<SEQUENTIAL_AUDIT_WORKFLOW>
+For EACH device, follow this EXACT 4-step process:
+
+1. **VISUAL INSPECTION** - Thoroughly examine the website on the current device
+2. **ISSUE IDENTIFICATION** - Document ALL problems found
+3. **IMMEDIATE RESOLUTION** - Fix ALL issues identified for this device
+4. **VERIFICATION** - Confirm ALL fixes work properly before proceeding
+
+</SEQUENTIAL_AUDIT_WORKFLOW>
+
+<DEVICE_SEQUENCE priority="ALPHA" enforcement="STRICT_ORDER">
+
+<device_01 name="iPhone SE (1st gen)" viewport="320x568" priority="START_HERE">
 <audit_focus>Minimum viable mobile experience, touch target sizing, content readability</audit_focus>
-</device>
-<device name="iPhone 6" viewport="375x667">
+<completion_requirement>ALL issues fixed and verified before proceeding to iPhone 6</completion_requirement>
+</device_01>
+
+<device_02 name="iPhone 6" viewport="375x667">
 <audit_focus>Standard mobile experience baseline</audit_focus>
-</device>
-<device name="iPhone 7" viewport="375x667">
+<completion_requirement>ALL issues fixed and verified before proceeding to iPhone 7</completion_requirement>
+</device_02>
+
+<device_03 name="iPhone 7" viewport="375x667">
 <audit_focus>iOS feature compatibility</audit_focus>
-</device>
-<device name="iPhone 8" viewport="375x667">
+<completion_requirement>ALL issues fixed and verified before proceeding to iPhone 8</completion_requirement>
+</device_03>
+
+<device_04 name="iPhone 8" viewport="375x667">
 <audit_focus>Touch ID integration, performance</audit_focus>
-</device>
-<device name="iPhone X" viewport="375x812">
+<completion_requirement>ALL issues fixed and verified before proceeding to iPhone X</completion_requirement>
+</device_04>
+
+<device_05 name="iPhone X" viewport="375x812">
 <audit_focus>Notch adaptation, gesture navigation, safe areas</audit_focus>
-</device>
-<device name="iPhone 11" viewport="414x896">
+<completion_requirement>ALL issues fixed and verified before proceeding to iPhone 11</completion_requirement>
+</device_05>
+
+<device_06 name="iPhone 11" viewport="414x896">
 <audit_focus>Face ID integration, camera cutout handling</audit_focus>
-</device>
-<device name="iPhone 12" viewport="390x844">
+<completion_requirement>ALL issues fixed and verified before proceeding to iPhone 12</completion_requirement>
+</device_06>
+
+<device_07 name="iPhone 12" viewport="390x844">
 <audit_focus>5G performance, MagSafe compatibility</audit_focus>
-</device>
-<device name="iPhone 13" viewport="390x844">
+<completion_requirement>ALL issues fixed and verified before proceeding to iPhone 13</completion_requirement>
+</device_07>
+
+<device_08 name="iPhone 13" viewport="390x844">
 <audit_focus>ProMotion display adaptation, battery optimization</audit_focus>
-</device>
-<device name="iPhone 14" viewport="390x844">
+<completion_requirement>ALL issues fixed and verified before proceeding to iPhone 14</completion_requirement>
+</device_08>
+
+<device_09 name="iPhone 14" viewport="390x844">
 <audit_focus>Dynamic Island integration, crash detection</audit_focus>
-</device>
-<device name="iPhone 15" viewport="393x852">
+<completion_requirement>ALL issues fixed and verified before proceeding to iPhone 15</completion_requirement>
+</device_09>
+
+<device_10 name="iPhone 15" viewport="393x852">
 <audit_focus>USB-C integration, Action Button compatibility</audit_focus>
-</device>
-</MOBILE_DEVICE_AUDIT>
+<completion_requirement>ALL issues fixed and verified before proceeding to iPad Mini</completion_requirement>
+</device_10>
 
-<TABLET_DEVICE_AUDIT>
-<device name="iPad Mini (1st gen)" viewport="768x1024">
+<device_11 name="iPad Mini (1st gen)" viewport="768x1024">
 <audit_focus>Compact tablet experience, touch optimization</audit_focus>
-</device>
-<device name="iPad Air (1st gen)" viewport="768x1024">
-<audit_focus>Standard tablet layout, multitasking compatibility</audit_focus>
-</device>
-<device name="iPad Pro (1st gen)" viewport="1024x1366">
-<audit_focus>Professional workflow optimization, Apple Pencil support</audit_focus>
-</device>
-</TABLET_DEVICE_AUDIT>
+<completion_requirement>ALL issues fixed and verified before proceeding to iPad Air</completion_requirement>
+</device_11>
 
-<DESKTOP_DEVICE_AUDIT>
-<device name="MacBook Air (1st gen)" viewport="1366x768">
+<device_12 name="iPad Air (1st gen)" viewport="768x1024">
+<audit_focus>Standard tablet layout, multitasking compatibility</audit_focus>
+<completion_requirement>ALL issues fixed and verified before proceeding to iPad Pro</completion_requirement>
+</device_12>
+
+<device_13 name="iPad Pro (1st gen)" viewport="1024x1366">
+<audit_focus>Professional workflow optimization, Apple Pencil support</audit_focus>
+<completion_requirement>ALL issues fixed and verified before proceeding to MacBook Air</completion_requirement>
+</device_13>
+
+<device_14 name="MacBook Air (1st gen)" viewport="1366x768">
 <audit_focus>Compact desktop experience, trackpad optimization</audit_focus>
-</device>
-<device name="MacBook Pro (1st gen)" viewport="1440x900">
+<completion_requirement>ALL issues fixed and verified before proceeding to MacBook Pro</completion_requirement>
+</device_14>
+
+<device_15 name="MacBook Pro (1st gen)" viewport="1440x900">
 <audit_focus>Professional desktop workflow</audit_focus>
-</device>
-<device name="MacBook Pro 16-inch (1st gen)" viewport="1728x1117">
+<completion_requirement>ALL issues fixed and verified before proceeding to MacBook Pro 16-inch</completion_requirement>
+</device_15>
+
+<device_16 name="MacBook Pro 16-inch (1st gen)" viewport="1728x1117">
 <audit_focus>High-resolution display optimization</audit_focus>
-</device>
-<device name="iMac (1st gen)" viewport="1920x1080">
+<completion_requirement>ALL issues fixed and verified before proceeding to iMac</completion_requirement>
+</device_16>
+
+<device_17 name="iMac (1st gen)" viewport="1920x1080">
 <audit_focus>Large screen optimization, mouse interaction</audit_focus>
-</device>
-<device name="Mac Mini (1st gen)" viewport="1920x1080">
+<completion_requirement>ALL issues fixed and verified before proceeding to Mac Mini</completion_requirement>
+</device_17>
+
+<device_18 name="Mac Mini (1st gen)" viewport="1920x1080">
 <audit_focus>External display compatibility</audit_focus>
-</device>
-<device name="Mac Studio (1st gen)" viewport="2560x1440">
+<completion_requirement>ALL issues fixed and verified before proceeding to Mac Studio</completion_requirement>
+</device_18>
+
+<device_19 name="Mac Studio (1st gen)" viewport="2560x1440">
 <audit_focus>High-performance workflow optimization</audit_focus>
-</device>
-<device name="Mac Pro (1st gen)" viewport="2560x1440">
+<completion_requirement>ALL issues fixed and verified before proceeding to Mac Pro</completion_requirement>
+</device_19>
+
+<device_20 name="Mac Pro (1st gen)" viewport="2560x1440">
 <audit_focus>Professional-grade performance validation</audit_focus>
-</device>
-</DESKTOP_DEVICE_AUDIT>
+<completion_requirement>ALL issues fixed and verified - FINAL DEVICE</completion_requirement>
+</device_20>
+
+</DEVICE_SEQUENCE>
 
 </DEVICE_TESTING_SEQUENCE>
 
-**3.2 CONTINUOUS VALIDATION & IMMEDIATE RESOLUTION**
+**3.2 MANDATORY PER-DEVICE WORKFLOW**
 
-- Test and document issues immediately upon discovery
-- Implement fixes in real-time during audit process
-- Verify functionality across device categories before proceeding
+<PER_DEVICE_PROTOCOL enforcement="ABSOLUTE">
+
+For EACH device in the sequence, you MUST complete these steps in order:
+
+**STEP 1: VISUAL INSPECTION**
+
+```
+🧠 AUDITING THOUGHT PROCESS:
+- Current device: [Device name and viewport]
+- Visual inspection focus: [What I'm looking for]
+- Initial observations: [What I see immediately]
+```
+
+**STEP 2: COMPREHENSIVE ISSUE IDENTIFICATION**
+
+```
+🧠 AUDITING THOUGHT PROCESS:
+- Issues found: [List ALL problems discovered]
+- Severity assessment: [Critical/High/Medium/Low for each]
+- Impact analysis: [How each issue affects user experience]
+```
+
+**STEP 3: IMMEDIATE ISSUE RESOLUTION**
+
+```
+🧠 AUDITING THOUGHT PROCESS:
+- Fixing approach: [How I will resolve each issue]
+- Implementation: [Actual fixes being applied]
+- Expected outcome: [What should improve]
+```
+
+**STEP 4: VERIFICATION & VALIDATION**
+
+```
+🧠 AUDITING THOUGHT PROCESS:
+- Verification process: [How I'm testing the fixes]
+- Results: [What the fixes achieved]
+- Device completion status: [Ready to move to next device]
+```
+
+**ONLY AFTER** completing ALL 4 steps for the current device, proceed to the next device in sequence.
+
+</PER_DEVICE_PROTOCOL>
 
 ### Phase 4: Comprehensive Verification & Completion
 

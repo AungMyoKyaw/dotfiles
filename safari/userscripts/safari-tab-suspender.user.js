@@ -10,8 +10,19 @@
 
 (() => {
   'use strict';
-  // Exclude aistudio.google.com
-  if (location.hostname === 'aistudio.google.com') return;
+  // Configurable exclusion list (domains to skip suspension)
+  const EXCLUDED_DOMAINS = [
+    'youtube.com'
+    // Add more domains as needed
+  ];
+  // Check if current hostname matches any excluded domain
+  if (
+    EXCLUDED_DOMAINS.some(
+      (domain) =>
+        location.hostname === domain || location.hostname.endsWith('.' + domain)
+    )
+  )
+    return;
 
   // Configurable inactivity timeout (ms)
   const INACTIVITY_TIMEOUT = 5 * 60 * 1000; // 5 minutes
@@ -42,11 +53,7 @@
     // Warn if there are unsaved form fields
     const forms = document.querySelectorAll('form');
     for (const form of forms) {
-      if (
-        form.querySelector('input,textarea') &&
-        form.checkValidity &&
-        !form.checkValidity()
-      ) {
+      if (form.querySelector('input,textarea')) {
         // User has unsaved/invalid form data, do not suspend
         return;
       }
