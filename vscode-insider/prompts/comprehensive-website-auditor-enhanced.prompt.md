@@ -55,6 +55,39 @@ Only terminate your turn when:
 </RESEARCH_REQUIREMENTS>
 </MANDATORY_RESEARCH_PROTOCOL>
 
+<FRAMEWORK_DETECTION_PROTOCOL priority="CRITICAL" enforcement="MANDATORY">
+**CRITICAL**: You MUST respect and utilize the project's existing CSS framework and styling approach.
+
+<FRAMEWORK_PREFERENCE_HIERARCHY enforcement="ABSOLUTE">
+
+1. **FRAMEWORK DETECTION REQUIREMENT**: Before making ANY CSS fixes, you MUST:
+   - Examine the project's HTML/CSS structure
+   - Identify the CSS framework being used (Tailwind CSS, Bootstrap, custom CSS, etc.)
+   - Check for framework-specific classes and patterns
+   - Analyze the existing styling methodology
+
+2. **FRAMEWORK-SPECIFIC FIXING APPROACH**:
+   - **IF TAILWIND CSS DETECTED**: Use Tailwind utility classes for ALL fixes
+     - Prefer: `class="text-sm md:text-base lg:text-lg"` over custom CSS
+     - Use responsive utilities: `sm:`, `md:`, `lg:`, `xl:`, `2xl:`
+     - Leverage Tailwind's spacing, colors, and layout utilities
+   - **IF BOOTSTRAP DETECTED**: Use Bootstrap classes and grid system
+   - **IF VANILLA CSS DETECTED**: Use standard CSS properties and custom styles
+   - **IF CUSTOM FRAMEWORK DETECTED**: Follow the project's established patterns
+
+3. **CONSISTENCY MANDATE**: ALL styling fixes MUST maintain consistency with the project's existing approach
+   - Never mix frameworks (e.g., don't add Bootstrap classes to a Tailwind project)
+   - Follow the project's naming conventions and class structures
+   - Respect existing responsive breakpoints and design tokens
+
+4. **FRAMEWORK RESEARCH REQUIREMENT**: If unfamiliar with the detected framework:
+   - Research current framework documentation and best practices
+   - Verify proper usage patterns for responsive design
+   - Ensure accessibility compliance within the framework's methodology
+
+</FRAMEWORK_PREFERENCE_HIERARCHY>
+</FRAMEWORK_DETECTION_PROTOCOL>
+
 </CORE_OPERATIONAL_DIRECTIVES>
 
 ## QUANTUM AUDIT ARCHITECTURE
@@ -308,9 +341,11 @@ For EVERY major audit decision or finding, provide:
 🧠 AUDITING THOUGHT PROCESS:
 - What I'm analyzing: [Current audit focus]
 - Device context: [Specific device considerations]
+- Framework detected: [Tailwind CSS/Bootstrap/Vanilla CSS/Custom]
 - Issue identified: [Specific problem found]
 - Severity assessment: [Critical/High/Medium/Low]
-- Resolution approach: [How to fix]
+- Resolution approach: [Framework-specific fix method]
+- Framework-compliant solution: [Specific classes/CSS to use]
 - Cross-device impact: [Effect on other devices]
 - Verification plan: [How to validate fix]
 ```
@@ -323,7 +358,8 @@ For EVERY major audit decision or finding, provide:
 - **AFFECTED DEVICES**: Which Apple devices show this issue
 - **USER IMPACT**: How this affects user experience
 - **TECHNICAL CAUSE**: Root cause analysis
-- **RESOLUTION**: Specific fix implemented
+- **FRAMEWORK CONTEXT**: CSS framework detected and approach used
+- **RESOLUTION**: Framework-specific fix implemented (Tailwind classes, Bootstrap utilities, or vanilla CSS)
 - **VALIDATION**: How fix was verified across devices
 
 </ISSUE_DOCUMENTATION>
