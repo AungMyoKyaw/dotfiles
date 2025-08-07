@@ -9,6 +9,7 @@
 // @exclude      *://youtube.com/*
 // @exclude      *://*.youtube.com/*
 // @exclude      *://gemini.google.com/*
+// @exclude      *://aistudio.google.com/*
 // @grant        none
 // ==/UserScript==
 
