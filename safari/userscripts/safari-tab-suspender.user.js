@@ -5,6 +5,10 @@
 // @description  Suspend inactive tabs after 5 minutes to save system resources
 // @author       You
 // @match        *://*/*
+// @exclude      *://www.youtube.com/*
+// @exclude      *://youtube.com/*
+// @exclude      *://*.youtube.com/*
+// @exclude      *://gemini.google.com/*
 // @grant        none
 // ==/UserScript==
 
@@ -12,11 +16,11 @@
   'use strict';
   // Configurable exclusion list (domains to skip suspension)
   const EXCLUDED_DOMAINS = [
-    'youtube.com'
-    // Add more domains as needed
+    // Add more domains as needed, or use @exclude in the header for static exclusions
   ];
-  // Check if current hostname matches any excluded domain
+  // Check if current hostname matches any excluded domain (for dynamic/user-configurable exclusions)
   if (
+    EXCLUDED_DOMAINS.length &&
     EXCLUDED_DOMAINS.some(
       (domain) =>
         location.hostname === domain || location.hostname.endsWith('.' + domain)

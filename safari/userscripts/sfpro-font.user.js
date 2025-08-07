@@ -5,6 +5,7 @@
 // @description  Change font family for Latin characters to 'SF Pro' using an efficient CSS method.
 // @author       Aung Myo Kyaw (Fixed by Gemini)
 // @match        *://*/*
+// @exclude      https://aistudio.google.com/*
 // @grant        GM_addStyle
 // ==/UserScript==
 
