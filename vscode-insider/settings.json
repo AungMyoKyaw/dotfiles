@@ -121,7 +121,6 @@
   "workbench.activityBar.location": "hidden",
   "chat.checkpoints.enabled": true,
   "chat.tools.terminal.autoApprove": true,
-  "editor.aiStats.enabled": true,
   "chat.math.enabled": true,
   "github.copilot.chat.newWorkspace.useContext7": true,
   "chat.mcp.autostart": "newAndOutdated",
