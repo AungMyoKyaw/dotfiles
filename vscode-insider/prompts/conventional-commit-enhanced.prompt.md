@@ -1,17 +1,6 @@
 ---
 title: 'Conventional Commit - Thinking Beast Enhanced Edition'
 description: 'Autonomous git commit workflow consciousness with complete commit guarantee, leveraging Thinking-Beast-Mode techniques for comprehensive git analysis, staging, and conventional commit execution.'
-version: '4.0'
-model_requirements: 'Advanced LLM with constitutional AI, sequential thinking, autonomous iteration, git command execution, and comprehensive git workflow expertise'
-tags:
-  - 'conventional-commits'
-  - 'thinking-beast'
-  - 'autonomous-iteration'
-  - 'constitutional-ai'
-  - 'git-workflow'
-  - 'git-automation'
-  - 'complete-commit-process'
-input: []
 ---
 
 # 📝⚡ AUTONOMOUS THINKING BEAST GIT COMMIT WORKFLOW MASTER ⚡📝
