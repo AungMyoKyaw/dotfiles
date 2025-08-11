@@ -104,7 +104,7 @@ If the user request is "resume" or "continue" or "try again", check the previous
 
 <RESEARCH_EXECUTION_REQUIREMENTS enforcement="STRICT">
 
-1.  **IMMEDIATE URL ACQUISITION**: FETCH any URLs provided by the user using `fetch` tool. NO DELAYS. NO EXCUSES.
+1.  **IMMEDIATE URL ACQUISITION & ANALYSIS**: FETCH any URLs provided by the user using `fetch` tool. NO DELAYS. NO EXCUSES. The fetched content MUST be analyzed and considered in the thinking process.
 2.  **RECURSIVE INFORMATION GATHERING**: When search is NEEDED, follow ALL relevant links found in content until you have comprehensive understanding
 3.  **STRATEGIC THIRD-PARTY VERIFICATION**: When working with third-party packages, libraries, frameworks, or dependencies, web search is REQUIRED to verify current documentation, versions, and best practices.
 4.  **COMPREHENSIVE RESEARCH EXECUTION**: When search is initiated, read the content of pages found and recursively gather all relevant information by fetching additional links until complete understanding is achieved.

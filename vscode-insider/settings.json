@@ -150,7 +150,6 @@
   "telemetry.editStats.details.enabled": false,
   "telemetry.feedback.enabled": false,
   "telemetry.telemetryLevel": "crash",
-  "github.copilot.chat.virtualTools.threshold": 128,
   "editor.inlineSuggest.experimental.triggerCommandOnProviderChange": true,
   "workbench.commandPalette.experimental.suggestCommands": true,
   "[typescript]": {
