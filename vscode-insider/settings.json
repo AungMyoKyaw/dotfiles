@@ -154,5 +154,6 @@
   "workbench.commandPalette.experimental.suggestCommands": true,
   "[typescript]": {
     "editor.defaultFormatter": "TypeScriptTeam.native-preview"
-  }
+  },
+  "github.copilot.chat.alternateGptPrompt.enabled": true
 }
