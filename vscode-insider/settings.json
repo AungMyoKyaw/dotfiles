@@ -20,7 +20,7 @@
   "[jsonc]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "terminal.integrated.shellIntegration.enabled": false,
+  "terminal.integrated.shellIntegration.enabled": true,
   "accessibility.verbosity.inlineChat": true,
   "accessibility.verbosity.inlineCompletions": true,
   "accessibility.verbosity.panelChat": true,
@@ -217,5 +217,13 @@
   "javascript.referencesCodeLens.enabled": true,
   "javascript.referencesCodeLens.showOnAllFunctions": true,
   "typescript.implementationsCodeLens.enabled": true,
-  "typescript.implementationsCodeLens.showOnInterfaceMethods": true
+  "typescript.implementationsCodeLens.showOnInterfaceMethods": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "breadcrumbs.enabled": true,
+  "editor.linkedEditing": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.cursorBlinking": "smooth"
 }
