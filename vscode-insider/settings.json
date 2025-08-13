@@ -210,5 +210,12 @@
   /**
    * Increase the delay for showing hover information to prevent it from appearing unnecessarily.
    */
-  "editor.hover.delay": 1000
+  "editor.hover.delay": 1000,
+  "http.electronFetch": true,
+  "typescript.referencesCodeLens.enabled": true,
+  "typescript.referencesCodeLens.showOnAllFunctions": true,
+  "javascript.referencesCodeLens.enabled": true,
+  "javascript.referencesCodeLens.showOnAllFunctions": true,
+  "typescript.implementationsCodeLens.enabled": true,
+  "typescript.implementationsCodeLens.showOnInterfaceMethods": true
 }
