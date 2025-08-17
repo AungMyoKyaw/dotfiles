@@ -221,5 +221,6 @@
   "breadcrumbs.enabled": true,
   "editor.linkedEditing": true,
   "editor.guides.bracketPairs": "active",
-  "editor.cursorBlinking": "smooth"
+  "editor.cursorBlinking": "smooth",
+  "security.workspace.trust.untrustedFiles": "open"
 }
