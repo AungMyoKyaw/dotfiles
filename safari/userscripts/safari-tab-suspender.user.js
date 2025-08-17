@@ -10,11 +10,11 @@
 // @exclude      *://*.youtube.com/*
 // @exclude      *://gemini.google.com/*
 // @exclude      *://aistudio.google.com/*
+// @exclude      *://tasks.google.com/*
 // @grant        none
 // ==/UserScript==
 
 (() => {
-  'use strict';
   // Configurable exclusion list (domains to skip suspension)
   const EXCLUDED_DOMAINS = [
     // Add more domains as needed, or use @exclude in the header for static exclusions
