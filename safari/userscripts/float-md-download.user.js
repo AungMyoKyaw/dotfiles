@@ -4,7 +4,8 @@
 // @version      1.0
 // @description  Floating button to convert page to Markdown and download as .md file
 // @author       You
-// @match        *://*/*
+// @match        https://www.coursera.org/*
+// @match        https://coursera.org/*
 // @grant        none
 // @run-at       document-end
 // ==/UserScript==
@@ -121,7 +122,7 @@
 
   // --- FILENAME SANITIZATION ---
   function sanitizeFilename(name) {
-    let fname = name.replace(/[^a-z0-9\-]+/gi, '-').replace(/^-+|-+$/g, '');
+    let fname = name.replace(/[^a-z0-9-]+/gi, '-').replace(/^-+|-+$/g, '');
     if (!fname) fname = 'page';
     if (fname.length > 64) fname = fname.slice(0, 64);
     return fname + '.md';
