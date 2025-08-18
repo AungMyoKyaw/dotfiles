@@ -222,5 +222,8 @@
   "editor.linkedEditing": true,
   "editor.guides.bracketPairs": "active",
   "editor.cursorBlinking": "smooth",
-  "security.workspace.trust.untrustedFiles": "open"
+  "security.workspace.trust.untrustedFiles": "open",
+  "chat.todoListTool.writeOnly": true,
+  "terminal.integrated.gpuAcceleration": "on",
+  "terminal.integrated.enableImages": true
 }
