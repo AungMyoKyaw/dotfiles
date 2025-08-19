@@ -147,4 +147,12 @@ windowManagement:bind("", "right", function() moveWindow("right") end)
 windowManagement:bind("", "up", function() moveWindow("up") end)
 windowManagement:bind("", "down", function() moveWindow("down") end)
 
+-- Move focused window to next screen (useful for multi-monitor)
+windowManagement:bind({"shift"}, "n", function()
+  local win = hs.window.focusedWindow()
+  if not win then return end
+  local nextScreen = win:screen():next()
+  if nextScreen then win:moveToScreen(nextScreen) end
+end)
+
 return windowManagement

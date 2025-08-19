@@ -6,6 +6,10 @@ local hyper = {"cmd", "alt", "ctrl", "shift"}
 
 -- Load window management module
 require "window_management"
+-- Load app launcher and helpers
+require "apps"
+-- Load performance helpers
+require "performance"
 
 -- Reload config with Hyper+R
 hs.hotkey.bind(hyper, "r", function()
