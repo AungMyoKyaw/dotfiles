@@ -26,13 +26,13 @@
   "accessibility.verbosity.panelChat": true,
   "accessibility.voice.autoSynthesize": "on",
   "accessibility.voice.speechTimeout": 5000,
+  "accessibility.voice.keywordActivation": true,
   "chat.agent.enabled": true,
-  "chat.agent.maxRequests": 1000,
+  "chat.agent.maxRequests": 9984,
   "chat.detectParticipant.enabled": true,
   "chat.editing.autoAcceptDelay": 0,
   "chat.editing.confirmEditRequestRemoval": false,
   "chat.editing.confirmEditRequestRetry": false,
-  "chat.editor.fontSize": 14,
   "chat.mcp.enabled": true,
   "chat.modeFilesLocations": {
     ".github/chatmodes": true,
@@ -52,7 +52,6 @@
   "editor.smoothScrolling": false,
   "editor.renderLineHighlight": "none",
   "editor.codeLens": false,
-  "extensions.ignoreRecommendations": true,
   "github.copilot.chat.agent.autoFix": true,
   "github.copilot.chat.agent.runTasks": true,
   "github.copilot.chat.agent.thinkingTool": true,
@@ -62,7 +61,7 @@
   "github.copilot.chat.edits.suggestRelatedFilesFromGitHistory": true,
   "github.copilot.chat.edits.temporalContext.enabled": true,
   "github.copilot.chat.editor.temporalContext.enabled": true,
-  "github.copilot.chat.generateTests.codeLens": true,
+  "github.copilot.chat.generateTests.codeLens": false,
   "github.copilot.chat.localeOverride": "en",
   "github.copilot.chat.newWorkspaceCreation.enabled": true,
   "github.copilot.chat.reviewSelection.enabled": true,
@@ -105,18 +104,10 @@
   ],
   "workbench.colorTheme": "Catppuccin Mocha",
   "workbench.sideBar.location": "left",
-  "workbench.startupEditor": "none",
   "workbench.statusBar.visible": true,
   "zenMode.centerLayout": false,
   "zenMode.hideLineNumbers": false,
   "zenMode.showTabs": "single",
-  "sonarlint.connectedMode.connections.sonarcloud": [
-    {
-      "organizationKey": "aungmyokyaw",
-      "connectionId": "aungmyokyaw",
-      "region": "EU"
-    }
-  ],
   "workbench.secondarySideBar.defaultVisibility": "maximized",
   "workbench.editor.enablePreview": false,
   "workbench.activityBar.location": "hidden",
@@ -139,56 +130,24 @@
   "github.copilot.chat.languageContext.inline.typescript.enabled": true,
   "github.copilot.chat.languageContext.fix.typescript.enabled": true,
   "chat.agent.showThinking": true,
-  "editor.experimentalGpuAcceleration": "on",
-  "editor.experimental.treeSitterTelemetry": true,
-  "editor.experimental.preferTreeSitter.typescript": true,
-  "editor.experimental.preferTreeSitter.regex": true,
-  "editor.experimental.preferTreeSitter.ini": true,
-  "editor.experimental.preferTreeSitter.css": true,
+  "editor.experimentalGpuAcceleration": "off",
+  "editor.experimental.treeSitterTelemetry": false,
+  "editor.experimental.preferTreeSitter.typescript": false,
+  "editor.experimental.preferTreeSitter.regex": false,
+  "editor.experimental.preferTreeSitter.ini": false,
+  "editor.experimental.preferTreeSitter.css": false,
   "http.experimental.systemCertificatesV2": true,
   "github.copilot.chat.byok.responsesApi": true,
   "telemetry.editStats.enabled": false,
   "telemetry.editStats.details.enabled": false,
   "telemetry.feedback.enabled": false,
-  "telemetry.telemetryLevel": "off",
   "editor.inlineSuggest.experimental.triggerCommandOnProviderChange": true,
   "workbench.commandPalette.experimental.suggestCommands": true,
   "[typescript]": {
     "editor.defaultFormatter": "TypeScriptTeam.native-preview"
   },
-  "github.copilot.chat.alternateGptPrompt.enabled": true,
   "editor.defaultFormatter": "biomejs.biome",
   "editor.tabSize": 2,
-
-  /**
-   * Exclude large, frequently changing, or binary folders from the file watcher.
-   * This reduces CPU and memory usage by telling VS Code not to monitor these directories.
-   */
-  "files.watcherExclude": {
-    "**/.git/objects/**": true,
-    "**/.git/subtree-cache/**": true,
-    "**/node_modules/**": true,
-    "**/.hg/store/**": true,
-    "**/dist/**": true,
-    "**/build/**": true,
-    "**/.next/**": true,
-    "**/out/**": true,
-    "**/coverage/**": true
-  },
-
-  /**
-   * Exclude the same large directories from search operations to make workspace-wide searches faster.
-   */
-  "search.exclude": {
-    "**/node_modules": true,
-    "**/bower_components": true,
-    "**/*.code-search": true,
-    "**/dist": true,
-    "**/build": true,
-    "**/.next": true,
-    "**/out": true,
-    "**/coverage": true
-  },
 
   /**
    * Disable default validation for TypeScript/JavaScript if you use a linter like Biome or ESLint.
@@ -206,12 +165,12 @@
    * Change how autosave is triggered from a time delay to when you switch focus out of the editor.
    * This reduces constant disk I/O.
    */
-  "files.autoSave": "onFocusChange",
+  "files.autoSave": "off",
 
   /**
    * Increase the delay for showing hover information to prevent it from appearing unnecessarily.
    */
-  "editor.hover.delay": 1000,
+  "editor.hover.delay": 3000,
   "http.electronFetch": true,
   "typescript.referencesCodeLens.enabled": true,
   "typescript.referencesCodeLens.showOnAllFunctions": true,
@@ -220,8 +179,8 @@
   "typescript.implementationsCodeLens.enabled": true,
   "typescript.implementationsCodeLens.showOnInterfaceMethods": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit",
-    "source.organizeImports": "explicit"
+    "source.fixAll": "never",
+    "source.organizeImports": "never"
   },
   "breadcrumbs.enabled": true,
   "editor.linkedEditing": true,
@@ -229,6 +188,21 @@
   "editor.cursorBlinking": "solid",
   "security.workspace.trust.untrustedFiles": "open",
   "chat.todoListTool.writeOnly": true,
-  "terminal.integrated.gpuAcceleration": "on",
-  "terminal.integrated.enableImages": true
+  "terminal.integrated.gpuAcceleration": "off",
+  "terminal.integrated.enableImages": false,
+
+  "extensions.autoUpdate": true,
+  "extensions.autoCheckUpdates": true,
+  "extensions.ignoreRecommendations": true,
+  "files.watcherExclude": {
+    "**": true
+  },
+  "search.exclude": {
+    "**": true
+  },
+  "git.autofetch": false,
+  "git.enabled": false,
+  "telemetry.telemetryLevel": "off",
+  "workbench.startupEditor": "none",
+  "window.restoreWindows": "none"
 }
