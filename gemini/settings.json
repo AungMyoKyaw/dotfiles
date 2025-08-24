@@ -44,5 +44,21 @@
     "enableRecursiveFileSearch": true
   },
   "maxSessionTurns": -1,
-  "vimMode": true
+  "vimMode": true,
+  "model": "gemini-2.5-pro-latest",
+  "enablePromptCompletion": true,
+  "promptCompletionTemperature": 0.7,
+  "telemetry": {
+    "logPrompts": true
+  },
+  "excludeTools": [],
+  "maxSessionTurns": -1,
+  "memoryDiscoveryMaxDirs": 500,
+  "shouldUseNodePtyShell": true,
+  "logFile": ".gemini/gemini.log",
+  "showMemoryUsage": true,
+  "showLineNumbers": true,
+  "autoConfigureMaxOldSpaceSize": true,
+  "loadMemoryFromIncludeDirectories": true,
+  "folderTrustFeature": true
 }
