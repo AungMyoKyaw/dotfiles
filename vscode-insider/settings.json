@@ -162,12 +162,6 @@
   "workbench.reduceMotion": "on",
 
   /**
-   * Change how autosave is triggered from a time delay to when you switch focus out of the editor.
-   * This reduces constant disk I/O.
-   */
-  "files.autoSave": "off",
-
-  /**
    * Increase the delay for showing hover information to prevent it from appearing unnecessarily.
    */
   "editor.hover.delay": 3000,
