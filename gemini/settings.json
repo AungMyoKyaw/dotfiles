@@ -59,6 +59,5 @@
   "showMemoryUsage": true,
   "showLineNumbers": true,
   "autoConfigureMaxOldSpaceSize": true,
-  "loadMemoryFromIncludeDirectories": true,
-  "folderTrustFeature": true
+  "loadMemoryFromIncludeDirectories": true
 }

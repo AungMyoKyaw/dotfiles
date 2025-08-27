@@ -33,7 +33,6 @@
   "chat.editing.autoAcceptDelay": 0,
   "chat.editing.confirmEditRequestRemoval": false,
   "chat.editing.confirmEditRequestRetry": false,
-  "chat.mcp.enabled": true,
   "chat.modeFilesLocations": {
     ".github/chatmodes": true,
     "/Users/aungmyokyaw/Library/Application Support/Code - Insiders/User/chatmodes": true
@@ -132,10 +131,10 @@
   "chat.agent.showThinking": true,
   "editor.experimentalGpuAcceleration": "off",
   "editor.experimental.treeSitterTelemetry": false,
-  "editor.experimental.preferTreeSitter.typescript": false,
-  "editor.experimental.preferTreeSitter.regex": false,
-  "editor.experimental.preferTreeSitter.ini": false,
-  "editor.experimental.preferTreeSitter.css": false,
+  "editor.experimental.preferTreeSitter.typescript": true,
+  "editor.experimental.preferTreeSitter.regex": true,
+  "editor.experimental.preferTreeSitter.ini": true,
+  "editor.experimental.preferTreeSitter.css": true,
   "http.experimental.systemCertificatesV2": true,
   "github.copilot.chat.byok.responsesApi": true,
   "telemetry.editStats.enabled": false,
@@ -189,14 +188,39 @@
   "extensions.autoCheckUpdates": true,
   "extensions.ignoreRecommendations": true,
   "files.watcherExclude": {
-    "**": true
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/.hg/store/**": true
   },
   "search.exclude": {
-    "**": true
+    "**/node_modules/**": true,
+    "**/.git/**": true,
+    "**/dist/**": true,
+    "**/build/**": true
   },
   "git.autofetch": false,
   "git.enabled": false,
   "telemetry.telemetryLevel": "off",
   "workbench.startupEditor": "none",
-  "window.restoreWindows": "none"
+  "window.restoreWindows": "none",
+  "explorer.confirmDelete": false,
+  "chat.useChatSessionsForCloudButton": true,
+  "editor.renderWhitespace": "all",
+  "github.copilot.selectedCompletionModel": "",
+  "chat.mcp.access": "all",
+  "chat.mcp.serverSampling": {
+    "Global in Code - Insiders: sequential-thinking": {
+      "allowedModels": ["copilot/grok-code-fast-1"]
+    },
+    "Global in Code - Insiders: context7": {
+      "allowedModels": ["copilot/grok-code-fast-1"]
+    },
+    "Global in Code - Insiders: fetch": {
+      "allowedModels": ["copilot/grok-code-fast-1"]
+    },
+    "Global in Code - Insiders: playwright": {
+      "allowedModels": ["copilot/grok-code-fast-1"]
+    }
+  }
 }
