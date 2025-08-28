@@ -206,7 +206,7 @@
   "window.restoreWindows": "none",
   "explorer.confirmDelete": false,
   "chat.useChatSessionsForCloudButton": true,
-  "editor.renderWhitespace": "all",
+  "editor.renderWhitespace": "boundary",
   "github.copilot.selectedCompletionModel": "",
   "chat.mcp.access": "all",
   "chat.mcp.serverSampling": {
@@ -222,5 +222,6 @@
     "Global in Code - Insiders: playwright": {
       "allowedModels": ["copilot/grok-code-fast-1"]
     }
-  }
+  },
+  "editor.experimentalWhitespaceRendering": "font"
 }
