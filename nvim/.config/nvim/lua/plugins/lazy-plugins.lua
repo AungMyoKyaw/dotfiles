@@ -23,6 +23,11 @@ local plugins = {
   },
   {"ibhagwan/fzf-lua", cmd = "FzfLua"},
   {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {"nvim-lua/plenary.nvim"},
+    cmd = "Telescope"
+  },
+  {
     "NeogitOrg/neogit",
     cmd = "Neogit",
     dependencies = {
@@ -71,6 +76,32 @@ local plugins = {
 
   -- AI-powered coding assistance
   {"github/copilot.vim"},
+  {
+    "olimorris/codecompanion.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "hrsh7th/nvim-cmp", -- Optional: For using slash commands and variables in the chat buffer
+      "nvim-telescope/telescope.nvim" -- Optional: For using slash commands
+    },
+    config = function()
+      require("codecompanion").setup({
+        adapters = {
+          http = {
+            copilot = function()
+              return require("codecompanion.adapters").extend("copilot", {
+                schema = {model = {default = "gpt-5-mini"}}
+              })
+            end
+          }
+        },
+        strategies = {
+          chat = {adapter = "copilot"},
+          inline = {adapter = "copilot"}
+        }
+      })
+    end
+  },
 
   -- Lightweight utilities and enhancements
   {"echasnovski/mini.nvim", event = "VeryLazy"},

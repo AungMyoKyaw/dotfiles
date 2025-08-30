@@ -27,8 +27,10 @@ FILES_TO_LINK=(
   "$DOTFILES_DIR/vscode-insider/prompts:$HOME/Library/Application Support/Code/User/prompts"
   "$DOTFILES_DIR/ghostty/config.toml:$HOME/.config/ghostty/config"
   "$DOTFILES_DIR/gemini/GEMINI.md:/Library/Application Support/GeminiCli/GEMINI.md"
+  "$DOTFILES_DIR/zed/settings.json:$HOME/.config/zed/settings.json"
+  "$DOTFILES_DIR/zed/keymap.json:$HOME/.config/zed/keymap.json"
   "$DOTFILES_DIR/rovodev/config.yml:$HOME/.rovodev/config.yml"
-  "$DOTFILES_DIR/rovodev/mcp.json:$HOME/.rovodev/mcp.json"
+  # "$DOTFILES_DIR/rovodev/mcp.json:$HOME/.rovodev/mcp.json"
 )
 
 # Backup directory

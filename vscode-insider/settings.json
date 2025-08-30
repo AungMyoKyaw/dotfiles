@@ -223,5 +223,7 @@
       "allowedModels": ["copilot/grok-code-fast-1", "copilot/gpt-5-mini"]
     }
   },
-  "editor.experimentalWhitespaceRendering": "font"
+  "editor.experimentalWhitespaceRendering": "font",
+  "github.copilot.chat.customOAIModels": {},
+  "github.copilot.chat.alternateGptPrompt.enabled": true
 }

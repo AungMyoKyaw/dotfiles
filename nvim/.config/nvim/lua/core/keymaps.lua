@@ -29,3 +29,13 @@ map("n", "<leader>bd", ":bd<CR>", {noremap = true})
 -- Folding
 map("n", "zO", "zA", {noremap = true})
 map("n", "zo", "za", {noremap = true})
+
+-- CodeCompanion AI Assistant
+map("n", "<leader>cc", ":CodeCompanionChat<CR>", {noremap = true, silent = true})
+map("v", "<leader>cc", ":CodeCompanionChat<CR>", {noremap = true, silent = true})
+map("n", "<leader>ca", ":CodeCompanionActions<CR>",
+    {noremap = true, silent = true})
+map("v", "<leader>ca", ":CodeCompanionActions<CR>",
+    {noremap = true, silent = true})
+map("n", "<leader>ci", ":CodeCompanion<CR>", {noremap = true, silent = true})
+map("v", "<leader>ci", ":CodeCompanion<CR>", {noremap = true, silent = true})
