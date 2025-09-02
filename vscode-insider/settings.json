@@ -101,7 +101,7 @@
       "after": ["\"", "+", "y"]
     }
   ],
-  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.colorTheme": "GitHub Dark",
   "workbench.sideBar.location": "left",
   "workbench.statusBar.visible": true,
   "zenMode.centerLayout": false,
@@ -122,6 +122,7 @@
   "inlineChat.enableV2": true,
   "git.detectWorktrees": true,
   "python.useEnvironmentsExtension": true,
+  "python.analysis.typeCheckingMode": "standard",
   "typescript.tsserver.experimental.enableProjectDiagnostics": true,
   "typescript.experimental.useTsgo": true,
   "github.copilot.chat.notebook.followCellExecution.enabled": true,
@@ -145,7 +146,8 @@
   "[typescript]": {
     "editor.defaultFormatter": "TypeScriptTeam.native-preview"
   },
-  "editor.defaultFormatter": "biomejs.biome",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
   "editor.tabSize": 2,
 
   /**
@@ -225,5 +227,6 @@
   },
   "editor.experimentalWhitespaceRendering": "font",
   "github.copilot.chat.customOAIModels": {},
-  "github.copilot.chat.alternateGptPrompt.enabled": true
+  "github.copilot.chat.alternateGptPrompt.enabled": true,
+  "geminicodeassist.inlineSuggestions.enableAuto": false
 }

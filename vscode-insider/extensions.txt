@@ -1,4 +1,4 @@
-biomejs.biome
+esbenp.prettier-vscode
 bradlc.vscode-tailwindcss
 catppuccin.catppuccin-vsc
 editorconfig.editorconfig

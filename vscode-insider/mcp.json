@@ -33,18 +33,7 @@
         "--save-trace"
       ],
       "type": "stdio"
-    },
-    "ado": {
-      "type": "stdio",
-      "command": "mcp-server-azuredevops",
-      "args": ["${input:ado_org}", "--use-pat-env"]
     }
   },
-  "inputs": [
-    {
-      "id": "ado_org",
-      "type": "promptString",
-      "description": "Azure DevOps organization name  (e.g. 'contoso')"
-    }
-  ]
+  "inputs": []
 }

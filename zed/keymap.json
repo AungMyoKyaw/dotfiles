@@ -1,1 +1,46 @@
-[]
+[
+  // Custom keybindings to extend VS Code defaults
+  {
+    "context": "Editor",
+    "bindings": {
+      // Quick duplicate line (alternative to alt+shift+up/down)
+      "cmd+shift+d": "editor::DuplicateLineDown",
+
+      // Quick select word instances
+      "cmd+k cmd+l": "editor::SelectAllMatches",
+
+      // Custom navigation
+      "ctrl-cmd-left": "editor::MoveToPreviousWordStart",
+      "ctrl-cmd-right": "editor::MoveToNextWordEnd"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      // Quick panel toggles
+      "ctrl+n": "project_panel::ToggleFocus",
+      "cmd+k cmd+e": "project_panel::ToggleFocus",
+      "cmd+k cmd-`": "terminal_panel::ToggleFocus",
+
+      // Custom file operations
+      "cmd+alt+n": "workspace::NewFile",
+      "cmd+k cmd+o": "workspace::Open"
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      // Custom project panel shortcuts
+      "cmd+shift+n": "project_panel::NewDirectory",
+      "r": "project_panel::Rename"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      // Custom terminal shortcuts
+      "cmd+shift+c": "terminal::Copy",
+      "cmd+t": "workspace::NewTerminal"
+    }
+  }
+]

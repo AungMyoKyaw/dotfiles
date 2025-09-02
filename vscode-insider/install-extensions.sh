@@ -11,7 +11,7 @@ fi
 while IFS= read -r extension || [ -n "$extension" ]; do
   if [ -n "$extension" ]; then
     echo "Installing $extension..."
-    code --install-extension "$extension"
+    code-insiders --install-extension "$extension"
   fi
 done < "$EXT_FILE"
 

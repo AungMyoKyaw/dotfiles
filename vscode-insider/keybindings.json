@@ -171,5 +171,12 @@
   {
     "key": "ctrl+a r",
     "command": "workbench.action.reloadWindow"
+  },
+
+  // Formatting
+  {
+    "key": "ctrl+a f",
+    "command": "editor.action.formatDocument",
+    "when": "editorHasDocumentFormatter"
   }
 ]
