@@ -6,6 +6,7 @@
 // @author       You
 // @match        https://www.coursera.org/*
 // @match        https://coursera.org/*
+// @match        https://www.reddit.com/*
 // @grant        none
 // @run-at       document-end
 // ==/UserScript==
