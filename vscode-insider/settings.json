@@ -213,16 +213,32 @@
   "chat.mcp.access": "all",
   "chat.mcp.serverSampling": {
     "Global in Code - Insiders: sequential-thinking": {
-      "allowedModels": ["copilot/grok-code-fast-1", "copilot/gpt-5-mini"]
+      "allowedModels": [
+        "copilot/gpt-5-mini",
+        "copilot/grok-code-fast-1",
+        "copilot/gpt-4.1"
+      ]
     },
     "Global in Code - Insiders: context7": {
-      "allowedModels": ["copilot/grok-code-fast-1", "copilot/gpt-5-mini"]
+      "allowedModels": [
+        "copilot/gpt-5-mini",
+        "copilot/grok-code-fast-1",
+        "copilot/gpt-4.1"
+      ]
     },
     "Global in Code - Insiders: fetch": {
-      "allowedModels": ["copilot/grok-code-fast-1", "copilot/gpt-5-mini"]
+      "allowedModels": [
+        "copilot/gpt-5-mini",
+        "copilot/grok-code-fast-1",
+        "copilot/gpt-4.1"
+      ]
     },
     "Global in Code - Insiders: playwright": {
-      "allowedModels": ["copilot/grok-code-fast-1", "copilot/gpt-5-mini"]
+      "allowedModels": [
+        "copilot/gpt-5-mini",
+        "copilot/grok-code-fast-1",
+        "copilot/gpt-4.1"
+      ]
     }
   },
   "editor.experimentalWhitespaceRendering": "font",
