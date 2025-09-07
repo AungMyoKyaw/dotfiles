@@ -137,3 +137,6 @@ ssh/config
 # macOS metadata files
 .DS_Store
 .playwright-mcp/
+
+# VSCode settings
+.vscode/

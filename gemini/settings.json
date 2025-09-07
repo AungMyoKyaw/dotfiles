@@ -1,7 +1,7 @@
 {
   "general": {
     "preferredEditor": "vscode",
-    "vimMode": true,
+    "vimMode": false,
     "checkpointing": true
   },
   "ui": {

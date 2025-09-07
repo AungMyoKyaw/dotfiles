@@ -11,13 +11,22 @@ local monitoringEnabled = true
 local sampleInterval = 5 -- seconds
 local cpuAlertThreshold = 85 -- percent
 local memoryAlertThreshold = 90 -- percent of physical memory
+local alertsEnabled = true -- Set to false to disable notifications
+local alertCooldown = 300 -- Seconds (e.g., 300 = 5 minutes)
 
 local menubar = hs.menubar.new()
 local cpuTimer = nil
+local lastCpuAlertTime = 0
+local lastMemAlertTime = 0
 
 -- Helpers
 local function formatPercent(n) return
     string.format("%d%%", math.floor(n + 0.5)) end
+
+-- Helper to show a standard, less-intrusive notification
+local function showNotification(title, message)
+  hs.notify.new({title = title, informativeText = message}):send()
+end
 
 -- Helper to retrieve CPU and memory stats (so menu and updater can share)
 local function getStats()
@@ -55,35 +64,56 @@ end
 
 local function updateMenubar()
   if not monitoringEnabled then
-    menubar:setTitle(compactMode and "⚡ (off)" or "MONITOR OFF")
+    menubar:setTitle(hs.styledtext.new(compactMode and "⚡ (off)" or
+                                           "MONITOR OFF"))
     return
   end
   local cpuActive, usedPercent = getStats()
+
+  local highCpu = cpuActive >= cpuAlertThreshold
+  local highMem = usedPercent >= memoryAlertThreshold
+
+  -- Use a subtle color to indicate high usage in the menubar
+  local statusColor
+  if highCpu or highMem then
+    statusColor = {red = 0.9, green = 0.4, blue = 0.4} -- A noticeable but not jarring red
+  end
+
   if compactMode then
-    -- small icon-only representation
-    menubar:setTitle("⚡")
-    menubar:setTooltip(string.format("CPU %s | MEM %s",
+    local styledTitle = hs.styledtext.new("⚡", {color = statusColor})
+    menubar:setTitle(styledTitle)
+    menubar:setTooltip(string.format("CPU %%s | MEM %%s",
                                      formatPercent(cpuActive),
                                      formatPercent(usedPercent)))
   else
-    local title = string.format("CPU %s | MEM %s", formatPercent(cpuActive),
-                                formatPercent(usedPercent))
-    menubar:setTitle(title)
+    local cpuColor = highCpu and statusColor or nil
+    local memColor = highMem and statusColor or nil
+    local cpuText = hs.styledtext.new(string.format("CPU %%s",
+                                                    formatPercent(cpuActive)),
+                                      {color = cpuColor})
+    local memText = hs.styledtext.new(string.format("MEM %%s",
+                                                    formatPercent(usedPercent)),
+                                      {color = memColor})
+    local separator = hs.styledtext.new(" | ")
+    local fullTitle = hs.styledtext.concat({cpuText, separator, memText})
+    menubar:setTitle(fullTitle)
     menubar:setTooltip(nil)
   end
 
-  -- Alerts
-  if cpuActive >= cpuAlertThreshold then
-    hs.notify.new({
-      title = "High CPU",
-      informativeText = string.format("CPU at %s", formatPercent(cpuActive))
-    }):send()
-  end
-  if usedPercent >= memoryAlertThreshold then
-    hs.notify.new({
-      title = "High Memory",
-      informativeText = string.format("Memory at %s", formatPercent(usedPercent))
-    }):send()
+  -- Send throttled alerts, which can be disabled via the menu
+  if alertsEnabled then
+    local now = os.time()
+    if highCpu and (now - lastCpuAlertTime > alertCooldown) then
+      showNotification("High CPU Usage",
+                       string.format("CPU is at %%s", formatPercent(cpuActive)))
+      lastCpuAlertTime = now
+    end
+    if highMem and (now - lastMemAlertTime > alertCooldown) then
+      showNotification("High Memory Usage", string.format("Memory is at %%s",
+                                                          formatPercent(
+                                                              usedPercent)))
+      lastMemAlertTime = now
+    end
   end
 end
 
@@ -101,7 +131,8 @@ local function stopMonitoring()
   monitoringEnabled = false
   -- keep menubar but mark as off
   if menubar then
-    menubar:setTitle(compactMode and "⚡ (off)" or "MONITOR OFF")
+    menubar:setTitle(hs.styledtext.new(compactMode and "⚡ (off)" or
+                                           "MONITOR OFF"))
   end
 end
 
@@ -112,7 +143,7 @@ local function checkCaffeinateOnDisplay()
   local power = hs.battery.powerSource() -- "AC Power" or "Battery Power" or nil
   if hasExternal and power == "AC Power" then
     hs.caffeinate.set("displayIdle", true)
-    hs.alert.show("Auto Caffeinate: ON (external display + AC)")
+    hs.alert.show("Auto Caffeinate: ON", 1)
   else
     hs.caffeinate.set("displayIdle", false)
   end
@@ -128,11 +159,11 @@ local function showTopProcessesChooser()
   local ok, out = hs.execute("ps -Ao pid,pcpu,pmem,comm --sort=-pcpu", true)
   if ok and out then
     local i = 0
-    for line in out:gmatch("([^\n]+)\n") do
+    for line in out:gmatch("[^\n]+") do
       i = i + 1
-      if i == 1 then goto continue end -- header
+      if i == 1 or line:match("^%s*$") then goto continue end -- Skip header and empty lines
       local pid, pcpu, pmem, cmd = line:match(
-                                       "%s*(%d+)%s+([%d%.]+)%s+([%d%.]+)%s+(.+)")
+                                       "^%s*(%d+)%s+([%d%.]+)%s+([%d%.]+)%s+(.+)")
       if pid and cmd and i <= 21 then
         table.insert(choices, {
           text = string.format("%s — %s%% CPU %s%% MEM", pid, pcpu, pmem),
@@ -188,6 +219,16 @@ local function buildMenu()
           monitoringEnabled = true
           startMonitoring()
         end
+        menubar:setMenu(buildMenu) -- Refresh menu
+      end
+    },
+    {
+      title = (alertsEnabled and "Disable" or "Enable") .. " Alerts",
+      fn = function()
+        alertsEnabled = not alertsEnabled
+        hs.alert.show("Alerts " .. (alertsEnabled and "Enabled" or "Disabled"),
+                      1)
+        menubar:setMenu(buildMenu) -- Refresh menu
       end
     },
     {

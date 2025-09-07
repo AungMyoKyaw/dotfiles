@@ -90,6 +90,7 @@
       "after": ["<Esc>"]
     }
   ],
+  "workbench.activityBar.compact": true,
   "vim.leader": "<space>",
   "vim.useCtrlKeys": true,
   "vim.visualModeKeyBindingsNonRecursive": [
@@ -99,14 +100,12 @@
     }
   ],
   "workbench.colorTheme": "GitHub Dark",
-  "workbench.sideBar.location": "left",
   "workbench.statusBar.visible": true,
   "zenMode.centerLayout": false,
   "zenMode.hideLineNumbers": false,
   "zenMode.showTabs": "single",
-  "workbench.secondarySideBar.defaultVisibility": "maximized",
+  "workbench.secondarySideBar.defaultVisibility": "visible",
   "workbench.editor.enablePreview": false,
-  "workbench.activityBar.location": "hidden",
   "chat.checkpoints.enabled": true,
   "chat.math.enabled": true,
   "github.copilot.chat.newWorkspace.useContext7": true,
@@ -340,5 +339,17 @@
     "eval": false,
     "Invoke-Expression": false,
     "iex": false
-  }
+  },
+  "diffEditor.codeLens": true,
+  "geminicodeassist.agentYoloMode": true,
+  "geminicodeassist.enableTelemetry": false,
+  "geminicodeassist.inlineSuggestions.nextEditPredictions": false,
+  "geminicodeassist.updateChannel": "Insiders",
+  "github.copilot.chat.notebook.enhancedNextEditSuggestions.enabled": true,
+  "githubPullRequests.codingAgent.uiIntegration": true,
+  "python.analysis.cacheLSPData": true,
+  "python.analysis.enableAsyncProgram": true,
+  "python.analysis.enableTroubleshootMissingImports": true,
+  "python.analysis.supportAllPythonDocuments": true,
+  "python.analysis.supportDocstringTemplate": true
 }
