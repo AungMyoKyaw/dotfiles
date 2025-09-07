@@ -2,7 +2,6 @@
 -- Lightweight performance helpers: menubar CPU/memory, caffeinate on external display+AC,
 -- Activity Monitor launcher, and a safe top-process inspector.
 local obj = {}
-local hyper = {"cmd", "alt", "ctrl", "shift"}
 -- Compact menubar mode: show small icon instead of full text
 local compactMode = true
 local monitoringEnabled = true
@@ -28,10 +27,10 @@ local function showNotification(title, message)
   hs.notify.new({title = title, informativeText = message}):send()
 end
 
--- Helper to retrieve CPU and memory stats (so menu and updater can share)
+-- Helper to retrieve CPU and memory stats (reverted to original robust implementation)
 local function getStats()
   local cpu = hs.host.cpuUsage()
-  -- Memory computation similar to updateMenubar
+  -- Memory computation
   local mem = hs.host.vmStat()
   local totalBytes = nil
   if hs.host.physicalMemory and type(hs.host.physicalMemory) == "function" then
@@ -82,16 +81,16 @@ local function updateMenubar()
   if compactMode then
     local styledTitle = hs.styledtext.new("⚡", {color = statusColor})
     menubar:setTitle(styledTitle)
-    menubar:setTooltip(string.format("CPU %%s | MEM %%s",
+    menubar:setTooltip(string.format("CPU %s | MEM %s",
                                      formatPercent(cpuActive),
                                      formatPercent(usedPercent)))
   else
     local cpuColor = highCpu and statusColor or nil
     local memColor = highMem and statusColor or nil
-    local cpuText = hs.styledtext.new(string.format("CPU %%s",
+    local cpuText = hs.styledtext.new(string.format("CPU %s",
                                                     formatPercent(cpuActive)),
                                       {color = cpuColor})
-    local memText = hs.styledtext.new(string.format("MEM %%s",
+    local memText = hs.styledtext.new(string.format("MEM %s",
                                                     formatPercent(usedPercent)),
                                       {color = memColor})
     local separator = hs.styledtext.new(" | ")
@@ -105,11 +104,11 @@ local function updateMenubar()
     local now = os.time()
     if highCpu and (now - lastCpuAlertTime > alertCooldown) then
       showNotification("High CPU Usage",
-                       string.format("CPU is at %%s", formatPercent(cpuActive)))
+                       string.format("CPU is at %s", formatPercent(cpuActive)))
       lastCpuAlertTime = now
     end
     if highMem and (now - lastMemAlertTime > alertCooldown) then
-      showNotification("High Memory Usage", string.format("Memory is at %%s",
+      showNotification("High Memory Usage", string.format("Memory is at %s",
                                                           formatPercent(
                                                               usedPercent)))
       lastMemAlertTime = now
@@ -149,10 +148,6 @@ local function checkCaffeinateOnDisplay()
   end
 end
 
--- Activity Monitor launcher
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "A",
-               function() hs.application.launchOrFocus("Activity Monitor") end)
-
 -- Top-process inspector (safe: chooser + optional kill)
 local function showTopProcessesChooser()
   local choices = {}
@@ -185,11 +180,6 @@ local function showTopProcessesChooser()
   chooser:placeholderText("Top CPU processes (select to SIGTERM)")
   chooser:show()
 end
-
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "K", function()
-  local procs = hs.processInfo("all")
-  showTopProcessesChooser()
-end)
 
 -- Watchers
 local screenWatcher = hs.screen.watcher.new(
@@ -251,15 +241,6 @@ local function buildMenu()
   return menu
 end
 
--- Set initial menubar menu
-menubar:setMenu(buildMenu)
-
--- Toggle compact display hotkey: Hyper+P
-hs.hotkey.bind(hyper, "p", function()
-  compactMode = not compactMode
-  updateMenubar()
-end)
-
 function obj.start()
   startMonitoring()
   screenWatcher:start()
@@ -273,7 +254,25 @@ function obj.stop()
   powerWatcher:stop()
 end
 
--- Start automatically
-obj.start()
+function obj.init(hyper)
+  -- Set initial menubar menu
+  menubar:setMenu(buildMenu)
+
+  -- Hotkeys
+  -- Activity Monitor launcher
+  hs.hotkey.bind({"cmd", "alt", "ctrl"}, "A", function()
+    hs.application.launchOrFocus("Activity Monitor")
+  end)
+  -- Top-process inspector
+  hs.hotkey.bind({"cmd", "alt", "ctrl"}, "K",
+                 function() showTopProcessesChooser() end)
+  -- Toggle compact display hotkey: Hyper+P
+  hs.hotkey.bind(hyper, "p", function()
+    compactMode = not compactMode
+    updateMenubar()
+  end)
+
+  obj.start()
+end
 
 return obj

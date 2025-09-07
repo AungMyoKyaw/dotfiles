@@ -1,15 +1,12 @@
 -- Hammerspoon init.lua
--- Window management with vim/tmux-inspired keybindings
--- Define Hyper key (Cmd+Alt+Ctrl)
+-- Main entry point for the configuration.
 -- Define Hyper key (Cmd+Alt+Ctrl+Shift)
 local hyper = {"cmd", "alt", "ctrl", "shift"}
 
--- Load window management module
-require "window_management"
--- Load app launcher and helpers
-require "apps"
--- Load performance helpers
-require "performance"
+-- Load modules and initialize them with the hyper key
+require("window_management").init(hyper)
+require("apps").init(hyper)
+require("performance").init(hyper)
 
 -- Reload config with Hyper+R
 hs.hotkey.bind(hyper, "r", function()
@@ -17,7 +14,7 @@ hs.hotkey.bind(hyper, "r", function()
   hs.alert.show("Hammerspoon config reloaded")
 end)
 
--- Auto-reload when init.lua changes
+-- Auto-reload when configuration files change
 hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", hs.reload):start()
 hs.alert.show("Hammerspoon config loaded")
 
