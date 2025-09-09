@@ -196,8 +196,7 @@
     "**/dist/**": true,
     "**/build/**": true
   },
-  "git.autofetch": false,
-  "git.enabled": false,
+  "git.autofetch": true,
   "telemetry.telemetryLevel": "off",
   "workbench.startupEditor": "none",
   "window.restoreWindows": "none",
@@ -351,5 +350,14 @@
   "python.analysis.enableAsyncProgram": true,
   "python.analysis.enableTroubleshootMissingImports": true,
   "python.analysis.supportAllPythonDocuments": true,
-  "python.analysis.supportDocstringTemplate": true
+  "python.analysis.supportDocstringTemplate": true,
+  "git.confirmSync": false,
+  "jupyter.executionAnalysis.enabled": true,
+  "jupyter.interactiveWindow.notebookRepl": true,
+  "python.analysis.aiHoverSummaries": true,
+  "accessibility.signals.chatResponseReceived": {
+    "sound": "on"
+  },
+  "search.searchView.keywordSuggestions": true,
+  "search.searchView.semanticSearchBehavior": "auto"
 }
