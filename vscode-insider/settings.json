@@ -359,5 +359,6 @@
     "sound": "on"
   },
   "search.searchView.keywordSuggestions": true,
-  "search.searchView.semanticSearchBehavior": "auto"
+  "search.searchView.semanticSearchBehavior": "auto",
+  "git.enableSmartCommit": true
 }
