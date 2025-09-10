@@ -1,0 +1,35 @@
+{
+  "selectedAuthType": "qwen-oauth",
+  "mcpServers": {
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking@latest"]
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"]
+    },
+    "fetch": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-fetch",
+        "--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.79 Safari/537.36",
+        "--ignore-robots-txt"
+      ]
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest",
+        "--no-sandbox",
+        "--isolated",
+        "--image-responses",
+        "omit",
+        "--block-service-workers",
+        "--ignore-https-errors",
+        "--save-session",
+        "--save-trace"
+      ]
+    }
+  }
+}

@@ -31,6 +31,7 @@ FILES_TO_LINK=(
   "$DOTFILES_DIR/zed/keymap.json:$HOME/.config/zed/keymap.json"
   "$DOTFILES_DIR/rovodev/config.yml:$HOME/.rovodev/config.yml"
   # "$DOTFILES_DIR/rovodev/mcp.json:$HOME/.rovodev/mcp.json"
+  "$DOTFILES_DIR/qwen:$HOME/.qwen"
 )
 
 # Backup directory

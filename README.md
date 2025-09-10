@@ -23,6 +23,7 @@
   <img src="https://img.shields.io/badge/AI%20Agent-RovoDev-red?style=flat-square" alt="RovoDev">
   <img src="https://img.shields.io/badge/Primary%20AI%20Agent-VS%20Code%20GitHub%20Copilot-blueviolet?style=flat-square" alt="VS Code GitHub Copilot">
   <img src="https://img.shields.io/badge/AI%20Agent-Gemini%20CLI-00bfae?style=flat-square" alt="Gemini CLI">
+  <img src="https://img.shields.io/badge/AI%20Agent-Qwen%20Code%20CLI-4B0082?style=flat-square" alt="Qwen Code CLI">
 </p>
 
 <p align="center">
@@ -94,7 +95,7 @@
 ## Features
 
 - **Automated Installation**: One script to symlink all configs and back up existing files
-- **AI Development Assistant**: RovoDev integration with MCP servers for enhanced development workflow
+- **AI Development Assistants**: RovoDev and Qwen Code CLI integration with MCP servers for enhanced development workflow
 - **Consistent Theming**: Catppuccin Mocha theme across Neovim, Ghostty, and tmux
 - **Modal Editing**: Vim-style keybindings in Neovim, tmux, and VS Code Insiders
 - **Extensive Keybindings**: Custom shortcuts for window management, navigation, and more
@@ -128,6 +129,7 @@
 - **vscode-insider/**: VS Code Insiders settings, keybindings, extensions, and AI chatmodes
 - **safari/**: Custom CSS stylesheet for Safari browser
 - **gemini/**: Gemini CLI settings and configuration
+- **qwen/**: Qwen Code CLI settings and configuration with MCP servers
 
 ---
 
@@ -222,6 +224,35 @@ rovodev restart  # Apply configuration changes
 ```
 
 For detailed configuration options, see the [rovodev README](rovodev/README.md).
+
+### Qwen Code CLI
+
+Qwen Code CLI is an AI-powered development assistant that enhances your coding workflow with intelligent tools and automation, similar to the Gemini CLI but with Qwen models.
+
+**Key Features:**
+
+- **MCP Server Integration**: Sequential thinking, context management, web fetching, browser automation, and persistent memory
+- **Smart Permissions**: Granular control over tool access with confirmation prompts for sensitive operations
+- **Session Management**: Persistent sessions with auto-save capabilities
+- **Streaming Responses**: Real-time AI interactions with optimized temperature settings
+
+**Configuration Files:**
+
+- `settings.json`: Main Qwen Code CLI settings including MCP server configurations (located in `qwen/` directory)
+
+**MCP Servers:**
+
+- **sequential-thinking**: For structured thinking and planning
+- **context7**: For persistent memory and context management
+- **fetch**: For web content retrieval
+- **playwright**: For browser automation and web interaction
+
+**Usage:**
+
+```sh
+qwen  # Start interactive session
+qwen mcp list  # List configured MCP servers
+```
 
 ### Neovim
 
