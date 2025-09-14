@@ -107,7 +107,7 @@
 ## Prerequisites
 
 - macOS with [Homebrew](https://brew.sh/) for package management
-- Zsh as default shell (with optional `.zshenv` / `.zshenv.local`)
+- Zsh as default shell (with `.zshrc` and optional `.zshrc.local` for sensitive information)
 - Neovim: `brew install neovim`
 - Tmux: `brew install tmux`
 - Hammerspoon: `brew install --cask hammerspoon`
@@ -130,6 +130,7 @@
 - **safari/**: Custom CSS stylesheet for Safari browser
 - **gemini/**: Gemini CLI settings and configuration
 - **qwen/**: Qwen Code CLI settings and configuration with MCP servers
+- **zsh/**: Zsh configuration with separation of sensitive and non-sensitive information
 
 ---
 

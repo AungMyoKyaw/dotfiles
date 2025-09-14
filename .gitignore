@@ -81,6 +81,7 @@ web_modules/
 
 # Local Zsh environment variables (secret)
 zsh/.zshenv.local
+zsh/.zshrc.local
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 .parcel-cache

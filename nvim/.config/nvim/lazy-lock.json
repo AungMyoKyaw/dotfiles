@@ -17,7 +17,7 @@
   },
   "codecompanion.nvim": {
     "branch": "main",
-    "commit": "019be206a96cf6de12ea71f02a9e1b847a2debbb"
+    "commit": "d044963f34af800d62b56a8f568ba6a6aeb7185c"
   },
   "conform.nvim": {
     "branch": "master",
@@ -25,7 +25,7 @@
   },
   "copilot.vim": {
     "branch": "release",
-    "commit": "c2c435419e081a87e909e8979c66d874e75e4155"
+    "commit": "dfe0a3a1c256167d181488a73ec6ccab8d8931a9"
   },
   "diffview.nvim": {
     "branch": "main",
@@ -33,15 +33,15 @@
   },
   "fzf-lua": {
     "branch": "main",
-    "commit": "724e8f008d33ecf4c78a1bbff3571878eea53f66"
+    "commit": "d39620ba79d3685bae28e76b9a9a8dbc1cf2cd34"
   },
   "gitsigns.nvim": {
     "branch": "main",
-    "commit": "6e3c66548035e50db7bd8e360a29aec6620c3641"
+    "commit": "f780609807eca1f783a36a8a31c30a48fbe150c5"
   },
   "grug-far.nvim": {
     "branch": "main",
-    "commit": "c5b629399c0f2e436c00df381e44852a13b7313a"
+    "commit": "50d9ee2b5a19634670441948e7e4afaa042f1059"
   },
   "jupytext.nvim": {
     "branch": "main",
@@ -61,7 +61,7 @@
   },
   "mason-lspconfig.nvim": {
     "branch": "main",
-    "commit": "5e085efe67fccb13372d54331d849219662a7e93"
+    "commit": "7f9a39fcd2ac6e979001f857727d606888f5909c"
   },
   "mason.nvim": {
     "branch": "main",
@@ -69,11 +69,11 @@
   },
   "mini.nvim": {
     "branch": "main",
-    "commit": "7bbafa4691147bc8b74a51986b957daca14c1876"
+    "commit": "48b924e4f3b37f62246873d237a4a89704d88948"
   },
   "neogit": {
     "branch": "master",
-    "commit": "6617978288d58eb121754b5dd890e893d9a7e8d6"
+    "commit": "df08cb97f126c546a5ec265bafab2d78cc7399fa"
   },
   "nim.nvim": {
     "branch": "master",
@@ -89,7 +89,7 @@
   },
   "nvim-lspconfig": {
     "branch": "master",
-    "commit": "7de54fc6cae5080a656329a9c2f2dff03d914cdd"
+    "commit": "d89f4891f0720cd2598e4bdd60010d8784b2ac8a"
   },
   "nvim-surround": {
     "branch": "main",
@@ -97,7 +97,7 @@
   },
   "nvim-tree.lua": {
     "branch": "master",
-    "commit": "fefa335f1c8f690eb668a1efd18ee4fc6d64cd3e"
+    "commit": "e179ad2f83b5955ab0af653069a493a1828c2697"
   },
   "nvim-treesitter": {
     "branch": "master",
