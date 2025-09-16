@@ -11,6 +11,7 @@
 // @exclude      *://gemini.google.com/*
 // @exclude      *://aistudio.google.com/*
 // @exclude      *://tasks.google.com/*
+// @exclude      *://www.coursera.org/*
 // @grant        none
 // ==/UserScript==
 
@@ -18,6 +19,9 @@
   // Configurable exclusion list (domains to skip suspension)
   const EXCLUDED_DOMAINS = [
     // Add more domains as needed, or use @exclude in the header for static exclusions
+    // Exclude both www.coursera.org and all subdomains of coursera.org
+    'www.coursera.org',
+    'coursera.org'
   ];
   // Check if current hostname matches any excluded domain (for dynamic/user-configurable exclusions)
   if (
@@ -88,7 +92,9 @@
         <div id="tabSuspenderCard">
           <div id="tabSuspenderIcon" aria-hidden="true">🔋</div>
           <div id="tabSuspenderTitle">Tab Suspended to Save Resources</div>
-          <div id="tabSuspenderWebsite">Website: <span>${originalTitle ? originalTitle : '(No Title)'}</span></div>
+          <div id="tabSuspenderWebsite">Website: <span>${
+            originalTitle ? originalTitle : '(No Title)'
+          }</span></div>
           <button id="restoreTab" aria-label="Restore Tab" autofocus>Restore Tab</button>
         </div>
         <script>

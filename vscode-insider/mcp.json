@@ -5,6 +5,11 @@
       "args": ["-y", "@modelcontextprotocol/server-sequential-thinking@latest"],
       "type": "stdio"
     },
+    "betterprompt": {
+      "command": "npx",
+      "args": ["-y", "betterprompt-mcp"],
+      "type": "stdio"
+    },
     "context7": {
       "type": "http",
       "url": "https://mcp.context7.com/mcp",

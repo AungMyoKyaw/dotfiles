@@ -17,6 +17,10 @@
         "--ignore-robots-txt"
       ]
     },
+    "betterprompt": {
+      "command": "betterprompt-mcp",
+      "type": "stdio"
+    },
     "playwright": {
       "command": "npx",
       "args": [

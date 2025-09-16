@@ -1,4 +1,4 @@
-theme = catppuccin-mocha
+theme = "Catppuccin Mocha"
 font-family = "SFMonoNerdFont"
 font-size = 16
 auto-update-channel = "tip"
