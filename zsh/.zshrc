@@ -82,34 +82,34 @@ _set_dns() {
   local servers="$1"
   local network_name="iPhone USB"
   local network_name2="Wi-Fi"
-  
+
   networksetup -setdnsservers "${network_name}" $servers
   networksetup -getdnsservers "${network_name}"
-  
+
   networksetup -setdnsservers "${network_name2}" $servers
   networksetup -getdnsservers "${network_name2}"
-  
+
   echo "DNS servers successfully updated for ${network_name2}"
 }
 
 # DNS setting functions using the helper
-adguarddns() { 
+adguarddns() {
   _set_dns "94.140.14.14 94.140.15.15 1.1.1.1 1.0.0.1"
 }
 
-cloudflare() { 
+cloudflare() {
   _set_dns "1.1.1.1 1.0.0.1"
 }
 
-cloudflare_amk() { 
+cloudflare_amk() {
   _set_dns "172.64.36.1 172.64.36.2"
 }
 
-googledns() { 
+googledns() {
   _set_dns "8.8.8.8 8.8.4.4"
 }
 
-adguarddns_selfhosted() { 
+adguarddns_selfhosted() {
   _set_dns "127.0.0.1 172.17.0.3 94.140.14.14 94.140.15.15 1.1.1.1 1.0.0.1"
 }
 

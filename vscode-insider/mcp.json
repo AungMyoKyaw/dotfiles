@@ -6,8 +6,7 @@
       "type": "stdio"
     },
     "betterprompt": {
-      "command": "npx",
-      "args": ["-y", "betterprompt-mcp@nightly"],
+      "command": "betterprompt-mcp",
       "type": "stdio"
     },
     "context7": {

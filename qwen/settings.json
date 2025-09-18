@@ -1,4 +1,5 @@
 {
+  "vimMode": true,
   "selectedAuthType": "qwen-oauth",
   "mcpServers": {
     "sequential-thinking": {
@@ -35,5 +36,9 @@
         "--save-trace"
       ]
     }
-  }
+  },
+  "tools": {
+    "useRipgrep": true
+  },
+  "skipLoopDetection": true
 }

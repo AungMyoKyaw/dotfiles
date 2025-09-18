@@ -206,17 +206,8 @@
   "github.copilot.selectedCompletionModel": "",
   "chat.mcp.access": "all",
   "chat.mcp.serverSampling": {
-    "Global in Code - Insiders: sequential-thinking": {
-      "allowedModels": ["copilot/gpt-4.1"]
-    },
-    "Global in Code - Insiders: context7": {
-      "allowedModels": ["copilot/gpt-4.1"]
-    },
-    "Global in Code - Insiders: fetch": {
-      "allowedModels": ["copilot/gpt-4.1"]
-    },
-    "Global in Code - Insiders: playwright": {
-      "allowedModels": ["copilot/gpt-4.1"]
+    "Global in Code - Insiders: betterprompt": {
+      "allowedDuringChat": true
     }
   },
   "editor.experimentalWhitespaceRendering": "font",

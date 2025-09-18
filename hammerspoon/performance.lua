@@ -78,10 +78,15 @@ local function updateMenubar()
     statusColor = {red = 0.9, green = 0.4, blue = 0.4} -- A noticeable but not jarring red
   end
 
+  -- Add caffeinate status to menubar
+  local caffeinateStatus = ""
+  if hs.caffeinate.get("displayIdle") then caffeinateStatus = " ☕" end
+
   if compactMode then
-    local styledTitle = hs.styledtext.new("⚡", {color = statusColor})
+    local styledTitle = hs.styledtext.new("⚡" .. caffeinateStatus,
+                                          {color = statusColor})
     menubar:setTitle(styledTitle)
-    menubar:setTooltip(string.format("CPU %s | MEM %s",
+    menubar:setTooltip(string.format("CPU %s | MEM %s | Click for menu",
                                      formatPercent(cpuActive),
                                      formatPercent(usedPercent)))
   else
@@ -93,8 +98,14 @@ local function updateMenubar()
     local memText = hs.styledtext.new(string.format("MEM %s",
                                                     formatPercent(usedPercent)),
                                       {color = memColor})
+    local caffeinateText = hs.styledtext.new(caffeinateStatus)
     local separator = hs.styledtext.new(" | ")
-    local fullTitle = hs.styledtext.concat({cpuText, separator, memText})
+    local fullTitle = hs.styledtext.concat({
+      cpuText,
+      separator,
+      memText,
+      caffeinateText
+    })
     menubar:setTitle(fullTitle)
     menubar:setTooltip(nil)
   end
@@ -135,17 +146,44 @@ local function stopMonitoring()
   end
 end
 
+-- Track manual caffeinate override to prevent auto-caffeinate from overriding user preference
+local manualCaffeinateOverride = false
+local userWantsCaffeinate = false
+
 -- Auto caffeinate when external display connected and AC power
 local function checkCaffeinateOnDisplay()
   local screens = hs.screen.allScreens()
   local hasExternal = #screens > 1
   local power = hs.battery.powerSource() -- "AC Power" or "Battery Power" or nil
+
+  -- If user manually set caffeinate, respect that setting
+  if manualCaffeinateOverride then
+    hs.caffeinate.set("displayIdle", userWantsCaffeinate)
+    return
+  end
+
+  -- Auto caffeinate logic
   if hasExternal and power == "AC Power" then
     hs.caffeinate.set("displayIdle", true)
     hs.alert.show("Auto Caffeinate: ON", 1)
   else
     hs.caffeinate.set("displayIdle", false)
   end
+end
+
+-- Manual caffeinate toggle function
+local function toggleCaffeinate()
+  userWantsCaffeinate = not hs.caffeinate.get("displayIdle")
+  manualCaffeinateOverride = true
+  hs.caffeinate.set("displayIdle", userWantsCaffeinate)
+
+  if userWantsCaffeinate then
+    hs.alert.show("Caffeinate ON: System will not sleep")
+  else
+    hs.alert.show("Caffeinate OFF: System can sleep")
+  end
+
+  updateMenubar() -- Update menubar to reflect new state
 end
 
 -- Top-process inspector (safe: chooser + optional kill)
@@ -190,6 +228,7 @@ local powerWatcher = hs.battery.watcher.new(
 -- Build menubar menu (shows full stats and actions)
 local function buildMenu()
   local cpuActive, usedPercent = getStats()
+  local isCaffeinated = hs.caffeinate.get("displayIdle")
   local menu = {
     {
       title = string.format("CPU: %s", formatPercent(cpuActive)),
@@ -200,6 +239,22 @@ local function buildMenu()
       disabled = true
     },
     {title = "-"},
+    {
+      title = isCaffeinated and "Disable Caffeinate" or "Enable Caffeinate",
+      fn = function()
+        toggleCaffeinate()
+        menubar:setMenu(buildMenu) -- Refresh menu
+      end
+    },
+    {
+      title = "Reset Auto-Caffeinate",
+      fn = function()
+        manualCaffeinateOverride = false
+        checkCaffeinateOnDisplay()
+        hs.alert.show("Auto-Caffeinate: Reset", 1)
+        menubar:setMenu(buildMenu) -- Refresh menu
+      end
+    },
     {
       title = monitoringEnabled and "Stop Monitoring" or "Start Monitoring",
       fn = function()
@@ -242,6 +297,8 @@ local function buildMenu()
 end
 
 function obj.start()
+  -- Reset manual caffeinate override when starting
+  manualCaffeinateOverride = false
   startMonitoring()
   screenWatcher:start()
   powerWatcher:start()

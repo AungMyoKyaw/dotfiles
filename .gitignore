@@ -141,3 +141,6 @@ ssh/config
 
 # VSCode settings
 .vscode/
+
+.gemini/
+gha-creds-*.json

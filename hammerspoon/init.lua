@@ -17,28 +17,3 @@ end)
 -- Auto-reload when configuration files change
 hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", hs.reload):start()
 hs.alert.show("Hammerspoon config loaded")
-
--- Caffeinate Menu Bar Button
-local caffeinateMenu = hs.menubar.new()
-local function setCaffeinateMenu()
-  if hs.caffeinate.get("displayIdle") then
-    caffeinateMenu:setTitle("☕️")
-    caffeinateMenu:setTooltip("Caffeinate is ON. Click to turn OFF.")
-  else
-    caffeinateMenu:setTitle("💤")
-    caffeinateMenu:setTooltip("Caffeinate is OFF. Click to turn ON.")
-  end
-end
-
-local function toggleCaffeinate()
-  hs.caffeinate.toggle("displayIdle")
-  setCaffeinateMenu()
-  if hs.caffeinate.get("displayIdle") then
-    hs.alert.show("Caffeinate ON: System will not sleep")
-  else
-    hs.alert.show("Caffeinate OFF: System can sleep")
-  end
-end
-
-caffeinateMenu:setClickCallback(toggleCaffeinate)
-setCaffeinateMenu()
