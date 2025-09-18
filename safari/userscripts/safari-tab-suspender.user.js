@@ -11,6 +11,7 @@
 // @exclude      *://gemini.google.com/*
 // @exclude      *://aistudio.google.com/*
 // @exclude      *://tasks.google.com/*
+// @exclude      *://*withgoogle.com/*
 // @exclude      *://www.coursera.org/*
 // @grant        none
 // ==/UserScript==
@@ -21,7 +22,9 @@
     // Add more domains as needed, or use @exclude in the header for static exclusions
     // Exclude both www.coursera.org and all subdomains of coursera.org
     'www.coursera.org',
-    'coursera.org'
+    'coursera.org',
+    // Exclude all withgoogle.com domains
+    'withgoogle.com'
   ];
   // Check if current hostname matches any excluded domain (for dynamic/user-configurable exclusions)
   if (
