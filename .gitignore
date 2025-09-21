@@ -144,3 +144,5 @@ ssh/config
 
 .gemini/
 gha-creds-*.json
+
+*.pem

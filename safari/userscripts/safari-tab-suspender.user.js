@@ -11,7 +11,7 @@
 // @exclude      *://gemini.google.com/*
 // @exclude      *://aistudio.google.com/*
 // @exclude      *://tasks.google.com/*
-// @exclude      *://*withgoogle.com/*
+// @exclude      *://*.withgoogle.com/*
 // @exclude      *://www.coursera.org/*
 // @grant        none
 // ==/UserScript==
