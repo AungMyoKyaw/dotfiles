@@ -7,6 +7,9 @@ local hyper = {"cmd", "alt", "ctrl", "shift"}
 require("window_management").init(hyper)
 require("apps").init(hyper)
 require("performance").init(hyper)
+require("autoquit").init(hyper)
+require("cleanup").init(hyper)
+require("automation").init(hyper)
 
 -- Reload config with Hyper+R
 hs.hotkey.bind(hyper, "r", function()

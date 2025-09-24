@@ -10,7 +10,7 @@ local monitoringEnabled = true
 local sampleInterval = 5 -- seconds
 local cpuAlertThreshold = 85 -- percent
 local memoryAlertThreshold = 90 -- percent of physical memory
-local alertsEnabled = true -- Set to false to disable notifications
+local alertsEnabled = false -- Set to false to disable notifications
 local alertCooldown = 300 -- Seconds (e.g., 300 = 5 minutes)
 
 local menubar = hs.menubar.new()
