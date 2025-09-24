@@ -21,10 +21,6 @@
     "usageStatisticsEnabled": false
   },
   "mcpServers": {
-    "betterprompt": {
-      "command": "betterprompt-mcp",
-      "type": "stdio"
-    },
     "sequential-thinking": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-sequential-thinking@latest"]

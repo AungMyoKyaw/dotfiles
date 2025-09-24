@@ -17,7 +17,7 @@
   },
   "codecompanion.nvim": {
     "branch": "main",
-    "commit": "61b2ab5f4f534c1c5625a1d57ab1e071cc81d2fc"
+    "commit": "c3f3f82cefd211d401a0359a62e9bc19186a1238"
   },
   "conform.nvim": {
     "branch": "master",
@@ -73,7 +73,7 @@
   },
   "neogit": {
     "branch": "master",
-    "commit": "704ed34e957c8702df994bdcc8404e134d1e8212"
+    "commit": "462ccdeb26409849353d2859393e113a92a35a4a"
   },
   "nim.nvim": {
     "branch": "master",

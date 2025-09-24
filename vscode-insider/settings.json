@@ -205,11 +205,7 @@
   "editor.renderWhitespace": "boundary",
   "github.copilot.selectedCompletionModel": "",
   "chat.mcp.access": "all",
-  "chat.mcp.serverSampling": {
-    "Global in Code - Insiders: betterprompt": {
-      "allowedDuringChat": true
-    }
-  },
+  "chat.mcp.serverSampling": {},
   "editor.experimentalWhitespaceRendering": "font",
   "github.copilot.chat.customOAIModels": {},
   "github.copilot.chat.alternateGptPrompt.enabled": true,
@@ -335,5 +331,6 @@
   },
   "search.searchView.keywordSuggestions": true,
   "search.searchView.semanticSearchBehavior": "auto",
-  "git.enableSmartCommit": true
+  "git.enableSmartCommit": true,
+  "geminicodeassist.project": "ethereal-encoder-npj97"
 }
