@@ -2,9 +2,9 @@
 # This file is safe to share in version control
 
 # Public aliases
-alias qwen='npx @qwen-code/qwen-code@nightly -y'
+alias qwen='npx @qwen-code/qwen-code@preview -y'
 alias claude='npx @anthropic-ai/claude-code@next'
-alias gemini='npx @google/gemini-cli@nightly -y'
+alias gemini='npx @google/gemini-cli@preview -y'
 
 alias rovodev='acli rovodev'
 
