@@ -1,5 +1,14 @@
 -- lua/plugins/auto-complete.lua
-vim.lsp.set_log_level("off")
+-- Compatibility: prefer the new vim.lsp.log.set_level API, fall back to vim.lsp.set_log_level
+do
+  if vim.lsp and vim.lsp.log and type(vim.lsp.log.set_level) == "function" then
+    -- use the new API
+    vim.lsp.log.set_level("OFF")
+  elseif vim.lsp and type(vim.lsp.set_log_level) == "function" then
+    -- fallback for older Neovim versions
+    pcall(vim.lsp.set_log_level, "off")
+  end
+end
 
 local lsp_zero = require("lsp-zero")
 local cmp = require("cmp")

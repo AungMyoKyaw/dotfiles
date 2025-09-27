@@ -5,6 +5,7 @@
 alias qwen='npx @qwen-code/qwen-code@preview -y'
 alias claude='npx @anthropic-ai/claude-code@next'
 alias gemini='npx @google/gemini-cli@preview -y'
+alias copilot='npx @github/copilot@latest'
 
 alias rovodev='acli rovodev'
 
@@ -342,6 +343,9 @@ if [[ $- == *i* ]] && [[ -f "$(brew --prefix)/share/zsh-autosuggestions/zsh-auto
   source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
+# Luaver - Lua Version Manager (uses system binary, no init script needed)
+# Luaver completions are available at ~/.luaver/completions/luaver.bash
+
 # Docker CLI completions
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
 if [[ -d "$HOME/.docker/completions" ]]; then
@@ -376,3 +380,4 @@ alias psa='ps aux | grep'
 
 # Network utilities
 alias myip='curl ipinfo.io/ip'
+export PATH="$HOME/bin:$PATH"

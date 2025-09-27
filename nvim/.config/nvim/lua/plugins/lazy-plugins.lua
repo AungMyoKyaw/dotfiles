@@ -11,6 +11,10 @@ local plugins = {
 
   -- UI Enhancements
   {
+    "nvim-tree/nvim-web-devicons",
+    lazy = true -- Load when needed by other plugins
+  },
+  {
     "catppuccin/nvim",
     name = "catppuccin",
     lazy = false -- Load immediately to apply the theme early

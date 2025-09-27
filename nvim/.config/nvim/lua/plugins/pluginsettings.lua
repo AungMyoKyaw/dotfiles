@@ -17,6 +17,9 @@ local catppuccin = require("catppuccin")
 catppuccin.setup({flavour = "mocha"})
 vim.cmd.colorscheme "catppuccin"
 
+-- Setup nvim-web-devicons (must be after colorscheme is loaded)
+require("nvim-web-devicons").setup({color_icons = true, default = true})
+
 -- Lualine statusline setup
 local lualine = require("lualine")
 lualine.setup({options = {theme = "catppuccin"}})

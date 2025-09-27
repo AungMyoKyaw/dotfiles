@@ -182,6 +182,26 @@ git pull --rebase
 - **VS Code Insiders**: Reload window (`Cmd+Shift+P` → Reload Window) after updating settings.
 - **Formatting Errors**: Ensure `luaformatter` and `prettier` are installed; verify with `lua-format --version` and `prettier --version`.
 
+## Troubleshooting: codecompanion deprecation warnings
+
+If `:checkhealth` reports deprecation warnings referencing `vim.lsp.set_log_level()` or `vim.validate{}` originating from third-party plugins (for example, `codecompanion.nvim`), try the following:
+
+- Update your plugins (lazy.nvim: `:Lazy update` or whichever plugin manager you use).
+- If the warnings persist, open an issue on the offending plugin's repository and link the healthcheck stack trace from Neovim.
+- As a temporary local fix, some deprecations can be mitigated by replacing deprecated calls with the newer API in your local plugin copies (not recommended long-term). Example replacement:
+
+```lua
+-- deprecated
+vim.lsp.set_log_level("off")
+
+-- preferred (Neovim >= 0.13)
+vim.lsp.log.set_level("OFF")
+```
+
+- Check the plugin log for more details: `/Users/aungmyokyaw/.local/state/nvim/codecompanion.log`
+
+If you're unsure, run `:checkhealth` and paste the output when creating an issue — it will help plugin authors diagnose and fix the deprecated API usage.
+
 ---
 
 ## Security & Privacy Notes

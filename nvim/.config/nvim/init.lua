@@ -1,3 +1,7 @@
+-- Ensure treesitter extmark guard is loaded early to avoid
+-- "Invalid 'end_row': out of range" errors from the highlighter.
+require("user.treesitter_extmark_guard")
+
 vim.loader.enable(true)
 
 require("core.options")
