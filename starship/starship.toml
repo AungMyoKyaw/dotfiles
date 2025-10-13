@@ -1,0 +1,93 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = false
+
+# Minimal prompt format
+format = "$directory$git_branch$character"
+
+
+# Simple character
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+
+# Minimal directory - show only when needed
+[directory]
+truncation_length = 2
+format = "[$path]($style) "
+read_only = " 🔒"
+
+# Simplified git branch
+[git_branch]
+format = "[$symbol$branch]($style) "
+symbol = "🌱 "
+style = "purple"
+
+# Fixed git status format
+[git_status]
+format = "([\\[$all_status$ahead_behind\\]]($style) )"
+style = "yellow"
+conflicted = "🏳"
+ahead = "🏎️"
+behind = "😰"
+diverged = "😵"
+untracked = "🤷"
+stashed = "📦"
+modified = "📝"
+staged = "🗃️"
+renamed = "📛"
+deleted = "🗑️"
+
+# Only show git context when in a git repo
+[git_commit]
+format = "[\\($hash\\)]($style) "
+style = "green"
+only_detached = true
+
+# Disable most modules for minimal appearance
+[package]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[python]
+disabled = true
+
+[golang]
+disabled = true
+
+[rust]
+disabled = true
+
+[java]
+disabled = true
+
+[php]
+disabled = true
+
+[docker_context]
+disabled = true
+
+[kubernetes]
+disabled = true
+
+[aws]
+disabled = true
+
+[azure]
+disabled = true
+
+[battery]
+disabled = true
+
+[time]
+disabled = true
+
+[cmd_duration]
+disabled = true
+
+[jobs]
+disabled = true

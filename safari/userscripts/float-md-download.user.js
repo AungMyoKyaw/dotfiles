@@ -526,6 +526,13 @@ extracted: ${new Date().toISOString()}
         const defaultName = Utils.sanitizeFilename(document.title) + '.md';
         const filename = prompt('Save as:', defaultName) || defaultName;
 
+        // Store download data for immediate use
+        this.pendingDownload = {
+          content: fullContent,
+          filename: Utils.sanitizeFilename(filename)
+        };
+
+        // Trigger download immediately during user interaction
         this.downloadMarkdown(fullContent, Utils.sanitizeFilename(filename));
 
         Utils.showFeedback('Successfully downloaded!', 'success');
@@ -552,16 +559,120 @@ extracted: ${new Date().toISOString()}
     downloadMarkdown(content, filename) {
       const blob = new Blob([content], { type: 'text/markdown' });
       const url = URL.createObjectURL(blob);
+
+      // Safari-compatible download method
       const a = Utils.createElement('a', {
         href: url,
         download: filename,
-        style: 'display: none'
+        style: 'display: none',
+        target: '_blank'
       });
 
       document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+
+      // Method 1: Direct click (works in most cases)
+      try {
+        a.click();
+
+        // Keep the element longer for Safari to process the download
+        setTimeout(() => {
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+        }, 100);
+      } catch (error) {
+        console.error('Direct click failed:', error);
+
+        // Method 2: Event dispatch
+        try {
+          const clickEvent = new MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: true
+          });
+          a.dispatchEvent(clickEvent);
+
+          setTimeout(() => {
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+          }, 100);
+        } catch (error2) {
+          console.error('Event dispatch failed:', error2);
+
+          // Method 3: Fallback - open in new tab
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+
+          const newUrl = URL.createObjectURL(blob);
+          const fallbackWindow = window.open(newUrl, '_blank');
+
+          if (!fallbackWindow) {
+            Utils.showFeedback(
+              'Popup blocked. Please allow popups for this site.',
+              'error'
+            );
+
+            // Method 4: Last resort - copy to clipboard
+            this.copyToClipboard(content, filename);
+          } else {
+            Utils.showFeedback(
+              'Please save the file from the new tab (File > Save As)',
+              'info'
+            );
+            setTimeout(() => URL.revokeObjectURL(newUrl), 5000);
+          }
+        }
+      }
+    }
+
+    copyToClipboard(content, filename) {
+      try {
+        // Copy content to clipboard as fallback
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard
+            .writeText(content)
+            .then(() => {
+              Utils.showFeedback(
+                `Content copied to clipboard. Paste into a new file named "${filename}"`,
+                'info'
+              );
+            })
+            .catch(() => {
+              this.fallbackCopyMethod(content, filename);
+            });
+        } else {
+          this.fallbackCopyMethod(content, filename);
+        }
+      } catch (error) {
+        console.error('Copy failed:', error);
+        Utils.showFeedback(
+          'Download failed. Please manually copy the content.',
+          'error'
+        );
+      }
+    }
+
+    fallbackCopyMethod(content, filename) {
+      const textArea = Utils.createElement('textarea');
+      textArea.value = content;
+      textArea.style.position = 'fixed';
+      textArea.style.opacity = '0';
+      document.body.appendChild(textArea);
+      textArea.select();
+
+      try {
+        document.execCommand('copy');
+        Utils.showFeedback(
+          `Content copied to clipboard. Paste into a new file named "${filename}"`,
+          'info'
+        );
+      } catch (error) {
+        Utils.showFeedback(
+          'All download methods failed. Please manually copy the content.',
+          'error'
+        );
+      }
+
+      document.body.removeChild(textArea);
     }
   }
 

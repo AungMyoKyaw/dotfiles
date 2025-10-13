@@ -39,6 +39,7 @@ FILES_TO_LINK=(
   "$DOTFILES_DIR/claude/.claude/commands:$HOME/.claude/commands"
   "$DOTFILES_DIR/zsh/.zshrc:$HOME/.zshrc"
   "$DOTFILES_DIR/zsh/.zshrc.local:$HOME/.zshrc.local"
+  "$DOTFILES_DIR/starship/starship.toml:$HOME/.config/starship.toml"
 )
 
 # Backup directory

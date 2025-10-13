@@ -8,6 +8,7 @@ alias codex='npx @openai/codex@latest'
 alias gemini='npx @google/gemini-cli@preview -y'
 alias copilot='npx @github/copilot@prerelease'
 alias opencode='npx opencode-ai@dev'
+alias crush='npx @charmland/crush@latest'
 alias rovodev='acli rovodev'
 alias opencodestable='npx opencode-ai@latest'
 
