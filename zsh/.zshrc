@@ -3,11 +3,19 @@
 
 # Public aliases
 alias qwen='npx @qwen-code/qwen-code@preview -y'
-alias claude='npx @anthropic-ai/claude-code@next'
+alias claude='npx @anthropic-ai/claude-code@next --dangerously-skip-permissions'
+alias codex='npx @openai/codex@latest'
 alias gemini='npx @google/gemini-cli@preview -y'
-alias copilot='npx @github/copilot@latest'
-
+alias copilot='npx @github/copilot@prerelease'
+alias opencode='npx opencode-ai@dev'
 alias rovodev='acli rovodev'
+alias opencodestable='npx opencode-ai@latest'
+
+alias specify='uvx --from git+https://github.com/github/spec-kit.git specify'
+alias vercel='npx vercel'
+
+export COPILOT_MODEL='claude-sonnet-4.5'
+export COPILOT_ALLOW_ALL=true
 
 # git
 alias g='git'
@@ -355,6 +363,64 @@ if [[ -d "$HOME/.docker/completions" ]]; then
 fi
 # End of Docker CLI completions
 
+# Kubectl completion and aliases
+if command -v kubectl &> /dev/null; then
+  # Load kubectl completion using runtime approach for better compatibility
+  if source <(kubectl completion zsh) 2>/dev/null; then
+    echo "✓ Kubectl completion loaded"
+  else
+    echo "⚠ Kubectl completion failed to load"
+  fi
+
+  # Kubectl aliases for enhanced productivity
+  alias k='kubectl'
+  alias kg='kubectl get'
+  alias kd='kubectl describe'
+  alias kdel='kubectl delete'
+  alias klogs='kubectl logs'
+  alias kex='kubectl exec -it'
+  alias kapply='kubectl apply -f'
+  alias kcreate='kubectl create -f'
+  alias kedit='kubectl edit'
+  alias kscale='kubectl scale'
+  alias ktop='kubectl top'
+
+  # Context and namespace management
+  alias kctx='kubectl config current-context'
+  alias kctxs='kubectl config get-contexts'
+  alias kuse='kubectl config use-context'
+  alias kns='kubectl config set-context --current --namespace'
+  alias knsg='kubectl config view --minify | grep namespace'
+
+  # Resource shortcuts
+  alias kgpo='kubectl get pods'
+  alias kgs='kubectl get services'
+  alias kgd='kubectl get deployments'
+  alias kgi='kubectl get ingress'
+  alias kgcm='kubectl get configmaps'
+  alias kgsec='kubectl get secrets'
+  alias kgpv='kubectl get pv'
+  alias kgpvc='kubectl get pvc'
+
+  # Describe shortcuts
+  alias kdpo='kubectl describe pods'
+  alias kdds='kubectl describe services'
+  alias kdd='kubectl describe deployments'
+
+  # Port forwarding and exec shortcuts
+  alias kpf='kubectl port-forward'
+  alias kexec='kubectl exec -it'
+
+  # Quick status commands
+  alias khealth='kubectl get componentstatuses'
+  alias knodes='kubectl get nodes -o wide'
+  alias kversion='kubectl version --client && kubectl version --short'
+
+  echo "✓ Kubectl completion and aliases loaded"
+else
+  echo "⚠ Kubectl not found - completion and aliases disabled"
+fi
+
 # Useful navigation aliases
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -381,3 +447,10 @@ alias psa='ps aux | grep'
 # Network utilities
 alias myip='curl ipinfo.io/ip'
 export PATH="$HOME/bin:$PATH"
+
+# bun completions
+[ -s ~/.bun/_bun ] && source ~/.bun/_bun
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

@@ -146,3 +146,13 @@ ssh/config
 gha-creds-*.json
 
 *.pem
+
+# Hammerspoon sensitive configurations
+hammerspoon/sensitive_replacements.lua
+hammerspoon/*.secret.lua
+hammerspoon/.sensitive/
+
+# Sensitive configuration files
+**/sensitive_*
+**/*.secret.*
+**/.sensitive/

@@ -57,7 +57,7 @@
   "github.copilot.chat.edits.suggestRelatedFilesFromGitHistory": true,
   "github.copilot.chat.edits.temporalContext.enabled": true,
   "github.copilot.chat.editor.temporalContext.enabled": true,
-  "github.copilot.chat.generateTests.codeLens": false,
+  "github.copilot.chat.generateTests.codeLens": true,
   "github.copilot.chat.localeOverride": "en",
   "github.copilot.chat.newWorkspaceCreation.enabled": true,
   "github.copilot.chat.reviewSelection.enabled": true,
@@ -67,7 +67,10 @@
   "github.copilot.chat.terminalChatLocation": "chatView",
   "github.copilot.editor.enableCodeActions": true,
   "github.copilot.enable": {
-    "*": true
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": false
   },
   "github.copilot.nextEditSuggestions.enabled": true,
   "github.copilot.renameSuggestions.triggerAutomatically": true,
@@ -332,5 +335,16 @@
   "search.searchView.keywordSuggestions": true,
   "search.searchView.semanticSearchBehavior": "auto",
   "git.enableSmartCommit": true,
-  "geminicodeassist.project": "ethereal-encoder-npj97"
+  "geminicodeassist.project": "ethereal-encoder-npj97",
+  "workbench.iconTheme": "vs-minimal",
+  "chat.todoListWidget.position": "chat-input",
+  "chat.tools.terminal.autoReplyToPrompts": true,
+  "chat.useNestedAgentsMdFiles": true,
+  "github.copilot.chat.executePrompt.enabled": true,
+  "github.copilot.chat.languageContext.typescript.includeDocumentation": true,
+  "github.copilot.chat.languageContext.typescript.items": "fill",
+  "github.copilot.chat.responsesApiReasoningEffort": "high",
+  "github.copilot.chat.useResponsesApi": true,
+  "mermaid-chat.enabled": true,
+  "chat.useCloudButtonV2": true
 }

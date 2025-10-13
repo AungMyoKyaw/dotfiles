@@ -32,6 +32,11 @@ FILES_TO_LINK=(
   "$DOTFILES_DIR/rovodev/config.yml:$HOME/.rovodev/config.yml"
   # "$DOTFILES_DIR/rovodev/mcp.json:$HOME/.rovodev/mcp.json"
   "$DOTFILES_DIR/qwen/settings.json:$HOME/.qwen/settings.json"
+  "$DOTFILES_DIR/qwen/QWEN.md:$HOME/.qwen/QWEN.md"
+  "$DOTFILES_DIR/opencode/settings.json:$HOME/.config/opencode/settings.json"
+  "$DOTFILES_DIR/claude/.claude/settings.json:$HOME/.claude/settings.json"
+  "$DOTFILES_DIR/claude/.claude/CLAUDE.md:$HOME/.claude/CLAUDE.md"
+  "$DOTFILES_DIR/claude/.claude/commands:$HOME/.claude/commands"
   "$DOTFILES_DIR/zsh/.zshrc:$HOME/.zshrc"
   "$DOTFILES_DIR/zsh/.zshrc.local:$HOME/.zshrc.local"
 )

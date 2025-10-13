@@ -1,6 +1,21 @@
 -- hammerspoon/cleanup.lua
 -- Shortcuts and functions for clearing cache and temporary files
-local obj = {}
+local M = {}
+
+-- Confirmation helper
+local function confirmAction(msg)
+  if hs.dialog and hs.dialog.blockAlert then
+    local button, _ = hs.dialog
+                          .blockAlert("Confirm Action", msg, "OK", "Cancel")
+    return button == "OK"
+  else
+    -- Fallback to osascript dialog
+    local script = "display dialog \"" .. hs.http.encodeForQuery(msg) ..
+                       "\" buttons {\"Cancel\",\"OK\"} default button \"OK\""
+    local ok, out = pcall(hs.execute, "osascript -e \"" .. script .. "\"")
+    return ok and out and out:match("OK")
+  end
+end
 
 -- List of cache and temp directories to clean
 local cacheDirs = {
@@ -22,24 +37,32 @@ local function clearCacheDir(dir)
     hs.alert.show("Cleared cache: " .. dir)
     return true
   else
-    hs.alert.show("Error clearing cache: " + dir)
+    hs.alert.show("Error clearing cache: " .. dir)
     return false
   end
 end
 
 -- Function to clear all caches
 local function clearAllCaches()
+  if not confirmAction(
+      "Are you sure you want to clear all caches listed? This will remove files from multiple cache directories.") then
+    hs.alert.show("Cache clear cancelled")
+    return
+  end
   local totalCleared = 0
   for _, dir in ipairs(cacheDirs) do
     local expandedDir = string.gsub(dir, "^~", os.getenv("HOME"))
-    local beforeSize = hs.execute("du -sh '" .. expandedDir ..
-                                      "' 2>/dev/null | cut -f1")
-    local result = hs.execute("rm -rf '" .. expandedDir .. "'/*")
-    if result and result ~= "" then
-      local afterSize = hs.execute("du -sh '" .. expandedDir ..
-                                       "' 2>/dev/null | cut -f1")
-      -- Compare sizes to confirm cleanup
-      if beforeSize ~= afterSize then totalCleared = totalCleared + 1 end
+    -- Skip if directory doesn't exist
+    local ok, _ = pcall(hs.execute, "test -d '" .. expandedDir .. "'")
+    if ok then
+      local beforeSize = hs.execute("du -sh '" .. expandedDir ..
+                                        "' 2>/dev/null | cut -f1")
+      local result = hs.execute("rm -rf '" .. expandedDir .. "'/*")
+      if result and result ~= "" then
+        local afterSize = hs.execute("du -sh '" .. expandedDir ..
+                                         "' 2>/dev/null | cut -f1")
+        if beforeSize ~= afterSize then totalCleared = totalCleared + 1 end
+      end
     end
   end
   hs.alert.show("Cleared " .. totalCleared .. " cache locations")
@@ -58,18 +81,28 @@ end
 
 -- Function to clear system logs
 local function clearSystemLogs()
+  if not confirmAction(
+      "Clear system logs? This requires elevated privileges and cannot be undone.") then
+    hs.alert.show("System log clear cancelled")
+    return
+  end
   local logCmd =
       "sudo rm -rf /var/log/asl/*.asl; sudo rm -rf /Library/Logs/DiagnosticReports/*; rm -rf ~/Library/Logs/DiagnosticReports/*"
-  local result = hs.execute(logCmd)
-  if result then
+  local ok, out = pcall(hs.execute, logCmd)
+  if ok then
     hs.alert.show("System logs cleared")
   else
-    hs.alert.show("Error clearing system logs")
+    hs.alert.show("Error clearing system logs: " .. tostring(out))
   end
 end
 
 -- Function to clear temporary files
 local function clearTempFiles()
+  if not confirmAction(
+      "Clear temporary files older than 7 days from common temp directories?") then
+    hs.alert.show("Temp cleanup cancelled")
+    return
+  end
   local tempDirs = {
     "/tmp",
     "/private/var/tmp",
@@ -79,15 +112,14 @@ local function clearTempFiles()
 
   for _, dir in ipairs(tempDirs) do
     local expandedDir = string.gsub(dir, "^~", os.getenv("HOME"))
-    local cmd =
-        string.format("find '%s' -type f -mtime +7 -delete", expandedDir)
-    local result = hs.execute(cmd)
-    if result then count = count + 1 end
+    local ok = pcall(hs.execute, string.format(
+                         "find '%s' -type f -mtime +7 -delete", expandedDir))
+    if ok then count = count + 1 end
   end
   hs.alert.show("Cleaned " .. count .. " temp directories")
 end
 
-function obj.init(hyper)
+function M.init(hyper)
   -- Hotkey to clear all caches (Hyper + C)
   hs.hotkey.bind(hyper, "c", function()
     hs.alert.show("Clearing caches...")
@@ -130,4 +162,4 @@ function obj.init(hyper)
   end)
 end
 
-return obj
+return M

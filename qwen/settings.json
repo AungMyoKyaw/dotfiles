@@ -1,5 +1,6 @@
 {
   "vimMode": true,
+  "ideMode": true,
   "selectedAuthType": "qwen-oauth",
   "mcpServers": {
     "sequential-thinking": {
@@ -18,7 +19,6 @@
         "--ignore-robots-txt"
       ]
     },
-
     "playwright": {
       "command": "npx",
       "args": [
@@ -41,5 +41,6 @@
   "tools": {
     "useRipgrep": true
   },
-  "skipLoopDetection": true
+  "skipLoopDetection": true,
+  "hasSeenIdeIntegrationNudge": true
 }

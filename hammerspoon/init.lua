@@ -1,5 +1,8 @@
 -- Hammerspoon init.lua
 -- Main entry point for the configuration.
+-- Enable IPC for command-line control
+require("hs.ipc")
+
 -- Define Hyper key (Cmd+Alt+Ctrl+Shift)
 local hyper = {"cmd", "alt", "ctrl", "shift"}
 
@@ -10,6 +13,7 @@ require("autoquit").init(hyper)
 require("cleanup").init(hyper)
 require("automation").init(hyper)
 require("window_management").init(hyper)
+require("text_replacement").init(hyper)
 
 -- Reload config with Hyper+R
 hs.hotkey.bind(hyper, "r", function()
