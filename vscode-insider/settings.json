@@ -346,5 +346,7 @@
   "github.copilot.chat.responsesApiReasoningEffort": "high",
   "github.copilot.chat.useResponsesApi": true,
   "mermaid-chat.enabled": true,
-  "chat.useCloudButtonV2": true
+  "chat.useCloudButtonV2": true,
+  "github.copilot.chat.completionsFetcher": "electron-fetch",
+  "github.copilot.chat.nesFetcher": "electron-fetch"
 }

@@ -33,7 +33,7 @@
   },
   "fzf-lua": {
     "branch": "main",
-    "commit": "db3ccffe79480543d8e0f7b0cac0d9b220f9486e"
+    "commit": "58ebb27333bd12cb497f27b7da07a677116bc0ef"
   },
   "gitsigns.nvim": {
     "branch": "main",

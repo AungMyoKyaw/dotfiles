@@ -4,14 +4,17 @@
 # Inserts a blank line between shell prompts
 add_newline = false
 
-# Minimal prompt format
-format = "$directory$git_branch$character"
+# Minimal prompt format with cursor on new line below
+format = """
+$directory$git_branch
+$character"""
 
 
-# Simple character
+# Simple character with proper newline handling
 [character]
 success_symbol = "[❯](bold green)"
 error_symbol = "[❯](bold red)"
+vimcmd_symbol = "[❮](bold green)"
 
 # Minimal directory - show only when needed
 [directory]
@@ -87,7 +90,4 @@ disabled = true
 disabled = true
 
 [cmd_duration]
-disabled = true
-
-[jobs]
 disabled = true

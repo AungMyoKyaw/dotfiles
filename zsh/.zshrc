@@ -368,7 +368,8 @@ fi
 if command -v kubectl &> /dev/null; then
   # Load kubectl completion using runtime approach for better compatibility
   if source <(kubectl completion zsh) 2>/dev/null; then
-    echo "✓ Kubectl completion loaded"
+    # echo "✓ Kubectl completion loaded"
+    true  # Silent completion
   else
     echo "⚠ Kubectl completion failed to load"
   fi
@@ -417,7 +418,7 @@ if command -v kubectl &> /dev/null; then
   alias knodes='kubectl get nodes -o wide'
   alias kversion='kubectl version --client && kubectl version --short'
 
-  echo "✓ Kubectl completion and aliases loaded"
+  # echo "✓ Kubectl completion and aliases loaded"
 else
   echo "⚠ Kubectl not found - completion and aliases disabled"
 fi
