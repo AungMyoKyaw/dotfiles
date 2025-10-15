@@ -18,13 +18,16 @@
   <img src="https://img.shields.io/badge/Shell-zsh-blue?style=flat-square" alt="zsh">
   <img src="https://img.shields.io/badge/Primary%20Editor-Neovim-green?style=flat-square" alt="Neovim">
   <img src="https://img.shields.io/badge/Editor-VSCode%20Insiders-blueviolet?style=flat-square" alt="VSCode Insiders">
+  <img src="https://img.shields.io/badge/Editor-Zed-00D084?style=flat-square" alt="Zed">
+  <img src="https://img.shields.io/badge/Editor-OpenCode-FF6B35?style=flat-square" alt="OpenCode">
+  <img src="https://img.shields.io/badge/Prompt-Starship-FF6B35?style=flat-square" alt="Starship">
   <img src="https://img.shields.io/badge/Terminal-Ghostty-orange?style=flat-square" alt="Ghostty">
   <img src="https://img.shields.io/badge/WindowManager-Hammerspoon-yellow?style=flat-square" alt="Hammerspoon">
   <img src="https://img.shields.io/badge/AI%20Agent-RovoDev-red?style=flat-square" alt="RovoDev">
-  <img src="https://img.shields.io/badge/Primary%20AI%20Agent-VS%20Code%20GitHub%20Copilot-blueviolet?style=flat-square" alt="VS Code GitHub Copilot">
+  <img src="https://img.shields.io/badge/AI%20Agent-Claude%20Code%20CLI-FF6B35?style=flat-square" alt="Claude Code CLI">
   <img src="https://img.shields.io/badge/AI%20Agent-Gemini%20CLI-00bfae?style=flat-square" alt="Gemini CLI">
   <img src="https://img.shields.io/badge/AI%20Agent-Qwen%20Code%20CLI-4B0082?style=flat-square" alt="Qwen Code CLI">
-  <img src="https://img.shields.io/badge/AI%20Agent-Claude%20Code%20CLI-FF6B35?style=flat-square" alt="Claude Code CLI">
+  <img src="https://img.shields.io/badge/Primary%20AI%20Agent-VS%20Code%20GitHub%20Copilot-blueviolet?style=flat-square" alt="VS Code GitHub Copilot">
 </p>
 
 <p align="center">
@@ -51,10 +54,14 @@
         <li><a href="#neovim">Neovim</a></li>
         <li><a href="#tmux">Tmux</a></li>
         <li><a href="#vs-code-insiders">VS Code Insiders</a></li>
+        <li><a href="#zed">Zed</a></li>
+        <li><a href="#starship">Starship</a></li>
+        <li><a href="#ghostty">Ghostty</a></li>
+        <li><a href="#claude-code-cli">Claude Code CLI</a></li>
         <li><a href="#hammerspoon">Hammerspoon</a></li>
       </ul>
     </li>
-    <li><a href="#formatting-scripts">Formatting Scripts</a></li>
+    <li><a href="#automation-scripts">Automation Scripts</a></li>
     <li><a href="#updating">Updating</a></li>
     <li><a href="#troubleshooting">Troubleshooting</a></li>
     <li><a href="#security--privacy-notes">Security & Privacy Notes</a></li>
@@ -86,7 +93,13 @@
 
 - See [Prerequisites](#prerequisites) below for required tools
 
-4. **(Optional) Format configs:**
+4. **(Optional) Install MCP servers for AI tools:**
+
+   ```sh
+   ./install-mcp-servers.sh
+   ```
+
+5. **(Optional) Format configs:**
    ```sh
    ./lua-format.sh
    ```
@@ -95,13 +108,17 @@
 
 ## Features
 
-- **Automated Installation**: One script to symlink all configs and back up existing files
-- **AI Development Assistants**: RovoDev, Qwen Code CLI, and Claude Code CLI integration with MCP servers for enhanced development workflow
-- **Consistent Theming**: Catppuccin Mocha theme across Neovim, Ghostty, and tmux
-- **Modal Editing**: Vim-style keybindings in Neovim, tmux, and VS Code Insiders
-- **Extensive Keybindings**: Custom shortcuts for window management, navigation, and more
-- **Plugin-Managed**: `lazy.nvim` for Neovim, TPM for tmux
-- **AI-Powered**: GitHub Copilot integration in Neovim and VS Code Insiders
+- **Automated Installation**: One script to symlink all configs and back up existing files with sudo support for system directories
+- **AI Development Assistants**: RovoDev, Claude Code CLI, Gemini CLI, and Qwen Code CLI integration with MCP servers for enhanced development workflow
+- **Multiple Editor Support**: Neovim, VS Code Insiders, Zed, and OpenCode configurations with consistent theming and AI integrations
+- **Consistent Theming**: Catppuccin Mocha theme across Neovim, Ghostty, tmux, and terminal applications
+- **Modal Editing**: Vim-style keybindings in Neovim, tmux, VS Code Insiders, and Zed
+- **Advanced Terminal Setup**: Starship prompt, Ghostty terminal with performance optimizations, and comprehensive Zsh configuration
+- **MCP Server Integration**: Automated installation script for Model Context Protocol servers across AI tools
+- **Extensive Keybindings**: Custom shortcuts for window management, navigation, and productivity
+- **Plugin-Managed**: `lazy.nvim` for Neovim, TPM for tmux, extensions for VS Code Insiders and Zed
+- **AI-Powered**: GitHub Copilot, edit predictions, and context-aware assistance across all editors
+- **macOS Optimization**: Hammerspoon window management, Safari customizations, and system-wide productivity enhancements
 
 ---
 
@@ -109,29 +126,48 @@
 
 - macOS with [Homebrew](https://brew.sh/) for package management
 - Zsh as default shell (with `.zshrc` and optional `.zshrc.local` for sensitive information)
-- Neovim: `brew install neovim`
-- Tmux: `brew install tmux`
-- Hammerspoon: `brew install --cask hammerspoon`
-- [lua-format](https://github.com/Koihik/LuaFormatter): `brew install luaformatter`
-- [Node.js](https://nodejs.org/) and npm for formatting scripts: `brew install node`
-- Prettier: `npm install -g prettier`
+- **Editors** (choose one or more):
+  - Neovim: `brew install neovim`
+  - VS Code Insiders: `brew install --cask visual-studio-code-insiders`
+  - Zed: `brew install --cask zed`
+- **Terminal & Shell**:
+  - Tmux: `brew install tmux`
+  - Ghostty: `brew install --cask ghostty`
+  - Starship: `brew install starship`
+- **AI Development Tools** (optional):
+  - Claude Code CLI: `npm install -g @anthropic-ai/claude-code`
+  - Gemini CLI: Install per official documentation
+  - Qwen Code CLI: Install per official documentation
+- **System Tools**:
+  - Hammerspoon: `brew install --cask hammerspoon`
+- **Development Tools**:
+  - [lua-format](https://github.com/Koihik/LuaFormatter): `brew install luaformatter`
+  - [Node.js](https://nodejs.org/) and npm: `brew install node`
+  - Prettier: `npm install -g prettier`
+  - uvx (for MCP fetch server): `pip install uvx`
 
 ---
 
 ## Repository Structure
 
-- **link_dotfiles.sh**: Script to symlink dotfiles to their target locations
+- **link_dotfiles.sh**: Script to symlink dotfiles to their target locations with backup and sudo support
 - **lua-format.sh**: Script to format all Lua files and supported files via Prettier
+- **install-mcp-servers.sh**: Script to install MCP servers for Claude CLI and other AI tools
 - **nvim/**: Neovim configuration directory (`.config/nvim`) with lazy.nvim and LSP setup
 - **rovodev/**: RovoDev AI assistant configuration with MCP servers and permissions
-- **hammerspoon/**: Hammerspoon setup for macOS window management with custom keybindings
-- **tmux/**: Tmux configuration (`.tmux.conf`) with TPM and Catppuccin theme
-- **ghostty/**: Ghostty terminal emulator configuration with Catppuccin theme
-- **vscode-insider/**: VS Code Insiders settings, keybindings, extensions, and AI chatmodes
-- **safari/**: Custom CSS stylesheet for Safari browser
+- **claude/**: Claude Code CLI configuration with enhanced transparency protocols and MCP servers
 - **gemini/**: Gemini CLI settings and configuration
 - **qwen/**: Qwen Code CLI settings and configuration with MCP servers
+- **opencode/**: OpenCode editor configuration with AI integrations
+- **zed/**: Zed editor settings with AI features, Copilot, and context servers
+- **vscode-insider/**: VS Code Insiders settings, keybindings, extensions, and AI chatmodes
+- **starship/**: Starship prompt configuration with minimal design and git integration
+- **hammerspoon/**: Hammerspoon setup for macOS window management with custom keybindings
+- **tmux/**: Tmux configuration (`.tmux.conf`) with TPM and Catppuccin theme
+- **ghostty/**: Ghostty terminal emulator configuration with Catppuccin theme and performance tweaks
+- **safari/**: Custom CSS stylesheet for Safari browser
 - **zsh/**: Zsh configuration with separation of sensitive and non-sensitive information
+- **ssh/**: SSH configuration directory for secure connections
 
 ---
 
@@ -153,7 +189,13 @@
 
 ---
 
-## Formatting Scripts
+## Automation Scripts
+
+- **`install-mcp-servers.sh`**: Installs all configured MCP servers for Claude CLI and other AI tools.
+
+  ```sh
+  ./install-mcp-servers.sh
+  ```
 
 - **`lua-format.sh`**: Formats all Lua files (indent width 2, 80-col limit) and runs Prettier on supported files.
   ```sh
@@ -177,8 +219,13 @@ git pull --rebase
 ## Troubleshooting
 
 - **Symlink Issues**: Ensure `link_dotfiles.sh` is executable (`chmod +x link_dotfiles.sh`) and run with proper permissions.
+- **MCP Server Issues**: Run `./install-mcp-servers.sh` to reinstall MCP servers; check Claude CLI with `claude mcp list`.
 - **Neovim**: After plugin changes, open Neovim and run `:Lazy sync` or `:PackerSync` depending on your setup.
 - **Tmux**: Restart tmux server with `tmux kill-server` and reattach; install plugins with `<prefix> I`.
+- **Zed**: Reload window (`Cmd+Shift+P` → Reload Window) after updating settings; check extensions panel for MCP server status.
+- **Ghostty**: Restart Ghostty after configuration changes; check `ghostty --config-file` to verify config path.
+- **Starship**: Restart your terminal or run `starship init` to reload configuration.
+- **Claude CLI**: Restart with `claude restart` after configuration changes; check `~/.claude/settings.json`.
 - **Hammerspoon**: Reload config via Hammerspoon menu or run `hs.reload()` in console.
 - **VS Code Insiders**: Reload window (`Cmd+Shift+P` → Reload Window) after updating settings.
 - **Formatting Errors**: Ensure `luaformatter` and `prettier` are installed; verify with `lua-format --version` and `prettier --version`.
@@ -343,6 +390,109 @@ My VS Code Insiders setup is customized with tmux-style keybindings for pane nav
 | `ctrl+a x`       | Close the active editor       |
 | `ctrl+a g`       | Open Copilot Chat             |
 | `ctrl+a i`       | Start an inline chat          |
+
+### Zed
+
+Zed editor configuration with AI features, modern performance, and consistent theming.
+
+**Key Features:**
+
+- **AI Integration**: Copilot edit predictions and context server support
+- **Vim Mode**: Comprehensive vim configuration with system clipboard support
+- **Performance**: Optimized settings for smooth editing experience
+- **Theme Support**: Gruvbox Dark theme with consistent font configuration
+- **Context Servers**: MCP server integration for enhanced AI capabilities
+
+**Configuration Files:**
+
+- `settings.json`: Main editor settings including AI, theme, and performance configurations
+- `keymap.json`: Custom keybindings for enhanced productivity
+
+**Key Settings:**
+
+- Font: SFMono Nerd Font with ligatures enabled
+- AI features: Edit predictions via Copilot, context server integration
+- Vim mode: Enabled with system clipboard and smartcase find
+- Theme: Gruvbox Dark with comfortable line height
+- Git: Inline blame disabled, git gutter on tracked files only
+
+### Starship
+
+Minimal, fast, and customizable prompt for any shell with git integration.
+
+**Key Features:**
+
+- **Minimal Design**: Clean prompt with only essential information
+- **Git Integration**: Branch status and ahead/behind indicators
+- **Performance**: Optimized for instant response
+- **Customizable**: Easy to extend with additional modules
+
+**Configuration:**
+
+- Format: Directory and git branch on one line, character on next
+- Git status: Visual indicators for modified, staged, and untracked files
+- Disabled modules: Most language-specific modules disabled for minimal appearance
+- Custom symbols: Custom emoji indicators for git states
+
+**Prompt Structure:**
+
+```
+directory/branch 🌱 main
+❯
+```
+
+### Ghostty
+
+Modern, fast terminal emulator with advanced features and Catppuccin theming.
+
+**Key Features:**
+
+- **Performance**: VSync disabled, 10MB scrollback limit for smooth operation
+- **Theme**: Catppuccin Mocha with consistent design
+- **Font**: SFMono Nerd Font with custom features
+- **Window Management**: Auto-maximize, focus follows mouse
+- **UX Enhancements**: Cursor blinking, mouse hiding while typing
+
+**Configuration Highlights:**
+
+- Theme: Catppuccin Mocha
+- Font: SFMonoNerdFont, size 16, with custom font features
+- Performance: Window vsync disabled, resize overlay never shown
+- Window: Native titlebar, auto-maximize, 4px padding
+- Mouse: Focus follows mouse, hide while typing
+
+### Claude Code CLI
+
+Claude Code CLI configuration with enhanced transparency protocols and MCP server integration.
+
+**Key Features:**
+
+- **MCP Server Integration**: Sequential thinking, context management, web fetching, browser automation
+- **Enhanced Protocols**: Transparency mandates and cognitive overclocking for advanced problem-solving
+- **Custom Commands**: Specialized slash commands for complex workflows
+- **AI Agents**: Multiple specialized agents for different tasks
+
+**Configuration Files:**
+
+- `settings.json`: Main Claude CLI configuration with MCP servers
+- `CLAUDE.md`: Enhanced transparency protocols and operational directives
+- `commands/`: Custom slash commands for specialized workflows
+
+**MCP Servers:**
+
+- **sequential-thinking**: Structured thinking and planning
+- **context7**: Authoritative documentation and knowledge retrieval
+- **fetch**: Web content retrieval with user agent customization
+- **playwright**: Browser automation and web interaction
+- **chrome-devtools**: Chrome DevTools integration
+
+**Usage:**
+
+```sh
+claude                    # Start interactive session
+claude mcp list          # List configured MCP servers
+./install-mcp-servers.sh # Install all MCP servers automatically
+```
 
 ### Hammerspoon
 
