@@ -69,7 +69,8 @@ install_mcp_server playwright \
 
 # Chrome DevTools Server
 install_mcp_server chrome-devtools \
-  -- npx -y chrome-devtools-mcp@latest
+  -- npx -y chrome-devtools-mcp@latest \
+    --browser-url=http://127.0.0.1:9222
 
 echo ""
 echo "All MCP servers installed successfully!"

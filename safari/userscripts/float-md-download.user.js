@@ -1,10 +1,10 @@
 // ==UserScript==
-// @name         Float MD Download Button
+// @name         AI-Ready MD Clipboard
 // @namespace    http://tampermonkey.net/
-// @version      3.0.0
-// @description  Modern floating button to convert page to Markdown and download as .md file
+// @version      4.2.0
+// @description  Click floating button to copy AI-ready Markdown content to clipboard. Optimized for direct pasting into AI chatboxes.
 // @author       You
-// @match        *://*/*
+// @match        *://*.coursera.org/*
 // @grant        none
 // @run-at       document-end
 // ==/UserScript==
@@ -13,86 +13,105 @@
   'use strict';
 
   // ==================== CONFIGURATION ====================
-  const CONFIG = Object.freeze({
+  const CONFIG = {
     BUTTON: {
-      ID: 'float-md-download-btn',
-      ICON: 'MD',
-      LABEL: 'Download page as Markdown',
+      ID: 'ai-clipboard-btn',
+      ICON: '🤖',
+      LABEL: 'Copy AI-Ready Content',
       POSITION: { bottom: '20px', right: '20px' },
       SIZE: '50px',
       Z_INDEX: 99999
     },
     TURNDOWN_CDN: 'https://unpkg.com/turndown@7.1.2/dist/turndown.js',
-    KEYBOARD_SHORTCUT: { ctrl: true, shift: true, key: 'M' },
-    SELECTORS: {
-      EXCLUDE: [
-        'nav',
-        'aside',
-        'footer',
-        'header',
-        'script',
-        'style',
-        'noscript',
-        'iframe',
-        '.ad',
-        '.advertisement',
-        '.sidebar',
-        '.navigation',
-        '.comments',
-        '.social-share',
-        '.cookie-banner',
-        '.popup',
-        '.modal'
+    AI_CONTENT_SELECTORS: {
+      // Coursera-specific content selectors for course materials
+      PRIMARY: [
+        '[data-testid="lecture-content"]',
+        '.rc-lecture-viewer-content',
+        '.lecture-content',
+        '.course-content',
+        '[data-testid="content"]',
+        'main[role="main"] article',
+        '.content-area'
       ],
-      CONTENT_PRIORITY: [
-        'main',
-        'article',
-        '[role="main"]',
-        '.content',
-        '#content',
-        '.post-content',
-        '.article-body',
-        '.entry-content',
-        'body'
-      ]
+      SECONDARY: [
+        '.rc-LessonViewer',
+        '.rc-VerticalView',
+        '.lesson-content',
+        '.reading-content',
+        '[data-track-component="lecture-viewer"]'
+      ],
+      FALLBACK: ['body']
     },
+    AI_CLEANUP_SELECTORS: [
+      // Remove these elements for clean AI content
+      'script',
+      'style',
+      'noscript',
+      'iframe',
+      'embed',
+      'object',
+      'nav',
+      'header',
+      'footer',
+      'aside',
+      '.sidebar',
+      '.navigation',
+      '.breadcrumb',
+      '.pagination',
+      '.toolbar',
+      '.controls',
+      'button',
+      'input',
+      'select',
+      'textarea',
+      '.btn',
+      '[role="button"]',
+      '[role="tab"]',
+      '[role="menu"]',
+      '.ad',
+      '.advertisement',
+      '.social-share',
+      '.comments',
+      '.cookie-banner',
+      '.popup',
+      '.modal',
+      '.overlay',
+      '[data-testid*="nav"]',
+      '[data-testid*="menu"]',
+      '[data-testid*="script"]',
+      '[data-testid*="ad"]',
+      '[aria-label*="navigation"]',
+      '[aria-label*="menu"]',
+      '[src*="ads"]',
+      '[src*="analytics"]',
+      '[src*="tracking"]'
+    ],
     ANIMATION: {
       DURATION: 300,
       EASING: 'cubic-bezier(0.4, 0, 0.2, 1)'
     }
-  });
+  };
 
   // ==================== UTILITIES ====================
   class Utils {
-    static sanitizeFilename(name) {
-      return (
-        name
-          .replace(/[^a-z0-9\s-_]/gi, '')
-          .replace(/\s+/g, '-')
-          .replace(/^-+|-+$/g, '')
-          .slice(0, 60) || 'page'
-      );
-    }
-
-    static debounce(func, wait) {
-      let timeout;
-      return function executedFunction(...args) {
-        const later = () => {
-          clearTimeout(timeout);
-          func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-      };
-    }
-
-    static createElement(tag, className, attributes = {}) {
-      const element = document.createElement(tag);
-      if (className) element.className = className;
+    static createButton(text, className = '', attributes = {}) {
+      const button = document.createElement('button');
+      button.textContent = text;
+      if (className) button.className = className;
       Object.entries(attributes).forEach(([key, value]) => {
-        element.setAttribute(key, value);
+        button.setAttribute(key, value);
       });
-      return element;
+      return button;
+    }
+
+    static createDiv(className = '', attributes = {}) {
+      const div = document.createElement('div');
+      if (className) div.className = className;
+      Object.entries(attributes).forEach(([key, value]) => {
+        div.setAttribute(key, value);
+      });
+      return div;
     }
 
     static async loadScript(src) {
@@ -105,168 +124,119 @@
         const script = document.createElement('script');
         script.src = src;
         script.async = true;
-
         script.onload = () => resolve();
-        script.onerror = () =>
-          reject(new Error(`Failed to load script: ${src}`));
-
+        script.onerror = () => reject(new Error(`Failed to load: ${src}`));
         document.head.appendChild(script);
       });
     }
 
-    static showFeedback(message, type = 'info', duration = 3000) {
-      const existing = document.querySelector('.md-feedback');
+    static showNotification(message, type = 'success', duration = 3000) {
+      const existing = document.querySelector('.ai-notification');
       if (existing) existing.remove();
 
-      const feedback = Utils.createElement(
-        'div',
-        `md-feedback md-feedback-${type}`
+      const notification = Utils.createDiv(
+        `ai-notification ai-notification-${type}`
       );
-      feedback.textContent = message;
+      notification.innerHTML = `
+        <div class="ai-notification-icon">
+          ${type === 'success' ? '✅' : '❌'}
+        </div>
+        <div class="ai-notification-message">${message}</div>
+      `;
 
-      document.body.appendChild(feedback);
+      document.body.appendChild(notification);
 
-      requestAnimationFrame(() => feedback.classList.add('show'));
+      requestAnimationFrame(() => notification.classList.add('show'));
 
       setTimeout(() => {
-        feedback.classList.remove('show');
-        setTimeout(() => feedback.remove(), CONFIG.ANIMATION.DURATION);
+        notification.classList.remove('show');
+        setTimeout(() => notification.remove(), CONFIG.ANIMATION.DURATION);
       }, duration);
     }
-  }
 
-  // ==================== THEME MANAGER ====================
-  class ThemeManager {
-    constructor() {
-      this.isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      this.setupThemeListener();
+    static sanitizeForAI(text) {
+      return (
+        text
+          // Remove JavaScript code blocks and inline scripts
+          .replace(/```javascript[\s\S]*?```/gi, '')
+          .replace(/```js[\s\S]*?```/gi, '')
+          .replace(/<script[\s\S]*?<\/script>/gi, '')
+          .replace(/javascript:[\s\S]*?;/gi, '')
+          .replace(/function\s*\([^)]*\)\s*{[\s\S]*?}/gi, '')
+          .replace(/\w+\s*:\s*function\s*\([^)]*\)\s*{[\s\S]*?}/gi, '')
+          .replace(/console\.\w+\([^)]*\);?/gi, '')
+          .replace(/alert\s*\([^)]*\);?/gi, '')
+          .replace(/document\.\w+\([^)]*\);?/gi, '')
+          .replace(/window\.\w+\([^)]*\);?/gi, '')
+          // Remove event handlers
+          .replace(/on\w+\s*=\s*["'][^"']*["']/gi, '')
+          .replace(/on\w+\s*=\s*[^;\s]+/gi, '')
+          // Remove excessive whitespace
+          .replace(/\n{3,}/g, '\n\n')
+          // Fix common OCR/formatting issues
+          .replace(/([a-z])([A-Z])/g, '$1 $2')
+          // Clean up bullet points
+          .replace(/^[\s•·o]\s*/gm, '- ')
+          // Clean up numbered lists
+          .replace(/^(\d+)\.?\s*/gm, '$1. ')
+          // Remove HTML entities
+          .replace(/&nbsp;/g, ' ')
+          .replace(/&amp;/g, '&')
+          .replace(/&lt;/g, '<')
+          .replace(/&gt;/g, '>')
+          .replace(/&quot;/g, '"')
+          .replace(/&#39;/g, "'")
+          // Remove multiple spaces
+          .replace(/ {2,}/g, ' ')
+          // Clean up any remaining script-like patterns
+          .replace(
+            /\b(function|var|let|const|if|else|for|while|do|switch|case|break|continue|return|try|catch|finally|throw|new|this|class|extends|import|export|default|async|await)\b[^;{}]*[;{}]?/gi,
+            ''
+          )
+          // Enhanced JavaScript removal
+          .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+          .replace(/\s*on\w+="[^"]*"/gi, '')
+          .replace(/\s*on\w+='[^']*'/gi, '')
+          .replace(/\s*on\w+=[^\s>]*/gi, '')
+          .replace(/href=["']javascript:[^"']*["']/gi, '')
+          .replace(/href=['"]javascript:[^'"]*['"]/gi, '')
+          // Preserve math notation for AI understanding
+          .replace(/\\\$/g, '$')
+          .replace(/\\\$/g, '$')
+          // Remove MathJax script tags specifically
+          .replace(/<script type="math\/tex[^>]*>[\s\S]*?<\/script>/gi, '')
+          .replace(/<span class="MathJax[^>]*>[\s\S]*?<\/span>/gi, '')
+          // Clean up any remaining script-like patterns
+          .replace(/eval\s*\([^)]*\)/gi, '')
+          .replace(/setTimeout\s*\([^)]*\)/gi, '')
+          .replace(/setInterval\s*\([^)]*\)/gi, '')
+          .replace(/location\s*\.[\s\S]*?;/gi, '')
+          .replace(/history\s*\.[\s\S]*?;/gi, '')
+          .replace(/navigator\s*\.[\s\S]*?;/gi, '')
+          .trim()
+      );
     }
 
-    setupThemeListener() {
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      mediaQuery.addEventListener('change', (e) => {
-        this.isDark = e.matches;
-        this.updateTheme();
-      });
-    }
+    static detectContentType(element) {
+      const text = element.textContent.toLowerCase();
+      const html = element.innerHTML.toLowerCase();
 
-    getThemeColors() {
-      return this.isDark
-        ? {
-            background: 'rgba(255, 255, 255, 0.9)',
-            color: '#1a1a1a',
-            border: '1px solid rgba(255, 255, 255, 0.3)',
-            shadow: '0 4px 20px rgba(0, 0, 0, 0.3)'
-          }
-        : {
-            background: '#1a1a1a',
-            color: '#ffffff',
-            border: 'none',
-            shadow: '0 4px 20px rgba(0, 0, 0, 0.4)'
-          };
-    }
+      // Detect if it's code-heavy content
+      const hasCodeBlocks = /<code|<pre|```/.test(html);
+      const hasMath = /\$\$|\\begin|\\end|\\frac|\\sqrt/.test(text);
+      const hasTables = /<table|<th|<td/.test(html);
 
-    updateTheme() {
-      const button = document.getElementById(CONFIG.BUTTON.ID);
-      if (button) {
-        const colors = this.getThemeColors();
-        Object.assign(button.style, {
-          background: colors.background,
-          color: colors.color,
-          border: colors.border,
-          boxShadow: colors.shadow
-        });
-      }
-    }
-
-    generateCSS() {
-      const colors = this.getThemeColors();
-      return `
-        .float-md-btn {
-          position: fixed;
-          bottom: ${CONFIG.BUTTON.POSITION.bottom};
-          right: ${CONFIG.BUTTON.POSITION.right};
-          width: ${CONFIG.BUTTON.SIZE};
-          height: ${CONFIG.BUTTON.SIZE};
-          background: ${colors.background};
-          color: ${colors.color};
-          border: ${colors.border};
-          border-radius: 50%;
-          font-family: 'SF Mono', 'Monaco', monospace;
-          font-weight: bold;
-          font-size: 14px;
-          cursor: pointer;
-          z-index: ${CONFIG.BUTTON.Z_INDEX};
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: ${colors.shadow};
-          transition: all ${CONFIG.ANIMATION.DURATION}ms ${CONFIG.ANIMATION.EASING};
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-          user-select: none;
-        }
-
-        .float-md-btn:hover {
-          transform: scale(1.1);
-          opacity: 1;
-        }
-
-        .float-md-btn:active {
-          transform: scale(0.95);
-        }
-
-        .float-md-btn.dragging {
-          opacity: 0.7;
-          cursor: grabbing;
-        }
-
-        .float-md-btn.loading {
-          animation: spin 1s linear infinite;
-        }
-
-        .md-feedback {
-          position: fixed;
-          top: 20px;
-          right: 20px;
-          padding: 12px 16px;
-          border-radius: 8px;
-          color: white;
-          font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-          font-size: 14px;
-          z-index: ${CONFIG.BUTTON.Z_INDEX + 1};
-          transform: translateX(100%);
-          transition: transform ${CONFIG.ANIMATION.DURATION}ms ${CONFIG.ANIMATION.EASING};
-          max-width: 300px;
-          word-wrap: break-word;
-        }
-
-        .md-feedback.show {
-          transform: translateX(0);
-        }
-
-        .md-feedback-info { background: rgba(0, 122, 255, 0.95); }
-        .md-feedback-success { background: rgba(52, 199, 89, 0.95); }
-        .md-feedback-error { background: rgba(255, 59, 48, 0.95); }
-
-        @keyframes spin {
-          to { transform: rotate(360deg); }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .float-md-btn, .md-feedback {
-            transition: none;
-          }
-          .float-md-btn.loading {
-            animation: none;
-          }
-        }
-      `;
+      return {
+        isCode: hasCodeBlocks,
+        hasMath: hasMath,
+        hasTables: hasTables,
+        wordCount: text.split(/\s+/).length
+      };
     }
   }
 
-  // ==================== MARKDOWN CONVERTER ====================
-  class MarkdownConverter {
+  // ==================== AI CONTENT PROCESSOR ====================
+  class AIContentProcessor {
     constructor() {
       this.turndownService = null;
     }
@@ -279,39 +249,138 @@
           bulletListMarker: '-',
           codeBlockStyle: 'fenced',
           emDelimiter: '_',
-          strongDelimiter: '**'
+          strongDelimiter: '**',
+          linkStyle: 'inlined'
         });
-        this.setupCustomRules();
+
+        this.setupAIRules();
       }
     }
 
-    setupCustomRules() {
-      // Custom conversion rules
-      this.turndownService.addRule('strikethrough', {
-        filter: ['del', 's', 'strike'],
-        replacement: (content) => '~~' + content + '~~'
+    setupAIRules() {
+      // Enhanced rules for AI-ready content
+      this.turndownService.addRule('code-blocks', {
+        filter: ['pre', 'code'],
+        replacement: (content, node) => {
+          if (node.tagName === 'PRE') {
+            const language = this.detectLanguage(content);
+            return `\`\`\`${language}\n${content}\n\`\`\`\n\n`;
+          }
+          return `\`${content}\``;
+        }
       });
 
-      this.turndownService.addRule('highlight', {
-        filter: ['mark'],
-        replacement: (content) => '==' + content + '=='
+      this.turndownService.addRule('math', {
+        filter: (node) => {
+          return (
+            node.textContent.includes('$') ||
+            node.textContent.includes('\\') ||
+            node.className?.includes('math')
+          );
+        },
+        replacement: (content) => {
+          // Preserve math notation for AI understanding
+          return `\\[\\ ${content} \\]\\]\n\n`;
+        }
+      });
+
+      this.turndownService.addRule('tables', {
+        filter: ['table'],
+        replacement: (content, node) => {
+          // Convert tables to clean markdown
+          const rows = Array.from(node.querySelectorAll('tr'));
+          if (rows.length === 0) return '';
+
+          let tableMd = '\n';
+          rows.forEach((row, index) => {
+            const cells = Array.from(row.querySelectorAll('td, th')).map(
+              (cell) => cell.textContent.trim()
+            );
+            tableMd += '| ' + cells.join(' | ') + ' |\n';
+
+            if (index === 0) {
+              tableMd += '|' + cells.map(() => ' --- ').join('|') + '|\n';
+            }
+          });
+          tableMd += '\n';
+          return tableMd;
+        }
+      });
+
+      this.turndownService.addRule('emphasis', {
+        filter: ['strong', 'b', 'em', 'i'],
+        replacement: (content, node) => {
+          const tag = node.tagName.toLowerCase();
+          if (tag === 'strong' || tag === 'b') {
+            return `**${content}**`;
+          }
+          return `_${content}_`;
+        }
       });
     }
 
-    findBestContent() {
-      for (const selector of CONFIG.SELECTORS.CONTENT_PRIORITY) {
+    detectLanguage(code) {
+      // Simple language detection for code blocks
+      if (
+        code.includes('def ') ||
+        code.includes('import ') ||
+        code.includes('print(')
+      )
+        return 'python';
+      if (
+        code.includes('function ') ||
+        code.includes('const ') ||
+        code.includes('=>')
+      )
+        return 'javascript';
+      if (code.includes('public class ') || code.includes('System.out'))
+        return 'java';
+      if (code.includes('#include') || code.includes('int main')) return 'cpp';
+      if (
+        code.includes('<html') ||
+        code.includes('<div') ||
+        code.includes('function')
+      )
+        return 'html';
+      return '';
+    }
+
+    extractBestContent() {
+      // Try all content selectors in order of preference
+      for (const selector of CONFIG.AI_CONTENT_SELECTORS.PRIMARY) {
         const element = document.querySelector(selector);
-        if (element && element.textContent.trim().length > 100) {
+        if (element && this.isValidContent(element)) {
           return element;
         }
       }
+
+      for (const selector of CONFIG.AI_CONTENT_SELECTORS.SECONDARY) {
+        const element = document.querySelector(selector);
+        if (element && this.isValidContent(element)) {
+          return element;
+        }
+      }
+
+      for (const selector of CONFIG.AI_CONTENT_SELECTORS.FALLBACK) {
+        const element = document.querySelector(selector);
+        if (element && this.isValidContent(element)) {
+          return element;
+        }
+      }
+
       return document.body;
+    }
+
+    isValidContent(element) {
+      const text = element.textContent.trim();
+      return text.length > 100; // Only consider substantial content
     }
 
     cleanContent(element) {
       const clone = element.cloneNode(true);
 
-      CONFIG.SELECTORS.EXCLUDE.forEach((selector) => {
+      // Remove unwanted elements
+      CONFIG.AI_CLEANUP_SELECTORS.forEach((selector) => {
         try {
           clone.querySelectorAll(selector).forEach((el) => el.remove());
         } catch (e) {
@@ -319,369 +388,447 @@
         }
       });
 
-      // Remove the download button itself
-      const downloadBtn = clone.querySelector(`#${CONFIG.BUTTON.ID}`);
-      if (downloadBtn) downloadBtn.remove();
+      // Remove our own button
+      const aiButton = clone.querySelector(`#${CONFIG.BUTTON.ID}`);
+      if (aiButton) aiButton.remove();
+
+      // Additional deep cleaning for script content
+      this.deepCleanContent(clone);
+
+      // Validate that no JavaScript content remains
+      const cleanedHTML = clone.innerHTML;
+      if (this.containsJavaScript(cleanedHTML)) {
+        console.warn(
+          'JavaScript content still detected, applying additional cleaning'
+        );
+        this.aggressiveClean(clone);
+      }
 
       return clone;
     }
 
-    async convert() {
+    containsJavaScript(text) {
+      const jsPatterns = [
+        /javascript:/gi,
+        /<script/i,
+        /on\w+\s*=/gi,
+        /function\s*\(/gi,
+        /console\./gi,
+        /document\./gi,
+        /window\./gi,
+        /alert\s*\(/gi,
+        /var\s+\w+/gi,
+        /let\s+\w+/gi,
+        /const\s+\w+/gi,
+        /eval\s*\(/gi,
+        /setTimeout\s*\(/gi,
+        /setInterval\s*\(/gi
+      ];
+
+      return jsPatterns.some((pattern) => pattern.test(text));
+    }
+
+    aggressiveClean(element) {
+      // More aggressive cleanup for stubborn JavaScript content
+      const walker = document.createTreeWalker(
+        element,
+        NodeFilter.SHOW_TEXT,
+        null,
+        false
+      );
+
+      const textNodes = [];
+      let node;
+      while ((node = walker.nextNode())) {
+        textNodes.push(node);
+      }
+
+      textNodes.forEach((textNode) => {
+        // Remove any remaining JavaScript-like content
+        textNode.textContent = textNode.textContent
+          .replace(/javascript:[^\s]*/gi, '')
+          .replace(/function[^(]*\([^)]*\)[^{]*{[^}]*}/gi, '')
+          .replace(/on\w+\s*=\s*['"][^'"]*['"]/gi, '')
+          .replace(/console\.[a-zA-Z]+\([^)]*\)/gi, '')
+          .replace(/\b(var|let|const)\s+\w+\s*=\s*[^;]+;?/gi, '')
+          .replace(
+            /\b(if|for|while|do|switch|try|catch|throw|return)\b[^;{}]*[;{}]?/gi,
+            ''
+          )
+          .replace(/eval\s*\([^)]*\)/gi, '')
+          .replace(/setTimeout\s*\([^)]*\)/gi, '')
+          .replace(/setInterval\s*\([^)]*\)/gi, '');
+      });
+    }
+
+    deepCleanContent(element) {
+      // Remove all script-related content that might be missed
+      const allElements = element.querySelectorAll('*');
+
+      allElements.forEach((el) => {
+        // Remove script-related attributes
+        const attrsToRemove = [
+          'onclick',
+          'onload',
+          'onerror',
+          'onmouseover',
+          'onmouseout',
+          'onchange',
+          'onsubmit',
+          'onfocus',
+          'onblur',
+          'onkeydown',
+          'onkeyup',
+          'onkeypress',
+          'onmousedown',
+          'onmouseup',
+          'onmousemove',
+          'ontouchstart',
+          'ontouchend',
+          'ontouchmove'
+        ];
+
+        attrsToRemove.forEach((attr) => {
+          if (el.hasAttribute(attr)) {
+            el.removeAttribute(attr);
+          }
+        });
+
+        // Remove elements with javascript: hrefs
+        if (
+          el.tagName === 'A' &&
+          el.getAttribute('href')?.startsWith('javascript:')
+        ) {
+          el.remove();
+        }
+
+        // Remove data attributes that might contain scripts
+        Array.from(el.attributes).forEach((attr) => {
+          if (
+            attr.name.startsWith('data-') &&
+            (attr.value.includes('function') ||
+              attr.value.includes('javascript:') ||
+              attr.value.includes('alert(') ||
+              attr.value.includes('console.'))
+          ) {
+            el.removeAttribute(attr.name);
+          }
+        });
+
+        // Remove inline event handlers and scripts from text content
+        if (el.textContent) {
+          el.textContent = el.textContent
+            .replace(/javascript:/gi, '')
+            .replace(/function\s*\(/gi, 'function(')
+            .replace(/alert\s*\(/gi, 'alert(')
+            .replace(/console\./gi, 'console.')
+            .replace(/onclick\s*=/gi, 'onclick=')
+            .replace(/onload\s*=/gi, 'onload=')
+            .replace(/eval\s*\(/gi, '')
+            .replace(/setTimeout\s*\(/gi, '')
+            .replace(/setInterval\s*\(/gi, '');
+        }
+      });
+    }
+
+    async processToAIReady() {
       await this.initialize();
 
-      const contentElement = this.findBestContent();
+      const contentElement = this.extractBestContent();
       const cleanElement = this.cleanContent(contentElement);
+      const contentType = Utils.detectContentType(cleanElement);
 
       let markdown = this.turndownService.turndown(cleanElement.innerHTML);
 
-      // Post-process markdown
-      markdown = this.postProcessMarkdown(markdown);
+      // AI-optimized post-processing
+      markdown = Utils.sanitizeForAI(markdown);
 
-      return markdown;
+      // Add AI context header
+      const contextHeader = this.generateAIContext(contentType);
+
+      return contextHeader + markdown;
     }
 
-    postProcessMarkdown(markdown) {
-      // Clean up common issues
-      return markdown
-        .replace(/\n{4,}/g, '\n\n\n') // Reduce excessive blank lines
-        .replace(/!\[[^\]]*\]\(data:image\/[^)]+\)/g, '[Image]') // Remove base64 images
-        .replace(/\[(\s+)\]/g, '') // Remove empty links
-        .trim();
-    }
+    generateAIContext(contentType) {
+      const title = document.title || 'Untitled Content';
+      const url = window.location.href;
+      const timestamp = new Date().toISOString();
 
-    generateMetadata() {
       return `---
-title: ${document.title}
-source: ${window.location.href}
-extracted: ${new Date().toISOString()}
+Content: ${title}
+Source: ${url}
+Extracted: ${timestamp}
+Content Type: ${contentType.isCode ? 'Code/Programming' : contentType.hasMath ? 'Mathematical' : contentType.hasTables ? 'Tabular Data' : 'General Text'}
+Word Count: ~${contentType.wordCount} words
+AI-Ready: Optimized for LLM processing
+
 ---
 
 `;
     }
   }
 
-  // ==================== UI CONTROLLER ====================
-  class UIController {
-    constructor(themeManager, markdownConverter) {
-      this.themeManager = themeManager;
-      this.markdownConverter = markdownConverter;
+  // ==================== UI MANAGER ====================
+  class UIManager {
+    constructor() {
       this.button = null;
-      this.isDragging = false;
-      this.dragOffset = { x: 0, y: 0 };
+      this.processor = new AIContentProcessor();
+      this.isDarkMode = window.matchMedia(
+        '(prefers-color-scheme: dark)'
+      ).matches;
     }
 
     initialize() {
       this.injectStyles();
-      this.createButton();
+      this.createFloatingButton();
       this.setupEventListeners();
+      this.setupThemeListener();
     }
 
     injectStyles() {
-      const style = Utils.createElement('style');
-      style.textContent = this.themeManager.generateCSS();
+      const style = document.createElement('style');
+      style.textContent = this.generateCSS();
       document.head.appendChild(style);
     }
 
-    createButton() {
-      this.button = Utils.createElement('button', 'float-md-btn', {
+    generateCSS() {
+      const colors = this.isDarkMode
+        ? {
+            bg: 'rgba(30, 30, 30, 0.95)',
+            color: '#ffffff',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            shadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
+            hoverBg: 'rgba(255, 255, 255, 0.1)'
+          }
+        : {
+            bg: 'rgba(255, 255, 255, 0.95)',
+            color: '#1a1a1a',
+            border: '1px solid rgba(0, 0, 0, 0.1)',
+            shadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+            hoverBg: 'rgba(0, 0, 0, 0.05)'
+          };
+
+      return `
+        .ai-clipboard-btn {
+          position: fixed;
+          bottom: ${CONFIG.BUTTON.POSITION.bottom};
+          right: ${CONFIG.BUTTON.POSITION.right};
+          width: ${CONFIG.BUTTON.SIZE};
+          height: ${CONFIG.BUTTON.SIZE};
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          border: none;
+          border-radius: 50%;
+          font-size: 20px;
+          cursor: pointer;
+          z-index: ${CONFIG.BUTTON.Z_INDEX};
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: ${colors.shadow};
+          transition: all ${CONFIG.ANIMATION.DURATION}ms ${CONFIG.ANIMATION.EASING};
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          user-select: none;
+        }
+
+        .ai-clipboard-btn:hover {
+          transform: scale(1.1) rotate(5deg);
+          box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .ai-clipboard-btn:active {
+          transform: scale(0.95);
+        }
+
+        .ai-clipboard-btn.copied {
+          background: linear-gradient(135deg, #52c234 0%, #3da831 100%);
+          animation: pulse 0.6s ease-in-out;
+        }
+
+        @keyframes pulse {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.2); }
+          100% { transform: scale(1); }
+        }
+
+        .ai-notification {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: ${colors.bg};
+          color: ${colors.color};
+          border: ${colors.border};
+          border-radius: 12px;
+          padding: 16px 20px;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          z-index: ${CONFIG.BUTTON.Z_INDEX + 1};
+          transform: translateX(400px);
+          transition: all ${CONFIG.ANIMATION.DURATION}ms ${CONFIG.ANIMATION.EASING};
+          box-shadow: ${colors.shadow};
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          max-width: 350px;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .ai-notification.show {
+          transform: translateX(0);
+        }
+
+        .ai-notification-icon {
+          font-size: 20px;
+          flex-shrink: 0;
+        }
+
+        .ai-notification-message {
+          font-size: 14px;
+          line-height: 1.4;
+        }
+
+        .ai-notification-success {
+          border-left: 4px solid #52c234;
+        }
+
+        .ai-notification-error {
+          border-left: 4px solid #ff4444;
+        }
+
+        @media (max-width: 768px) {
+          .ai-clipboard-btn {
+            width: 45px;
+            height: 45px;
+            font-size: 18px;
+          }
+
+          .ai-notification {
+            right: 10px;
+            left: 10px;
+            max-width: none;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .ai-clipboard-btn, .ai-notification {
+            transition: none;
+          }
+          .ai-clipboard-btn.copied {
+            animation: none;
+          }
+        }
+      `;
+    }
+
+    createFloatingButton() {
+      this.button = Utils.createButton(CONFIG.BUTTON.ICON, 'ai-clipboard-btn', {
         id: CONFIG.BUTTON.ID,
         title: CONFIG.BUTTON.LABEL,
-        'aria-label': CONFIG.BUTTON.LABEL,
-        tabindex: '0'
+        'aria-label': CONFIG.BUTTON.LABEL
       });
 
-      this.button.textContent = CONFIG.BUTTON.ICON;
       document.body.appendChild(this.button);
 
-      // Add entrance animation
-      setTimeout(() => this.button.classList.add('show'), 100);
+      // Entrance animation
+      setTimeout(() => {
+        this.button.style.opacity = '1';
+        this.button.style.transform = 'scale(1)';
+      }, 500);
     }
 
     setupEventListeners() {
-      // Button interactions
-      this.button.addEventListener('click', () => this.handleButtonClick());
-      this.button.addEventListener('keydown', (e) => this.handleKeyDown(e));
-
-      // Drag functionality
-      this.setupDragFunctionality();
-
-      // Keyboard shortcut
-      document.addEventListener('keydown', (e) =>
-        this.handleKeyboardShortcut(e)
-      );
-    }
-
-    setupDragFunctionality() {
-      let startPos = { x: 0, y: 0 };
-      let buttonPos = { x: 0, y: 0 };
-      let hasMoved = false;
-
-      const startDrag = (e) => {
-        if (e.button !== 0) return; // Left click only
-
-        this.isDragging = true;
-        hasMoved = false;
-        startPos = { x: e.clientX, y: e.clientY };
-
-        const rect = this.button.getBoundingClientRect();
-        buttonPos = { x: rect.left, y: rect.top };
-
-        this.button.classList.add('dragging');
-        e.preventDefault();
-      };
-
-      const drag = (e) => {
-        if (!this.isDragging) return;
-
-        const deltaX = e.clientX - startPos.x;
-        const deltaY = e.clientY - startPos.y;
-
-        if (Math.abs(deltaX) > 5 || Math.abs(deltaY) > 5) {
-          hasMoved = true;
+      this.button.addEventListener('click', () => this.handleCopyToClipboard());
+      this.button.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.handleCopyToClipboard();
         }
-
-        const newX = Math.max(
-          0,
-          Math.min(
-            buttonPos.x + deltaX,
-            window.innerWidth - this.button.offsetWidth
-          )
-        );
-        const newY = Math.max(
-          0,
-          Math.min(
-            buttonPos.y + deltaY,
-            window.innerHeight - this.button.offsetHeight
-          )
-        );
-
-        this.button.style.left = `${newX}px`;
-        this.button.style.top = `${newY}px`;
-        this.button.style.right = 'auto';
-        this.button.style.bottom = 'auto';
-      };
-
-      const endDrag = () => {
-        if (!this.isDragging) return;
-
-        this.isDragging = false;
-        this.button.classList.remove('dragging');
-
-        // Prevent click if button was moved
-        if (hasMoved) {
-          this.button.dataset.dragged = 'true';
-          setTimeout(() => delete this.button.dataset.dragged, 100);
-        }
-      };
-
-      this.button.addEventListener('mousedown', startDrag);
-      document.addEventListener('mousemove', drag);
-      document.addEventListener('mouseup', endDrag);
-    }
-
-    handleKeyDown(e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        this.handleButtonClick();
-      }
-    }
-
-    handleKeyboardShortcut(e) {
-      const { ctrl, shift, key } = CONFIG.KEYBOARD_SHORTCUT;
-
-      if (
-        e.ctrlKey === ctrl &&
-        e.shiftKey === shift &&
-        e.key.toUpperCase() === key.toUpperCase()
-      ) {
-        e.preventDefault();
-        this.handleButtonClick();
-      }
-    }
-
-    async handleButtonClick() {
-      if (
-        this.button.dataset.dragged === 'true' ||
-        this.button.classList.contains('loading')
-      ) {
-        return;
-      }
-
-      try {
-        this.setLoadingState(true);
-        Utils.showFeedback('Converting to Markdown...', 'info', 0);
-
-        // Hide button temporarily to avoid including it in conversion
-        const originalDisplay = this.button.style.display;
-        this.button.style.display = 'none';
-
-        const markdown = await this.markdownConverter.convert();
-        const metadata = this.markdownConverter.generateMetadata();
-        const fullContent = metadata + markdown;
-
-        // Restore button
-        this.button.style.display = originalDisplay;
-
-        // Prompt for filename and download
-        const defaultName = Utils.sanitizeFilename(document.title) + '.md';
-        const filename = prompt('Save as:', defaultName) || defaultName;
-
-        // Store download data for immediate use
-        this.pendingDownload = {
-          content: fullContent,
-          filename: Utils.sanitizeFilename(filename)
-        };
-
-        // Trigger download immediately during user interaction
-        this.downloadMarkdown(fullContent, Utils.sanitizeFilename(filename));
-
-        Utils.showFeedback('Successfully downloaded!', 'success');
-      } catch (error) {
-        console.error('Conversion failed:', error);
-        Utils.showFeedback('Conversion failed. Please try again.', 'error');
-      } finally {
-        this.setLoadingState(false);
-      }
-    }
-
-    setLoadingState(loading) {
-      if (loading) {
-        this.button.classList.add('loading');
-        this.button.disabled = true;
-        this.button.textContent = '⏳';
-      } else {
-        this.button.classList.remove('loading');
-        this.button.disabled = false;
-        this.button.textContent = CONFIG.BUTTON.ICON;
-      }
-    }
-
-    downloadMarkdown(content, filename) {
-      const blob = new Blob([content], { type: 'text/markdown' });
-      const url = URL.createObjectURL(blob);
-
-      // Safari-compatible download method
-      const a = Utils.createElement('a', {
-        href: url,
-        download: filename,
-        style: 'display: none',
-        target: '_blank'
       });
-
-      document.body.appendChild(a);
-
-      // Method 1: Direct click (works in most cases)
-      try {
-        a.click();
-
-        // Keep the element longer for Safari to process the download
-        setTimeout(() => {
-          document.body.removeChild(a);
-          URL.revokeObjectURL(url);
-        }, 100);
-      } catch (error) {
-        console.error('Direct click failed:', error);
-
-        // Method 2: Event dispatch
-        try {
-          const clickEvent = new MouseEvent('click', {
-            view: window,
-            bubbles: true,
-            cancelable: true
-          });
-          a.dispatchEvent(clickEvent);
-
-          setTimeout(() => {
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-          }, 100);
-        } catch (error2) {
-          console.error('Event dispatch failed:', error2);
-
-          // Method 3: Fallback - open in new tab
-          document.body.removeChild(a);
-          URL.revokeObjectURL(url);
-
-          const newUrl = URL.createObjectURL(blob);
-          const fallbackWindow = window.open(newUrl, '_blank');
-
-          if (!fallbackWindow) {
-            Utils.showFeedback(
-              'Popup blocked. Please allow popups for this site.',
-              'error'
-            );
-
-            // Method 4: Last resort - copy to clipboard
-            this.copyToClipboard(content, filename);
-          } else {
-            Utils.showFeedback(
-              'Please save the file from the new tab (File > Save As)',
-              'info'
-            );
-            setTimeout(() => URL.revokeObjectURL(newUrl), 5000);
-          }
-        }
-      }
     }
 
-    copyToClipboard(content, filename) {
+    setupThemeListener() {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      mediaQuery.addEventListener('change', (e) => {
+        this.isDarkMode = e.matches;
+        this.injectStyles(); // Re-inject styles with new theme
+      });
+    }
+
+    async handleCopyToClipboard() {
+      if (this.button.classList.contains('copied')) return;
+
       try {
-        // Copy content to clipboard as fallback
+        // Show processing state
+        this.button.classList.add('copied');
+        this.button.textContent = '⏳';
+        Utils.showNotification('🔄 Processing content...', 'success', 1000);
+
+        // Process content for AI
+        const aiReadyContent = await this.processor.processToAIReady();
+
+        // Copy to clipboard
         if (navigator.clipboard && window.isSecureContext) {
-          navigator.clipboard
-            .writeText(content)
-            .then(() => {
-              Utils.showFeedback(
-                `Content copied to clipboard. Paste into a new file named "${filename}"`,
-                'info'
-              );
-            })
-            .catch(() => {
-              this.fallbackCopyMethod(content, filename);
-            });
+          await navigator.clipboard.writeText(aiReadyContent);
         } else {
-          this.fallbackCopyMethod(content, filename);
+          this.fallbackCopyToClipboard(aiReadyContent);
         }
+
+        // Show success state
+        this.button.textContent = '✅';
+
+        // Check if JavaScript was cleaned
+        const hasJavaScript = this.processor.containsJavaScript(aiReadyContent);
+        const message = hasJavaScript
+          ? '✅ AI-ready content copied! JavaScript has been removed for safety.'
+          : '✅ AI-ready content copied! Paste into any AI chatbox.';
+
+        Utils.showNotification(message, 'success', 4000);
+
+        // Reset button after delay
+        setTimeout(() => {
+          this.button.classList.remove('copied');
+          this.button.textContent = CONFIG.BUTTON.ICON;
+        }, 3000);
       } catch (error) {
-        console.error('Copy failed:', error);
-        Utils.showFeedback(
-          'Download failed. Please manually copy the content.',
-          'error'
+        console.error('Failed to copy content:', error);
+        this.button.classList.remove('copied');
+        this.button.textContent = '❌';
+        Utils.showNotification(
+          '❌ Failed to copy content. Please try again.',
+          'error',
+          4000
         );
+
+        setTimeout(() => {
+          this.button.textContent = CONFIG.BUTTON.ICON;
+        }, 3000);
       }
     }
 
-    fallbackCopyMethod(content, filename) {
-      const textArea = Utils.createElement('textarea');
-      textArea.value = content;
-      textArea.style.position = 'fixed';
-      textArea.style.opacity = '0';
-      document.body.appendChild(textArea);
-      textArea.select();
+    fallbackCopyToClipboard(text) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
 
       try {
         document.execCommand('copy');
-        Utils.showFeedback(
-          `Content copied to clipboard. Paste into a new file named "${filename}"`,
-          'info'
-        );
       } catch (error) {
-        Utils.showFeedback(
-          'All download methods failed. Please manually copy the content.',
-          'error'
-        );
+        console.error('Fallback copy failed:', error);
+        throw error;
       }
 
-      document.body.removeChild(textArea);
+      document.body.removeChild(textarea);
     }
   }
 
-  // ==================== MAIN APPLICATION ====================
-  class FloatMarkdownApp {
+  // ==================== INITIALIZATION ====================
+  class AIClipboardApp {
     constructor() {
-      this.themeManager = null;
-      this.markdownConverter = null;
-      this.uiController = null;
+      this.uiManager = null;
       this.initialized = false;
     }
 
@@ -689,58 +836,36 @@ extracted: ${new Date().toISOString()}
       if (this.initialized) return;
 
       try {
-        // Initialize components
-        this.themeManager = new ThemeManager();
-        this.markdownConverter = new MarkdownConverter();
-        this.uiController = new UIController(
-          this.themeManager,
-          this.markdownConverter
-        );
-
-        // Setup UI
-        this.uiController.initialize();
-
+        this.uiManager = new UIManager();
+        this.uiManager.initialize();
         this.initialized = true;
 
-        // Show welcome message for first-time users
-        if (!localStorage.getItem('float-md-welcomed')) {
-          setTimeout(() => {
-            Utils.showFeedback(
-              'Markdown download ready! Press Ctrl+Shift+M or click the button.',
-              'info',
-              5000
-            );
-            localStorage.setItem('float-md-welcomed', 'true');
-          }, 1000);
-        }
+        // Show welcome message
+        setTimeout(() => {
+          Utils.showNotification(
+            '🤖 AI Clipboard Ready! Click the robot to copy content optimized for AI chatboxes.',
+            'success',
+            5000
+          );
+        }, 1000);
       } catch (error) {
-        console.error('Failed to initialize Float Markdown:', error);
-        Utils.showFeedback(
-          'Failed to initialize. Please refresh the page.',
-          'error'
+        console.error('Failed to initialize AI Clipboard:', error);
+        Utils.showNotification(
+          '❌ Failed to initialize. Please refresh the page.',
+          'error',
+          5000
         );
       }
     }
   }
 
-  // ==================== INITIALIZATION ====================
-  const app = new FloatMarkdownApp();
+  // ==================== APP STARTUP ====================
+  const app = new AIClipboardApp();
 
   // Initialize when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => app.initialize());
   } else {
     app.initialize();
-  }
-
-  // Preload Turndown script in background
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(() => {
-      const link = Utils.createElement('link', '', {
-        rel: 'prefetch',
-        href: CONFIG.TURNDOWN_CDN
-      });
-      document.head.appendChild(link);
-    });
   }
 })();

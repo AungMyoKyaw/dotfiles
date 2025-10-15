@@ -36,6 +36,9 @@ alias dcp='cat ./dcp.txt | pbcopy'
 # nwjs
 alias nw='/Applications/nwjs.app/Contents/MacOS/nwjs'
 
+# Chrome with remote debugging
+alias chrome-debug='"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --remote-debugging-port=9222 --user-data-dir=/tmp/chrome-debug'
+
 # DEFAULT LOCALE
 export LC_ALL=en_US.UTF-8
 

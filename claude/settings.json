@@ -1,0 +1,30 @@
+{
+  "env": {
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-3.5-air",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "glm-4.6",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "glm-4.6",
+    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "8192",
+    "MAX_THINKING_TOKENS": "50000",
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "2",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+    "CLAUDE_BASH_NO_LOGIN": "1",
+    "DISABLE_COST_WARNINGS": "1",
+    "DISABLE_ERROR_REPORTING": "1",
+    "DISABLE_TELEMETRY": "1",
+    "NO_PROXY": "localhost,127.0.0.1",
+    "CLAUDE_CODE_CACHE_ENABLED": "1",
+    "CLAUDE_CODE_PARALLEL_REQUESTS": "4",
+    "CLAUDE_CODE_FAST_MODE": "1",
+    "UV_THREADPOOL_SIZE": "16"
+  },
+  "includeCoAuthoredBy": false,
+  "alwaysThinkingEnabled": true,
+  "performance": {
+    "enableParallelProcessing": true,
+    "maxConcurrentTasks": 8,
+    "cacheSize": "2GB",
+    "prefetchEnabled": true,
+    "compressionEnabled": false,
+    "batchSize": 64
+  }
+}

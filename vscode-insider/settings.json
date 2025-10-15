@@ -1,7 +1,8 @@
 {
   "chat.instructionsFilesLocations": {
     ".github/instructions": true,
-    "/Users/aungmyokyaw/Library/Application Support/Code - Insiders/User/instructions": true
+    "/Users/aungmyokyaw/Library/Application Support/Code - Insiders/User/instructions": true,
+    "/Users/aungmyokyaw/.aitk/instructions/": true
   },
   "chat.promptFiles": true,
   "chat.promptFilesLocations": {
@@ -348,5 +349,6 @@
   "mermaid-chat.enabled": true,
   "chat.useCloudButtonV2": true,
   "github.copilot.chat.completionsFetcher": "electron-fetch",
-  "github.copilot.chat.nesFetcher": "electron-fetch"
+  "github.copilot.chat.nesFetcher": "electron-fetch",
+  "python.defaultInterpreterPath": "/opt/homebrew/bin/python3.13"
 }

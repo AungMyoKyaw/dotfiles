@@ -1,7 +1,7 @@
 {
   "LuaSnip": {
     "branch": "master",
-    "commit": "73813308abc2eaeff2bc0d3f2f79270c491be9d7"
+    "commit": "21e9fecfc07fb2cd707b6c7c3fa148550a34d053"
   },
   "catppuccin": {
     "branch": "main",
@@ -33,7 +33,7 @@
   },
   "fzf-lua": {
     "branch": "main",
-    "commit": "58ebb27333bd12cb497f27b7da07a677116bc0ef"
+    "commit": "83e4080ae886a42ec48c5c26ce5892ceb557c425"
   },
   "gitsigns.nvim": {
     "branch": "main",
@@ -57,7 +57,7 @@
   },
   "lualine.nvim": {
     "branch": "master",
-    "commit": "b8c23159c0161f4b89196f74ee3a6d02cdc3a955"
+    "commit": "e533fac71bc361768f90004af695cd1f1aa1900a"
   },
   "mason-lspconfig.nvim": {
     "branch": "main",
@@ -69,7 +69,7 @@
   },
   "mini.nvim": {
     "branch": "main",
-    "commit": "6a224ddd28b4b21a488d6d87e1c2643a029caaa4"
+    "commit": "89eecd8b4c15f8de72dd4b5244534abed8dc086f"
   },
   "neogit": {
     "branch": "master",
