@@ -24,6 +24,7 @@
   <img src="https://img.shields.io/badge/Primary%20AI%20Agent-VS%20Code%20GitHub%20Copilot-blueviolet?style=flat-square" alt="VS Code GitHub Copilot">
   <img src="https://img.shields.io/badge/AI%20Agent-Gemini%20CLI-00bfae?style=flat-square" alt="Gemini CLI">
   <img src="https://img.shields.io/badge/AI%20Agent-Qwen%20Code%20CLI-4B0082?style=flat-square" alt="Qwen Code CLI">
+  <img src="https://img.shields.io/badge/AI%20Agent-Claude%20Code%20CLI-FF6B35?style=flat-square" alt="Claude Code CLI">
 </p>
 
 <p align="center">
@@ -95,7 +96,7 @@
 ## Features
 
 - **Automated Installation**: One script to symlink all configs and back up existing files
-- **AI Development Assistants**: RovoDev and Qwen Code CLI integration with MCP servers for enhanced development workflow
+- **AI Development Assistants**: RovoDev, Qwen Code CLI, and Claude Code CLI integration with MCP servers for enhanced development workflow
 - **Consistent Theming**: Catppuccin Mocha theme across Neovim, Ghostty, and tmux
 - **Modal Editing**: Vim-style keybindings in Neovim, tmux, and VS Code Insiders
 - **Extensive Keybindings**: Custom shortcuts for window management, navigation, and more
