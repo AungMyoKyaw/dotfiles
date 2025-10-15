@@ -13,6 +13,7 @@
 </p>
 <p align="center">
   <a href="https://opensource.org/licenses/GPL-2.0"><img src="https://img.shields.io/badge/License-GPL%20v2-blue?style=flat-square" alt="License"></a>
+  <a href="https://opensource.org/licenses/GPL-2.0"><img src="https://img.shields.io/badge/GPL%20v2-2ecc71?style=flat-square" alt="GPL v2"></a>
   <img src="https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8F%20in-Myanmar-2ecc71?style=flat-square" alt="Made in Myanmar">
   <img src="https://img.shields.io/badge/macOS%20Optimized-2ecc71?style=flat-square" alt="macOS Optimized">
   <img src="https://img.shields.io/badge/Shell-zsh-blue?style=flat-square" alt="zsh">
