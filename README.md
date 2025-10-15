@@ -12,8 +12,8 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://opensource.org/licenses/GPL-2.0"><img src="https://img.shields.io/badge/License-GPL%20v2-blue?style=flat-square" alt="License"></a>
-  <a href="https://opensource.org/licenses/GPL-2.0"><img src="https://img.shields.io/badge/GPL%20v2-2ecc71?style=flat-square" alt="GPL v2"></a>
+  <a href="https://opensource.org/licenses/AGPL-3.0"><img src="https://img.shields.io/badge/License-AGPL%20v3-blue?style=flat-square" alt="License"></a>
+  <a href="https://opensource.org/licenses/AGPL-3.0"><img src="https://img.shields.io/badge/AGPL%20v3-2ecc71?style=flat-square" alt="AGPL v3"></a>
   <img src="https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8F%20in-Myanmar-2ecc71?style=flat-square" alt="Made in Myanmar">
   <img src="https://img.shields.io/badge/macOS%20Optimized-2ecc71?style=flat-square" alt="macOS Optimized">
   <img src="https://img.shields.io/badge/Shell-zsh-blue?style=flat-square" alt="zsh">
@@ -556,7 +556,7 @@ Feel free to submit issues or pull requests! Customizations and suggestions are 
 
 ## License
 
-This project is licensed under the GNU General Public License v2.0. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the GNU Affero General Public License v3.0. See the [LICENSE](LICENSE) file for details.
 
 ---
 
