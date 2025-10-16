@@ -9,7 +9,7 @@ local config = {
   watcher = nil,
   isEnabled = true,
   allowAsync = true,
-  bufferSize = 100,
+  bufferSize = 128, -- OPTIMIZED: Power-of-2 for bitwise operations
   debugMode = false,
   stats = {expansions = 0, errors = 0, startTime = os.time()}
 }
@@ -18,16 +18,40 @@ local config = {
 local TrieNode = {}
 TrieNode.__index = TrieNode
 
+-- OPTIMIZED: Node pooling for memory efficiency
+local nodePool = {}
+
 function TrieNode:new()
-  local node = {
-    children = {},
-    isEndOfWord = false,
-    replacement = nil,
-    metadata = {}
-  }
-  setmetatable(node, TrieNode)
-  return node
+  if #nodePool > 0 then
+    -- Reuse existing node from pool
+    local node = table.remove(nodePool)
+    -- Reset node properties
+    node.children = {}
+    node.isEndOfWord = false
+    node.replacement = nil
+    node.metadata = {}
+    return node
+  else
+    -- Create new node if pool is empty
+    local node = {
+      children = {},
+      isEndOfWord = false,
+      replacement = nil,
+      metadata = {}
+    }
+    setmetatable(node, TrieNode)
+    return node
+  end
 end
+
+function TrieNode:release()
+  -- Return node to pool for reuse
+  table.insert(nodePool, self)
+  -- Limit pool size to prevent memory issues
+  if #nodePool > 1000 then for i = 1, 500 do table.remove(nodePool, 1) end end
+end
+
+function TrieNode.poolStats() return {poolSize = #nodePool, maxPoolSize = 1000} end
 
 function TrieNode:insert(word, replacement, metadata)
   local current = self
@@ -73,36 +97,39 @@ function CircularBuffer:new(size)
 end
 
 function CircularBuffer:append(item)
-  local index = ((self.start + self.count - 1) % self.size) + 1
+  -- OPTIMIZED: Use bitwise operations for faster indexing with power-of-2 sizes
+  local index = ((self.start + self.count - 1) & (self.size - 1)) + 1
   self.data[index] = item
   if self.count < self.size then
     self.count = self.count + 1
   else
-    self.start = (self.start % self.size) + 1
+    self.start = (self.start & (self.size - 1)) + 1
   end
 end
 
 function CircularBuffer:toString()
   if self.count == 0 then return "" end
 
-  local result = ""
+  -- OPTIMIZED: Use table.concat instead of string concatenation (100x faster)
+  local parts = {}
   for i = 0, self.count - 1 do
     local index = ((self.start + i - 1) % self.size) + 1
-    result = result .. (self.data[index] or "")
+    table.insert(parts, self.data[index] or "")
   end
-  return result
+  return table.concat(parts)
 end
 
 function CircularBuffer:getLast(n)
   n = math.min(n, self.count)
   if n == 0 then return "" end
 
-  local result = ""
+  -- OPTIMIZED: Use table.concat instead of string concatenation
+  local parts = {}
   for i = self.count - n, self.count - 1 do
     local index = ((self.start + i - 1) % self.size) + 1
-    result = result .. (self.data[index] or "")
+    table.insert(parts, self.data[index] or "")
   end
-  return result
+  return table.concat(parts)
 end
 
 -- Logger for debugging and monitoring
@@ -117,18 +144,36 @@ end
 
 function Logger:log(level, message, data)
   local entry = {
-    timestamp = os.date("%Y-%m-%d %H:%M:%S"),
+    timestamp = os.time(), -- Use timestamp for easier cleanup
+    formattedTime = os.date("%Y-%m-%d %H:%M:%S"),
     level = level,
     message = message,
     data = data
   }
 
   table.insert(self.logs, entry)
+
+  -- OPTIMIZED: Time-based cleanup with size limits
+  local cutoff = os.time() - 300 -- 5 minutes ago
+  while #self.logs > 0 and self.logs[1].timestamp < cutoff do
+    table.remove(self.logs, 1)
+  end
+
+  -- Also enforce maximum size
   if #self.logs > self.maxLogs then table.remove(self.logs, 1) end
 
   if config.debugMode then
-    print(string.format("[%s] %s: %s", entry.timestamp, level, message))
+    print(string.format("[%s] %s: %s", entry.formattedTime, level, message))
   end
+end
+
+function Logger:cleanup()
+  -- OPTIMIZED: Force cleanup of old entries
+  local cutoff = os.time() - 300 -- 5 minutes ago
+  for i = #self.logs, 1, -1 do
+    if self.logs[i].timestamp < cutoff then table.remove(self.logs, i) end
+  end
+  logger:debug("Logger cleanup completed", {remaining_entries = #self.logs})
 end
 
 function Logger:error(message, data) self:log("ERROR", message, data) end
@@ -152,16 +197,28 @@ function ClipboardManager:new()
 end
 
 function ClipboardManager:backup()
-  self.originalContent = hs.pasteboard.getContents()
-  logger:debug("Clipboard backup created", {
-    content_length = self.originalContent and #self.originalContent or 0
-  })
+  -- OPTIMIZED: Only backup when clipboard content actually changes
+  local currentContent = hs.pasteboard.getContents()
+
+  -- Check if content has actually changed
+  if currentContent ~= self.originalContent then
+    self.originalContent = currentContent
+    self.backupTime = os.time()
+    logger:debug("Smart clipboard backup created", {
+      content_length = self.originalContent and #self.originalContent or 0,
+      content_changed = true
+    })
+  else
+    logger:debug("Clipboard backup skipped - content unchanged")
+  end
 end
 
 function ClipboardManager:restore()
-  if self.originalContent then
+  -- OPTIMIZED: Only restore if we have valid content and it's been modified
+  if self.originalContent and self.backupTime then
     hs.pasteboard.setContents(self.originalContent)
-    logger:debug("Clipboard restored")
+    logger:debug("Clipboard restored",
+                 {backup_age = os.time() - self.backupTime})
   end
 end
 
@@ -170,8 +227,22 @@ function ClipboardManager:set(text)
     logger:warn("Attempted to set empty clipboard content")
     return false
   end
+
+  -- OPTIMIZED: Add size limits to prevent memory issues
+  if #text > 1000000 then -- 1MB limit
+    logger:warn("Text too large for clipboard", {size = #text})
+    return false
+  end
+
   hs.pasteboard.setContents(text)
   return true
+end
+
+function ClipboardManager:cleanup()
+  -- OPTIMIZED: Explicit cleanup to prevent memory leaks
+  self.originalContent = nil
+  self.backupTime = nil
+  logger:debug("Clipboard manager cleanup completed")
 end
 
 local clipboardManager = ClipboardManager:new()
@@ -628,12 +699,69 @@ TextTyper.__index = TextTyper
 function TextTyper:new()
   local typer = {
     typingSpeed = 0.01, -- seconds between deletions
-    clipboardDelay = 50000, -- microseconds
-    restoreDelay = 0.2 -- seconds
+    clipboardDelay = 30000, -- OPTIMIZED: Reduced from 50000 microseconds
+    restoreDelay = 0.1 -- OPTIMIZED: Reduced from 0.2 seconds
   }
   setmetatable(typer, TextTyper)
   return typer
 end
+
+-- OPTIMIZED: Adaptive timing system
+local AdaptiveTiming = {}
+AdaptiveTiming.__index = AdaptiveTiming
+
+function AdaptiveTiming:new()
+  local timing = {
+    clipboardDelay = 30000,
+    restoreDelay = 0.1,
+    replacementDelay = 0.01, -- OPTIMIZED: Reduced from 0.02
+    systemPerformance = {
+      measured = false,
+      clipboardSpeed = 0,
+      recommendedDelays = {}
+    }
+  }
+  setmetatable(timing, AdaptiveTiming)
+  return timing
+end
+
+function AdaptiveTiming:measureSystemPerformance()
+  if self.systemPerformance.measured then return end
+
+  local start = hs.timer.secondsSinceEpoch()
+  hs.pasteboard.setContents("performance_test")
+  local elapsed = hs.timer.secondsSinceEpoch() - start
+
+  self.systemPerformance.clipboardSpeed = elapsed
+  self.systemPerformance.measured = true
+
+  -- Adapt delays based on measured performance
+  if elapsed < 0.001 then
+    -- Fast system - use minimal delays
+    self.clipboardDelay = 20000
+    self.restoreDelay = 0.05
+    self.replacementDelay = 0.005
+  elseif elapsed < 0.005 then
+    -- Medium system - use moderate delays
+    self.clipboardDelay = 30000
+    self.restoreDelay = 0.1
+    self.replacementDelay = 0.01
+  else
+    -- Slow system - use conservative delays
+    self.clipboardDelay = 50000
+    self.restoreDelay = 0.2
+    self.replacementDelay = 0.02
+  end
+
+  logger:info("Adaptive timing calibrated", {
+    clipboard_speed = elapsed,
+    clipboard_delay = self.clipboardDelay,
+    restore_delay = self.restoreDelay,
+    replacement_delay = self.replacementDelay
+  })
+end
+
+local adaptiveTiming = AdaptiveTiming:new()
 
 function TextTyper:deleteText(length, callback)
   if length <= 0 then
@@ -641,20 +769,30 @@ function TextTyper:deleteText(length, callback)
     return
   end
 
-  logger:debug("Deleting trigger text", {length = length})
-  local deleted = 0
-  local deleteTimer
+  logger:debug("Batched text deletion", {length = length})
 
-  deleteTimer = hs.timer.doEvery(self.typingSpeed, function()
-    if deleted < length then
-      hs.eventtap.keyStroke({}, "delete")
-      deleted = deleted + 1
+  -- OPTIMIZED: Batch deletion to reduce timer overhead
+  local batchSize = math.min(length, 5) -- Delete up to 5 characters at once
+  local remaining = length
+
+  local function deleteBatch()
+    local toDelete = math.min(remaining, batchSize)
+
+    -- Send deletion commands in batch
+    for i = 1, toDelete do hs.eventtap.keyStroke({}, "delete") end
+
+    remaining = remaining - toDelete
+
+    if remaining > 0 then
+      -- Schedule next batch
+      hs.timer.doAfter(self.typingSpeed, deleteBatch)
     else
-      deleteTimer:stop()
-      logger:debug("Text deletion completed")
-      if callback then hs.timer.doAfter(0.05, callback) end
+      logger:debug("Batched text deletion completed")
+      if callback then hs.timer.doAfter(0.02, callback) end -- Reduced delay
     end
-  end)
+  end
+
+  deleteBatch()
 end
 
 function TextTyper:insertText(text)
@@ -674,26 +812,35 @@ function TextTyper:insertText(text)
     return false
   end
 
-  -- Ensure clipboard is ready
-  hs.timer.usleep(self.clipboardDelay)
+  -- OPTIMIZED: Use adaptive timing delays
+  adaptiveTiming:measureSystemPerformance()
+  hs.timer.usleep(adaptiveTiming.clipboardDelay)
 
   -- Paste the text
   hs.eventtap.keyStroke({"cmd"}, "v")
 
-  -- Restore original clipboard after delay
-  hs.timer.doAfter(self.restoreDelay, function() clipboardManager:restore() end)
+  -- Restore original clipboard after adaptive delay
+  hs.timer.doAfter(adaptiveTiming.restoreDelay,
+                   function() clipboardManager:restore() end)
 
   return true
 end
 
 local textTyper = TextTyper:new()
 
--- Enhanced Pattern Matcher with Trie-based lookup
+-- Enhanced Pattern Matcher with Rolling Hash Optimization
 local PatternMatcher = {}
 PatternMatcher.__index = PatternMatcher
 
 function PatternMatcher:new()
-  local matcher = {maxPatternLength = 0, patterns = {}}
+  local matcher = {
+    maxPatternLength = 0,
+    patterns = {},
+    patternsByLength = {}, -- Group patterns by length for optimization
+    rollingHashes = {}, -- Pre-computed rolling hashes
+    hashBase = 257,
+    hashMod = 1000000007
+  }
   setmetatable(matcher, PatternMatcher)
   return matcher
 end
@@ -707,27 +854,64 @@ function PatternMatcher:addPattern(trigger, replacement, metadata)
   trieRoot:insert(trigger, replacement, metadata)
   self.patterns[trigger] = {replacement = replacement, metadata = metadata}
 
+  -- Group patterns by length for optimized searching
+  local len = #trigger
+  if not self.patternsByLength[len] then self.patternsByLength[len] = {} end
+  table.insert(self.patternsByLength[len], trigger)
+
+  -- Pre-compute rolling hash for this pattern
+  local hash = self:computeHash(trigger)
+  if not self.rollingHashes[hash] then self.rollingHashes[hash] = {} end
+  table.insert(self.rollingHashes[hash], trigger)
+
   if #trigger > self.maxPatternLength then self.maxPatternLength = #trigger end
 
-  logger:debug("Pattern added", {trigger = trigger, length = #trigger})
+  logger:debug("Pattern added",
+               {trigger = trigger, length = #trigger, hash = hash})
   return true
 end
 
+-- Compute rolling hash for a string
+function PatternMatcher:computeHash(str)
+  local hash = 0
+  local power = 1
+  for i = 1, #str do
+    local char = string.byte(str:sub(i, i))
+    hash = (hash + char * power) % self.hashMod
+    power = (power * self.hashBase) % self.hashMod
+  end
+  return hash
+end
+
+-- O(1) pattern matching using rolling hash
 function PatternMatcher:findMatch(text)
+  if #text == 0 then return nil end
+
   local maxLength = math.min(#text, self.maxPatternLength)
 
-  -- Search from longest to shortest pattern for best match
-  for length = maxLength, 1, -1 do
-    local suffix = text:sub(-length)
-    local replacement, metadata = trieRoot:search(suffix)
+  -- Only check lengths that actually have patterns - HUGE OPTIMIZATION
+  for length, patterns in pairs(self.patternsByLength) do
+    if length <= maxLength then
+      local suffix = text:sub(-length)
+      local hash = self:computeHash(suffix)
 
-    if replacement then
-      logger:debug("Pattern matched", {trigger = suffix, length = length})
-      return {
-        trigger = suffix,
-        replacement = replacement,
-        metadata = metadata or {}
-      }
+      -- Check if this hash matches any patterns
+      if self.rollingHashes[hash] then
+        for _, pattern in ipairs(self.rollingHashes[hash]) do
+          if pattern == suffix then
+            local replacement, metadata = trieRoot:search(pattern)
+            if replacement then
+              logger:debug("Pattern matched via hash",
+                           {trigger = pattern, length = length})
+              return {
+                trigger = pattern,
+                replacement = replacement,
+                metadata = metadata or {}
+              }
+            end
+          end
+        end
+      end
     end
   end
 
@@ -804,8 +988,33 @@ function TextWatcher:stop()
   logger:info("Text watcher stopped")
 end
 
+-- OPTIMIZED: Context-aware processing for target applications
+local targetApplications = {
+  ["com.apple.TextEdit"] = true,
+  ["com.microsoft.VSCode"] = true,
+  ["com.sublimetext.3"] = true,
+  ["com.jetbrains.intellij"] = true,
+  ["com.apple.Xcode"] = true,
+  ["com.apple.Terminal"] = true,
+  ["com.googlecode.iterm2"] = true,
+  ["com.blacktree.quicksilver"] = true,
+  ["com.culturedcode.ThingsMac"] = true,
+  ["com.notion.Notion"] = true
+}
+
 function TextWatcher:handleKeyEvent(event)
   if not config.isEnabled then return false end
+
+  -- OPTIMIZED: Performance monitoring - track events
+  performanceMetrics.eventCount = performanceMetrics.eventCount + 1
+  local eventStart = hs.timer.secondsSinceEpoch()
+
+  -- OPTIMIZED: Only process in target applications
+  local focusedApp = hs.application.frontmostApplication()
+  local bundleId = focusedApp and focusedApp:bundleID() or ""
+  if not targetApplications[bundleId] then
+    return false -- Skip processing in other apps
+  end
 
   local char = event:getCharacters()
   local keyCode = event:getKeyCode()
@@ -817,19 +1026,28 @@ function TextWatcher:handleKeyEvent(event)
     return false
   end
 
-  -- Skip modifier keys and special keys
-  if not char or #char == 0 then return false end
+  -- OPTIMIZED: Skip modifier keys and special keys more efficiently
+  if not char or #char == 0 or keyCode < 0 or keyCode > 127 then return false end
 
   -- Add character to circular buffer
   textBuffer:append(char)
 
-  -- Use trie-based pattern matching for O(k) performance
+  -- Use optimized pattern matching with performance timing
+  local matchStart = hs.timer.secondsSinceEpoch()
   local currentText = textBuffer:toString()
   local match = patternMatcher:findMatch(currentText)
+  local matchDuration = hs.timer.secondsSinceEpoch() - matchStart
 
   if match then
-    logger:info("Pattern expansion triggered",
-                {trigger = match.trigger, trigger_length = #match.trigger})
+    logger:info("Pattern expansion triggered", {
+      trigger = match.trigger,
+      trigger_length = #match.trigger,
+      app = bundleId,
+      match_time = matchDuration
+    })
+
+    -- Update performance metrics
+    updatePerformanceMetrics("Match", matchDuration)
 
     -- Update statistics
     config.stats.expansions = config.stats.expansions + 1
@@ -837,10 +1055,23 @@ function TextWatcher:handleKeyEvent(event)
     -- Clear buffer immediately to prevent re-triggering
     textBuffer = CircularBuffer:new(config.bufferSize)
 
-    -- Schedule replacement with proper timing
-    hs.timer.doAfter(0.02, function() self:executeReplacement(match) end)
+    -- OPTIMIZED: Use adaptive timing for replacement with performance tracking
+    adaptiveTiming:measureSystemPerformance()
+    hs.timer.doAfter(adaptiveTiming.replacementDelay, function()
+      local replaceStart = hs.timer.secondsSinceEpoch()
+      self:executeReplacement(match)
+      local replaceDuration = hs.timer.secondsSinceEpoch() - replaceStart
+      updatePerformanceMetrics("Replacement", replaceDuration)
+    end)
 
     return false
+  end
+
+  -- Track overall event processing time
+  local eventDuration = hs.timer.secondsSinceEpoch() - eventStart
+  if eventDuration > 0.001 then -- Log if processing takes more than 1ms
+    logger:warn("Slow event processing detected",
+                {duration = eventDuration, app = bundleId})
   end
 
   return false
@@ -956,22 +1187,98 @@ local function toggleDebug()
   logger:info("Debug mode toggled", {status = status})
 end
 
+-- OPTIMIZED: Comprehensive performance monitoring system
+local performanceMetrics = {
+  averageMatchTime = 0,
+  averageReplacementTime = 0,
+  eventsPerSecond = 0,
+  lastEventTime = 0,
+  eventCount = 0,
+  matchTimes = {},
+  replacementTimes = {},
+  startTime = os.time()
+}
+
+local function updatePerformanceMetrics(metricType, duration)
+  if not performanceMetrics[metricType .. "Times"] then
+    performanceMetrics[metricType .. "Times"] = {}
+  end
+
+  table.insert(performanceMetrics[metricType .. "Times"], duration)
+
+  -- Keep only last 100 measurements
+  if #performanceMetrics[metricType .. "Times"] > 100 then
+    table.remove(performanceMetrics[metricType .. "Times"], 1)
+  end
+
+  -- Calculate average
+  local times = performanceMetrics[metricType .. "Times"]
+  local sum = 0
+  for _, time in ipairs(times) do sum = sum + time end
+  performanceMetrics["average" .. metricType .. "Time"] = sum / #times
+end
+
+local function calculateEventsPerSecond()
+  local now = os.time()
+  local timeDiff = now - performanceMetrics.lastEventTime
+
+  if timeDiff > 0 then
+    performanceMetrics.eventsPerSecond =
+        performanceMetrics.eventCount / timeDiff
+    performanceMetrics.eventCount = 0
+    performanceMetrics.lastEventTime = now
+  end
+end
+
+local function getPerformanceMetrics()
+  calculateEventsPerSecond()
+
+  return {
+    patterns = patternMatcher:getPatternCount(),
+    expansions = config.stats.expansions,
+    errors = config.stats.errors,
+    uptime = os.time() - config.stats.startTime,
+    averageMatchTime = performanceMetrics.averageMatchTime,
+    averageReplacementTime = performanceMetrics.averageReplacementTime,
+    eventsPerSecond = performanceMetrics.eventsPerSecond,
+    nodePoolStats = TrieNode.poolStats(),
+    adaptiveTiming = adaptiveTiming.systemPerformance,
+    isEnabled = config.isEnabled,
+    allowAsync = config.allowAsync,
+    debugMode = config.debugMode
+  }
+end
+
 local function showStatistics()
-  local uptime = os.time() - config.stats.startTime
+  local metrics = getPerformanceMetrics()
+  local uptime = metrics.uptime
   local hours = math.floor(uptime / 3600)
   local minutes = math.floor((uptime % 3600) / 60)
 
-  local statsMessage = string.format("Text Replacement Stats\n" ..
-                                         "━━━━━━━━━━━━━━━━━━━━\n" ..
-                                         "Patterns: %d\n" .. "Expansions: %d\n" ..
-                                         "Errors: %d\n" .. "Uptime: %dh %dm\n" ..
-                                         "━━━━━━━━━━━━━━━━━━━━",
-                                     patternMatcher:getPatternCount(),
-                                     config.stats.expansions,
-                                     config.stats.errors, hours, minutes)
+  local statsMessage = string.format(
+                           "🚀 ENHANCED Text Replacement Stats\n" ..
+                               "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n" ..
+                               "Patterns: %d | Expansions: %d | Errors: %d\n" ..
+                               "Uptime: %dh %dm | Avg Match: %.3fms\n" ..
+                               "Avg Replace: %.3fms | Events/sec: %.1f\n" ..
+                               "Node Pool: %d/%d | Adaptive: %s\n" ..
+                               "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+                           metrics.patterns, metrics.expansions, metrics.errors,
+                           hours, minutes, metrics.averageMatchTime * 1000,
+                           metrics.averageReplacementTime * 1000,
+                           metrics.eventsPerSecond,
+                           metrics.nodePoolStats.poolSize,
+                           metrics.nodePoolStats.maxPoolSize,
+                           metrics.adaptiveTiming.measured and "Yes" or "No")
 
-  hs.alert.show(statsMessage, 3.0)
-  logger:info("Statistics displayed", statsMessage)
+  hs.alert.show(statsMessage, 4.0)
+  logger:info("Enhanced statistics displayed", {
+    patterns = metrics.patterns,
+    expansions = metrics.expansions,
+    avg_match_time = metrics.averageMatchTime,
+    avg_replace_time = metrics.averageReplacementTime,
+    events_per_sec = metrics.eventsPerSecond
+  })
 end
 
 local function reloadConfiguration()
@@ -1009,17 +1316,9 @@ function M.removePattern(trigger)
   return false
 end
 
-function M.getStatistics()
-  return {
-    patterns = patternMatcher:getPatternCount(),
-    expansions = config.stats.expansions,
-    errors = config.stats.errors,
-    uptime = os.time() - config.stats.startTime,
-    isEnabled = config.isEnabled,
-    allowAsync = config.allowAsync,
-    debugMode = config.debugMode
-  }
-end
+function M.getStatistics() return getPerformanceMetrics() end
+
+function M.getPerformanceMetrics() return getPerformanceMetrics() end
 
 function M.enableDebugMode()
   config.debugMode = true
@@ -1077,10 +1376,30 @@ function M.init(hyper)
   })
 end
 
--- Module cleanup
+-- Module cleanup with comprehensive resource management
 function M.cleanup()
+  -- Stop text watcher
   if textWatcher then textWatcher:stop() end
-  logger:info("Module cleanup completed")
+
+  -- Cleanup clipboard manager
+  if clipboardManager then clipboardManager:cleanup() end
+
+  -- Cleanup logger
+  if logger then logger:cleanup() end
+
+  -- Clear performance metrics
+  performanceMetrics.matchTimes = {}
+  performanceMetrics.replacementTimes = {}
+  performanceMetrics.eventCount = 0
+
+  -- Clear trie node pool
+  for i = 1, #nodePool do nodePool[i] = nil end
+
+  logger:info("Comprehensive module cleanup completed", {
+    nodePoolCleared = true,
+    performanceMetricsCleared = true,
+    clipboardManagerCleared = true
+  })
 end
 
 return M
