@@ -17,7 +17,7 @@
   },
   "codecompanion.nvim": {
     "branch": "main",
-    "commit": "f8d517501a723681a36c19a57507d39509185b92"
+    "commit": "87a2f78767a03707fa85f108d374a320ff000f02"
   },
   "conform.nvim": {
     "branch": "master",
@@ -57,7 +57,7 @@
   },
   "lualine.nvim": {
     "branch": "master",
-    "commit": "e533fac71bc361768f90004af695cd1f1aa1900a"
+    "commit": "3946f0122255bc377d14a59b27b609fb3ab25768"
   },
   "mason-lspconfig.nvim": {
     "branch": "main",

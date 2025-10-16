@@ -1,7 +1,7 @@
 # Public .zshrc configuration
 # This file is safe to share in version control
 
-# Public aliases
+# Public aliases - Using pre-release versions for latest features
 alias qwen='npx @qwen-code/qwen-code@preview -y'
 alias claude='npx @anthropic-ai/claude-code@next --dangerously-skip-permissions'
 alias codex='npx @openai/codex@latest'
@@ -10,7 +10,6 @@ alias copilot='npx @github/copilot@prerelease'
 alias opencode='npx opencode-ai@dev'
 alias crush='npx @charmland/crush@latest'
 alias rovodev='acli rovodev'
-alias opencodestable='npx opencode-ai@latest'
 
 alias specify='uvx --from git+https://github.com/github/spec-kit.git specify'
 alias vercel='npx vercel'
@@ -187,6 +186,7 @@ fzfp(){
 
 # EDITOR OPTION
 export EDITOR='nvim'
+export VISUAL='nvim'
 
 # Set environment variables for non-sensitive paths (moved to .zshrc.local)
 # Source local environment file for sensitive information
