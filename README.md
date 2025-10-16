@@ -109,17 +109,55 @@
 
 ## Features
 
+### 🚀 Installation & Management
+
 - **Automated Installation**: One script to symlink all configs and back up existing files with sudo support for system directories
-- **AI Development Assistants**: RovoDev, Claude Code CLI, Gemini CLI, and Qwen Code CLI integration with MCP servers for enhanced development workflow
-- **Multiple Editor Support**: Neovim, VS Code Insiders, Zed, and OpenCode configurations with consistent theming and AI integrations
-- **Consistent Theming**: Catppuccin Mocha theme across Neovim, Ghostty, tmux, and terminal applications
-- **Modal Editing**: Vim-style keybindings in Neovim, tmux, VS Code Insiders, and Zed
-- **Advanced Terminal Setup**: Starship prompt, Ghostty terminal with performance optimizations, and comprehensive Zsh configuration
-- **MCP Server Integration**: Automated installation script for Model Context Protocol servers across AI tools
-- **Extensive Keybindings**: Custom shortcuts for window management, navigation, and productivity
-- **Plugin-Managed**: `lazy.nvim` for Neovim, TPM for tmux, extensions for VS Code Insiders and Zed
-- **AI-Powered**: GitHub Copilot, edit predictions, and context-aware assistance across all editors
-- **macOS Optimization**: Hammerspoon window management, Safari customizations, and system-wide productivity enhancements
+- **MCP Server Integration**: Automated installation script for Model Context Protocol servers across all AI tools
+- **Code Quality Tools**: Built-in EditorConfig and Prettier configurations for consistent code formatting
+- **Comprehensive Gitignore**: Optimized for Node.js, macOS, and sensitive file protection
+
+### 🤖 AI Development Ecosystem
+
+- **Claude Code CLI**: Enhanced transparency protocols with 31+ custom slash commands for specialized workflows
+- **RovoDev AI Assistant**: Advanced permissions and session management with persistent memory
+- **Gemini CLI**: Comprehensive configuration with context management
+- **Qwen Code CLI**: Alternative AI assistant with full MCP server integration
+- **Universal MCP Support**: Sequential thinking, context management, web fetching, browser automation, and Chrome DevTools integration
+
+### 📝 Multi-Editor Support
+
+- **Neovim**: Lazy.nvim plugin management with LSP, Treesitter, and Catppuccin theme
+- **VS Code Insiders**: Extensive configuration with AI chatmodes, custom prompts, and productivity extensions
+- **Zed Editor**: Modern performance with Copilot integration and context server support
+- **OpenCode**: Lightweight editor with AI integration capabilities
+- **Consistent Vim Mode**: Modal editing across all editors with system clipboard support
+
+### 🎨 Theming & Visual Consistency
+
+- **Catppuccin Mocha**: Unified dark theme across Neovim, Ghostty, tmux, and terminal applications
+- **Font Configuration**: SFMono Nerd Font with ligatures and consistent sizing
+- **Visual Harmony**: Carefully crafted color schemes and visual consistency
+
+### ⚡ Terminal & Shell Excellence
+
+- **Advanced Zsh Setup**: Comprehensive configuration with sensitive information separation
+- **Starship Prompt**: Minimal, fast prompt with git integration and custom symbols
+- **Ghostty Terminal**: Modern emulator with performance optimizations and Catppuccin theming
+- **Tmux**: Plugin-powered session management with TPM and persistent session support
+- **SSH Management**: Secure configuration with proper file handling
+
+### 🖥️ macOS Integration
+
+- **Hammerspoon Window Management**: Vim-style window snapping, resizing, and auto-management
+- **Safari Enhancements**: Custom CSS stylesheets and userscripts for improved browsing
+- **System-wide Productivity**: Custom keybindings and automation across macOS
+
+### 🔧 Development Workflow
+
+- **Automated Extension Management**: Scripts for installing and managing editor extensions
+- **Git Integration**: Advanced git status indicators and streamlined workflows
+- **Code Formatting**: Integrated Prettier and lua-format support
+- **Security First**: Proper handling of sensitive configurations and API keys
 
 ---
 
@@ -146,39 +184,70 @@
   - [Node.js](https://nodejs.org/) and npm: `brew install node`
   - Prettier: `npm install -g prettier`
   - uvx (for MCP fetch server): `pip install uvx`
+- **Code Quality Tools**:
+  - EditorConfig for consistent editor configuration (included)
+  - Prettier configuration for code formatting (included)
 
 ---
 
 ## Repository Structure
 
+### Core Scripts
+
 - **link_dotfiles.sh**: Script to symlink dotfiles to their target locations with backup and sudo support
 - **lua-format.sh**: Script to format all Lua files and supported files via Prettier
 - **install-mcp-servers.sh**: Script to install MCP servers for Claude CLI and other AI tools
+
+### Configuration Files (Included)
+
+- **.editorconfig**: Consistent editor configuration across all tools
+- **.prettierrc**: Prettier code formatting configuration
+- **.prettierignore**: Files to exclude from Prettier formatting
+- **.gitignore**: Comprehensive gitignore for Node.js, macOS, and sensitive files
+
+### Editor & Tool Configurations
+
 - **nvim/**: Neovim configuration directory (`.config/nvim`) with lazy.nvim and LSP setup
-- **rovodev/**: RovoDev AI assistant configuration with MCP servers and permissions
-- **claude/**: Claude Code CLI configuration with enhanced transparency protocols and MCP servers
-- **gemini/**: Gemini CLI settings and configuration
-- **qwen/**: Qwen Code CLI settings and configuration with MCP servers
-- **opencode/**: OpenCode editor configuration with AI integrations
 - **zed/**: Zed editor settings with AI features, Copilot, and context servers
 - **vscode-insider/**: VS Code Insiders settings, keybindings, extensions, and AI chatmodes
+- **opencode/**: OpenCode editor configuration with AI integrations
+
+### AI Development Tools
+
+- **claude/**: Claude Code CLI configuration with enhanced transparency protocols and MCP servers
+  - **commands/**: 31+ custom slash commands for specialized workflows
+  - **settings.json**: Main Claude CLI configuration with MCP servers
+  - **CLAUDE.md**: Enhanced transparency protocols and operational directives
+- **rovodev/**: RovoDev AI assistant configuration with MCP servers and permissions
+- **gemini/**: Gemini CLI settings and configuration
+- **qwen/**: Qwen Code CLI settings and configuration with MCP servers
+
+### Terminal & Shell
+
+- **zsh/**: Zsh configuration with separation of sensitive and non-sensitive information
 - **starship/**: Starship prompt configuration with minimal design and git integration
-- **hammerspoon/**: Hammerspoon setup for macOS window management with custom keybindings
 - **tmux/**: Tmux configuration (`.tmux.conf`) with TPM and Catppuccin theme
 - **ghostty/**: Ghostty terminal emulator configuration with Catppuccin theme and performance tweaks
-- **safari/**: Custom CSS stylesheet for Safari browser
-- **zsh/**: Zsh configuration with separation of sensitive and non-sensitive information
 - **ssh/**: SSH configuration directory for secure connections
+
+### System & Browser
+
+- **hammerspoon/**: Hammerspoon setup for macOS window management with custom keybindings
+  - **Spoons/**: Hammerspoon extensions directory
+- **safari/**: Custom CSS stylesheet and userscripts for Safari browser
+  - **userscripts/**: Custom JavaScript userscripts for enhanced browsing
 
 ---
 
 ## Installation
 
 1.  **Clone the repository:**
+
     ```sh
     git clone https://github.com/AungMyoKyaw/dotfiles.git ~/dotfiles
     cd ~/dotfiles
     ```
+
 2.  **Run the installation script:**
 
     ```sh
@@ -187,21 +256,61 @@
 
     - Backs up existing dotfiles to `~/dotfiles_backup_<timestamp>`
     - Creates symlinks for all configured dotfiles and directories
+    - Supports sudo operations for system-wide configurations
+    - Handles sensitive files according to .gitignore rules
+
+3.  **Install dependencies:**
+
+    See [Prerequisites](#prerequisites) below for required tools
+
+4.  **(Optional) Install MCP servers for enhanced AI development:**
+
+    ```sh
+    ./install-mcp-servers.sh
+    ```
+
+    - Installs sequential-thinking, context7, fetch, playwright, and chrome-devtools servers
+    - Configures servers for Claude CLI, Gemini CLI, and Qwen CLI
+    - Handles dependency checks for uvx and other requirements
+
+5.  **(Optional) Format configuration files:**
+
+    ```sh
+    ./lua-format.sh
+    ```
+
+    - Formats all Lua files with 2-space indentation and 80-character line limit
+    - Runs Prettier on supported files using included configuration
 
 ---
 
 ## Automation Scripts
 
-- **`install-mcp-servers.sh`**: Installs all configured MCP servers for Claude CLI and other AI tools.
+- **`install-mcp-servers.sh`**: Automated MCP server installation for all AI tools
 
   ```sh
   ./install-mcp-servers.sh
   ```
 
-- **`lua-format.sh`**: Formats all Lua files (indent width 2, 80-col limit) and runs Prettier on supported files.
+  - Installs: sequential-thinking, context7, fetch, playwright, chrome-devtools
+  - Handles dependency checking for uvx and other requirements
+  - Supports both direct Claude CLI and npx installation methods
+  - Provides clear feedback and error handling
+
+- **`lua-format.sh`**: Code formatting automation
+
   ```sh
   ./lua-format.sh
   ```
+
+  - Formats all Lua files with 2-space indentation and 80-character line limit
+  - Runs Prettier on supported files using included configuration
+  - Ensures consistent code style across the entire repository
+
+- **VS Code Extension Scripts** (in `vscode-insider/`):
+  - **`install-extensions.sh`**: Automatically install configured extensions
+  - **`export-extensions.sh`**: Export current extensions to extensions.txt
+  - **`restore.sh`**: Restore VS Code settings and configuration
 
 ---
 
@@ -376,7 +485,30 @@ My tmux setup is designed for efficient session management and navigation, with 
 
 ### VS Code Insiders
 
-My VS Code Insiders setup is customized with tmux-style keybindings for pane navigation and a Catppuccin theme.
+Comprehensive VS Code Insiders setup with extensive AI integration, custom keybindings, and productivity enhancements.
+
+**Key Features:**
+
+- **AI Integration**: GitHub Copilot, custom chatmodes, and prompt library
+- **Tmux-style Navigation**: Intuitive pane navigation and window management
+- **Custom Prompts Library**: 22+ specialized prompts for various development tasks
+- **Extension Management**: Automated installation and configuration scripts
+- **Chat Modes**: Multiple AI chat configurations for different workflows
+
+**Configuration Files:**
+
+- `settings.json`: Main VS Code configuration with AI integrations
+- `keybindings.json`: Tmux-style keybindings for productivity
+- `extensions.txt`: Curated list of essential extensions
+- `mcp.json`: MCP server configuration for AI integration
+
+**Directory Structure:**
+
+- `chatmodes/`: AI chat mode configurations (Beast Mode, Thinking Architect, etc.)
+- `prompts/`: 22+ specialized prompts (API design, code review, security audit, etc.)
+- `instructions/`: Specialized AI instructions for complex workflows
+- `install-extensions.sh`: Automated extension installation
+- `export-extensions.sh`: Extension export utility
 
 **Keybindings:**
 
@@ -391,6 +523,13 @@ My VS Code Insiders setup is customized with tmux-style keybindings for pane nav
 | `ctrl+a x`       | Close the active editor       |
 | `ctrl+a g`       | Open Copilot Chat             |
 | `ctrl+a i`       | Start an inline chat          |
+
+**AI Features:**
+
+- **Custom Chatmodes**: Beast Mode, Thinking Architect, Cognitive Architect, and more
+- **Prompt Library**: Specialized prompts for architecture, security, performance, testing
+- **MCP Integration**: Context servers and AI tool integration
+- **Enhanced Transparency**: Advanced AI interaction protocols
 
 ### Zed
 
@@ -464,20 +603,28 @@ Modern, fast terminal emulator with advanced features and Catppuccin theming.
 
 ### Claude Code CLI
 
-Claude Code CLI configuration with enhanced transparency protocols and MCP server integration.
+Claude Code CLI configuration with enhanced transparency protocols and comprehensive MCP server integration.
 
 **Key Features:**
 
-- **MCP Server Integration**: Sequential thinking, context management, web fetching, browser automation
+- **MCP Server Integration**: Sequential thinking, context management, web fetching, browser automation, Chrome DevTools
 - **Enhanced Protocols**: Transparency mandates and cognitive overclocking for advanced problem-solving
-- **Custom Commands**: Specialized slash commands for complex workflows
-- **AI Agents**: Multiple specialized agents for different tasks
+- **31+ Custom Commands**: Comprehensive slash commands for all development workflows
+- **Multi-Agent Support**: Specialized agents for different tasks and domains
 
 **Configuration Files:**
 
 - `settings.json`: Main Claude CLI configuration with MCP servers
 - `CLAUDE.md`: Enhanced transparency protocols and operational directives
-- `commands/`: Custom slash commands for specialized workflows
+- `commands/`: 31+ custom slash commands for specialized workflows
+
+**Custom Commands Include:**
+
+- **Development**: `/analyze`, `/debug`, `/docs`, `/format`, `/linting`, `/refactor`, `/test`, `/review`
+- **Architecture**: `/architecture`, `/api-design`, `/schema`, `/requirements`
+- **Workflow**: `/commit`, `/branch-diff`, `/complete-workflow`, `/az-pr`
+- **Advanced**: `/engineer`, `/optimize`, `/performance`, `/security-audit`, `/deploy`, `/migrate`
+- **Setup**: `/setup`, `/gitignore`, `/editorconfig`
 
 **MCP Servers:**
 
@@ -493,11 +640,32 @@ Claude Code CLI configuration with enhanced transparency protocols and MCP serve
 claude                    # Start interactive session
 claude mcp list          # List configured MCP servers
 ./install-mcp-servers.sh # Install all MCP servers automatically
+/help                    # List all available custom commands
 ```
 
 ### Hammerspoon
 
-I use Hammerspoon for window management on macOS, with vim-style keybindings for snapping and resizing windows.
+Comprehensive macOS window management and automation system with extensive configuration modules.
+
+**Key Features:**
+
+- **Window Management**: Vim-style window snapping, resizing, and positioning
+- **Automation**: Advanced app management and workflow automation
+- **Performance Monitoring**: System resource tracking and optimization
+- **Text Replacement**: Intelligent text expansion and replacement system
+- **Auto-quit**: Automatic application cleanup and resource management
+
+**Configuration Modules:**
+
+- `init.lua`: Main configuration initialization
+- `window_management.lua`: Vim-style window controls and positioning
+- `automation.lua`: Application management and workflow automation
+- `performance.lua`: System monitoring and optimization
+- `text_replacement.lua`: Intelligent text expansion system
+- `apps.lua`: Application-specific configurations
+- `autoquit.lua`: Automatic application cleanup
+- `cleanup.lua`: System maintenance and cleanup routines
+- `sensitive_replacements.lua`: Secure text replacements (gitignored)
 
 **Keybindings:**
 
@@ -511,6 +679,14 @@ I use Hammerspoon for window management on macOS, with vim-style keybindings for
 | `+`        | Increase window size           |
 | `=`        | Reset window size              |
 | `q`/`Esc`  | Exit Window Management mode    |
+
+**Advanced Features:**
+
+- **App-specific Layouts**: Different window layouts for different applications
+- **Performance Monitoring**: CPU, memory, and battery optimization
+- **Text Expansion**: Smart text replacement with sensitive data handling
+- **Auto-cleanup**: Automatic resource management and app cleanup
+- **Spoons Integration**: Hammerspoon extensions for additional functionality
 
 ---
 
