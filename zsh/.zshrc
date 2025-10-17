@@ -44,6 +44,9 @@ export LC_ALL=en_US.UTF-8
 # OPTING OUT HOMEBREW ANALYTICS
 export HOMEBREW_NO_ANALYTICS=1
 
+# Disable bracketed paste mode to fix garbled output in tmux
+unset zle_bracketed_paste
+
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
 
 # Consolidated PATH exports
@@ -66,7 +69,15 @@ reload(){
 
 # reload tmux
 reload_tmux(){
-  tmux source-file ~/.tmux.conf
+  tmux source-file ~/.tmux.conf && echo "✓ tmux config reloaded"
+}
+
+# Fix tmux terminal issues (for ghostty/modern terminals)
+fix_tmux_terminal(){
+  echo "🔧 Fixing tmux terminal configuration..."
+  tmux set -g escape-time 50
+  tmux set -g xterm-keys on
+  echo "✓ Terminal issues fixed. You may need to restart applications."
 }
 
 # set up adguardHome DNS
@@ -151,7 +162,6 @@ mac_update(){
   brew_update
   updateplugin
   nvim --headless "+Lazy! sync" +qa
-  nvim --headless "+MasonUpdateAll" +qa
   softwareupdate --all --install --force
 }
 
