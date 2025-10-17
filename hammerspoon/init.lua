@@ -14,6 +14,7 @@ require("cleanup").init(hyper)
 require("automation").init(hyper)
 require("window_management").init(hyper)
 require("text_replacement").init(hyper)
+require("bing_wallpaper").init(hyper)
 
 -- Reload config with Hyper+R
 hs.hotkey.bind(hyper, "r", function()
@@ -21,6 +22,4 @@ hs.hotkey.bind(hyper, "r", function()
   hs.alert.show("Hammerspoon config reloaded")
 end)
 
--- Auto-reload when configuration files change
-hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", hs.reload):start()
 hs.alert.show("Hammerspoon config loaded")

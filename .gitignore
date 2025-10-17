@@ -152,6 +152,9 @@ hammerspoon/sensitive_replacements.lua
 hammerspoon/*.secret.lua
 hammerspoon/.sensitive/
 
+# Hammerspoon wallpapers directory
+hammerspoon/wallpapers/
+
 # Sensitive configuration files
 **/sensitive_*
 **/*.secret.*
