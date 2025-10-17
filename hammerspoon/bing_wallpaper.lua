@@ -162,7 +162,7 @@ function getTodaysWallpaper()
 end
 
 -- Main function to update wallpaper
-function updateBingWallpaper()
+function bingWallpaper.updateBingWallpaper()
   log("Starting Bing wallpaper update")
 
   -- Check if we already have today's wallpaper
@@ -213,7 +213,7 @@ function bingWallpaper.init(hyper)
   ensureWallpaperDir()
 
   -- Update wallpaper immediately
-  updateBingWallpaper()
+  bingWallpaper.updateBingWallpaper()
 
   -- Schedule daily update at 9:00 AM
   bingWallpaper.dailyTimer = hs.timer.new(3600, function() -- Check every hour
@@ -222,7 +222,7 @@ function bingWallpaper.init(hyper)
 
     -- Run at 9:00 AM
     if hour == 9 and minute == 0 then
-      updateBingWallpaper()
+      bingWallpaper.updateBingWallpaper()
       cleanupOldWallpapers()
     end
   end)
@@ -230,7 +230,7 @@ function bingWallpaper.init(hyper)
 
   -- Manual update hotkey (Hyper+W)
   hs.hotkey.bind(hyper, "w", function()
-    updateBingWallpaper()
+    bingWallpaper.updateBingWallpaper()
     hs.alert.show("Bing high-res wallpaper updated manually")
   end)
 

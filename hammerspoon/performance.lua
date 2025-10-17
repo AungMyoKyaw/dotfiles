@@ -2,25 +2,24 @@
 -- Lightweight performance helpers: menubar CPU/memory, caffeinate on external display+AC,
 -- Activity Monitor launcher, and a safe top-process inspector.
 local obj = {}
--- Compact menubar mode: show small icon instead of full text
-local compactMode = true
-local monitoringEnabled = true
+local menubarMenu = require("menubar_menu")
+local bingWallpaper = require("bing_wallpaper")
 
 -- Config
-local sampleInterval = 5 -- seconds
 local cpuAlertThreshold = 85 -- percent
 local memoryAlertThreshold = 90 -- percent of physical memory
 local alertsEnabled = false -- Set to false to disable notifications
 local alertCooldown = 300 -- Seconds (e.g., 300 = 5 minutes)
 
-local menubar = hs.menubar.new()
-local cpuTimer = nil
+local menubarInstance = nil
+local screenWatcher = nil
+local powerWatcher = nil
 local lastCpuAlertTime = 0
 local lastMemAlertTime = 0
 
--- Helpers
-local function formatPercent(n) return
-    string.format("%d%%", math.floor(n + 0.5)) end
+-- Track manual caffeinate override to prevent auto-caffeinate from overriding user preference
+local manualCaffeinateOverride = false
+local userWantsCaffeinate = false
 
 -- Helper to show a standard, less-intrusive notification
 local function showNotification(title, message)
@@ -62,65 +61,61 @@ local function getStats()
 end
 
 local function updateMenubar()
-  if not monitoringEnabled then
-    menubar:setTitle(hs.styledtext.new(compactMode and "⚡ (off)" or
-                                           "MONITOR OFF"))
-    return
-  end
-  local cpuActive, usedPercent = getStats()
+  if not menubarInstance then return end
 
+  local cpuActive, usedPercent = getStats()
   local highCpu = cpuActive >= cpuAlertThreshold
   local highMem = usedPercent >= memoryAlertThreshold
 
-  -- Use a subtle color to indicate high usage in the menubar
-  local statusColor
-  if highCpu or highMem then
-    statusColor = {red = 0.9, green = 0.4, blue = 0.4} -- A noticeable but not jarring red
-  end
+  -- Determine status
+  local status = "normal"
+  if highCpu or highMem then status = "warning" end
 
-  -- Add caffeinate status to menubar
+  -- Add caffeinate status
   local caffeinateStatus = ""
   if hs.caffeinate.get("displayIdle") then caffeinateStatus = " ☕" end
 
-  if compactMode then
-    local styledTitle = hs.styledtext.new("⚡" .. caffeinateStatus,
-                                          {color = statusColor})
-    menubar:setTitle(styledTitle)
-    menubar:setTooltip(string.format("CPU %s | MEM %s | Click for menu",
-                                     formatPercent(cpuActive),
-                                     formatPercent(usedPercent)))
+  if menubarInstance.compactMode then
+    local compactText = "⚡" .. caffeinateStatus
+    local tooltip = string.format("CPU %s | MEM %s | Click for menu",
+                                  menubarMenu.formatPercent(cpuActive),
+                                  menubarMenu.formatPercent(usedPercent))
+    menubarMenu.createStatusTitle(menubarInstance, status, compactText, nil,
+                                  tooltip)
   else
-    local cpuColor = highCpu and statusColor or nil
-    local memColor = highMem and statusColor or nil
-    local cpuText = hs.styledtext.new(string.format("CPU %s",
-                                                    formatPercent(cpuActive)),
-                                      {color = cpuColor})
-    local memText = hs.styledtext.new(string.format("MEM %s",
-                                                    formatPercent(usedPercent)),
-                                      {color = memColor})
-    local caffeinateText = hs.styledtext.new(caffeinateStatus)
-    local separator = hs.styledtext.new(" | ")
-    local fullTitle = hs.styledtext.concat({
+    local cpuColor = highCpu and menubarInstance.statusColors.warning or nil
+    local memColor = highMem and menubarInstance.statusColors.warning or nil
+    local cpuText = menubarMenu.createStyledText(
+                        string.format("CPU %s",
+                                      menubarMenu.formatPercent(cpuActive)),
+                        cpuColor)
+    local memText = menubarMenu.createStyledText(
+                        string.format("MEM %s",
+                                      menubarMenu.formatPercent(usedPercent)),
+                        memColor)
+    local caffeinateText = menubarMenu.createStyledText(caffeinateStatus)
+    local separator = menubarMenu.createStyledText(" | ")
+    local fullTitle = menubarMenu.concatStyledText({
       cpuText,
       separator,
       memText,
       caffeinateText
     })
-    menubar:setTitle(fullTitle)
-    menubar:setTooltip(nil)
+    menubarMenu.updateStyledTitle(menubarInstance, {fullTitle})
   end
 
   -- Send throttled alerts, which can be disabled via the menu
   if alertsEnabled then
     local now = os.time()
     if highCpu and (now - lastCpuAlertTime > alertCooldown) then
-      showNotification("High CPU Usage",
-                       string.format("CPU is at %s", formatPercent(cpuActive)))
+      showNotification("High CPU Usage", string.format("CPU is at %s",
+                                                       menubarMenu.formatPercent(
+                                                           cpuActive)))
       lastCpuAlertTime = now
     end
     if highMem and (now - lastMemAlertTime > alertCooldown) then
       showNotification("High Memory Usage", string.format("Memory is at %s",
-                                                          formatPercent(
+                                                          menubarMenu.formatPercent(
                                                               usedPercent)))
       lastMemAlertTime = now
     end
@@ -128,27 +123,15 @@ local function updateMenubar()
 end
 
 local function startMonitoring()
-  if cpuTimer then return end
-  updateMenubar()
-  cpuTimer = hs.timer.doEvery(sampleInterval, updateMenubar)
+  if menubarInstance then menubarMenu.startUpdates(menubarInstance) end
 end
 
 local function stopMonitoring()
-  if cpuTimer then
-    cpuTimer:stop()
-    cpuTimer = nil
-  end
-  monitoringEnabled = false
-  -- keep menubar but mark as off
-  if menubar then
-    menubar:setTitle(hs.styledtext.new(compactMode and "⚡ (off)" or
-                                           "MONITOR OFF"))
+  if menubarInstance then
+    menubarMenu.stopUpdates(menubarInstance)
+    menubarMenu.setEnabled(menubarInstance, false)
   end
 end
-
--- Track manual caffeinate override to prevent auto-caffeinate from overriding user preference
-local manualCaffeinateOverride = false
-local userWantsCaffeinate = false
 
 -- Auto caffeinate when external display connected and AC power
 local function checkCaffeinateOnDisplay()
@@ -220,30 +203,31 @@ local function showTopProcessesChooser()
 end
 
 -- Watchers
-local screenWatcher = hs.screen.watcher.new(
-                          function() checkCaffeinateOnDisplay() end)
-local powerWatcher = hs.battery.watcher.new(
-                         function() checkCaffeinateOnDisplay() end)
+screenWatcher = hs.screen.watcher.new(function() checkCaffeinateOnDisplay() end)
+powerWatcher = hs.battery.watcher.new(function() checkCaffeinateOnDisplay() end)
 
 -- Build menubar menu (shows full stats and actions)
 local function buildMenu()
   local cpuActive, usedPercent = getStats()
   local isCaffeinated = hs.caffeinate.get("displayIdle")
-  local menu = {
+
+  local statusSection = {
     {
-      title = string.format("CPU: %s", formatPercent(cpuActive)),
+      title = string.format("CPU: %s", menubarMenu.formatPercent(cpuActive)),
       disabled = true
     },
     {
-      title = string.format("Memory: %s", formatPercent(usedPercent)),
+      title = string.format("Memory: %s", menubarMenu.formatPercent(usedPercent)),
       disabled = true
-    },
-    {title = "-"},
+    }
+  }
+
+  local actionsSection = {
     {
       title = isCaffeinated and "Disable Caffeinate" or "Enable Caffeinate",
       fn = function()
         toggleCaffeinate()
-        menubar:setMenu(buildMenu) -- Refresh menu
+        menubarMenu.setMenu(menubarInstance, buildMenu()) -- Refresh menu
       end
     },
     {
@@ -252,19 +236,20 @@ local function buildMenu()
         manualCaffeinateOverride = false
         checkCaffeinateOnDisplay()
         hs.alert.show("Auto-Caffeinate: Reset", 1)
-        menubar:setMenu(buildMenu) -- Refresh menu
+        menubarMenu.setMenu(menubarInstance, buildMenu()) -- Refresh menu
       end
     },
     {
-      title = monitoringEnabled and "Stop Monitoring" or "Start Monitoring",
+      title = menubarInstance.enabled and "Stop Monitoring" or
+          "Start Monitoring",
       fn = function()
-        if monitoringEnabled then
+        if menubarInstance.enabled then
           stopMonitoring()
         else
-          monitoringEnabled = true
+          menubarMenu.setEnabled(menubarInstance, true)
           startMonitoring()
         end
-        menubar:setMenu(buildMenu) -- Refresh menu
+        menubarMenu.setMenu(menubarInstance, buildMenu()) -- Refresh menu
       end
     },
     {
@@ -273,7 +258,7 @@ local function buildMenu()
         alertsEnabled = not alertsEnabled
         hs.alert.show("Alerts " .. (alertsEnabled and "Enabled" or "Disabled"),
                       1)
-        menubar:setMenu(buildMenu) -- Refresh menu
+        menubarMenu.setMenu(menubarInstance, buildMenu()) -- Refresh menu
       end
     },
     {
@@ -284,19 +269,41 @@ local function buildMenu()
       title = "Top CPU processes...",
       fn = function() showTopProcessesChooser() end
     },
-    {title = "-"},
     {
-      title = "Toggle compact display (Hyper+P)",
+      title = "Update Bing Wallpaper",
       fn = function()
-        compactMode = not compactMode
-        updateMenubar()
+        bingWallpaper.updateBingWallpaper()
+        hs.alert.show("Bing wallpaper update triggered", 1)
       end
     }
   }
-  return menu
+
+  local optionsSection = {
+    {
+      title = "Toggle compact display (Hyper+P)",
+      fn = function() menubarMenu.toggleCompactMode(menubarInstance) end
+    }
+  }
+
+  return menubarMenu.createStandardMenu(menubarInstance, {
+    status = statusSection,
+    actions = actionsSection,
+    options = optionsSection
+  })
 end
 
 function obj.start()
+  -- Initialize menubar instance
+  menubarInstance = menubarMenu.new({
+    compactMode = true,
+    updateInterval = 5,
+    onUpdate = updateMenubar,
+    onMenuBuild = buildMenu
+  })
+
+  -- Set initial menu
+  menubarMenu.setMenu(menubarInstance, buildMenu())
+
   -- Reset manual caffeinate override when starting
   manualCaffeinateOverride = false
   startMonitoring()
@@ -307,14 +314,12 @@ end
 
 function obj.stop()
   stopMonitoring()
-  screenWatcher:stop()
-  powerWatcher:stop()
+  if screenWatcher then screenWatcher:stop() end
+  if powerWatcher then powerWatcher:stop() end
+  if menubarInstance then menubarMenu.cleanup(menubarInstance) end
 end
 
 function obj.init(hyper)
-  -- Set initial menubar menu
-  menubar:setMenu(buildMenu)
-
   -- Hotkeys
   -- Activity Monitor launcher
   hs.hotkey.bind({"cmd", "alt", "ctrl"}, "A", function()
@@ -325,8 +330,7 @@ function obj.init(hyper)
                  function() showTopProcessesChooser() end)
   -- Toggle compact display hotkey: Hyper+P
   hs.hotkey.bind(hyper, "p", function()
-    compactMode = not compactMode
-    updateMenubar()
+    if menubarInstance then menubarMenu.toggleCompactMode(menubarInstance) end
   end)
 
   obj.start()
