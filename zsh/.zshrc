@@ -1,6 +1,11 @@
 # Public .zshrc configuration
 # This file is safe to share in version control
 
+# Ghostty shell integration - Must be at the top of .zshrc!
+if [[ -n $GHOSTTY_RESOURCES_DIR ]]; then
+  source "$GHOSTTY_RESOURCES_DIR"/shell-integration/zsh/ghostty-integration
+fi
+
 # Public aliases - Using pre-release versions for latest features
 alias qwen='npx @qwen-code/qwen-code@preview -y'
 alias claude='npx @anthropic-ai/claude-code@next --dangerously-skip-permissions'
@@ -14,6 +19,7 @@ alias rovodev='acli rovodev'
 alias specify='uvx --from git+https://github.com/github/spec-kit.git specify'
 alias vercel='npx vercel'
 
+# Github Copilot CLI settings
 export COPILOT_MODEL='claude-sonnet-4.5'
 export COPILOT_ALLOW_ALL=true
 
@@ -23,17 +29,8 @@ alias g='git'
 # nvim
 alias n='nvim'
 
-# neovide
-alias nev='neovide'
-
 # tmuxinator
 alias mx='tmuxinator'
-
-# COPYTO SYSTEM CLIPBOARD
-alias dcp='cat ./dcp.txt | pbcopy'
-
-# nwjs
-alias nw='/Applications/nwjs.app/Contents/MacOS/nwjs'
 
 # Chrome with remote debugging
 alias chrome-debug='"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --remote-debugging-port=9222 --user-data-dir=/tmp/chrome-debug'
@@ -44,10 +41,7 @@ export LC_ALL=en_US.UTF-8
 # OPTING OUT HOMEBREW ANALYTICS
 export HOMEBREW_NO_ANALYTICS=1
 
-# Disable bracketed paste mode to fix garbled output in tmux
-unset zle_bracketed_paste
-
-export DOCKER_DEFAULT_PLATFORM=linux/amd64
+export DOCKER_DEFAULT_PLATFORM=linux/arm64
 
 # Consolidated PATH exports
 export PATH="/usr/local/sbin:/opt/homebrew/bin:$HOME/.nimble/bin:$HOME/.cargo/bin:$PATH"
@@ -72,24 +66,6 @@ reload_tmux(){
   tmux source-file ~/.tmux.conf && echo "✓ tmux config reloaded"
 }
 
-# Fix tmux terminal issues (for ghostty/modern terminals)
-fix_tmux_terminal(){
-  echo "🔧 Fixing tmux terminal configuration..."
-  tmux set -g escape-time 50
-  tmux set -g xterm-keys on
-  echo "✓ Terminal issues fixed. You may need to restart applications."
-}
-
-# set up adguardHome DNS
-adguard_setup(){
-  docker run --name adguardhome -v $(pwd)/workdir:/opt/adguardhome/work -v $(pwd)/confdir:/opt/adguardhome/conf -p 53:53/tcp -p 53:53/udp -p 67:67/udp -p 68:68/tcp -p 68:68/udp -p 80:80/tcp -p 443:443/tcp -p 853:853/tcp -p 3000:3000/tcp -d adguard/adguardhome
-}
-
-# start adguard DNS
-adguardstart(){
-  docker start adguardhome
-}
-
 # delete ds_store recursive
 dsdelete(){
   find . -name '.DS_Store' -type f -delete
@@ -98,63 +74,6 @@ dsdelete(){
 # shada delete
 shadadelete(){
   rm -rf ~/.local/share/nvim/shada
-}
-
-# Helper function for setting DNS servers
-_set_dns() {
-  local servers="$1"
-  local network_name="iPhone USB"
-  local network_name2="Wi-Fi"
-
-  networksetup -setdnsservers "${network_name}" $servers
-  networksetup -getdnsservers "${network_name}"
-
-  networksetup -setdnsservers "${network_name2}" $servers
-  networksetup -getdnsservers "${network_name2}"
-
-  echo "DNS servers successfully updated for ${network_name2}"
-}
-
-# DNS setting functions using the helper
-adguarddns() {
-  _set_dns "94.140.14.14 94.140.15.15 1.1.1.1 1.0.0.1"
-}
-
-cloudflare() {
-  _set_dns "1.1.1.1 1.0.0.1"
-}
-
-cloudflare_amk() {
-  _set_dns "172.64.36.1 172.64.36.2"
-}
-
-googledns() {
-  _set_dns "8.8.8.8 8.8.4.4"
-}
-
-adguarddns_selfhosted() {
-  _set_dns "127.0.0.1 172.17.0.3 94.140.14.14 94.140.15.15 1.1.1.1 1.0.0.1"
-}
-
-
-# python static
-http_server(){
-  PORT="$1"
-  if [[ -n "${PORT}" ]]; then
-    # Try Python 3 first, fallback to Python 2
-    if command -v python3 &> /dev/null; then
-      python3 -m http.server ${PORT}
-    else
-      python -m SimpleHTTPServer ${PORT}
-    fi
-  else
-    # Try Python 3 first, fallback to Python 2
-    if command -v python3 &> /dev/null; then
-      python3 -m http.server
-    else
-      python -m SimpleHTTPServer
-    fi
-  fi
 }
 
 # mac update
@@ -189,7 +108,6 @@ ip(){
 }
 
 # fzf list with preview and sorted with mru
-
 fzfp(){
   fzf --preview 'bat --style=numbers --color=always --line-range :500 {}' --bind 'ctrl-r:toggle-sort'
 }
@@ -199,11 +117,7 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 
 # Set environment variables for non-sensitive paths (moved to .zshrc.local)
-# Source local environment file for sensitive information
-# This file should NOT be committed to version control
-if [[ -f ~/.zshrc.local ]]; then
-  source ~/.zshrc.local
-fi
+# Local environment file will be sourced at the end of this file
 
 # Obsidian function using the path from .zshrc.local
 obsidian(){
@@ -286,44 +200,69 @@ reset_development_branch() {
     echo_info "Reset and pull operation on '$TARGET_BRANCH' completed successfully."
 }
 
-copyallfilescontent() {
-  # Check if a directory is passed as an argument, default to the current directory
-  local DIR=${1:-"."}
-
-  # Check if the directory exists
-  if [ -d "$DIR" ]; then
-    local CONTENT=""
-
-    # Loop through all files in the directory
-    for FILE in "$DIR"/*; do
-      # Check if it's a file
-      if [ -f "$FILE" ]; then
-        # Concatenate the file contents with a line break
-        CONTENT="$CONTENT$(cat "$FILE")
-"
-      fi
-    done
-
-    # Copy the concatenated content to clipboard using pbcopy
-    echo -e "$CONTENT" | pbcopy
-    echo "All file contents concatenated and copied to clipboard."
-  else
-    echo "Directory does not exist."
-  fi
-}
-
 # zsh completions - moved to end for better performance
 # Only load if we're in an interactive shell
 if [[ $- == *i* ]]; then
   autoload -U compinit && compinit
 fi
 
+# Added by Windsurf - Next
+export PATH="$HOME/.codeium/windsurf/bin:$PATH"
 
-# Source local environment file for sensitive information (if it exists)
-# This file should NOT be committed to version control
-if [[ -f ~/.zshrc.local ]]; then
-  source ~/.zshrc.local
+# GPG Configuration
+export GPG_TTY=$(tty)
+# Start gpg-agent if not running
+if ! pgrep -x "gpg-agent" > /dev/null; then
+    gpg-agent --daemon --enable-ssh-support > /dev/null 2>&1
 fi
+gpgconf --kill gpg-agent
+gpgconf --launch gpg-agent
+
+export PYTHONWARNINGS="ignore::UserWarning:azext_devops"
+
+[[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code-insiders --locate-shell-integration-path zsh)"
+
+# Luaver - Lua Version Manager (uses system binary, no init script needed)
+# Luaver completions are available at ~/.luaver/completions/luaver.bash
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# ===================================
+# ADDITIONAL ALIASES AND UTILITIES
+# ===================================
+
+# Useful navigation aliases
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# Git status alias
+alias gs='git status'
+
+# Better ls with colors
+alias ls='ls -G'
+alias ll='ls -la'
+alias la='ls -la'
+
+# Quick edit config files
+alias ez='nvim ~/.zshrc'
+alias et='nvim ~/.tmux.conf'
+
+# Quick directory size check
+alias ds='du -sh'
+
+# Process search
+alias psa='ps aux | grep'
+
+# Network utilities
+alias myip='curl ipinfo.io/ip'
+export PATH="$HOME/bin:$PATH"
+
+# ===================================
+# ZSH PLUGINS AND COMPLETIONS
+# ===================================
 
 # Source zsh plugins using paths from .zshrc.local
 # Note: Update these paths if needed to match your local setup
@@ -343,30 +282,11 @@ if [[ -f "$ZSH_DOCKER_RUN_PATH" ]]; then
   source "$ZSH_DOCKER_RUN_PATH"
 fi
 
-# Added by Windsurf - Next
-export PATH="$HOME/.codeium/windsurf/bin:$PATH"
-
-# GPG Configuration
-export GPG_TTY=$(tty)
-# Start gpg-agent if not running
-if ! pgrep -x "gpg-agent" > /dev/null; then
-    gpg-agent --daemon --enable-ssh-support > /dev/null 2>&1
-fi
-gpgconf --kill gpg-agent
-gpgconf --launch gpg-agent
-
-export PYTHONWARNINGS="ignore::UserWarning:azext_devops"
-
-[[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code-insiders --locate-shell-integration-path zsh)"
-
 # Load brew zsh-autosuggestions if available
 # Only load if we're in an interactive shell
 if [[ $- == *i* ]] && [[ -f "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
   source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
-
-# Luaver - Lua Version Manager (uses system binary, no init script needed)
-# Luaver completions are available at ~/.luaver/completions/luaver.bash
 
 # Docker CLI completions
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
@@ -381,7 +301,6 @@ fi
 if command -v kubectl &> /dev/null; then
   # Load kubectl completion using runtime approach for better compatibility
   if source <(kubectl completion zsh) 2>/dev/null; then
-    # echo "✓ Kubectl completion loaded"
     true  # Silent completion
   else
     echo "⚠ Kubectl completion failed to load"
@@ -430,42 +349,19 @@ if command -v kubectl &> /dev/null; then
   alias khealth='kubectl get componentstatuses'
   alias knodes='kubectl get nodes -o wide'
   alias kversion='kubectl version --client && kubectl version --short'
-
-  # echo "✓ Kubectl completion and aliases loaded"
 else
   echo "⚠ Kubectl not found - completion and aliases disabled"
 fi
 
-# Useful navigation aliases
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-
-# Git status alias
-alias gs='git status'
-
-# Better ls with colors
-alias ls='ls -G'
-alias ll='ls -la'
-alias la='ls -la'
-
-# Quick edit config files
-alias ez='nvim ~/.zshrc'
-alias et='nvim ~/.tmux.conf'
-
-# Quick directory size check
-alias ds='du -sh'
-
-# Process search
-alias psa='ps aux | grep'
-
-# Network utilities
-alias myip='curl ipinfo.io/ip'
-export PATH="$HOME/bin:$PATH"
-
 # bun completions
 [ -s ~/.bun/_bun ] && source ~/.bun/_bun
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+# ===================================
+# LOCAL CONFIGURATION
+# ===================================
+
+# Source local environment file for sensitive information
+# This file should NOT be committed to version control
+if [[ -f ~/.zshrc.local ]]; then
+  source ~/.zshrc.local
+fi
