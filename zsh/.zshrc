@@ -289,12 +289,41 @@ if [[ $- == *i* ]] && [[ -f "$(brew --prefix)/share/zsh-autosuggestions/zsh-auto
 fi
 
 # Docker CLI completions
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-if [[ -d "$HOME/.docker/completions" ]]; then
-  fpath=($HOME/.docker/completions $fpath)
-  autoload -Uz compinit
-  compinit
+# Check multiple possible locations for Docker completions
+DOCKER_COMPLETION_DIRS=(
+  "$HOME/.docker/completions"
+  "$(brew --prefix)/share/zsh/site-functions"
+  "$(brew --prefix)/share/zsh-completions"
+  "/usr/local/share/zsh/site-functions"
+  "/opt/homebrew/share/zsh/site-functions"
+  "/opt/homebrew/share/zsh-completions"
+)
+
+for docker_comp_dir in "${DOCKER_COMPLETION_DIRS[@]}"; do
+  if [[ -d "$docker_comp_dir" ]] && [[ -f "$docker_comp_dir/_docker" ]]; then
+    fpath=($docker_comp_dir $fpath)
+      break
+  fi
+done
+
+# If no Docker completions found, try to generate them
+if ! type _docker > /dev/null 2>&1; then
+  if command -v docker > /dev/null 2>&1; then
+    # Try to create completions directory and generate completion
+    mkdir -p "$HOME/.docker/completions" 2>/dev/null
+    if docker completion zsh > "$HOME/.docker/completions/_docker" 2>/dev/null; then
+      fpath=($HOME/.docker/completions $fpath)
+      else
+      echo "⚠ Unable to generate Docker completions - Docker CLI may not support completion generation"
+    fi
+  else
+    echo "⚠ Docker not found - completions unavailable"
+  fi
 fi
+
+# Ensure completions are loaded
+autoload -Uz compinit
+compinit
 # End of Docker CLI completions
 
 # Kubectl completion and aliases
