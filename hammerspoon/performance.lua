@@ -3,7 +3,6 @@
 -- Activity Monitor launcher, and a safe top-process inspector.
 local obj = {}
 local menubarMenu = require("menubar_menu")
-local bingWallpaper = require("bing_wallpaper")
 
 -- Config
 local cpuAlertThreshold = 85 -- percent
@@ -268,13 +267,6 @@ local function buildMenu()
     {
       title = "Top CPU processes...",
       fn = function() showTopProcessesChooser() end
-    },
-    {
-      title = "Update Bing Wallpaper",
-      fn = function()
-        bingWallpaper.updateBingWallpaper()
-        hs.alert.show("Bing wallpaper update triggered", 1)
-      end
     }
   }
 
