@@ -414,35 +414,34 @@ function ConfigManager:loadDefaultReplacements()
     end,
 
     -- Long text replacements
-    [":fdistill"] = [[🎯 Objective  
+    [":fdistill"] = [[🎯 Objective
 Create a sharp, structured, and exam-ready summary of the above lecture or content. Prioritize clarity, completeness, and long-term understanding using visuals or code examples where helpful.
 
 🧭 Approach
 
-1. **Summarize Clearly & Completely**  
+1. **Summarize Clearly & Completely**
   Capture all major ideas without fluff. Make sure nothing critical is left out—think like someone studying for a test.
 
-2. **Organize with Purpose**  
+2. **Organize with Purpose**
   Use logical sections and headers to break down complex topics. Keep the flow intuitive and well-paced.
 
-3. **Teach Like a Pro (But Friendly)**  
+3. **Teach Like a Pro (But Friendly)**
   Write as if teaching a smart beginner. Use expert clarity, not jargon. Simplify without dumbing down.
 
-4. **Visualize When It Helps**  
+4. **Visualize When It Helps**
   Use **Mermaid.js** diagrams (only) to explain concepts that benefit from visual representation. Diagrams should support—not replace—clear text.
 
-5. **Code Where It Counts**  
+5. **Code Where It Counts**
   Include short, relevant code snippets to make abstract ideas concrete and memorable.
 
-6. **Update with Current Context**  
+6. **Update with Current Context**
   Add recent or practical examples to reinforce concepts and show relevance.
 
-7. **Key Takeaways at the End**  
+7. **Key Takeaways at the End**
   Finish with bullet-point takeaways that someone can quickly review before an exam.
 
 📌 Bonus Goal: Make it so good that if someone only reads this, they'll still pass the test.
-
-You must use "<immersive>" tag]],
+]],
 
     [":distill"] = function()
       local clipboard = getClipboard()
@@ -452,35 +451,34 @@ You must use "<immersive>" tag]],
 
 ----------------
 
-🎯 Objective  
+🎯 Objective
 Create a sharp, structured, and exam-ready summary of the above lecture or content. Prioritize clarity, completeness, and long-term understanding using visuals or code examples where helpful.
 
 🧭 Approach
 
-1. **Summarize Clearly & Completely**  
+1. **Summarize Clearly & Completely**
   Capture all major ideas without fluff. Make sure nothing critical is left out—think like someone studying for a test.
 
-2. **Organize with Purpose**  
+2. **Organize with Purpose**
   Use logical sections and headers to break down complex topics. Keep the flow intuitive and well-paced.
 
-3. **Teach Like a Pro (But Friendly)**  
+3. **Teach Like a Pro (But Friendly)**
   Write as if teaching a smart beginner. Use expert clarity, not jargon. Simplify without dumbing down.
 
-4. **Visualize When It Helps**  
+4. **Visualize When It Helps**
   Use **Mermaid.js** diagrams (only) to explain concepts that benefit from visual representation. Diagrams should support—not replace—clear text.
 
-5. **Code Where It Counts**  
+5. **Code Where It Counts**
   Include short, relevant code snippets to make abstract ideas concrete and memorable.
 
-6. **Update with Current Context**  
+6. **Update with Current Context**
   Add recent or practical examples to reinforce concepts and show relevance.
 
-7. **Key Takeaways at the End**  
+7. **Key Takeaways at the End**
   Finish with bullet-point takeaways that someone can quickly review before an exam.
 
 📌 Bonus Goal: Make it so good that if someone only reads this, they'll still pass the test.
-
-You must use "<immersive>" tag]], clipboard)
+]], clipboard)
     end,
 
     [":listfacts"] = function()

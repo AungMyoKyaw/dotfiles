@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         AI-Ready MD Clipboard
 // @namespace    http://tampermonkey.net/
-// @version      4.2.0
-// @description  Click floating button to copy AI-ready Markdown content to clipboard. Optimized for direct pasting into AI chatboxes.
+// @version      5.1.0
+// @description  Copy web content as clean, AI-ready Markdown. Works on any website with a floating button.
 // @author       You
-// @match        *://*.coursera.org/*
+// @match        *://*/*
 // @grant        none
 // @run-at       document-end
 // ==/UserScript==
@@ -12,860 +12,613 @@
 (() => {
   'use strict';
 
-  // ==================== CONFIGURATION ====================
+  console.log('🚀 AI MD Clipboard: Script starting...');
+
+  // Configuration
   const CONFIG = {
-    BUTTON: {
-      ID: 'ai-clipboard-btn',
-      ICON: '🤖',
-      LABEL: 'Copy AI-Ready Content',
-      POSITION: { bottom: '20px', right: '20px' },
-      SIZE: '50px',
-      Z_INDEX: 99999
-    },
-    TURNDOWN_CDN: 'https://unpkg.com/turndown@7.1.2/dist/turndown.js',
-    AI_CONTENT_SELECTORS: {
-      // Coursera-specific content selectors for course materials
-      PRIMARY: [
-        '[data-testid="lecture-content"]',
-        '.rc-lecture-viewer-content',
-        '.lecture-content',
-        '.course-content',
-        '[data-testid="content"]',
-        'main[role="main"] article',
-        '.content-area'
-      ],
-      SECONDARY: [
-        '.rc-LessonViewer',
-        '.rc-VerticalView',
-        '.lesson-content',
-        '.reading-content',
-        '[data-track-component="lecture-viewer"]'
-      ],
-      FALLBACK: ['body']
-    },
-    AI_CLEANUP_SELECTORS: [
-      // Remove these elements for clean AI content
+    BUTTON_ID: 'ai-md-downloader-btn',
+    BUTTON_STYLE: `
+      position: fixed !important;
+      bottom: 20px !important;
+      right: 20px !important;
+      width: 60px !important;
+      height: 60px !important;
+      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important;
+      border: 2px solid white !important;
+      border-radius: 50% !important;
+      color: white !important;
+      font-size: 24px !important;
+      cursor: pointer !important;
+      z-index: 2147483647 !important;
+      display: block !important;
+      align-items: center !important;
+      justify-content: center !important;
+      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.5) !important;
+      transition: all 0.2s ease !important;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+      opacity: 1 !important;
+      transform: scale(1) !important;
+      user-select: none !important;
+      text-align: center !important;
+      line-height: 1 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    `,
+    BUTTON_HOVER_STYLE: `
+      transform: scale(1.1) !important;
+      box-shadow: 0 6px 30px rgba(59, 130, 246, 0.7) !important;
+    `,
+    BUTTON_ACTIVE_STYLE: `
+      transform: scale(0.95) !important;
+    `,
+    NOTIFICATION_STYLE: `
+      position: fixed !important;
+      top: 20px !important;
+      right: 20px !important;
+      background: white !important;
+      color: #333 !important;
+      border: 1px solid #ddd !important;
+      border-radius: 8px !important;
+      padding: 16px 20px !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+      z-index: 2147483647 !important;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+      font-size: 14px !important;
+      max-width: 350px !important;
+      opacity: 0 !important;
+      transform: translateX(100%) !important;
+      transition: all 0.3s ease !important;
+    `,
+    NOTIFICATION_SHOW_STYLE: `
+      opacity: 1 !important;
+      transform: translateX(0) !important;
+    `,
+    // Content selectors in order of preference
+    CONTENT_SELECTORS: [
+      'main',
+      'article',
+      '[role="main"]',
+      '.content',
+      '.main-content',
+      '.post-content',
+      '.entry-content',
+      '.article-content',
+      '.page-content',
+      '#content',
+      '#main',
+      '.container',
+      '.wrapper'
+    ],
+    // Elements to remove from content
+    UNWANTED_SELECTORS: [
       'script',
       'style',
       'noscript',
-      'iframe',
-      'embed',
-      'object',
       'nav',
       'header',
       'footer',
       'aside',
-      '.sidebar',
       '.navigation',
+      '.menu',
+      '.sidebar',
+      '.ads',
+      '.advertisement',
+      '.social-share',
+      '.comments',
+      '.popup',
+      '.modal',
+      '.toolbar',
       '.breadcrumb',
       '.pagination',
-      '.toolbar',
-      '.controls',
       'button',
       'input',
       'select',
       'textarea',
-      '.btn',
       '[role="button"]',
-      '[role="tab"]',
-      '[role="menu"]',
-      '.ad',
-      '.advertisement',
-      '.social-share',
-      '.comments',
-      '.cookie-banner',
-      '.popup',
-      '.modal',
-      '.overlay',
-      '[data-testid*="nav"]',
-      '[data-testid*="menu"]',
-      '[data-testid*="script"]',
-      '[data-testid*="ad"]',
-      '[aria-label*="navigation"]',
-      '[aria-label*="menu"]',
-      '[src*="ads"]',
-      '[src*="analytics"]',
-      '[src*="tracking"]'
-    ],
-    ANIMATION: {
-      DURATION: 300,
-      EASING: 'cubic-bezier(0.4, 0, 0.2, 1)'
-    }
+      '[role="navigation"]',
+      '[role="menu"]'
+    ]
   };
 
-  // ==================== UTILITIES ====================
-  class Utils {
-    static createButton(text, className = '', attributes = {}) {
-      const button = document.createElement('button');
-      button.textContent = text;
-      if (className) button.className = className;
-      Object.entries(attributes).forEach(([key, value]) => {
-        button.setAttribute(key, value);
-      });
-      return button;
-    }
+  // Main button element
+  let downloadButton = null;
+  let isProcessing = false;
+  let isInitialized = false;
 
-    static createDiv(className = '', attributes = {}) {
-      const div = document.createElement('div');
-      if (className) div.className = className;
-      Object.entries(attributes).forEach(([key, value]) => {
-        div.setAttribute(key, value);
-      });
-      return div;
-    }
+  // Create and inject styles
+  function injectStyles() {
+    console.log('🎨 AI MD Clipboard: Injecting styles...');
 
-    static async loadScript(src) {
-      return new Promise((resolve, reject) => {
-        if (window.TurndownService) {
-          resolve();
-          return;
+    // Remove existing styles if any
+    const existingStyle = document.getElementById('ai-md-clipboard-styles');
+    if (existingStyle) existingStyle.remove();
+
+    const style = document.createElement('style');
+    style.id = 'ai-md-clipboard-styles';
+    style.textContent = `
+      #${CONFIG.BUTTON_ID} { ${CONFIG.BUTTON_STYLE} }
+      #${CONFIG.BUTTON_ID}:hover { ${CONFIG.BUTTON_HOVER_STYLE} }
+      #${CONFIG.BUTTON_ID}:active { ${CONFIG.BUTTON_ACTIVE_STYLE} }
+      #${CONFIG.BUTTON_ID}.processing {
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+        animation: spin 1s linear infinite !important;
+      }
+      #${CONFIG.BUTTON_ID}.success {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+      }
+      #${CONFIG.BUTTON_ID}.error {
+        background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+      }
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      .ai-md-notification { ${CONFIG.NOTIFICATION_STYLE} }
+      .ai-md-notification.show { ${CONFIG.NOTIFICATION_SHOW_STYLE} }
+      .ai-md-notification.success {
+        border-left: 4px solid #10b981 !important;
+        background: #f0fdf4 !important;
+      }
+      .ai-md-notification.error {
+        border-left: 4px solid #ef4444 !important;
+        background: #fef2f2 !important;
+      }
+      @media (max-width: 768px) {
+        #${CONFIG.BUTTON_ID} {
+          width: 50px !important;
+          height: 50px !important;
+          font-size: 20px !important;
         }
+        .ai-md-notification {
+          right: 10px !important;
+          left: 10px !important;
+          max-width: none !important;
+        }
+      }
+    `;
 
-        const script = document.createElement('script');
-        script.src = src;
-        script.async = true;
-        script.onload = () => resolve();
-        script.onerror = () => reject(new Error(`Failed to load: ${src}`));
-        document.head.appendChild(script);
-      });
+    // Add to head or body as fallback
+    if (document.head) {
+      document.head.appendChild(style);
+    } else if (document.body) {
+      document.body.appendChild(style);
+    } else {
+      console.warn('⚠️ AI MD Clipboard: No head or body element found');
     }
 
-    static showNotification(message, type = 'success', duration = 3000) {
-      const existing = document.querySelector('.ai-notification');
-      if (existing) existing.remove();
+    console.log('✅ AI MD Clipboard: Styles injected');
+  }
 
-      const notification = Utils.createDiv(
-        `ai-notification ai-notification-${type}`
-      );
-      notification.innerHTML = `
-        <div class="ai-notification-icon">
-          ${type === 'success' ? '✅' : '❌'}
-        </div>
-        <div class="ai-notification-message">${message}</div>
-      `;
+  // Show notification
+  function showNotification(message, type = 'success', duration = 3000) {
+    // Remove existing notification
+    const existing = document.querySelector('.ai-md-notification');
+    if (existing) existing.remove();
 
-      document.body.appendChild(notification);
+    const notification = document.createElement('div');
+    notification.className = `ai-md-notification ${type}`;
+    notification.innerHTML = `
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="font-size: 16px;">${type === 'success' ? '✅' : '❌'}</span>
+        <span>${message}</span>
+      </div>
+    `;
 
-      requestAnimationFrame(() => notification.classList.add('show'));
+    document.body.appendChild(notification);
 
-      setTimeout(() => {
-        notification.classList.remove('show');
-        setTimeout(() => notification.remove(), CONFIG.ANIMATION.DURATION);
-      }, duration);
+    // Animate in
+    requestAnimationFrame(() => {
+      notification.classList.add('show');
+    });
+
+    // Remove after duration
+    setTimeout(() => {
+      notification.classList.remove('show');
+      setTimeout(() => notification.remove(), 300);
+    }, duration);
+  }
+
+  // Find the best content element
+  function findBestContent() {
+    for (const selector of CONFIG.CONTENT_SELECTORS) {
+      const element = document.querySelector(selector);
+      if (element && element.textContent.trim().length > 200) {
+        return element;
+      }
     }
 
-    static sanitizeForAI(text) {
-      return (
-        text
-          // Remove JavaScript code blocks and inline scripts
-          .replace(/```javascript[\s\S]*?```/gi, '')
-          .replace(/```js[\s\S]*?```/gi, '')
-          .replace(/<script[\s\S]*?<\/script>/gi, '')
-          .replace(/javascript:[\s\S]*?;/gi, '')
-          .replace(/function\s*\([^)]*\)\s*{[\s\S]*?}/gi, '')
-          .replace(/\w+\s*:\s*function\s*\([^)]*\)\s*{[\s\S]*?}/gi, '')
-          .replace(/console\.\w+\([^)]*\);?/gi, '')
-          .replace(/alert\s*\([^)]*\);?/gi, '')
-          .replace(/document\.\w+\([^)]*\);?/gi, '')
-          .replace(/window\.\w+\([^)]*\);?/gi, '')
-          // Remove event handlers
-          .replace(/on\w+\s*=\s*["'][^"']*["']/gi, '')
-          .replace(/on\w+\s*=\s*[^;\s]+/gi, '')
-          // Remove excessive whitespace
-          .replace(/\n{3,}/g, '\n\n')
-          // Fix common OCR/formatting issues
-          .replace(/([a-z])([A-Z])/g, '$1 $2')
-          // Clean up bullet points
-          .replace(/^[\s•·o]\s*/gm, '- ')
-          // Clean up numbered lists
-          .replace(/^(\d+)\.?\s*/gm, '$1. ')
-          // Remove HTML entities
-          .replace(/&nbsp;/g, ' ')
-          .replace(/&amp;/g, '&')
-          .replace(/&lt;/g, '<')
-          .replace(/&gt;/g, '>')
-          .replace(/&quot;/g, '"')
-          .replace(/&#39;/g, "'")
-          // Remove multiple spaces
-          .replace(/ {2,}/g, ' ')
-          // Clean up any remaining script-like patterns
-          .replace(
-            /\b(function|var|let|const|if|else|for|while|do|switch|case|break|continue|return|try|catch|finally|throw|new|this|class|extends|import|export|default|async|await)\b[^;{}]*[;{}]?/gi,
-            ''
-          )
-          // Enhanced JavaScript removal
-          .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
-          .replace(/\s*on\w+="[^"]*"/gi, '')
-          .replace(/\s*on\w+='[^']*'/gi, '')
-          .replace(/\s*on\w+=[^\s>]*/gi, '')
-          .replace(/href=["']javascript:[^"']*["']/gi, '')
-          .replace(/href=['"]javascript:[^'"]*['"]/gi, '')
-          // Preserve math notation for AI understanding
-          .replace(/\\\$/g, '$')
-          .replace(/\\\$/g, '$')
-          // Remove MathJax script tags specifically
-          .replace(/<script type="math\/tex[^>]*>[\s\S]*?<\/script>/gi, '')
-          .replace(/<span class="MathJax[^>]*>[\s\S]*?<\/span>/gi, '')
-          // Clean up any remaining script-like patterns
-          .replace(/eval\s*\([^)]*\)/gi, '')
-          .replace(/setTimeout\s*\([^)]*\)/gi, '')
-          .replace(/setInterval\s*\([^)]*\)/gi, '')
-          .replace(/location\s*\.[\s\S]*?;/gi, '')
-          .replace(/history\s*\.[\s\S]*?;/gi, '')
-          .replace(/navigator\s*\.[\s\S]*?;/gi, '')
-          .trim()
-      );
-    }
+    // Fallback to body
+    return document.body;
+  }
 
-    static detectContentType(element) {
-      const text = element.textContent.toLowerCase();
-      const html = element.innerHTML.toLowerCase();
+  // Clean content by removing unwanted elements
+  function cleanContent(element) {
+    const clone = element.cloneNode(true);
 
-      // Detect if it's code-heavy content
-      const hasCodeBlocks = /<code|<pre|```/.test(html);
-      const hasMath = /\$\$|\\begin|\\end|\\frac|\\sqrt/.test(text);
-      const hasTables = /<table|<th|<td/.test(html);
+    // Remove unwanted elements
+    CONFIG.UNWANTED_SELECTORS.forEach((selector) => {
+      try {
+        clone.querySelectorAll(selector).forEach((el) => el.remove());
+      } catch (e) {
+        console.warn(`Failed to remove selector: ${selector}`, e);
+      }
+    });
 
-      return {
-        isCode: hasCodeBlocks,
-        hasMath: hasMath,
-        hasTables: hasTables,
-        wordCount: text.split(/\s+/).length
-      };
+    // Remove our own button
+    const ourButton = clone.querySelector(`#${CONFIG.BUTTON_ID}`);
+    if (ourButton) ourButton.remove();
+
+    // Remove any remaining notifications
+    const notifications = clone.querySelectorAll('.ai-md-notification');
+    notifications.forEach((el) => el.remove());
+
+    return clone;
+  }
+
+  // Convert HTML to Markdown
+  function htmlToMarkdown(html) {
+    let markdown = html;
+
+    // Basic HTML to Markdown conversion
+    markdown = markdown.replace(/<h1[^>]*>(.*?)<\/h1>/gi, '# $1\n\n');
+    markdown = markdown.replace(/<h2[^>]*>(.*?)<\/h2>/gi, '## $1\n\n');
+    markdown = markdown.replace(/<h3[^>]*>(.*?)<\/h3>/gi, '### $1\n\n');
+    markdown = markdown.replace(/<h4[^>]*>(.*?)<\/h4>/gi, '#### $1\n\n');
+    markdown = markdown.replace(/<h5[^>]*>(.*?)<\/h5>/gi, '##### $1\n\n');
+    markdown = markdown.replace(/<h6[^>]*>(.*?)<\/h6>/gi, '###### $1\n\n');
+
+    // Bold and italic
+    markdown = markdown.replace(/<strong[^>]*>(.*?)<\/strong>/gi, '**$1**');
+    markdown = markdown.replace(/<b[^>]*>(.*?)<\/b>/gi, '**$1**');
+    markdown = markdown.replace(/<em[^>]*>(.*?)<\/em>/gi, '*$1*');
+    markdown = markdown.replace(/<i[^>]*>(.*?)<\/i>/gi, '*$1*');
+
+    // Links
+    markdown = markdown.replace(
+      /<a[^>]*href="([^"]*)"[^>]*>(.*?)<\/a>/gi,
+      '[$2]($1)'
+    );
+
+    // Code blocks
+    markdown = markdown.replace(
+      /<pre[^>]*><code[^>]*>(.*?)<\/code><\/pre>/gis,
+      '```\n$1\n```\n\n'
+    );
+    markdown = markdown.replace(/<code[^>]*>(.*?)<\/code>/gi, '`$1`');
+
+    // Lists
+    markdown = markdown.replace(/<ul[^>]*>/gi, '');
+    markdown = markdown.replace(/<\/ul>/gi, '\n');
+    markdown = markdown.replace(/<ol[^>]*>/gi, '');
+    markdown = markdown.replace(/<\/ol>/gi, '\n');
+    markdown = markdown.replace(/<li[^>]*>(.*?)<\/li>/gi, '- $1\n');
+
+    // Paragraphs and line breaks
+    markdown = markdown.replace(/<p[^>]*>(.*?)<\/p>/gi, '$1\n\n');
+    markdown = markdown.replace(/<br[^>]*>/gi, '\n');
+    markdown = markdown.replace(/<div[^>]*>/gi, '\n');
+    markdown = markdown.replace(/<\/div>/gi, '\n');
+
+    // Blockquotes
+    markdown = markdown.replace(
+      /<blockquote[^>]*>(.*?)<\/blockquote>/gis,
+      '> $1\n\n'
+    );
+
+    // Tables (basic conversion)
+    markdown = markdown.replace(/<table[^>]*>/gi, '\n');
+    markdown = markdown.replace(/<\/table>/gi, '\n');
+    markdown = markdown.replace(/<tr[^>]*>/gi, '');
+    markdown = markdown.replace(/<\/tr>/gi, '\n');
+    markdown = markdown.replace(/<th[^>]*>(.*?)<\/th>/gi, '| $1 ');
+    markdown = markdown.replace(/<td[^>]*>(.*?)<\/td>/gi, '| $1 ');
+
+    // Clean up extra whitespace
+    markdown = markdown.replace(/\n{3,}/g, '\n\n');
+    markdown = markdown.replace(/ +/g, ' ');
+
+    // Remove remaining HTML tags
+    markdown = markdown.replace(/<[^>]*>/g, '');
+
+    // Decode HTML entities
+    markdown = markdown.replace(/&nbsp;/g, ' ');
+    markdown = markdown.replace(/&amp;/g, '&');
+    markdown = markdown.replace(/&lt;/g, '<');
+    markdown = markdown.replace(/&gt;/g, '>');
+    markdown = markdown.replace(/&quot;/g, '"');
+    markdown = markdown.replace(/&#39;/g, "'");
+
+    return markdown.trim();
+  }
+
+  // Copy text to clipboard
+  async function copyToClipboard(text) {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        // Fallback method
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+      }
+      return true;
+    } catch (error) {
+      console.error('Failed to copy to clipboard:', error);
+      return false;
     }
   }
 
-  // ==================== AI CONTENT PROCESSOR ====================
-  class AIContentProcessor {
-    constructor() {
-      this.turndownService = null;
-    }
+  // Main copy function
+  async function copyContentAsMarkdown() {
+    if (isProcessing) return;
 
-    async initialize() {
-      if (!this.turndownService) {
-        await Utils.loadScript(CONFIG.TURNDOWN_CDN);
-        this.turndownService = new window.TurndownService({
-          headingStyle: 'atx',
-          bulletListMarker: '-',
-          codeBlockStyle: 'fenced',
-          emDelimiter: '_',
-          strongDelimiter: '**',
-          linkStyle: 'inlined'
-        });
+    isProcessing = true;
+    downloadButton.classList.add('processing');
+    downloadButton.innerHTML = '⏳';
 
-        this.setupAIRules();
-      }
-    }
+    try {
+      showNotification('🔄 Processing content...', 'success', 1000);
 
-    setupAIRules() {
-      // Enhanced rules for AI-ready content
-      this.turndownService.addRule('code-blocks', {
-        filter: ['pre', 'code'],
-        replacement: (content, node) => {
-          if (node.tagName === 'PRE') {
-            const language = this.detectLanguage(content);
-            return `\`\`\`${language}\n${content}\n\`\`\`\n\n`;
-          }
-          return `\`${content}\``;
-        }
-      });
+      // Find and clean content
+      const contentElement = findBestContent();
+      const cleanElement = cleanContent(contentElement);
 
-      this.turndownService.addRule('math', {
-        filter: (node) => {
-          return (
-            node.textContent.includes('$') ||
-            node.textContent.includes('\\') ||
-            node.className?.includes('math')
-          );
-        },
-        replacement: (content) => {
-          // Preserve math notation for AI understanding
-          return `\\[\\ ${content} \\]\\]\n\n`;
-        }
-      });
+      // Convert to markdown
+      let markdown = htmlToMarkdown(cleanElement.innerHTML);
 
-      this.turndownService.addRule('tables', {
-        filter: ['table'],
-        replacement: (content, node) => {
-          // Convert tables to clean markdown
-          const rows = Array.from(node.querySelectorAll('tr'));
-          if (rows.length === 0) return '';
-
-          let tableMd = '\n';
-          rows.forEach((row, index) => {
-            const cells = Array.from(row.querySelectorAll('td, th')).map(
-              (cell) => cell.textContent.trim()
-            );
-            tableMd += '| ' + cells.join(' | ') + ' |\n';
-
-            if (index === 0) {
-              tableMd += '|' + cells.map(() => ' --- ').join('|') + '|\n';
-            }
-          });
-          tableMd += '\n';
-          return tableMd;
-        }
-      });
-
-      this.turndownService.addRule('emphasis', {
-        filter: ['strong', 'b', 'em', 'i'],
-        replacement: (content, node) => {
-          const tag = node.tagName.toLowerCase();
-          if (tag === 'strong' || tag === 'b') {
-            return `**${content}**`;
-          }
-          return `_${content}_`;
-        }
-      });
-    }
-
-    detectLanguage(code) {
-      // Simple language detection for code blocks
-      if (
-        code.includes('def ') ||
-        code.includes('import ') ||
-        code.includes('print(')
-      )
-        return 'python';
-      if (
-        code.includes('function ') ||
-        code.includes('const ') ||
-        code.includes('=>')
-      )
-        return 'javascript';
-      if (code.includes('public class ') || code.includes('System.out'))
-        return 'java';
-      if (code.includes('#include') || code.includes('int main')) return 'cpp';
-      if (
-        code.includes('<html') ||
-        code.includes('<div') ||
-        code.includes('function')
-      )
-        return 'html';
-      return '';
-    }
-
-    extractBestContent() {
-      // Try all content selectors in order of preference
-      for (const selector of CONFIG.AI_CONTENT_SELECTORS.PRIMARY) {
-        const element = document.querySelector(selector);
-        if (element && this.isValidContent(element)) {
-          return element;
-        }
-      }
-
-      for (const selector of CONFIG.AI_CONTENT_SELECTORS.SECONDARY) {
-        const element = document.querySelector(selector);
-        if (element && this.isValidContent(element)) {
-          return element;
-        }
-      }
-
-      for (const selector of CONFIG.AI_CONTENT_SELECTORS.FALLBACK) {
-        const element = document.querySelector(selector);
-        if (element && this.isValidContent(element)) {
-          return element;
-        }
-      }
-
-      return document.body;
-    }
-
-    isValidContent(element) {
-      const text = element.textContent.trim();
-      return text.length > 100; // Only consider substantial content
-    }
-
-    cleanContent(element) {
-      const clone = element.cloneNode(true);
-
-      // Remove unwanted elements
-      CONFIG.AI_CLEANUP_SELECTORS.forEach((selector) => {
-        try {
-          clone.querySelectorAll(selector).forEach((el) => el.remove());
-        } catch (e) {
-          console.warn(`Failed to remove selector: ${selector}`, e);
-        }
-      });
-
-      // Remove our own button
-      const aiButton = clone.querySelector(`#${CONFIG.BUTTON.ID}`);
-      if (aiButton) aiButton.remove();
-
-      // Additional deep cleaning for script content
-      this.deepCleanContent(clone);
-
-      // Validate that no JavaScript content remains
-      const cleanedHTML = clone.innerHTML;
-      if (this.containsJavaScript(cleanedHTML)) {
-        console.warn(
-          'JavaScript content still detected, applying additional cleaning'
-        );
-        this.aggressiveClean(clone);
-      }
-
-      return clone;
-    }
-
-    containsJavaScript(text) {
-      const jsPatterns = [
-        /javascript:/gi,
-        /<script/i,
-        /on\w+\s*=/gi,
-        /function\s*\(/gi,
-        /console\./gi,
-        /document\./gi,
-        /window\./gi,
-        /alert\s*\(/gi,
-        /var\s+\w+/gi,
-        /let\s+\w+/gi,
-        /const\s+\w+/gi,
-        /eval\s*\(/gi,
-        /setTimeout\s*\(/gi,
-        /setInterval\s*\(/gi
-      ];
-
-      return jsPatterns.some((pattern) => pattern.test(text));
-    }
-
-    aggressiveClean(element) {
-      // More aggressive cleanup for stubborn JavaScript content
-      const walker = document.createTreeWalker(
-        element,
-        NodeFilter.SHOW_TEXT,
-        null,
-        false
-      );
-
-      const textNodes = [];
-      let node;
-      while ((node = walker.nextNode())) {
-        textNodes.push(node);
-      }
-
-      textNodes.forEach((textNode) => {
-        // Remove any remaining JavaScript-like content
-        textNode.textContent = textNode.textContent
-          .replace(/javascript:[^\s]*/gi, '')
-          .replace(/function[^(]*\([^)]*\)[^{]*{[^}]*}/gi, '')
-          .replace(/on\w+\s*=\s*['"][^'"]*['"]/gi, '')
-          .replace(/console\.[a-zA-Z]+\([^)]*\)/gi, '')
-          .replace(/\b(var|let|const)\s+\w+\s*=\s*[^;]+;?/gi, '')
-          .replace(
-            /\b(if|for|while|do|switch|try|catch|throw|return)\b[^;{}]*[;{}]?/gi,
-            ''
-          )
-          .replace(/eval\s*\([^)]*\)/gi, '')
-          .replace(/setTimeout\s*\([^)]*\)/gi, '')
-          .replace(/setInterval\s*\([^)]*\)/gi, '');
-      });
-    }
-
-    deepCleanContent(element) {
-      // Remove all script-related content that might be missed
-      const allElements = element.querySelectorAll('*');
-
-      allElements.forEach((el) => {
-        // Remove script-related attributes
-        const attrsToRemove = [
-          'onclick',
-          'onload',
-          'onerror',
-          'onmouseover',
-          'onmouseout',
-          'onchange',
-          'onsubmit',
-          'onfocus',
-          'onblur',
-          'onkeydown',
-          'onkeyup',
-          'onkeypress',
-          'onmousedown',
-          'onmouseup',
-          'onmousemove',
-          'ontouchstart',
-          'ontouchend',
-          'ontouchmove'
-        ];
-
-        attrsToRemove.forEach((attr) => {
-          if (el.hasAttribute(attr)) {
-            el.removeAttribute(attr);
-          }
-        });
-
-        // Remove elements with javascript: hrefs
-        if (
-          el.tagName === 'A' &&
-          el.getAttribute('href')?.startsWith('javascript:')
-        ) {
-          el.remove();
-        }
-
-        // Remove data attributes that might contain scripts
-        Array.from(el.attributes).forEach((attr) => {
-          if (
-            attr.name.startsWith('data-') &&
-            (attr.value.includes('function') ||
-              attr.value.includes('javascript:') ||
-              attr.value.includes('alert(') ||
-              attr.value.includes('console.'))
-          ) {
-            el.removeAttribute(attr.name);
-          }
-        });
-
-        // Remove inline event handlers and scripts from text content
-        if (el.textContent) {
-          el.textContent = el.textContent
-            .replace(/javascript:/gi, '')
-            .replace(/function\s*\(/gi, 'function(')
-            .replace(/alert\s*\(/gi, 'alert(')
-            .replace(/console\./gi, 'console.')
-            .replace(/onclick\s*=/gi, 'onclick=')
-            .replace(/onload\s*=/gi, 'onload=')
-            .replace(/eval\s*\(/gi, '')
-            .replace(/setTimeout\s*\(/gi, '')
-            .replace(/setInterval\s*\(/gi, '');
-        }
-      });
-    }
-
-    async processToAIReady() {
-      await this.initialize();
-
-      const contentElement = this.extractBestContent();
-      const cleanElement = this.cleanContent(contentElement);
-      const contentType = Utils.detectContentType(cleanElement);
-
-      let markdown = this.turndownService.turndown(cleanElement.innerHTML);
-
-      // AI-optimized post-processing
-      markdown = Utils.sanitizeForAI(markdown);
-
-      // Add AI context header
-      const contextHeader = this.generateAIContext(contentType);
-
-      return contextHeader + markdown;
-    }
-
-    generateAIContext(contentType) {
-      const title = document.title || 'Untitled Content';
-      const url = window.location.href;
-      const timestamp = new Date().toISOString();
-
-      return `---
-Content: ${title}
-Source: ${url}
-Extracted: ${timestamp}
-Content Type: ${contentType.isCode ? 'Code/Programming' : contentType.hasMath ? 'Mathematical' : contentType.hasTables ? 'Tabular Data' : 'General Text'}
-Word Count: ~${contentType.wordCount} words
-AI-Ready: Optimized for LLM processing
+      // Add metadata header
+      const metadata = `---
+# ${document.title || 'Untitled Content'}
+**Source:** ${window.location.href}
+**Extracted:** ${new Date().toLocaleString()}
+**Word Count:** ~${markdown.split(/\s+/).length} words
 
 ---
 
 `;
-    }
-  }
 
-  // ==================== UI MANAGER ====================
-  class UIManager {
-    constructor() {
-      this.button = null;
-      this.processor = new AIContentProcessor();
-      this.isDarkMode = window.matchMedia(
-        '(prefers-color-scheme: dark)'
-      ).matches;
-    }
+      markdown = metadata + markdown;
 
-    initialize() {
-      this.injectStyles();
-      this.createFloatingButton();
-      this.setupEventListeners();
-      this.setupThemeListener();
-    }
+      // Copy to clipboard
+      const success = await copyToClipboard(markdown);
 
-    injectStyles() {
-      const style = document.createElement('style');
-      style.textContent = this.generateCSS();
-      document.head.appendChild(style);
-    }
-
-    generateCSS() {
-      const colors = this.isDarkMode
-        ? {
-            bg: 'rgba(30, 30, 30, 0.95)',
-            color: '#ffffff',
-            border: '1px solid rgba(255, 255, 255, 0.2)',
-            shadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
-            hoverBg: 'rgba(255, 255, 255, 0.1)'
-          }
-        : {
-            bg: 'rgba(255, 255, 255, 0.95)',
-            color: '#1a1a1a',
-            border: '1px solid rgba(0, 0, 0, 0.1)',
-            shadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
-            hoverBg: 'rgba(0, 0, 0, 0.05)'
-          };
-
-      return `
-        .ai-clipboard-btn {
-          position: fixed;
-          bottom: ${CONFIG.BUTTON.POSITION.bottom};
-          right: ${CONFIG.BUTTON.POSITION.right};
-          width: ${CONFIG.BUTTON.SIZE};
-          height: ${CONFIG.BUTTON.SIZE};
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          color: white;
-          border: none;
-          border-radius: 50%;
-          font-size: 20px;
-          cursor: pointer;
-          z-index: ${CONFIG.BUTTON.Z_INDEX};
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: ${colors.shadow};
-          transition: all ${CONFIG.ANIMATION.DURATION}ms ${CONFIG.ANIMATION.EASING};
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-          user-select: none;
-        }
-
-        .ai-clipboard-btn:hover {
-          transform: scale(1.1) rotate(5deg);
-          box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4);
-        }
-
-        .ai-clipboard-btn:active {
-          transform: scale(0.95);
-        }
-
-        .ai-clipboard-btn.copied {
-          background: linear-gradient(135deg, #52c234 0%, #3da831 100%);
-          animation: pulse 0.6s ease-in-out;
-        }
-
-        @keyframes pulse {
-          0% { transform: scale(1); }
-          50% { transform: scale(1.2); }
-          100% { transform: scale(1); }
-        }
-
-        .ai-notification {
-          position: fixed;
-          top: 20px;
-          right: 20px;
-          background: ${colors.bg};
-          color: ${colors.color};
-          border: ${colors.border};
-          border-radius: 12px;
-          padding: 16px 20px;
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          z-index: ${CONFIG.BUTTON.Z_INDEX + 1};
-          transform: translateX(400px);
-          transition: all ${CONFIG.ANIMATION.DURATION}ms ${CONFIG.ANIMATION.EASING};
-          box-shadow: ${colors.shadow};
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-          max-width: 350px;
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-
-        .ai-notification.show {
-          transform: translateX(0);
-        }
-
-        .ai-notification-icon {
-          font-size: 20px;
-          flex-shrink: 0;
-        }
-
-        .ai-notification-message {
-          font-size: 14px;
-          line-height: 1.4;
-        }
-
-        .ai-notification-success {
-          border-left: 4px solid #52c234;
-        }
-
-        .ai-notification-error {
-          border-left: 4px solid #ff4444;
-        }
-
-        @media (max-width: 768px) {
-          .ai-clipboard-btn {
-            width: 45px;
-            height: 45px;
-            font-size: 18px;
-          }
-
-          .ai-notification {
-            right: 10px;
-            left: 10px;
-            max-width: none;
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .ai-clipboard-btn, .ai-notification {
-            transition: none;
-          }
-          .ai-clipboard-btn.copied {
-            animation: none;
-          }
-        }
-      `;
-    }
-
-    createFloatingButton() {
-      this.button = Utils.createButton(CONFIG.BUTTON.ICON, 'ai-clipboard-btn', {
-        id: CONFIG.BUTTON.ID,
-        title: CONFIG.BUTTON.LABEL,
-        'aria-label': CONFIG.BUTTON.LABEL
-      });
-
-      document.body.appendChild(this.button);
-
-      // Entrance animation
-      setTimeout(() => {
-        this.button.style.opacity = '1';
-        this.button.style.transform = 'scale(1)';
-      }, 500);
-    }
-
-    setupEventListeners() {
-      this.button.addEventListener('click', () => this.handleCopyToClipboard());
-      this.button.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          this.handleCopyToClipboard();
-        }
-      });
-    }
-
-    setupThemeListener() {
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      mediaQuery.addEventListener('change', (e) => {
-        this.isDarkMode = e.matches;
-        this.injectStyles(); // Re-inject styles with new theme
-      });
-    }
-
-    async handleCopyToClipboard() {
-      if (this.button.classList.contains('copied')) return;
-
-      try {
-        // Show processing state
-        this.button.classList.add('copied');
-        this.button.textContent = '⏳';
-        Utils.showNotification('🔄 Processing content...', 'success', 1000);
-
-        // Process content for AI
-        const aiReadyContent = await this.processor.processToAIReady();
-
-        // Copy to clipboard
-        if (navigator.clipboard && window.isSecureContext) {
-          await navigator.clipboard.writeText(aiReadyContent);
-        } else {
-          this.fallbackCopyToClipboard(aiReadyContent);
-        }
-
-        // Show success state
-        this.button.textContent = '✅';
-
-        // Check if JavaScript was cleaned
-        const hasJavaScript = this.processor.containsJavaScript(aiReadyContent);
-        const message = hasJavaScript
-          ? '✅ AI-ready content copied! JavaScript has been removed for safety.'
-          : '✅ AI-ready content copied! Paste into any AI chatbox.';
-
-        Utils.showNotification(message, 'success', 4000);
-
-        // Reset button after delay
-        setTimeout(() => {
-          this.button.classList.remove('copied');
-          this.button.textContent = CONFIG.BUTTON.ICON;
-        }, 3000);
-      } catch (error) {
-        console.error('Failed to copy content:', error);
-        this.button.classList.remove('copied');
-        this.button.textContent = '❌';
-        Utils.showNotification(
-          '❌ Failed to copy content. Please try again.',
-          'error',
-          4000
+      if (success) {
+        downloadButton.classList.remove('processing');
+        downloadButton.classList.add('success');
+        downloadButton.innerHTML = '✅';
+        showNotification(
+          '✅ Content copied as Markdown! Ready to paste into AI chat.',
+          'success',
+          3000
         );
 
         setTimeout(() => {
-          this.button.textContent = CONFIG.BUTTON.ICON;
+          downloadButton.classList.remove('success');
+          downloadButton.innerHTML = '📋';
         }, 3000);
+      } else {
+        throw new Error('Clipboard copy failed');
       }
-    }
+    } catch (error) {
+      console.error('Error processing content:', error);
+      downloadButton.classList.remove('processing');
+      downloadButton.classList.add('error');
+      downloadButton.innerHTML = '❌';
+      showNotification(
+        '❌ Failed to copy content. Please try again.',
+        'error',
+        3000
+      );
 
-    fallbackCopyToClipboard(text) {
-      const textarea = document.createElement('textarea');
-      textarea.value = text;
-      textarea.style.position = 'fixed';
-      textarea.style.opacity = '0';
-      document.body.appendChild(textarea);
-      textarea.select();
-
-      try {
-        document.execCommand('copy');
-      } catch (error) {
-        console.error('Fallback copy failed:', error);
-        throw error;
-      }
-
-      document.body.removeChild(textarea);
+      setTimeout(() => {
+        downloadButton.classList.remove('error');
+        downloadButton.innerHTML = '📋';
+      }, 3000);
+    } finally {
+      isProcessing = false;
     }
   }
 
-  // ==================== INITIALIZATION ====================
-  class AIClipboardApp {
-    constructor() {
-      this.uiManager = null;
-      this.initialized = false;
+  // Create the download button
+  function createButton() {
+    console.log('🔘 AI MD Clipboard: Creating button...');
+
+    // Remove existing button if any
+    const existing = document.getElementById(CONFIG.BUTTON_ID);
+    if (existing) {
+      console.log('🗑️ AI MD Clipboard: Removing existing button');
+      existing.remove();
     }
 
-    async initialize() {
-      if (this.initialized) return;
+    downloadButton = document.createElement('button');
+    downloadButton.id = CONFIG.BUTTON_ID;
+    downloadButton.innerHTML = '📋';
+    downloadButton.title = 'Copy content as AI-ready Markdown';
+    downloadButton.setAttribute(
+      'aria-label',
+      'Copy content as AI-ready Markdown'
+    );
+    downloadButton.textContent = '📋'; // Ensure text content is set
 
-      try {
-        this.uiManager = new UIManager();
-        this.uiManager.initialize();
-        this.initialized = true;
+    // Add event listeners
+    downloadButton.addEventListener('click', (e) => {
+      console.log('🖱️ AI MD Clipboard: Button clicked');
+      e.preventDefault();
+      e.stopPropagation();
+      copyContentAsMarkdown();
+    });
 
-        // Show welcome message
+    downloadButton.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        console.log('⌨️ AI MD Clipboard: Button activated via keyboard');
+        e.preventDefault();
+        e.stopPropagation();
+        copyContentAsMarkdown();
+      }
+    });
+
+    // Try to append to body, fallback to documentElement
+    if (document.body) {
+      document.body.appendChild(downloadButton);
+      console.log('✅ AI MD Clipboard: Button appended to body');
+    } else if (document.documentElement) {
+      document.documentElement.appendChild(downloadButton);
+      console.log('✅ AI MD Clipboard: Button appended to documentElement');
+    } else {
+      console.error('❌ AI MD Clipboard: Cannot find place to add button');
+      return false;
+    }
+
+    // Verify button was added
+    const addedButton = document.getElementById(CONFIG.BUTTON_ID);
+    if (addedButton) {
+      console.log(
+        '✅ AI MD Clipboard: Button successfully created and added to DOM'
+      );
+
+      // Force visibility
+      addedButton.style.display = 'block';
+      addedButton.style.visibility = 'visible';
+      addedButton.style.opacity = '1';
+
+      // Test click in console
+      console.log('🔍 AI MD Clipboard: Button element:', addedButton);
+      console.log(
+        '🔍 AI MD Clipboard: Button visible?',
+        addedButton.offsetParent !== null,
+        'Window width:',
+        window.innerWidth,
+        'Button styles:',
+        addedButton.style.cssText
+      );
+
+      return true;
+    } else {
+      console.error('❌ AI MD Clipboard: Failed to add button to DOM');
+      return false;
+    }
+  }
+
+  // Initialize the userscript
+  function initialize() {
+    if (isInitialized) {
+      console.log('🔄 AI MD Clipboard: Already initialized, skipping...');
+      return;
+    }
+
+    console.log('🚀 AI MD Clipboard: Starting initialization...');
+    console.log('📄 AI MD Clipboard: Page title:', document.title);
+    console.log('🌐 AI MD Clipboard: Page URL:', window.location.href);
+    console.log(
+      '📏 AI MD Clipboard: Document ready state:',
+      document.readyState
+    );
+
+    // Wait for body to be available
+    if (!document.body) {
+      console.log('⏳ AI MD Clipboard: Waiting for body...');
+      setTimeout(initialize, 100);
+      return;
+    }
+
+    try {
+      injectStyles();
+      const buttonCreated = createButton();
+
+      if (buttonCreated) {
+        isInitialized = true;
+        console.log('✅ AI MD Clipboard: Initialization complete!');
+
+        // Show welcome notification
         setTimeout(() => {
-          Utils.showNotification(
-            '🤖 AI Clipboard Ready! Click the robot to copy content optimized for AI chatboxes.',
+          showNotification(
+            '📋 AI Markdown Ready! Click the clipboard button to copy content.',
             'success',
-            5000
+            4000
           );
         }, 1000);
-      } catch (error) {
-        console.error('Failed to initialize AI Clipboard:', error);
-        Utils.showNotification(
-          '❌ Failed to initialize. Please refresh the page.',
-          'error',
-          5000
+
+        // Setup monitoring for button removal
+        setupButtonMonitor();
+      } else {
+        console.error(
+          '❌ AI MD Clipboard: Failed to create button, retrying...'
         );
+        setTimeout(initialize, 2000);
       }
+    } catch (error) {
+      console.error('❌ AI MD Clipboard: Initialization error:', error);
+      setTimeout(initialize, 2000);
     }
   }
 
-  // ==================== APP STARTUP ====================
-  const app = new AIClipboardApp();
+  // Setup monitoring for button removal
+  function setupButtonMonitor() {
+    console.log('👁️ AI MD Clipboard: Setting up button monitor...');
 
-  // Initialize when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => app.initialize());
-  } else {
-    app.initialize();
+    const observer = new MutationObserver((mutations) => {
+      let buttonRemoved = false;
+
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'childList') {
+          // Check if our button was removed
+          if (!document.getElementById(CONFIG.BUTTON_ID)) {
+            buttonRemoved = true;
+          }
+        }
+      });
+
+      if (buttonRemoved) {
+        console.log('🔄 AI MD Clipboard: Button was removed, re-creating...');
+        isInitialized = false;
+        setTimeout(initialize, 1000);
+      }
+    });
+
+    // Monitor the body for changes
+    if (document.body) {
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+      console.log('✅ AI MD Clipboard: Button monitor active');
+    }
   }
+
+  // Wait for page to be ready
+  function startInitialization() {
+    console.log('⏰ AI MD Clipboard: Starting initialization process...');
+
+    if (document.readyState === 'loading') {
+      console.log(
+        '📄 AI MD Clipboard: Document still loading, waiting for DOMContentLoaded...'
+      );
+      document.addEventListener('DOMContentLoaded', initialize);
+    } else {
+      console.log('📄 AI MD Clipboard: Document ready, initializing now...');
+      // Small delay to ensure page is stable
+      setTimeout(initialize, 100);
+    }
+  }
+
+  // Start the initialization
+  startInitialization();
+
+  // Also try to initialize after a delay as a fallback
+  setTimeout(() => {
+    if (!isInitialized) {
+      console.log('⏰ AI MD Clipboard: Fallback initialization...');
+      initialize();
+    }
+  }, 3000);
+
+  console.log(
+    '🏁 AI MD Clipboard: Script loaded, initialization process started'
+  );
 })();
