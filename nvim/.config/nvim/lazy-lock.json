@@ -17,7 +17,7 @@
   },
   "codecompanion.nvim": {
     "branch": "main",
-    "commit": "b0e3d2fc6434f0b84a289fa22a5def9e1bd12748"
+    "commit": "5efcc8f401061caf022bc54392b1ad968717220e"
   },
   "conform.nvim": {
     "branch": "master",
@@ -33,11 +33,11 @@
   },
   "fzf-lua": {
     "branch": "main",
-    "commit": "db45bab4f663bd2e27b257a65611796d682bd0bc"
+    "commit": "d45ce947b9e2b30dc564e9ea11a2e30f7a7b686d"
   },
   "gitsigns.nvim": {
     "branch": "main",
-    "commit": "1ee5c1fd068c81f9dd06483e639c2aa4587dc197"
+    "commit": "20ad4419564d6e22b189f6738116b38871082332"
   },
   "grug-far.nvim": {
     "branch": "main",
