@@ -6,7 +6,25 @@ local plugins = {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdateSync",
-    event = "BufReadPost"
+    event = "BufReadPost",
+    opts = {
+      ensure_installed = {
+        "swift",
+        "c",
+        "lua",
+        "vim",
+        "vimdoc",
+        "query",
+        "javascript",
+        "typescript",
+        "html",
+        "css",
+        "json",
+        "markdown"
+      },
+      highlight = {enable = true, additional_vim_regex_highlighting = false},
+      indent = {enable = true}
+    }
   },
 
   -- UI Enhancements

@@ -17,7 +17,7 @@
   },
   "codecompanion.nvim": {
     "branch": "main",
-    "commit": "5efcc8f401061caf022bc54392b1ad968717220e"
+    "commit": "9d49b758de4a3f2c4c2e8a0561e6d126e47dad85"
   },
   "conform.nvim": {
     "branch": "master",
@@ -33,7 +33,7 @@
   },
   "fzf-lua": {
     "branch": "main",
-    "commit": "d45ce947b9e2b30dc564e9ea11a2e30f7a7b686d"
+    "commit": "c102a4eeb10a04ed7e69ce80918923c4175c19d8"
   },
   "gitsigns.nvim": {
     "branch": "main",
@@ -69,7 +69,7 @@
   },
   "mini.nvim": {
     "branch": "main",
-    "commit": "8a7cf7eee8d89bd1b83f6d72f7f3b5598e7ae2cb"
+    "commit": "14145d3769eacdb48aa1cfd21f1e244896a85f68"
   },
   "neogit": {
     "branch": "master",
@@ -97,7 +97,7 @@
   },
   "nvim-tree.lua": {
     "branch": "master",
-    "commit": "e397756d2a79d74314ea4cd3efc41300e91c0ff0"
+    "commit": "64e2192f5250796aa4a7f33c6ad888515af50640"
   },
   "nvim-treesitter": {
     "branch": "master",
