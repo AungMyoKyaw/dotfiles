@@ -33,7 +33,7 @@ mason_lspconfig.setup({
     "html",
     "css",
     "json",
-    "markdown"
+    "marksman"
   },
   automatic_installation = true,
   handlers = {
