@@ -350,5 +350,8 @@
   "chat.useCloudButtonV2": true,
   "github.copilot.chat.completionsFetcher": "electron-fetch",
   "github.copilot.chat.nesFetcher": "electron-fetch",
-  "python.defaultInterpreterPath": "/opt/homebrew/bin/python3.13"
+  "python.defaultInterpreterPath": "/opt/homebrew/bin/python3.13",
+  "github.copilot.chat.claudeSonnet45AlternatePrompt": "v2",
+  "github.copilot.chat.gpt5AlternatePrompt": "v2",
+  "github.copilot.chat.grokCodeAlternatePrompt": "v2"
 }
