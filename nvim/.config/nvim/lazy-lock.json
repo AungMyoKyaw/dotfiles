@@ -1,7 +1,7 @@
 {
   "LuaSnip": {
     "branch": "master",
-    "commit": "f958d9837c8fa7816bb8fb54977e658affc63c31"
+    "commit": "ccf25a5452b8697a823de3e5ecda63ed3d723b79"
   },
   "catppuccin": {
     "branch": "main",
@@ -17,11 +17,11 @@
   },
   "codecompanion.nvim": {
     "branch": "main",
-    "commit": "9d49b758de4a3f2c4c2e8a0561e6d126e47dad85"
+    "commit": "7b336cc3f741e43bf361ae2185a5115a3bdaf83c"
   },
   "conform.nvim": {
     "branch": "master",
-    "commit": "fbcb4fa7f34bfea9be702ffff481a8e336ebf6ed"
+    "commit": "9fd3d5e0b689ec1bf400c53cbbec72c6fdf24081"
   },
   "copilot.vim": {
     "branch": "release",
@@ -33,7 +33,7 @@
   },
   "fzf-lua": {
     "branch": "main",
-    "commit": "c102a4eeb10a04ed7e69ce80918923c4175c19d8"
+    "commit": "9244bd48e0e6167ffe521209d0cfddc70bb70c21"
   },
   "gitsigns.nvim": {
     "branch": "main",
@@ -69,7 +69,7 @@
   },
   "mini.nvim": {
     "branch": "main",
-    "commit": "14145d3769eacdb48aa1cfd21f1e244896a85f68"
+    "commit": "cf32454e91b3d963a12fef0314811fb035b62d49"
   },
   "neogit": {
     "branch": "master",
@@ -89,11 +89,11 @@
   },
   "nvim-lspconfig": {
     "branch": "master",
-    "commit": "ac98db2f9f06a56498ec890a96928774eae412c3"
+    "commit": "52a893217b2c12e215c6851bd8813b43204416cd"
   },
   "nvim-surround": {
     "branch": "main",
-    "commit": "75de1782c781961e392efcca57601bf436f4d550"
+    "commit": "0cadeb0f1930e6b25cf65395f8269bfcc36b6791"
   },
   "nvim-tree.lua": {
     "branch": "master",
