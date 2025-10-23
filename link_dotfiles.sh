@@ -37,6 +37,7 @@ FILES_TO_LINK=(
   "$DOTFILES_DIR/claude/settings.json:$HOME/.claude/settings.json"
   "$DOTFILES_DIR/claude/CLAUDE.md:$HOME/.claude/CLAUDE.md"
   "$DOTFILES_DIR/claude/commands:$HOME/.claude/commands"
+  "$DOTFILES_DIR/copilot-cli/mcp-config.json:$HOME/.copilot/mcp-config.json"
   "$DOTFILES_DIR/zsh/.zshrc:$HOME/.zshrc"
   "$DOTFILES_DIR/zsh/.zshrc.local:$HOME/.zshrc.local"
   "$DOTFILES_DIR/starship/starship.toml:$HOME/.config/starship.toml"
