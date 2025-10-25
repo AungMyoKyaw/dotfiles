@@ -26,18 +26,8 @@
         "@playwright/mcp@latest",
         "--no-sandbox",
         "--isolated",
-        "--image-responses",
-        "omit",
-        "--block-service-workers",
-        "--ignore-https-errors",
-        "--save-session",
-        "--save-trace"
+        "--ignore-https-errors"
       ]
-    },
-    "chrome-devtools": {
-      "tools": ["*"],
-      "command": "npx",
-      "args": ["-y", "chrome-devtools-mcp@latest"]
     }
   }
 }

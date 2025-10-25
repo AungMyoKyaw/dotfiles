@@ -20,7 +20,7 @@ alias specify='uvx --from git+https://github.com/github/spec-kit.git specify'
 alias vercel='npx vercel'
 
 # Github Copilot CLI settings
-export COPILOT_MODEL='claude-sonnet-4.5'
+export COPILOT_MODEL='claude-haiku-4.5'
 export COPILOT_ALLOW_ALL=true
 
 # git
@@ -44,7 +44,7 @@ export HOMEBREW_NO_ANALYTICS=1
 export DOCKER_DEFAULT_PLATFORM=linux/arm64
 
 # Consolidated PATH exports
-export PATH="/usr/local/sbin:/opt/homebrew/bin:$HOME/.nimble/bin:$HOME/.cargo/bin:$PATH"
+export PATH="/usr/local/sbin:/opt/homebrew/bin:$HOME/.nimble/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 
 # Update Zsh plugins
 updateplugin(){

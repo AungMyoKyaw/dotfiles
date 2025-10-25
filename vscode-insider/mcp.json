@@ -35,11 +35,6 @@
         "--save-trace"
       ],
       "type": "stdio"
-    },
-    "chrome-devtools": {
-      "command": "npx",
-      "args": ["-y", "chrome-devtools-mcp@latest"],
-      "type": "stdio"
     }
   },
   "inputs": [
