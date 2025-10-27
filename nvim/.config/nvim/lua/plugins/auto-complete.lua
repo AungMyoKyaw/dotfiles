@@ -22,17 +22,12 @@ local function on_attach(_, bufnr) lsp_zero.default_keymaps({buffer = bufnr}) en
 
 mason_lspconfig.setup({
   ensure_installed = {
-    "swift",
-    "c",
-    "lua",
-    "vim",
-    "vimdoc",
-    "query",
-    "javascript",
-    "typescript",
+    "clangd",
+    "lua_ls",
     "html",
-    "css",
-    "json",
+    "cssls",
+    "jsonls",
+    "ts_ls",
     "marksman"
   },
   automatic_installation = true,
