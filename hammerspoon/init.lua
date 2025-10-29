@@ -9,7 +9,7 @@ local hyper = {"cmd", "alt", "ctrl", "shift"}
 -- Load modules and initialize them with the hyper key
 require("apps").init(hyper)
 require("performance").init(hyper)
-require("autoquit").init(hyper)
+-- require("autoquit").init(hyper)  -- Auto quit functionality disabled
 require("cleanup").init(hyper)
 require("automation").init(hyper)
 require("window_management").init(hyper)
