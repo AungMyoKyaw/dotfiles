@@ -29,5 +29,8 @@
     "prefetchEnabled": true,
     "compressionEnabled": false,
     "batchSize": 128
+  },
+  "enabledPlugins": {
+    "superpowers@superpowers-marketplace": true
   }
 }
