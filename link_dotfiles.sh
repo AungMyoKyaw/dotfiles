@@ -41,6 +41,7 @@ FILES_TO_LINK=(
   "$DOTFILES_DIR/zsh/.zshrc:$HOME/.zshrc"
   "$DOTFILES_DIR/zsh/.zshrc.local:$HOME/.zshrc.local"
   "$DOTFILES_DIR/starship/starship.toml:$HOME/.config/starship.toml"
+  "$DOTFILES_DIR/emacs/.emacs.d:$HOME/.emacs.d"
 )
 
 # Backup directory

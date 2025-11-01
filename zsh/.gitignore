@@ -1,3 +1,0 @@
-# Ignore local environment files that may contain sensitive information
-.zshrc.local
-.zshenv.local
