@@ -96,6 +96,45 @@
 (setq auto-save-file-name-transforms       ; Put auto-save files in temp dir
       `((".*" ,temporary-file-directory t)))
 
+;; Unbind default C-a to use as prefix (like tmux)
+(global-unset-key (kbd "C-a"))
+
+;; Define C-a as a prefix key
+(define-prefix-command 'my-window-map)
+(global-set-key (kbd "C-a") 'my-window-map)
+
+;; Window management keybindings (tmux pain-control style with C-a prefix)
+(global-set-key (kbd "C-a h") 'windmove-left)   ; Move to left window
+(global-set-key (kbd "C-a j") 'windmove-down)   ; Move to window below
+(global-set-key (kbd "C-a k") 'windmove-up)     ; Move to window above
+(global-set-key (kbd "C-a l") 'windmove-right)  ; Move to right window
+
+;; Window splitting (tmux pain-control style)
+(global-set-key (kbd "C-a |") 'split-window-right) ; Split window vertically
+(global-set-key (kbd "C-a -") 'split-window-below) ; Split window horizontally
+(global-set-key (kbd "C-a 1") 'delete-other-windows) ; Close other windows (like tmux prefix + &)
+
+;; Pane/window management (tmux style)
+(global-set-key (kbd "C-a z") 'delete-other-windows) ; Zoom current window (toggle)
+(global-set-key (kbd "C-a x") 'delete-window)        ; Close current window
+(global-set-key (kbd "C-a c") 'make-frame)           ; Create new frame (like new window)
+(global-set-key (kbd "C-a ,") 'rename-buffer)       ; Rename buffer (like rename window)
+(global-set-key (kbd "C-a &") 'delete-window)       ; Kill current window (tmux style)
+
+;; Session management (tmux style)
+(global-set-key (kbd "C-a s") 'ibuffer)             ; Buffer switcher (like session switcher)
+(global-set-key (kbd "C-a w") 'other-window)        ; Switch to next window
+(global-set-key (kbd "C-a n") 'next-buffer)         ; Next buffer
+(global-set-key (kbd "C-a p") 'previous-buffer)     ; Previous buffer
+(global-set-key (kbd "C-a d") 'suspend-frame)       ; Detach (like tmux detach)
+
+;; Copy/paste (tmux style)
+(global-set-key (kbd "C-a [") 'clipboard-yank)      ; Paste (like tmux paste mode)
+(global-set-key (kbd "C-a ]") 'kill-ring-save)      ; Copy (like tmux copy mode)
+
+;; Keep beginning-of-line accessible with C-a a (like tmux C-a a sends literal C-a)
+(global-set-key (kbd "C-a a") 'move-beginning-of-line)
+
 ;; Simple custom keybindings
 (global-set-key (kbd "C-x C-b") 'ibuffer)  ; Better buffer list
 (global-set-key (kbd "M-/") 'completion-at-point) ; Better completion
@@ -128,10 +167,33 @@
       (princ "  C-x C-s   - Save file\n")
       (princ "  C-x C-c   - Quit Emacs\n")
       (princ "  C-x b     - Switch buffer\n")
+      (princ "  C-g       - Cancel current command\n\n")
+      (princ "Window Management (tmux-style with C-a prefix):\n")
+      (princ "  Navigation:\n")
+      (princ "    C-a h/j/k/l  - Navigate windows (left/down/up/right)\n")
+      (princ "  Splitting:\n")
+      (princ "    C-a |        - Split window vertically\n")
+      (princ "    C-a -        - Split window horizontally\n")
+      (princ "  Window Control:\n")
+      (princ "    C-a z        - Zoom current window (toggle)\n")
+      (princ "    C-a 1        - Close other windows\n")
+      (princ "    C-a x        - Close current window\n")
+      (princ "    C-a c        - Create new frame\n")
+      (princ "    C-a ,        - Rename current buffer\n")
+      (princ "  Buffer Management:\n")
+      (princ "    C-a s        - Buffer switcher (ibuffer)\n")
+      (princ "    C-a w        - Switch to next window\n")
+      (princ "    C-a n        - Next buffer\n")
+      (princ "    C-a p        - Previous buffer\n")
+      (princ "  Utilities:\n")
+      (princ "    C-a a        - Go to beginning of line\n")
+      (princ "    C-a d        - Detach/suspend frame\n")
+      (princ "    C-a [        - Paste from clipboard\n")
+      (princ "    C-a ]        - Copy to clipboard\n\n")
+      (princ "Traditional Emacs shortcuts:\n")
       (princ "  C-x 1     - Make current window fill screen\n")
       (princ "  C-x 2     - Split window horizontally\n")
-      (princ "  C-x 3     - Split window vertically\n")
-      (princ "  C-g       - Cancel current command\n\n")
+      (princ "  C-x 3     - Split window vertically\n\n")
       (princ "Learning resources:\n")
       (princ "  M-x help-with-tutorial    - Built-in tutorial\n")
       (princ "  M-x describe-mode         - Describe current mode\n")

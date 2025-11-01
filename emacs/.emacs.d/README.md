@@ -14,6 +14,7 @@ This is a clean, minimal Emacs configuration designed for learning Emacs from sc
 - **Line Numbers**: Shows line numbers in all buffers
 - **Theme**: Uses the beautiful Catppuccin Mocha theme (auto-installed)
 - **Vim Editing**: Evil mode for Vim/Neovim-like keybindings
+- **Tmux-Style Window Management**: C-a prefix for consistent navigation between tmux and Emacs
 - **Basic Editing**: Spaces instead of tabs (2-width), auto-close brackets/quotes
 - **Helpful Keybindings**: Improved buffer list with `ibuffer`
 - **Learning-Friendly**: Welcome message with basic commands
@@ -23,8 +24,9 @@ This is a clean, minimal Emacs configuration designed for learning Emacs from sc
 1. Run the `link_dotfiles.sh` script to create symlinks
 2. Start Emacs: `emacs`
 3. Use Vim keybindings for navigation and editing (thanks to Evil mode)
-4. Follow the built-in tutorial: `M-x help-with-tutorial`
-5. Explore commands with: `C-h k` (describe key) or `C-h f` (describe function)
+4. Use tmux-style C-a prefix for window management (consistent with your tmux setup)
+5. Follow the built-in tutorial: `M-x help-with-tutorial`
+6. Explore commands with: `C-h k` (describe key) or `C-h f` (describe function)
 
 ## Vim Keybindings
 
@@ -34,6 +36,43 @@ The configuration includes Evil mode, providing Vim/Neovim-like keybindings:
 - **Visual mode**: `v` for character selection, `V` for line selection
 - **Insert mode**: Standard text editing with `Escape` to return to normal mode
 - **Evil Collection**: Enhanced Vim bindings for many Emacs modes
+
+## Tmux-Style Window Management
+
+This configuration uses `C-a` as the primary prefix for window management, matching tmux's default behavior for consistent muscle memory:
+
+### Navigation
+
+- `C-a h/j/k/l` - Navigate between windows (left/down/up/right)
+
+### Window Splitting
+
+- `C-a |` - Split window vertically
+- `C-a -` - Split window horizontally
+
+### Window Control
+
+- `C-a z` - Zoom current window (toggle - maximizes/restores layout)
+- `C-a 1` - Close other windows (make current fill screen)
+- `C-a x` - Close current window
+- `C-a c` - Create new frame
+- `C-a ,` - Rename current buffer
+
+### Buffer Management
+
+- `C-a s` - Buffer switcher (ibuffer)
+- `C-a w` - Switch to next window
+- `C-a n` - Next buffer
+- `C-a p` - Previous buffer
+
+### Utilities
+
+- `C-a a` - Go to beginning of line (replaces default Emacs C-a)
+- `C-a d` - Detach/suspend frame
+- `C-a [` - Paste from clipboard
+- `C-a ]` - Copy to clipboard
+
+**Note**: These shortcuts are designed to match tmux's `tmux-pain-control` plugin behavior, making switching between tmux and Emacs seamless.
 
 ## Recommended Packages for Learning
 
