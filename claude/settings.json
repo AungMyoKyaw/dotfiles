@@ -1,7 +1,12 @@
 {
   "env": {
-    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "16384",
-    "MAX_THINKING_TOKENS": "100000",
+    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "8192",
+    "MAX_THINKING_TOKENS": "200000",
+    "MAX_CONTEXT_TOKENS": "200000",
+    "CLAUDE_CODE_MAX_CONTEXT_SIZE": "1M",
+    "CLAUDE_CODE_CONTEXT_COMPRESSION": "0",
+    "CLAUDE_CODE_MEMORY_LIMIT": "4GB",
+    "CLAUDE_CODE_FULL_CONTEXT_MODE": "1",
     "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "2",
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
     "DISABLE_COST_WARNINGS": "1",
@@ -9,16 +14,21 @@
     "DISABLE_TELEMETRY": "1",
     "NO_PROXY": "localhost,127.0.0.1,::1",
     "CLAUDE_CODE_CACHE_ENABLED": "1",
-    "CLAUDE_CODE_PARALLEL_REQUESTS": "16",
-    "UV_THREADPOOL_SIZE": "32",
-    "CLAUDE_CODE_FAST_MODE": "1",
+    "CLAUDE_CODE_CACHE_SIZE": "2GB",
+    "CLAUDE_CODE_PARALLEL_REQUESTS": "32",
+    "UV_THREADPOOL_SIZE": "64",
+    "CLAUDE_CODE_FAST_MODE": "0",
+    "CLAUDE_CODE_THOROUGH_MODE": "1",
     "CLAUDE_BASH_NO_LOGIN": "1",
-    "NODE_OPTIONS": "--max-old-space-size=8192 --max-semi-space-size=256",
+    "NODE_OPTIONS": "--max-old-space-size=16384 --max-semi-space-size=512",
     "USE_BUILTIN_RIPGREP": "1",
     "CLAUDE_CODE_AUTO_CONNECT_IDE": "0",
-    "CLAUDE_CODE_API_KEY_HELPER_TTL_MS": "3600000",
-    "BASH_DEFAULT_TIMEOUT_MS": "300000",
-    "BASH_MAX_TIMEOUT_MS": "600000"
+    "CLAUDE_CODE_API_KEY_HELPER_TTL_MS": "7200000",
+    "BASH_DEFAULT_TIMEOUT_MS": "600000",
+    "BASH_MAX_TIMEOUT_MS": "1200000",
+    "CLAUDE_CODE_MAX_FILE_SIZE": "100MB",
+    "CLAUDE_CODE_INCLUDE_ALL_FILES": "1",
+    "CLAUDE_CODE_DEEP_ANALYSIS": "1"
   },
   "includeCoAuthoredBy": false,
   "enabledPlugins": {
@@ -27,10 +37,15 @@
   "alwaysThinkingEnabled": true,
   "performance": {
     "enableParallelProcessing": true,
-    "maxConcurrentTasks": 16,
-    "cacheSize": "8GB",
+    "maxConcurrentTasks": 64,
+    "cacheSize": "16GB",
     "prefetchEnabled": true,
     "compressionEnabled": false,
-    "batchSize": 128
+    "batchSize": 256,
+    "maxMemoryUsage": "8GB",
+    "enableThoroughAnalysis": true,
+    "contextWindowSize": "200K",
+    "enableFullContext": true,
+    "maxFileProcessingSize": "100MB"
   }
 }
