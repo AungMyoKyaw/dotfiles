@@ -238,10 +238,6 @@ which is crucial for international keyboard layouts."
 (setq auto-save-file-name-transforms       ; Put auto-save files in temp directory
       `((".*" ,temporary-file-directory t)))
 
-;; Exclude games and entertainment folders from development tools
-(setq vc-directory-exclusion-list
-      (append vc-directory-exclusion-list '("Games" "games" "Steam" "steam" ".steam" "SteamApps" "steamapps")))
-
 ;; Unbind default C-a to use as prefix (like tmux)
 (global-unset-key (kbd "C-a"))
 
