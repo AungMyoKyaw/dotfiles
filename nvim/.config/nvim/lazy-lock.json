@@ -5,7 +5,7 @@
   },
   "catppuccin": {
     "branch": "main",
-    "commit": "8c4125e3c746976ba025dc5d908fa22c6aa09486"
+    "commit": "234fc048de931a0e42ebcad675bf6559d75e23df"
   },
   "cmp-nvim-lsp": {
     "branch": "main",
@@ -17,7 +17,7 @@
   },
   "codecompanion.nvim": {
     "branch": "main",
-    "commit": "50ea30ec76e1a2695164991a7480f0fa0662e9db"
+    "commit": "ee6c2a1b3793e73584459f7a2fbac88fce3c6f5b"
   },
   "conform.nvim": {
     "branch": "master",
@@ -61,7 +61,7 @@
   },
   "mason-lspconfig.nvim": {
     "branch": "main",
-    "commit": "3590d66effccc7376d8c3dbe45e8291f9fed2843"
+    "commit": "d7b5feb6e769e995f7fcf44d92f49f811c51d10c"
   },
   "mason.nvim": {
     "branch": "main",
@@ -69,7 +69,7 @@
   },
   "mini.nvim": {
     "branch": "main",
-    "commit": "ee4a4a4abed25e3d108d985b0553c5271f2f71aa"
+    "commit": "429e5f9dc9cd59bf76cd98b687300f0a384a7f52"
   },
   "neogit": {
     "branch": "master",
@@ -89,7 +89,7 @@
   },
   "nvim-lspconfig": {
     "branch": "master",
-    "commit": "e25994a1c2373784364852cd904cb39b6d75f227"
+    "commit": "a89bfcfd0e44f898341ac8a80ba83ccf6218bef3"
   },
   "nvim-surround": {
     "branch": "main",
