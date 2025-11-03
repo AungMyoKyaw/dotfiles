@@ -160,6 +160,66 @@ hammerspoon/wallpapers/
 **/*.secret.*
 **/.sensitive/
 
+# Games and entertainment folders (prevent massive file bloat)
+Games/
+games/
+Steam/
+steam/
+.steam/
+SteamApps/
+steamapps/
+*.iso
+*.img
+*.dmg
+*.appimage
+*.exe
+*.msi
+*.deb
+*.rpm
+GOG Galaxy/
+Epic Games/
+Origin/
+Uplay/
+Battle.net/
+Blizzard Entertainment/
+Unity/
+UnrealEngine/
+
+# Common game save directories
+.Saves/
+saves/
+savegames/
+Documents/My Games/
+Documents/Games/
+Library/Application Support/Steam/
+Library/Application Support/unity3d/
+Library/Application Support/Blizzard/
+
+# Game development engines (unless you're a game developer)
+Unity/
+UnrealEngine/
+CryEngine/
+Source/
+Godot/
+
+# Game ROMs and emulators
+roms/
+ROMs/
+emulators/
+*.nes
+*.snes
+*.n64
+*.gba
+*.gbc
+*.nds
+*.psx
+*.ps2
+*.ps3
+*.psp
+*.wii
+*.gamecube
+*.dreamcast
+
 # Emacs transient files
 *~
 *.elc
