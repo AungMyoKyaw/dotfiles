@@ -1,7 +1,7 @@
 {
   "LuaSnip": {
     "branch": "master",
-    "commit": "ccf25a5452b8697a823de3e5ecda63ed3d723b79"
+    "commit": "3732756842a2f7e0e76a7b0487e9692072857277"
   },
   "catppuccin": {
     "branch": "main",
@@ -17,11 +17,11 @@
   },
   "codecompanion.nvim": {
     "branch": "main",
-    "commit": "ee6c2a1b3793e73584459f7a2fbac88fce3c6f5b"
+    "commit": "31f870579124a379eaf9c74b30d8a4870da29e62"
   },
   "conform.nvim": {
     "branch": "master",
-    "commit": "9fd3d5e0b689ec1bf400c53cbbec72c6fdf24081"
+    "commit": "26c02e1155a4980900bdccabca4516f4c712aae9"
   },
   "copilot.vim": {
     "branch": "release",
@@ -49,7 +49,7 @@
   },
   "lazy.nvim": {
     "branch": "main",
-    "commit": "f0f5bbb9e5bfae5e6468f9359ffea3d151418176"
+    "commit": "e6a8824858757ca9cd4f5ae1a72d845fa5c46a39"
   },
   "lsp-zero.nvim": {
     "branch": "v3.x",
@@ -69,11 +69,11 @@
   },
   "mini.nvim": {
     "branch": "main",
-    "commit": "429e5f9dc9cd59bf76cd98b687300f0a384a7f52"
+    "commit": "7d6fcfd879fe520aba187fe2bd25078fa2367d03"
   },
   "neogit": {
     "branch": "master",
-    "commit": "268ddf7cabad7203e761df62eaa99f8c635c1907"
+    "commit": "d2a2ae4415872fbddb2441920ab109ee52fd4916"
   },
   "nim.nvim": {
     "branch": "master",
@@ -85,11 +85,11 @@
   },
   "nvim-cmp": {
     "branch": "main",
-    "commit": "cf22c9e32512de3be1fd6b65fd25e3aabead4d8b"
+    "commit": "106c4bcc053a5da783bf4a9d907b6f22485c2ea0"
   },
   "nvim-lspconfig": {
     "branch": "master",
-    "commit": "a89bfcfd0e44f898341ac8a80ba83ccf6218bef3"
+    "commit": "2010fc6ec03e2da552b4886fceb2f7bc0fc2e9c0"
   },
   "nvim-surround": {
     "branch": "main",
@@ -117,7 +117,7 @@
   },
   "telescope.nvim": {
     "branch": "master",
-    "commit": "b4da76be54691e854d3e0e02c36b0245f945c2c7"
+    "commit": "84b9ba066d1860f7a586ce9cd732fd6c4f77d1d9"
   },
   "toggleterm.nvim": {
     "branch": "main",
