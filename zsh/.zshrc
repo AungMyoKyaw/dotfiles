@@ -44,7 +44,7 @@ export HOMEBREW_NO_ANALYTICS=1
 export DOCKER_DEFAULT_PLATFORM=linux/arm64
 
 # Consolidated PATH exports
-export PATH="/usr/local/sbin:/opt/homebrew/bin:$HOME/.nimble/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
+export PATH="/usr/local/sbin:/opt/homebrew/bin:$HOME/.nimble/bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.config/emacs/bin:$PATH"
 
 # Update Zsh plugins
 updateplugin(){
