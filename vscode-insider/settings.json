@@ -353,5 +353,6 @@
   "python.defaultInterpreterPath": "/opt/homebrew/bin/python3.13",
   "github.copilot.chat.claudeSonnet45AlternatePrompt": "v2",
   "github.copilot.chat.gpt5AlternatePrompt": "v2",
-  "github.copilot.chat.grokCodeAlternatePrompt": "v2"
+  "github.copilot.chat.grokCodeAlternatePrompt": "v2",
+  "chat.extensionUnification.enabled": true
 }

@@ -145,7 +145,7 @@ parse_creation_request() {
     local clean_text="$reminder_text"
 
     # First, extract and preserve URLs using a more reliable method
-    local urls=()
+    local -a urls=()  # Explicitly declare as array
     local temp_text="$clean_text"
     local url_pattern='https?://[^[:space:]()]+'
 
@@ -160,13 +160,15 @@ parse_creation_request() {
 
         # Replace URLs with placeholders using sed for better reliability
         local i=1
-        for url in "${urls[@]}"; do
-            # Escape special characters in URL for sed
-            local escaped_url
-            escaped_url=$(printf '%s\n' "$url" | sed 's/[[\.*^$()+?{|]/\\&/g')
-            clean_text=$(echo "$clean_text" | sed "s|$escaped_url|URL_${i}_PLACEHOLDER|g")
-            ((i++))
-        done
+        if [[ ${#urls[@]} -gt 0 ]]; then
+            for url in "${urls[@]}"; do
+                # Escape special characters in URL for sed
+                local escaped_url
+                escaped_url=$(printf '%s\n' "$url" | sed 's/[[\.*^$()+?{|]/\\&/g')
+                clean_text=$(echo "$clean_text" | sed "s|$escaped_url|URL_${i}_PLACEHOLDER|g")
+                ((i++))
+            done
+        fi
     fi
 
     # Now clean other elements safely
@@ -189,10 +191,12 @@ parse_creation_request() {
 
     # Restore URLs
     local i=1
-    for url in "${urls[@]}"; do
-        clean_text=${clean_text/URL_${i}_PLACEHOLDER/$url}
-        ((i++))
-    done
+    if [[ ${#urls[@]} -gt 0 ]]; then
+        for url in "${urls[@]}"; do
+            clean_text=${clean_text/URL_${i}_PLACEHOLDER/$url}
+            ((i++))
+        done
+    fi
 
     # Clean up extra spaces and punctuation, but be careful with URLs
     # Only trim leading/trailing spaces to avoid corrupting URLs
