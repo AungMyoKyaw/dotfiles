@@ -31,7 +31,7 @@ gitsigns.setup({
   current_line_blame_opts = {
     virt_text = true,
     virt_text_pos = "eol",
-    delay = 500,
+    delay = 1000,
     ignore_whitespace = false
   },
   current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>"
@@ -49,13 +49,13 @@ map("n", "<leader>ft", ":ToggleTerm<CR>", {noremap = true, silent = true})
 -- Treesitter configuration
 local treesitter = require("nvim-treesitter.configs")
 treesitter.setup({
-  auto_install = true,
+  auto_install = false,
   highlight = {enable = true, additional_vim_regex_highlighting = false}
 })
 
 -- FZF-Lua and Obsidian configuration
 local fzf_lua = require("fzf-lua")
-fzf_lua.setup({winopts = {preview = {hidden = "right:0"}}})
+fzf_lua.setup({winopts = {preview = {hidden = "always"}}})
 
 local personal_path = os.getenv("OBSIDIAN_PERSONAL_PATH")
 if personal_path and personal_path ~= "" then
@@ -144,11 +144,13 @@ map("n", "<leader>vr", function()
 end, {noremap = true})
 
 -- Which-key configuration
-local which_key = require("which-key")
-which_key.setup({
-  plugins = {spelling = {enabled = true, suggestions = 20}},
-  win = {border = "single"}
-})
+pcall(function()
+  local which_key = require("which-key")
+  which_key.setup({
+    plugins = {spelling = {enabled = true, suggestions = 20}},
+    win = {border = "single"}
+  })
+end)
 
 -- Auto Pair
 local autopairs = require("nvim-autopairs")

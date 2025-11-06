@@ -100,6 +100,7 @@ local plugins = {
   {"github/copilot.vim"},
   {
     "olimorris/codecompanion.nvim",
+    cmd = {"CodeCompanion", "CodeCompanionChat"},
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
@@ -146,7 +147,7 @@ local plugins = {
   },
 
   -- which-key for keybinding discovery
-  {"folke/which-key.nvim", event = "VeryLazy"},
+  {"folke/which-key.nvim", keys = {"<leader>", "<localleader>"}},
 
   {"windwp/nvim-autopairs", event = "InsertEnter"},
 
