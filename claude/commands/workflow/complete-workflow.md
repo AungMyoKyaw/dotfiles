@@ -5,12 +5,12 @@ argument-hint: '[branch-name] [commit-message]'
 
 ## Simple Git Workflow
 
-Creates a new branch, commits changes, pushes to remote, and creates a pull request to the development branch using Azure DevOps.
+Creates a new branch, commits changes, pushes to remote, and creates a pull request to the development branch using Azure DevOps. Automatically generates meaningful branch names and commit messages based on diff analysis.
 
 ### Usage
 
 ```bash
-# Auto-generated branch name and commit message
+# Auto-generated branch name and commit message (smart analysis)
 /complete-workflow
 
 # Custom branch name and commit message
@@ -26,120 +26,67 @@ Creates a new branch, commits changes, pushes to remote, and creates a pull requ
 ### What it does
 
 1. **Check staged changes** with `git diff --cached`
-2. **Create new branch** from current branch
-3. **Commit changes** with descriptive message
-4. **Push** branch to remote origin
-5. **Create pull request** to development branch using Azure DevOps CLI
+2. **Analyze diff content** to auto-generate meaningful branch names and commit messages
+3. **Create new branch** from current branch
+4. **Commit changes** with descriptive message based on change type
+5. **Push** branch to remote origin
+6. **Create pull request** to development branch using Azure DevOps CLI
+
+### Auto-Generation Features
+
+**Branch Names:**
+
+- Detects change type: `feature/`, `docs/`, `config/`, `test/`, `deps/`
+- Extracts component name from primary changed file/directory
+- Format: `{type}/{component}-{MMDD-HMM}`
+
+**Commit Messages:**
+
+- **Dependencies**: `chore: bump dependencies` or `chore: update dependencies`
+- **Configuration**: `config: update {filename}`
+- **Documentation**: `docs: update {filename}`
+- **Tests**: `test: update test coverage`
+- **Code Changes** (based on diff size):
+  - Large additions: `feat: add new functionality`
+  - Large deletions: `refactor: remove deprecated code`
+  - Small changes: `fix: update implementation`
+  - Medium changes: `feat: improve functionality`
 
 ### Implementation
 
-```bash
-#!/bin/bash
+_This command should be AI-generated based on the current git state and context. The AI will:_
 
-# Simple Git workflow: branch -> commit -> push -> PR
+1. **Analyze the full staged diff content** to determine change patterns
+2. **Generate intelligent branch names** based on:
+   - Most common directory across all changed files
+   - File type patterns (feature/docs/config/test/deps)
+   - Component extraction from directory structure
+3. **Generate contextual commit messages** based on:
+   - Full diff statistics (additions/deletions)
+   - File type analysis across all files
+   - Pure type detection (all files are same type)
+   - Mixed file type context
+   - Change magnitude and patterns
 
-# Parse arguments
-BRANCH_NAME="$1"
-COMMIT_MESSAGE="$2"
+### AI Generation Logic
 
-# Check staged changes first
-echo "🔍 Checking staged changes..."
-git diff --cached --stat
-if [[ $? -ne 0 ]]; then
-    echo "❌ No staged changes found. Please stage your changes first."
-    exit 1
-fi
+**Branch Name Analysis:**
 
-# Auto-generate branch name if not provided
-if [[ -z "$BRANCH_NAME" ]]; then
-    BRANCH_NAME="feature/$(date +%Y%m%d-%H%M%S)"
-fi
+- Examine `git diff --cached --name-only` for **ALL** changed files
+- Determine dominant change type from full file pattern analysis
+- Find most common directory: `cut -d'/' -f1 | sort | uniq -c | sort -nr`
+- Generate: `{type}/{component}-{MMDD-HMM}`
 
-# Auto-generate descriptive commit message if not provided
-if [[ -z "$COMMIT_MESSAGE" ]]; then
-    CHANGED_FILES=$(git diff --cached --name-only)
-    FILE_COUNT=$(echo "$CHANGED_FILES" | wc -l | tr -d ' ')
+**Commit Message Analysis:**
 
-    if [[ $FILE_COUNT -eq 1 ]]; then
-        COMMIT_MESSAGE="Update $(basename $CHANGED_FILES)"
-    else
-        COMMIT_MESSAGE="Update $FILE_COUNT files"
-    fi
-fi
-
-echo "🚀 Starting simple Git workflow..."
-echo "   Branch: $BRANCH_NAME"
-echo "   Commit: $COMMIT_MESSAGE"
-
-# 1. Create new branch
-echo "📂 Creating branch: $BRANCH_NAME"
-git checkout -b "$BRANCH_NAME"
-if [[ $? -ne 0 ]]; then
-    echo "❌ Failed to create branch"
-    exit 1
-fi
-
-# 2. Commit changes
-echo "💾 Committing changes..."
-git commit -m "$COMMIT_MESSAGE"
-if [[ $? -ne 0 ]]; then
-    echo "❌ Failed to commit changes"
-    exit 1
-fi
-
-# 3. Push to remote
-echo "📤 Pushing to remote..."
-git push origin "$BRANCH_NAME"
-if [[ $? -ne 0 ]]; then
-    echo "❌ Failed to push to remote"
-    exit 1
-fi
-
-# 4. Create pull request to development branch
-echo "🔗 Creating pull request to development branch..."
-
-# Generate descriptive PR description
-PR_DESCRIPTION="## Summary
-
-$COMMIT_MESSAGE
-
-## Changes
-
-- **Branch**: \`$BRANCH_NAME\`
-- **Files Modified**: $(git diff --cached --name-only | wc -l | tr -d ' ')
-
-## How to Test
-
-1. Pull the latest changes from this branch
-2. Review the changes made in this PR
-3. Test the updated functionality
-4. Verify existing functionality remains intact
-
----
-
-*This PR was created automatically using the complete-workflow command.*"
-
-az repos pr create \
-    --title "$COMMIT_MESSAGE" \
-    --description "$PR_DESCRIPTION" \
-    --source-branch "$BRANCH_NAME" \
-    --target-branch "development" \
-    --open
-
-if [[ $? -eq 0 ]]; then
-    echo "✅ Workflow completed successfully!"
-    echo "   Branch: $BRANCH_NAME"
-    echo "   Commit: $(git rev-parse --short HEAD)"
-    echo "   PR created to development branch"
-else
-    echo "❌ Failed to create pull request"
-    echo "💡 You can manually create a PR using Azure DevOps web interface"
-    exit 1
-fi
-```
+- Count files by type across complete diff
+- Detect pure changes (all files same type) vs mixed changes
+- Analyze change magnitude from full diff statistics
+- Generate contextually appropriate messages with type indicators
 
 ### Requirements
 
 - Azure CLI configured with PAT
 - Git repository with development branch
 - Staged changes to commit
+- AI generation capability for dynamic analysis
