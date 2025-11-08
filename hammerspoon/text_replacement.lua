@@ -476,64 +476,73 @@ A reader with zero prior knowledge should be able to explain concepts to others 
 
     [":distill"] = function()
       local clipboard = getClipboard()
-      return string.format([[📄 DOCUMENT INPUT
+      return string.format([[📄 INPUT CONTENT
 %s
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🎯 PRIMARY OBJECTIVE
-Synthesize exam-grade summaries with precision, completeness, and retention-first design.
+🎯 SYNTHESIS MISSION
+Create clear, structured summaries optimized for rapid understanding and effective exam preparation.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-📋 SEVEN CORE REQUIREMENTS
+📋 FOUR-SECTION FRAMEWORK
 
-1️⃣  COMPLETE KNOWLEDGE CAPTURE
-   • Extract every critical concept, principle, and relationship
-   • Assume zero prior knowledge yet maintain depth
-   • No topic should feel incomplete, hand-wavy, or superficial
-   • Include interconnections between ideas
+1️⃣  EXECUTIVE SUMMARY (60-second grasp)
+   • Main thesis and central findings
+   • Primary significance and implications
+   • Core takeaways that matter most
 
-2️⃣  STRATEGIC INFORMATION ARCHITECTURE  
-   • Progressive disclosure: foundations → building blocks → applications
-   • Logical hierarchies with meaningful transitions
-   • Clear section breaks that guide the reader
-   • Prerequisite concepts explained before dependent ones
+2️⃣  CORE CONCEPTS CLARITY
+   • Essential ideas with clear, concise definitions
+   • How concepts connect and build on each other
+   • Concrete examples that illuminate abstract ideas
+   • Common misconceptions explicitly addressed
 
-3️⃣  PRECISION IN COMMUNICATION
-   • Technical accuracy + accessible language balance
-   • Define jargon immediately when introduced
-   • Use precise terminology consistently
-   • Simplify without dumbing down intellectual content
+3️⃣  PRACTICAL APPLICATIONS
+   • Where this knowledge applies in the real world
+   • Specific use cases and implementation examples
+   • Decision criteria for when/how to apply
+   • Current relevance and modern context
 
-4️⃣  STRATEGIC VISUAL REPRESENTATION
-   • Use Mermaid.js ONLY for relationships text cannot efficiently convey
-   • Ideal for: system architectures, hierarchies, dependencies, state flows, sequences
-   • Text remains primary; diagrams amplify understanding
-   • Each diagram must add clarity, not replace explanation
-
-5️⃣  PRACTICAL CODE INTEGRATION
-   • Include minimal, well-commented code examples
-   • Show concrete application of abstract concepts
-   • Code serves as mental anchor and proof
-   • Quality over quantity: fewer, better examples
-
-6️⃣  REAL-WORLD CONTEXT & RELEVANCE
-   • Connect abstract concepts to current applications
-   • Show where/why this matters in actual workflows
-   • Include recent examples and modern implications
-   • Demonstrate practical value and business impact
-
-7️⃣  OPTIMIZED RETENTION FORMAT
-   • Conclude with scannable reference material
-   • Include: formulas, critical facts, decision trees, checklists
-   • Suitable for pre-exam review or rapid lookup
-   • Format for spaced repetition study sessions
+4️⃣  STUDY QUICK-REFERENCE
+   • Critical facts, formulas, and definitions
+   • Exam-ready bullet points (specific and testable)
+   • Memory anchors and relationship maps
+   • Key differentiators and edge cases
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-✨ SUCCESS METRIC
-A reader with zero prior knowledge should be able to explain concepts to others or solve related problems correctly on an exam after one read-through.
+✨ SUCCESS CRITERIA
+After reading, someone should:
+   ✓ Understand the core concept within 60 seconds
+   ✓ Explain key ideas to others confidently
+   ✓ Apply knowledge to practical scenarios
+   ✓ Retain critical information for exams
+
+🎨 FORMAT GUIDELINES
+   • Clear visual hierarchy with emoji markers
+   • Concise bullet points (max 2 lines each)
+   • Bold key terms, _italicize examples_
+   • Include Mermaid diagram ONLY if text cannot efficiently show relationships
+   • End with 3-5 exam-ready summary points
+
+Begin synthesis now.
+]], clipboard)
+    end,
+
+    [":qdistill"] = function()
+      local clipboard = getClipboard()
+      return string.format([[📄 %s
+
+🎯 RAPID SYNTHESIS
+Create a 3-part summary for quick understanding:
+
+1️⃣  CORE IDEA (what matters most)
+2️⃣  KEY POINTS (3-5 essential takeaways)
+3️⃣  SO WHAT (practical implications)
+
+Format: clear, scannable, exam-ready.
 ]], clipboard)
     end,
 
