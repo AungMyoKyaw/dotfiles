@@ -1,0 +1,30 @@
+description = "Create Azure DevOps pull request from current branch to development using Azure CLI"
+prompt = """
+# Azure DevOps Pull Request
+
+User Request: {{args}}
+
+Please parse the User Request to identify: [Title] [Description] [Reviewers]
+If not explicitly provided, infer them from git context.
+
+## Context
+
+- Current branch: !{git branch --show-current}
+- Target branch: development
+- Repository: !{git remote get-url origin --push | sed 's/.*:\\(.*\\)\\.git/\\1/' || echo "Repo detection failed"}
+
+## PR Creation Task
+
+Execute complete Azure DevOps PR workflow covering:
+
+1. **Repository Analysis** for understanding current git state
+2. **Branch Validation** to ensure proper source and target branches
+3. **Content Generation** for title and description from git history
+4. **PR Creation** using Azure DevOps CLI with proper configuration
+5. **Reviewer Assignment** for team collaboration
+6. **Validation** for successful PR creation
+
+## Output
+
+Provide the Azure DevOps CLI command to create the PR, or execute it if possible.
+"""

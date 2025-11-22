@@ -1,0 +1,28 @@
+description = "Setup automatic code formatting with industry-standard tools"
+prompt = """
+# Code Formatting Setup
+
+User Request: {{args}}
+
+Please parse the User Request to identify: [Target Language] [Style Preference] [Target Directory]
+If not explicitly provided, infer them.
+
+## Context
+
+- Current files: !{find . -name "*.js" -o -name "*.ts" -o -name "*.py" -o -name "*.go" -o -name "*.rs" | wc -l} files to format
+
+## Setup Task
+
+Setup comprehensive code formatting system covering:
+
+1. **Automatic Formatting** for consistent code style
+2. **Configuration Files** for team standards
+3. **Integration Scripts** for build systems
+4. **IDE Integration** for developer experience
+5. **Pre-commit Hooks** for automated formatting
+6. **CI/CD Validation** for format enforcement
+
+## Output
+
+Provide configuration files, script additions, and instructions for integration.
+"""

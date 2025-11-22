@@ -1,0 +1,30 @@
+description = "Optimize code for performance, security, and maintainability"
+prompt = """
+# Code Optimization
+
+User Request: {{args}}
+
+Please parse the User Request to identify: [Optimization Focus] [Target File]
+If not explicitly provided, infer them.
+
+## Context
+
+- Project type: !{ls package.json 2>/dev/null && echo "Node.js" || ls requirements.txt 2>/dev/null && echo "Python" || ls Cargo.toml 2>/dev/null && echo "Rust" || echo "Unknown"}
+- Bundle size (if applicable): !{du -sh node_modules 2>/dev/null || du -sh .venv 2>/dev/null || echo "No bundle found"}
+- Performance metrics: !{find . -name "*.js" -o -name "*.py" | wc -l} files found
+- Git changes: !{git diff --stat 2>/dev/null || echo "Not a git repo"}
+
+## Optimization Task
+
+Analyze code for:
+
+1. **Performance bottlenecks** and optimization opportunities
+2. **Security vulnerabilities** and best practices
+3. **Code readability** and maintainability
+4. **Architecture** and design patterns
+5. **Error handling** and edge cases
+
+## Output
+
+Provide specific recommendations, code refactoring, and best practices implementation.
+"""

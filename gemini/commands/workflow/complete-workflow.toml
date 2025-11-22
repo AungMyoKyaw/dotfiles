@@ -1,0 +1,22 @@
+description = "Simple Git workflow: create branch, commit, push, and create PR"
+prompt = """
+# Complete Git Workflow
+
+User Request: {{args}}
+
+Please parse the User Request to identify: [Branch Name] [Commit Message]
+If not explicitly provided, infer them from the git diff.
+
+## Task
+
+1. **Check staged changes**
+2. **Analyze diff content** to auto-generate meaningful branch names and commit messages
+3. **Create new branch** from current branch
+4. **Commit changes** with descriptive message based on change type
+5. **Push** branch to remote origin
+6. **Create pull request** to development branch using Azure DevOps CLI
+
+## Output
+
+Execute the necessary git and az-cli commands.
+"""

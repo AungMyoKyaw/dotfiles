@@ -1,0 +1,20 @@
+description = "Generate comprehensive .editorconfig file"
+prompt = """
+# EditorConfig Generator
+
+User Request: {{args}}
+
+Please parse the User Request to identify: [Project Type] [Indent Style] [Indent Size]
+If not explicitly provided, infer them.
+
+## Task
+
+Generate a robust `.editorconfig` file that ensures consistent coding styles across different editors and IDEs.
+
+## Output
+
+Provide:
+1. A complete `.editorconfig` file content
+2. Detailed rule-by-rule explanations
+3. Project-specific optimizations
+"""

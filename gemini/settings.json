@@ -2,24 +2,118 @@
   "general": {
     "vimMode": true,
     "enablePromptCompletion": true,
-    "previewFeatures": true
+    "previewFeatures": true,
+    "checkpointing": {
+      "enabled": true
+    }
   },
   "ui": {
     "showMemoryUsage": true,
-    "showLineNumbers": false
+    "showLineNumbers": false,
+    "theme": "GitHub",
+    "hideBanner": true
   },
   "tools": {
-    "shell": {
-      "showColor": true
-    },
     "autoAccept": true,
-    "usePty": true
+    "useRipgrep": true,
+    "truncateToolOutputThreshold": 10000000,
+    "shell": {
+      "showColor": true,
+      "enableInteractiveShell": true
+    }
   },
   "telemetry": {
     "enabled": false
   },
   "privacy": {
     "usageStatisticsEnabled": false
+  },
+  "model": {
+    "name": "gemini-3-pro-preview",
+    "maxSessionTurns": -1,
+    "compressionThreshold": 0.8
+  },
+  "context": {
+    "discoveryMaxDirs": 1000
+  },
+  "experimental": {
+    "extensionManagement": true,
+    "codebaseInvestigatorSettings": {
+      "enabled": true,
+      "model": "gemini-3-pro-preview",
+      "thinkingBudget": 32768,
+      "maxNumTurns": 50,
+      "maxTimeMinutes": 30
+    }
+  },
+  "modelConfigs": {
+    "aliases": {
+      "base": {
+        "modelConfig": {
+          "generateContentConfig": {
+            "temperature": 0,
+            "topP": 1
+          }
+        }
+      },
+      "chat-base": {
+        "extends": "base",
+        "modelConfig": {
+          "generateContentConfig": {
+            "thinkingConfig": {
+              "includeThoughts": true
+            },
+            "temperature": 1,
+            "topP": 0.95,
+            "topK": 64
+          }
+        }
+      },
+      "chat-base-2.5": {
+        "extends": "chat-base",
+        "modelConfig": {
+          "generateContentConfig": {
+            "thinkingConfig": {
+              "thinkingBudget": 8192
+            }
+          }
+        }
+      },
+      "chat-base-3": {
+        "extends": "chat-base",
+        "modelConfig": {
+          "generateContentConfig": {
+            "thinkingConfig": {
+              "thinkingLevel": "HIGH"
+            }
+          }
+        }
+      },
+      "gemini-3-pro-preview": {
+        "extends": "chat-base-3",
+        "modelConfig": {
+          "model": "gemini-3-pro-preview"
+        }
+      },
+      "gemini-2.5-pro": {
+        "extends": "chat-base-2.5",
+        "modelConfig": {
+          "model": "gemini-2.5-pro"
+        }
+      },
+      "gemini-2.5-flash": {
+        "extends": "chat-base-2.5",
+        "modelConfig": {
+          "model": "gemini-2.5-flash"
+        }
+      },
+      "gemini-2.5-flash-lite": {
+        "extends": "chat-base-2.5",
+        "modelConfig": {
+          "model": "gemini-2.5-flash-lite"
+        }
+      }
+    }
   },
   "mcpServers": {
     "sequential-thinking": {
@@ -51,6 +145,11 @@
         "--save-session",
         "--save-trace"
       ]
+    }
+  },
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
     }
   }
 }

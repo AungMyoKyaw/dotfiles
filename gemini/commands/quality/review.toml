@@ -1,0 +1,28 @@
+description = "Comprehensive code review with security, performance, and architectural analysis"
+prompt = """
+# Code Review
+
+User Request: {{args}}
+
+Please parse the User Request to identify: [Target] [Language] [Review Depth]
+If not explicitly provided, infer them.
+
+## Context
+
+- Files to analyze: !{find . -name "*.py" -o -name "*.js" -o -name "*.ts" -o -name "*.java" -o -name "*.go" -o -name "*.rs" -o -name "*.cpp" -o -name "*.c" | wc -l} files found
+
+## Review Task
+
+Perform comprehensive code review covering:
+
+1. **Security Analysis** for vulnerabilities and threats
+2. **Performance Review** for optimization opportunities
+3. **Architecture Assessment** for design patterns and structure
+4. **Code Quality** for maintainability and best practices
+5. **Bug Detection** for potential runtime errors
+6. **Standards Compliance** for language/framework conventions
+
+## Output
+
+Provide detailed issues, severity levels, and improvement recommendations.
+"""

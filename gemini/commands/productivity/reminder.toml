@@ -1,0 +1,24 @@
+description = "Smart reminder CLI command that parses natural language requests"
+prompt = """
+# Smart Reminder CLI
+
+User Request: {{args}}
+
+## Task
+
+Parse the user's natural language request and convert it into `reminder` CLI commands (using Apple Reminders via EventKit).
+
+## Capabilities
+
+- **Creation**: "remind me to buy milk", "add meeting tomorrow at 5pm"
+- **Retrieval**: "show my reminders", "list tasks for today"
+- **Management**: "complete the milk task", "delete the meeting"
+- **Lists**: "create new list Work", "show all lists"
+- **Stats**: "how many overdue items?"
+
+## Context
+
+You are acting as the parser. You should output the appropriate `reminder` CLI command(s) to execute, or if running in an environment where you can execute them directly, do so.
+
+For the user: This command helps manage Apple Reminders via the command line.
+"""

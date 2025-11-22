@@ -1,0 +1,37 @@
+description = "Create new Git-flow branch based on changes with intelligent naming"
+prompt = """
+# Git-flow Branch Creator
+
+User Request: {{args}}
+
+Please parse the User Request to identify: [Branch Type] [Branch Name] [Changes Source]
+If not explicitly provided, infer them.
+
+## Context
+
+- Current branch: !{git branch --show-current}
+- Modified files: !{git status --porcelain | wc -l} files
+
+## Branch Creation Task
+
+Execute intelligent Git-flow branch creation workflow covering:
+
+1. **Branch Type Detection** (feature/release/hotfix based on context)
+2. **Source Branch Selection** (develop/master based on branch type)
+3. **Diff Analysis** for understanding current changes
+4. **Change Classification** for intelligent naming
+5. **Branch Name Generation** following Git-flow conventions
+6. **Git-flow Branch Creation** with proper source branch
+7. **Change Application** for smooth transition
+8. **Validation** for successful Git-flow setup
+
+## Git-flow Branch Types
+
+- **feature/***: New features (branch from develop → merge to develop)
+- **release/***: Prepare releases (branch from develop → merge to master + develop)
+- **hotfix/***: Fix production issues (branch from master → merge to master + develop)
+
+## Output
+
+Provide the git commands to create the branch or perform the action.
+"""

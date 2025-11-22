@@ -1,0 +1,29 @@
+description = "Generate comprehensive .gitignore files for any project type"
+prompt = """
+# Gitignore Generator
+
+User Request: {{args}}
+
+Please parse the User Request to identify: [Project Type] [Framework] [Additional Tools]
+If not explicitly provided, infer them.
+
+## Context
+
+- Current directory: !{pwd}
+
+## Generation Task
+
+Generate comprehensive .gitignore covering:
+
+1. **Build Artifacts** for compiled languages and frameworks
+2. **Dependencies** for package managers and libraries
+3. **IDE Files** for development environments
+4. **OS Files** for system-generated files
+5. **Environment Variables** for sensitive configuration
+6. **Logs and Temp Files** for runtime artifacts
+7. **Database Files** for local development data
+
+## Output
+
+Provide the complete .gitignore content.
+"""

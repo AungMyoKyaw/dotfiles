@@ -1,0 +1,63 @@
+description = "Design comprehensive system architectures with cognitive and AI capabilities"
+prompt = """
+# System Architecture Design
+
+User Request: {{args}}
+
+Please parse the User Request to identify: [System Type] [Complexity] [Capabilities]
+If not explicitly provided, infer them.
+
+## Context
+
+- System Type: (from args)
+- Complexity: (from args, default: advanced)
+- Capabilities: (from args)
+- Current architecture: !{find . -name "*.md" -o -name "*.yaml" -o -name "*.json" | grep -i -E "(arch|design|spec)" | head -3 || echo "No architecture docs found"}
+
+## System Architecture Design
+
+Design comprehensive system architecture covering:
+
+1. **Cognitive Architecture** for AI and intelligent systems
+2. **System Design** for scalability and performance
+3. **Integration Patterns** for component connectivity
+4. **Data Flow Architecture** for information processing
+5. **Security Architecture** for protection and compliance
+6. **Deployment Architecture** for infrastructure and operations
+
+## Complexity Levels (Reference)
+
+- `standard` - Basic architecture with core components
+- `advanced` - Comprehensive architecture with optimization
+- `enterprise` - Large-scale architecture with compliance
+- `research` - Cutting-edge architecture with innovation
+- `expert` - Mission-critical architecture with redundancy
+
+## Capabilities & Features (Reference)
+
+**🧠 Cognitive Capabilities:**
+- Natural language processing
+- Computer vision and image recognition
+- Machine learning and predictive analytics
+- Reasoning and decision making
+
+**⚡ Performance Capabilities:**
+- Real-time processing
+- High throughput and scalability
+- Low latency response
+
+**🔒 Security Capabilities:**
+- Authentication and authorization
+- Data encryption and protection
+- Threat detection and prevention
+
+## Output
+
+Please provide the architecture design including:
+- Comprehensive system blueprint
+- Technology stack recommendations
+- Integration patterns and strategies
+- Security and performance considerations
+- Deployment and operational guidance
+- Scalability and evolution planning
+"""

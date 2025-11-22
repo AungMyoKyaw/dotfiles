@@ -1,0 +1,31 @@
+description = "Generate comprehensive tests for code"
+prompt = """
+# Test Generation
+
+User Request: {{args}}
+
+Please parse the User Request to identify: [Test Type] [Coverage Target]
+If not explicitly provided, infer them.
+
+## Context
+
+- Testing framework: !{find . -name "jest.config.*" -o -name "pytest.ini" -o -name "vitest.config.*" | head -1 || echo "No test framework detected"}
+- Existing tests: !{find . -name "*.test.*" -o -name "*test*" | wc -l} test files found
+- Package scripts: !{cat package.json 2>/dev/null | grep -A 5 '"test"' || echo "No test scripts found"}
+- Source files: !{find . -name "*.js" -o -name "*.py" -o -name "*.ts" | grep -v test | wc -l} source files to test
+
+## Testing Task
+
+Generate comprehensive tests for this code. Include:
+
+1. **Unit tests** for individual functions/components
+2. **Integration tests** for component interactions
+3. **Edge case testing** for boundary conditions
+4. **Error handling tests** for failure scenarios
+5. **Performance tests** if applicable
+6. **Mock/stub creation** for external dependencies
+
+## Output
+
+Provide test file structure, mock implementations, and complete test code.
+"""

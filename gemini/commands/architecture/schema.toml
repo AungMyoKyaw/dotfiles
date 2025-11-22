@@ -1,0 +1,52 @@
+description = "Design comprehensive database schemas with optimization and scaling strategies"
+prompt = """
+# Database Schema Design
+
+User Request: {{args}}
+
+Please parse the User Request to identify: [Database Type] [Complexity] [Project Description]
+If not explicitly provided, infer them.
+
+## Context
+
+- Database Type: (from args, default: PostgreSQL)
+- Complexity: (from args, default: advanced)
+- Project Description: (from args, required)
+- Current migrations: !{find . -name "*migration*" -o -name "schema.sql" | wc -l} files found
+
+## Database Schema Design
+
+Design comprehensive database architecture covering:
+
+1. **Entity Relationship Modeling** for business domain representation
+2. **Schema Optimization** for performance and scalability
+3. **Data Integrity** for constraint validation and referential integrity
+4. **Security Architecture** for data protection and access control
+5. **Migration Strategy** for safe schema evolution
+6. **Performance Tuning** for query optimization
+
+## Design Components
+
+**🏗️ Entity Relationship Design:**
+- Core entity identification and modeling
+- Relationship mapping (one-to-one, one-to-many, many-to-many)
+- Attribute definition and data type selection
+
+**📊 Schema Architecture:**
+- Table structure and organization
+- Normalization vs denormalization strategy
+- Index design for query optimization
+
+**🔒 Security Architecture:**
+- Data encryption at rest and in transit
+- Access control and user permissions
+- Audit logging and compliance tracking
+
+## Output
+
+Please provide:
+1. **Schema Documentation** (ERD, Tables, Relationships)
+2. **Migration Scripts** (SQL DDL)
+3. **Performance Analysis**
+4. **Security Guidelines**
+"""

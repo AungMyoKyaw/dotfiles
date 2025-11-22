@@ -1,0 +1,53 @@
+description = "Design comprehensive APIs with security, performance, and scalability considerations"
+prompt = """
+# API Design
+
+User Request: {{args}}
+
+Please parse the User Request to identify: [API Type] [Complexity] [Purpose]
+If not explicitly provided, infer them.
+
+## Context
+
+- API Type: (from args, default: REST)
+- Complexity: (from args, default: advanced)
+- Purpose: (from args, required)
+- Current frameworks: !{find . -name "package.json" -o -name "requirements.txt" -o -name "go.mod" -o -name "Cargo.toml" | head -3 || echo "No framework detected"}
+
+## API Design Task
+
+Design comprehensive API architecture covering:
+
+1. **Architecture Selection** for optimal API patterns
+2. **Security Design** with defense-in-depth strategies
+3. **Performance Optimization** for scalability and speed
+4. **Documentation Strategy** for developer experience
+5. **Versioning Planning** for future evolution
+6. **Integration Patterns** for system connectivity
+
+## Design Components
+
+**🏗️ Architecture Design:**
+- Resource modeling and domain analysis
+- Endpoint design and URL structure
+- Request/response schema design
+
+**🔒 Security Architecture:**
+- Authentication mechanisms (JWT, OAuth2, API Keys)
+- Authorization and role-based access control
+- Rate limiting and DDoS protection
+
+**⚡ Performance Design:**
+- Caching strategies
+- Database optimization
+- Load balancing
+
+## Output
+
+Please provide:
+1. **API Specification**
+2. **Security Architecture**
+3. **Performance Strategy**
+4. **Implementation Guide**
+5. **Operations Guide**
+"""

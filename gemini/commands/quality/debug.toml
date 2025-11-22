@@ -1,0 +1,36 @@
+description = "Debug and troubleshoot code issues"
+prompt = """
+# Code Debugging
+
+User Request: {{args}}
+
+Please parse the User Request to identify: [Error Type] [Target Files/Pattern]
+If not explicitly provided, infer them.
+
+## Context
+
+- Recent error logs: !{find . -name "*.log" -exec tail -10 {} \\; 2>/dev/null | head -20 || echo "No log files found"}
+- Test failures: !{find . -name "*.test.*" -o -name "*test*" | head -5}
+- Recent changes: !{git log --oneline -5 2>/dev/null || echo "Not a git repository"}
+
+## Debugging Task
+
+Debug and troubleshoot issues in this code. Analyze:
+
+1. **Error Identification** - Locate syntax, runtime, and logic errors
+2. **Root Cause Analysis** - Understand why issues occur
+3. **Performance Bottlenecks** - Identify slow operations and memory leaks
+4. **Logic Flaws** - Find incorrect reasoning or algorithmic issues
+5. **Edge Cases** - Handle unusual inputs or conditions
+6. **Concurrency Issues** - Race conditions, deadlocks, synchronization problems
+7. **Integration Problems** - Issues with external dependencies or APIs
+
+## Output
+
+Provide:
+- Clear explanation of each issue found
+- Step-by-step debugging process
+- Fixed code with corrections
+- Prevention strategies
+- Testing recommendations
+"""

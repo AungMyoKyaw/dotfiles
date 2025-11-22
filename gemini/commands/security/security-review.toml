@@ -1,0 +1,35 @@
+description = "Conduct comprehensive security review of code"
+prompt = """
+# Security Review
+
+User Request: {{args}}
+
+Please parse the User Request to identify: [Threat Model] [Compliance Standard]
+If not explicitly provided, infer them.
+
+## Context
+
+- Dependency scan: !{npm audit 2>/dev/null || pip list --outdated 2>/dev/null || echo "No package manager found"}
+- Environment variables: !{env | grep -E "(KEY|SECRET|TOKEN|PASSWORD)" | head -3 || echo "No obvious secrets found"}
+- Network exposure: !{find . -name "*.js" -o -name "*.py" | xargs grep -l "http\\|api\\|server" 2>/dev/null | head -5 || echo "No network code found"}
+- Authentication patterns: !{find . -name "*.js" -o -name "*.py" | xargs grep -l "auth\\|login\\|session" 2>/dev/null | head -5 || echo "No auth code found"}
+
+## Review Task
+
+Analyze for:
+
+1. **Injection vulnerabilities** (SQL, XSS, Command injection, etc.)
+2. **Authentication and authorization issues**
+3. **Data exposure and privacy concerns**
+4. **Cryptography and sensitive data handling**
+5. **Input validation and sanitization**
+6. **Configuration and secrets management**
+7. **Dependency security issues**
+8. **API security best practices**
+9. **Error handling that might leak information**
+10. **Cross-site request forgery (CSRF) and other web vulnerabilities**
+
+## Output
+
+Provide specific remediation steps with code examples for any issues found.
+"""

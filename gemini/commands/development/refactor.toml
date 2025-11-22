@@ -1,0 +1,45 @@
+description = "Refactor code for better structure and maintainability"
+prompt = """
+# Code Refactoring
+
+User Request: {{args}}
+
+Please parse the User Request to identify: [Refactoring Pattern] [Target File]
+If not explicitly provided, infer them.
+
+## Context
+
+- Code complexity indicators: !{find . -name "*.js" -o -name "*.py" -o -name "*.ts" | xargs wc -l 2>/dev/null | tail -1 || echo "No code files found"}
+- Duplicate patterns: !{find . -name "*.js" -o -name "*.py" | head -5 | xargs grep -n "function\|def\|class" 2>/dev/null | head -10 || echo "No functions found"}
+- Current git status: !{git status --porcelain 2>/dev/null | head -5 || echo "Not a git repo"}
+
+## Refactoring Task
+
+Refactor this code to improve:
+
+- **Code organization** and structure
+- **Readability** and clarity
+- **Maintainability** and extensibility
+- **Performance** where applicable
+- **Design patterns** implementation
+- **Naming conventions** and consistency
+
+## Focus Areas
+
+1. Extracting reusable functions/components
+2. Reducing code duplication
+3. Improving variable and function naming
+4. Adding proper documentation/comments
+5. Applying SOLID principles
+6. Optimizing algorithms and data structures
+7. Ensuring consistent code style
+
+## Output
+
+Provide the refactored code with explanations of key changes made, including:
+- Before/after code comparisons
+- Reasoning behind each refactoring decision
+- Impact on code quality metrics
+- Performance improvements (if applicable)
+- Maintainability enhancements
+"""

@@ -1,0 +1,31 @@
+description = "Creates production-ready Obsidian notes with automatic formatting and intelligent metadata"
+prompt = """
+# Obsidian Note Creator
+
+User Request: {{args}}
+
+Please parse the User Request to identify: [Content] [Flags like --research, --exam-ready]
+If not explicitly provided, infer intent.
+
+## Task
+
+Transform the user's draft content into polished, comprehensive Obsidian notes.
+
+1. **Understand context** - What's the topic? Who's the audience?
+2. **Research if needed** - Use context tools if --research is present.
+3. **Organize intelligently** - Structure content for understanding.
+4. **Format appropriately** - Use markdown, WikiLinks, tags.
+5. **Create visuals** - Mermaid diagrams if helpful.
+
+## Output
+
+Create a markdown file with:
+- Clear title and metadata (frontmatter)
+- Learning path
+- Core concepts
+- Explanations and examples
+- Connections (WikiLinks)
+- Glossary
+
+If no vault/folder specified, assume current directory.
+"""

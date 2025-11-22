@@ -1,0 +1,50 @@
+description = "Create comprehensive system requirements with stakeholder analysis and validation"
+prompt = """
+# Requirements Creation
+
+User Request: {{args}}
+
+Please parse the User Request to identify: [Project Type] [Complexity] [Focus Areas]
+If not explicitly provided, infer them.
+
+## Context
+
+- Project Type: (from args)
+- Complexity: (from args, default: professional)
+- Focus Areas: (from args, default: comprehensive)
+- Current documentation: !{find . -name "*requirements*" -o -name "*spec*" | wc -l} files found
+
+## Requirements Creation
+
+Create comprehensive system requirements covering:
+
+1. **Stakeholder Analysis** for identifying all user groups and needs
+2. **Functional Requirements** for system capabilities and features
+3. **Non-Functional Requirements** for performance, security, and quality
+4. **Business Requirements** for objectives and value proposition
+5. **Technical Requirements** for architecture and integration
+6. **Compliance Requirements** for regulatory and legal standards
+
+## Complexity Levels (Reference)
+
+- `standard` - Basic requirements with core functionality
+- `professional` - Comprehensive requirements with stakeholder analysis
+- `enterprise` - Complex requirements with compliance and integration
+- `comprehensive` - Complete requirements with advanced validation
+
+## Focus Areas (Reference)
+- Security & Compliance
+- Performance & Scalability
+- User Experience & Accessibility
+- Analytics & Business Intelligence
+- Integration & Architecture
+
+## Output
+
+Please provide:
+1. **Executive Summary**
+2. **Stakeholder Analysis**
+3. **Functional Specifications**
+4. **Technical Specifications**
+5. **Implementation Plan**
+"""

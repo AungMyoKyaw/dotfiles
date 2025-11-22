@@ -1,0 +1,39 @@
+description = "Comprehensive performance optimization with bottleneck analysis and solutions"
+prompt = """
+# Performance Optimization
+
+User Request: {{args}}
+
+Please parse the User Request to identify: [System Type] [Optimization Focus] [Performance Goals]
+If not explicitly provided, infer them.
+
+## Context
+
+- Current performance: !{ps aux | head -1 && ps aux | sort -rk 3,3 | head -5 || echo "System info unavailable"}
+
+## Optimization Task
+
+Optimize system performance covering:
+
+1. **Bottleneck Analysis** for identifying performance constraints
+2. **Resource Optimization** for CPU, memory, and I/O efficiency
+3. **Algorithm Optimization** for code performance improvements
+4. **Database Optimization** for query and indexing improvements
+5. **Network Optimization** for latency and bandwidth efficiency
+6. **Caching Strategies** for data access optimization
+
+## Optimization Focus Areas
+- Speed & Latency
+- Memory & Storage
+- Throughput & Concurrency
+- Resource Utilization
+
+## Output
+
+Provide:
+- Bottleneck analysis
+- Resource optimization recommendations
+- Algorithm optimization suggestions
+- Database optimization strategies
+- Caching strategies
+"""

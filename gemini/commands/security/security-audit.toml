@@ -1,0 +1,33 @@
+description = "Comprehensive security audit with vulnerability assessment and threat modeling"
+prompt = """
+# Security Audit
+
+User Request: {{args}}
+
+Please parse the User Request to identify: [System Type] [Audit Scope] [Compliance Standards]
+If not explicitly provided, infer them.
+
+## Context
+
+- Current tech stack: !{find . -name "package.json" -o -name "requirements.txt" -o -name "*.yaml" -o -name "*.yml" | head -3 || echo "No stack detected"}
+
+## Audit Task
+
+Perform comprehensive security audit covering:
+
+1. **Vulnerability Assessment** for technical security flaws
+2. **Threat Modeling** for attack surface analysis
+3. **Compliance Review** for regulatory requirements
+4. **Security Controls Evaluation** for existing protections
+5. **Penetration Testing** for exploitable weaknesses
+6. **Risk Assessment** for business impact analysis
+
+## Output
+
+Provide:
+1. Executive Summary
+2. Technical Findings
+3. Compliance Report
+4. Security Roadmap
+5. Incident Response Plan
+"""

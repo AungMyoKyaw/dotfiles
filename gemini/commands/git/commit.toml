@@ -1,0 +1,28 @@
+description = "Execute git commit with conventional commit message analysis"
+prompt = """
+# Conventional Commit Generator
+
+User Request: {{args}}
+
+Please parse the User Request to identify: [Commit Type] [Scope] [Description]
+If not explicitly provided, infer them.
+
+## Context
+
+- Current status: !{git status --porcelain | wc -l} files modified
+
+## Commit Task
+
+Execute complete git workflow covering:
+
+1. **Change Analysis** for understanding repository state
+2. **File Staging** for organizing logical commits
+3. **Commit Type Detection** for conventional compliance
+4. **Message Generation** for clear documentation
+5. **Git Commit Execution** for version control
+6. **Validation** for successful completion
+
+## Output
+
+Provide the suggested commit message and git commands.
+"""

@@ -1,0 +1,28 @@
+description = "Setup comprehensive linting and code quality tools"
+prompt = """
+# Linting Setup
+
+User Request: {{args}}
+
+Please parse the User Request to identify: [Target Language] [Standard/Framework] [Target Directory]
+If not explicitly provided, infer them.
+
+## Context
+
+- Current project: !{find . -name "package.json" -o -name "pyproject.toml" -o -name "requirements.txt" -o -name "Cargo.toml" | head -3 || echo "No package manager detected"}
+
+## Setup Task
+
+Setup comprehensive linting and code quality system covering:
+
+1. **Linting Configuration** for code quality and consistency
+2. **Formatting Rules** for automatic code formatting
+3. **Pre-commit Hooks** for automated quality checks
+4. **CI/CD Integration** for continuous quality enforcement
+5. **IDE Integration** for developer experience
+6. **Team Standards** for consistent collaboration
+
+## Output
+
+Provide configuration files, script additions, and instructions for integration.
+"""

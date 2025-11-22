@@ -1,0 +1,44 @@
+description = "Advanced software engineering with comprehensive problem solving and implementation"
+prompt = """
+# Software Engineering Task
+
+User Request: {{args}}
+
+Please parse the User Request to identify: [Engineering Goal] [Complexity] [Context]
+If not explicitly provided, infer them.
+
+## Context
+
+- Engineering Goal: (from args, required)
+- Complexity: (from args, default: advanced)
+- Additional Context: (from args)
+- Current project: !{find . -name "*.js" -o -name "*.py" -o -name "*.java" -o -name "*.go" -o -name "*.rs" | head -5 || echo "No source files detected"}
+
+## Engineering Task
+
+Perform comprehensive software engineering covering:
+
+1. **Problem Analysis** for deep understanding and root cause identification
+2. **Solution Architecture** for optimal design and implementation
+3. **Code Implementation** with best practices and patterns
+4. **Testing & Validation** for quality assurance and reliability
+5. **Performance Optimization** for efficiency and scalability
+6. **Documentation** for maintainability and knowledge transfer
+
+## Engineering Methodology
+
+**🧠 Phase 1: Problem Analysis**
+**🔍 Phase 2: Solution Design**
+**⚡ Phase 3: Implementation**
+**🔬 Phase 4: Testing & Validation**
+**📚 Phase 5: Documentation & Knowledge Transfer**
+
+## Output
+
+Provide:
+- Comprehensive problem analysis and solution design
+- High-quality code implementation following best practices
+- Thorough testing and validation procedures
+- Performance optimization and security integration
+- Complete documentation and knowledge transfer
+"""
