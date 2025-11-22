@@ -1,26 +1,4 @@
 {
-  "general": {
-    "vimMode": true,
-    "enablePromptCompletion": true,
-    "previewFeatures": true
-  },
-  "ui": {
-    "showMemoryUsage": true,
-    "showLineNumbers": false
-  },
-  "tools": {
-    "shell": {
-      "showColor": true
-    },
-    "autoAccept": true,
-    "usePty": true
-  },
-  "telemetry": {
-    "enabled": false
-  },
-  "privacy": {
-    "usageStatisticsEnabled": false
-  },
   "mcpServers": {
     "sequential-thinking": {
       "command": "npx",

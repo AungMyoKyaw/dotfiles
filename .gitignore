@@ -160,6 +160,12 @@ hammerspoon/wallpapers/
 **/*.secret.*
 **/.sensitive/
 
+# Espanso private configurations
+espanso/match/private.yml
+espanso/match/*private*.yml
+espanso/match/
+espanso/packages/
+
 # Games and entertainment folders (prevent massive file bloat)
 Games/
 games/

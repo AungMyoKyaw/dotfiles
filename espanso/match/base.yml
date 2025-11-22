@@ -1,0 +1,241 @@
+# espanso match file - Public configurations only
+# This file contains only non-sensitive text expansions that are safe to share
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Matches are substitution rules: when you type the "trigger" string
+# it gets replaced by the "replace" string.
+
+search_shortcut: off
+
+matches:
+  # Simple text replacement
+  - trigger: ":espanso"
+    replace: "Hi there!"
+
+  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+
+  # Emojis - Safe to share
+  - trigger: ":hee"
+    replace: "😁"
+
+  - trigger: ":ha"
+    replace: "🤣"
+
+  - trigger: ":hmm"
+    replace: "🤔"
+
+  - trigger: ":cry"
+    replace: "🥹"
+
+  - trigger: ":sad"
+    replace: "😢"
+
+  - trigger: ":tick"
+    replace: "✅"
+
+  - trigger: ":zoom"
+    replace: "🥄"
+
+  - trigger: ":like"
+    replace: "👍"
+
+  - trigger: ":inprogress"
+    replace: "⏳"
+
+  - trigger: ":rose"
+    replace: "🌹"
+
+  - trigger: ":fire"
+    replace: "🔥"
+
+  # Productivity prompts - Safe to share
+  - trigger: ":fdistill"
+    replace: |
+      🎯 Objective
+      Create a sharp, structured, and exam-ready summary of the above lecture or content. Prioritize clarity, completeness, and long-term understanding using visuals or code examples where helpful.
+
+      🧭 Approach
+
+      1. **Summarize Clearly & Completely**
+        Capture all major ideas without fluff. Make sure nothing critical is left out—think like someone studying for a test.
+
+      2. **Organize with Purpose**
+        Use logical sections and headers to break down complex topics. Keep the flow intuitive and well-paced.
+
+      3. **Teach Like a Pro (But Friendly)**
+        Write as if teaching a smart beginner. Use expert clarity, not jargon. Simplify without dumbing down.
+
+      4. **Visualize When It Helps**
+        Use **Mermaid.js** diagrams (only) to explain concepts that benefit from visual representation. Diagrams should support—not replace—clear text.
+
+      5. **Code Where It Counts**
+        Include short, relevant code snippets to make abstract ideas concrete and memorable.
+
+      6. **Update with Current Context**
+        Add recent or practical examples to reinforce concepts and show relevance.
+
+      7. **Key Takeaways at the End**
+        Finish with bullet-point takeaways that someone can quickly review before an exam.
+
+      📌 Bonus Goal: Make it so good that if someone only reads this, they'll still pass the test.
+
+      You must use "<immersive>" tag
+
+  - trigger: ":distill"
+    replace: |
+      🎯 Objective
+      Create a sharp, structured, and exam-ready summary of the above lecture or content. Prioritize clarity, completeness, and long-term understanding using visuals or code examples where helpful.
+
+      🧭 Approach
+
+      1. **Summarize Clearly & Completely**
+        Capture all major ideas without fluff. Make sure nothing critical is left out—think like someone studying for a test.
+
+      2. **Organize with Purpose**
+        Use logical sections and headers to break down complex topics. Keep the flow intuitive and well-paced.
+
+      3. **Teach Like a Pro (But Friendly)**
+        Write as if teaching a smart beginner. Use expert clarity, not jargon. Simplify without dumbing down.
+
+      4. **Visualize When It Helps**
+        Use **Mermaid.js** diagrams (only) to explain concepts that benefit from visual representation. Diagrams should support—not replace—clear text.
+
+      5. **Code Where It Counts**
+        Include short, relevant code snippets to make abstract ideas concrete and memorable.
+
+      6. **Update with Current Context**
+        Add recent or practical examples to reinforce concepts and show relevance.
+
+      7. **Key Takeaways at the End**
+        Finish with bullet-point takeaways that someone can quickly review before an exam.
+
+      📌 Bonus Goal: Make it so good that if someone only reads this, they'll still pass the test.
+
+      You must use "<immersive>" tag
+
+  # Code refactoring prompt - Safe to share
+  - trigger: ":refactor"
+    replace: |
+      Please refactor the following code following industry best practices, making it more **maintainable, scalable, and efficient**.
+
+      ### ✅ **Apply SOLID Principles:**
+      - **S (Single Responsibility Principle)** → Each class has only **one** responsibility
+      - **O (Open/Closed Principle)** → **Open for extension** but **closed for modification**
+      - **L (Liskov Substitution Principle)** → Subtypes are **interchangeable** with base types
+      - **I (Interface Segregation Principle)** → Avoid forcing classes to **implement unused methods**
+      - **D (Dependency Inversion Principle)** → Depend on **abstractions**, not concrete implementations
+
+      ### ✅ **Additional Clean Code & Best Practices:**
+      - **DRY (Don't Repeat Yourself)** → Remove redundancy, improve reusability
+      - **KISS (Keep It Simple, Stupid)** → Avoid unnecessary complexity
+      - **YAGNI (You Ain't Gonna Need It)** → Remove unnecessary features
+      - **Encapsulation & Information Hiding** → Minimize direct field access
+      - **Composition Over Inheritance** → Use **composition** rather than deep inheritance
+      - **Fail Fast, Fail Early** → Implement **proper error handling and validation**
+
+      ### ✅ **Design Patterns (If Applicable)**
+      - **Factory Method, Strategy, Observer, Decorator** or other applicable patterns
+      - Use patterns that **improve maintainability, scalability, and efficiency**
+
+      ### **Expected Output:**
+      1. **Refactored Code** with improved structure
+      2. **Explanation of Changes** highlighting applied principles
+      3. **Performance & Readability Improvements**
+
+      Please ensure the code is:
+      - **More modular, reusable, and maintainable**
+      - **Readable, well-documented, and easy to extend**
+      - **Optimized for performance while keeping clarity**
+
+  # Work/Productivity prompts - Safe to share
+  - trigger: ":userstory"
+    replace: |
+      Given the following draft, please create a concise and descriptive product backlog title that accurately summarizes its main idea:
+
+  - trigger: ":feature"
+    replace: |
+      Given the following draft, please create a concise and descriptive feature title that accurately summarizes its main idea:
+
+  - trigger: ":ado"
+    replace: |
+      Tool: Use the ADO mcp tool to update or create items.
+      Location: The item should be created within the AmdonDev organization and the AMDON project.
+      Area Path: Ensure the Area Path is set to AMDON.
+
+  - trigger: ":mailtp"
+    replace: |
+      Hello,
+
+      ---
+      Regards,
+      [Your Name]
+
+  # Language/General prompts - Safe to share
+  - trigger: ":fixeng"
+    replace: |
+      Please check the text for grammar errors. Make corrections where needed, ensuring human-generated content. Avoid altering the tone/meaning significantly. Keep the content respectful and free of rudeness.
+
+  - trigger: ":fixprompt"
+    replace: |
+      Imagine you are the world's foremost prompt engineer. Rewrite the given prompt to reflect the highest standard of professionalism and clarity.
+
+  - trigger: ":teachme"
+    replace: |
+      I have provided the course transcript. Please use it as a reference to teach me, ensuring that all topics within the transcript are covered comprehensively. Feel free to include sample code where applicable and utilize Mermaid.js diagrams to illustrate complex concepts for enhanced understanding.
+
+  - trigger: ":makeclear"
+    replace: |
+      Please ensure that the concept you are about to explain is articulated clearly, concisely, and in a manner that is easy for readers to understand.
+
+  - trigger: ":memorize"
+    replace: |
+      Update the canvas so I can easily memorize the content. Use visual aids, sample code, or diagrams to enhance understanding if necessary.
+
+  - trigger: ":listfacts"
+    replace: |
+      List all the important facts from the provided content. Don't miss anything.
+
+  # Utility functions - Safe to share
+  - trigger: ":date"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%d-%b-%Y"
+
+  - trigger: ":time"
+    replace: "{{mydatetime}}"
+    vars:
+      - name: mydatetime
+        type: date
+        params:
+          format: "%d-%b-%Y %I:%M %p"
+
+  - trigger: ":shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo 'Hello from your shell'"
+
+  - trigger: ":lorem"
+    replace: "{{lorem_text}}"
+    vars:
+      - name: lorem_text
+        type: shell
+        params:
+          cmd: "curl -s https://loripsum.net/api/1/short/plaintext"
+
+  - trigger: ":plorem"
+    replace: "{{plorem_text}}"
+    vars:
+      - name: plorem_text
+        type: shell
+        params:
+          cmd: "curl -s https://loripsum.net/api/3/medium/plaintext"

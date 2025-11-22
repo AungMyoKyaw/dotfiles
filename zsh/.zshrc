@@ -11,7 +11,8 @@ alias qwen='npx @qwen-code/qwen-code@preview -y'
 alias claude='npx @anthropic-ai/claude-code@next --dangerously-skip-permissions'
 alias codex='npx @openai/codex@latest'
 alias gemini='npx @google/gemini-cli@preview -y'
-alias copilot='npx @github/copilot@prerelease --allow-all-tools'
+alias copilot='npx @github/copilot@prerelease --allow-all-tools --allow-all-paths --banner'
+alias openspec='npx @fission-ai/openspec@latest'
 alias opencode='npx opencode-ai@dev'
 alias crush='npx @charmland/crush@latest'
 alias rovodev='acli rovodev'
@@ -20,8 +21,8 @@ alias specify='uvx --from git+https://github.com/github/spec-kit.git specify'
 alias vercel='npx vercel'
 
 # Github Copilot CLI settings
-export COPILOT_MODEL='claude-haiku-4.5'
-export COPILOT_ALLOW_ALL=true
+# export COPILOT_MODEL='claude-haiku-4.5'
+# export COPILOT_ALLOW_ALL=true
 
 # git
 alias g='git'
@@ -220,6 +221,9 @@ gpgconf --launch gpg-agent
 
 export PYTHONWARNINGS="ignore::UserWarning:azext_devops"
 
+# Disable Azure Developer CLI telemetry
+export AZURE_DEV_COLLECT_TELEMETRY=no
+
 [[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code-insiders --locate-shell-integration-path zsh)"
 
 # Luaver - Lua Version Manager (uses system binary, no init script needed)
@@ -394,3 +398,6 @@ fi
 if [[ -f ~/.zshrc.local ]]; then
   source ~/.zshrc.local
 fi
+
+# Added by Antigravity
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"

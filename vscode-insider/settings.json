@@ -32,8 +32,12 @@
   "chat.editing.confirmEditRequestRemoval": false,
   "chat.editing.confirmEditRequestRetry": false,
   "chat.modeFilesLocations": {
-    ".github/chatmodes": true,
-    "/Users/aungmyokyaw/Library/Application Support/Code - Insiders/User/chatmodes": true
+    ".github/agents": true,
+    "/Users/aungmyokyaw/Library/Application Support/Code - Insiders/User/agents": true
+  },
+  "chat.agentFilesLocations": {
+    ".github/agents": true,
+    "/Users/aungmyokyaw/Library/Application Support/Code - Insiders/User/agents": true
   },
   "chat.sendElementsToChat.enabled": true,
   "chat.tools.autoApprove": true,
@@ -103,7 +107,6 @@
       "after": ["\"", "+", "y"]
     }
   ],
-  "workbench.colorTheme": "GitHub Dark",
   "workbench.statusBar.visible": true,
   "zenMode.centerLayout": false,
   "zenMode.hideLineNumbers": false,
@@ -115,7 +118,7 @@
   "github.copilot.chat.newWorkspace.useContext7": true,
   "chat.mcp.autostart": "newAndOutdated",
   "chat.editRequests": true,
-  "chat.agentSessionsViewLocation": "view",
+  "chat.agentSessionsViewLocation": "single-view",
   "chat.notifyWindowOnConfirmation": true,
   "inlineChat.notebookAgent": true,
   "inlineChat.enableV2": true,
@@ -344,15 +347,20 @@
   "github.copilot.chat.executePrompt.enabled": true,
   "github.copilot.chat.languageContext.typescript.includeDocumentation": true,
   "github.copilot.chat.languageContext.typescript.items": "fill",
-  "github.copilot.chat.responsesApiReasoningEffort": "high",
   "github.copilot.chat.useResponsesApi": true,
   "mermaid-chat.enabled": true,
   "chat.useCloudButtonV2": true,
   "github.copilot.chat.completionsFetcher": "electron-fetch",
   "github.copilot.chat.nesFetcher": "electron-fetch",
-  "python.defaultInterpreterPath": "/opt/homebrew/bin/python3.13",
+  "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
   "github.copilot.chat.claudeSonnet45AlternatePrompt": "v2",
   "github.copilot.chat.gpt5AlternatePrompt": "v2",
   "github.copilot.chat.grokCodeAlternatePrompt": "v2",
-  "chat.extensionUnification.enabled": true
+  "github.copilot.chat.anthropic.tools.websearch.enabled": true,
+  "github.copilot.chat.tools.memory.enabled": true,
+  "chat.customAgentInSubagent.enabled": true,
+  "github.copilot.chat.anthropic.thinking.enabled": true,
+  "githubPullRequests.codingAgent.promptForConfirmation": false,
+  "github.copilot.chat.githubMcpServer.enabled": true,
+  "github.copilot.chat.useMessagesApi": true
 }
