@@ -8,10 +8,11 @@
     }
   },
   "ui": {
-    "showMemoryUsage": true,
-    "showLineNumbers": false,
+    "showMemoryUsage": false,
+    "showLineNumbers": true,
     "theme": "GitHub",
-    "hideBanner": true
+    "hideBanner": false,
+    "expandDetails": true
   },
   "tools": {
     "autoAccept": true,
@@ -29,7 +30,7 @@
     "usageStatisticsEnabled": false
   },
   "model": {
-    "name": "gemini-3-pro-preview",
+    "name": "auto",
     "maxSessionTurns": -1,
     "compressionThreshold": 0.8
   },
