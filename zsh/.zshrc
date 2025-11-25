@@ -260,6 +260,142 @@ alias ds='du -sh'
 # Process search
 alias psa='ps aux | grep'
 
+# Kill all processes functions
+killall_node() {
+  if pgrep -f "node" > /dev/null; then
+    echo "Killing all Node.js processes..."
+    pkill -f "node"
+    echo "✓ All Node.js processes killed"
+  else
+    echo "No Node.js processes found"
+  fi
+}
+
+killall_nvim() {
+  if pgrep -f "nvim" > /dev/null; then
+    echo "Killing all Neovim processes..."
+    pkill -f "nvim"
+    echo "✓ All Neovim processes killed"
+  else
+    echo "No Neovim processes found"
+  fi
+}
+
+# Combined function to kill development processes
+killall_dev() {
+  echo "Killing development processes..."
+  killall_node
+  killall_nvim
+  pkill -f "claude" && echo "✓ Claude Code CLI processes killed" || echo "No Claude Code CLI processes found"
+}
+
+# Kill browser processes (resource intensive)
+killall_browsers() {
+  echo "Killing browser processes..."
+  pkill -f "Chrome" && echo "✓ Chrome processes killed" || echo "No Chrome processes found"
+  pkill -f "Safari" && echo "✓ Safari processes killed" || echo "No Safari processes found"
+  pkill -f "Firefox" && echo "✓ Firefox processes killed" || echo "No Firefox processes found"
+  pkill -f "Arc" && echo "✓ Arc processes killed" || echo "No Arc processes found"
+}
+
+# Kill Adobe processes (notorious resource hogs)
+killall_adobe() {
+  echo "Killing Adobe processes..."
+  pkill -f "Adobe" && echo "✓ Adobe processes killed" || echo "No Adobe processes found"
+}
+
+# Kill Microsoft Office processes
+killall_office() {
+  echo "Killing Microsoft Office processes..."
+  pkill -f "Microsoft" && echo "✓ Microsoft Office processes killed" || echo "No Microsoft processes found"
+}
+
+# Kill Docker and container processes
+killall_docker() {
+  echo "Killing Docker processes..."
+  pkill -f "Docker" && echo "✓ Docker processes killed" || echo "No Docker processes found"
+  docker system prune -f 2>/dev/null && echo "✓ Docker cleanup completed" || true
+}
+
+# Kill development tools
+killall_devtools() {
+  echo "Killing development tools..."
+  pkill -f "Postman" && echo "✓ Postman killed" || echo "No Postman processes found"
+  pkill -f "Insomnia" && echo "✓ Insomnia killed" || echo "No Insomnia processes found"
+  pkill -f "TablePlus" && echo "✓ TablePlus killed" || echo "No TablePlus processes found"
+  pkill -f "Sequel Ace" && echo "✓ Sequel Ace killed" || echo "No Sequel Ace processes found"
+}
+
+# Kill communication apps
+killall_communication() {
+  echo "Killing communication apps..."
+  pkill -f "Slack" && echo "✓ Slack killed" || echo "No Slack processes found"
+  pkill -f "Discord" && echo "✓ Discord killed" || echo "No Discord processes found"
+  pkill -f "Zoom" && echo "✓ Zoom killed" || echo "No Zoom processes found"
+  pkill -f "Teams" && echo "✓ Teams killed" || echo "No Teams processes found"
+}
+
+# Kill design and creative tools
+killall_design() {
+  echo "Killing design tools..."
+  pkill -f "Figma" && echo "✓ Figma killed" || echo "No Figma processes found"
+  pkill -f "Sketch" && echo "✓ Sketch killed" || echo "No Sketch processes found"
+  pkill -f "Canva" && echo "✓ Canva killed" || echo "No Canva processes found"
+}
+
+# Kill system monitoring/stats tools
+killall_stats() {
+  echo "Killing system monitoring tools..."
+  pkill -f "iStat" && echo "✓ iStat Menus killed" || echo "No iStat processes found"
+  pkill -f "Activity Monitor" && echo "✓ Activity Monitor killed" || echo "No Activity Monitor processes found"
+  pkill -f "Stats" && echo "✓ Stats killed" || echo "No Stats processes found"
+}
+
+# Nuke everything - kill all non-essential processes
+killall_performance() {
+  echo "🔥 KILLING ALL PERFORMANCE-KILLING PROCESSES 🔥"
+  echo ""
+
+  killall_browsers
+  echo ""
+
+  killall_adobe
+  echo ""
+
+  killall_office
+  echo ""
+
+  killall_devtools
+  echo ""
+
+  killall_communication
+  echo ""
+
+  killall_design
+  echo ""
+
+  killall_stats
+  echo ""
+
+  killall_docker
+  echo ""
+
+  killall_dev
+  echo ""
+
+  echo "✅ PERFORMANCE NUKING COMPLETE!"
+  echo "💡 Run 'top' or 'htop' to see remaining processes"
+}
+
+# Show top resource-consuming processes
+show_resource_hogs() {
+  echo "🔍 Top 10 CPU-consuming processes:"
+  ps aux | sort -rn -k 3 | head -11 | tail -10
+  echo ""
+  echo "💾 Top 10 Memory-consuming processes:"
+  ps aux | sort -rn -k 4 | head -11 | tail -10
+}
+
 # Network utilities
 alias myip='curl ipinfo.io/ip'
 export PATH="$HOME/bin:$PATH"
