@@ -7,15 +7,18 @@ if [[ -n $GHOSTTY_RESOURCES_DIR ]]; then
 fi
 
 # Public aliases - Using pre-release versions for latest features
-alias qwen='npx @qwen-code/qwen-code@preview -y'
-alias claude='npx @anthropic-ai/claude-code@next --dangerously-skip-permissions'
-alias codex='npx @openai/codex@latest'
-alias gemini='npx @google/gemini-cli@preview -y'
-alias copilot='npx @github/copilot@prerelease --allow-all-tools --allow-all-paths --banner'
-alias openspec='npx @fission-ai/openspec@latest'
-alias opencode='npx opencode-ai@dev'
-alias crush='npx @charmland/crush@latest'
-alias rovodev='acli rovodev'
+# alias qwen='npx @qwen-code/qwen-code@preview -y'
+# alias claude='npx @anthropic-ai/claude-code@next --dangerously-skip-permissions'
+# alias codex='npx @openai/codex@latest'
+# alias gemini='npx @google/gemini-cli@preview -y'
+# alias copilot='npx @github/copilot@prerelease --allow-all-tools --allow-all-paths --banner'
+# alias openspec='npx @fission-ai/openspec@latest'
+# alias opencode='npx opencode-ai@dev'
+# alias crush='npx @charmland/crush@latest'
+# alias rovodev='acli rovodev'
+
+alias copilot='copilot --allow-all-tools --allow-all-paths'
+alias claude='claude --dangerously-skip-permissions'
 
 alias specify='uvx --from git+https://github.com/github/spec-kit.git specify'
 alias vercel='npx vercel'
@@ -43,6 +46,9 @@ export LC_ALL=en_US.UTF-8
 export HOMEBREW_NO_ANALYTICS=1
 
 export DOCKER_DEFAULT_PLATFORM=linux/arm64
+
+# Vagrant default provider
+export VAGRANT_DEFAULT_PROVIDER=docker
 
 # Consolidated PATH exports
 export PATH="/usr/local/sbin:/opt/homebrew/bin:$HOME/.nimble/bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.config/emacs/bin:$PATH"
@@ -396,6 +402,74 @@ show_resource_hogs() {
   ps aux | sort -rn -k 4 | head -11 | tail -10
 }
 
+# Update AI CLI tools to latest versions
+update_ai_tools() {
+  echo "🤖 Updating AI CLI tools to latest versions..."
+  echo ""
+
+  # Update npm global packages
+  echo "📦 Updating npm global packages..."
+
+  tools=(
+    "@qwen-code/qwen-code@preview"
+    "@anthropic-ai/claude-code@next"
+    "@openai/codex@latest"
+    "@google/gemini-cli@preview"
+    "@github/copilot@prerelease"
+    "@fission-ai/openspec@latest"
+    "opencode-ai@dev"
+    "@charmland/crush@latest"
+  )
+
+  for package in "${tools[@]}"; do
+    echo "Updating $package..."
+    if npm i -g "$package" > /dev/null 2>&1; then
+      echo "✓ $package installed globally"
+    else
+      echo "⚠ Failed to install $package globally"
+    fi
+  done
+  echo ""
+
+  # Update uvx-based tools
+  echo "⚡ Updating uvx-based tools..."
+  if command -v uvx > /dev/null 2>&1; then
+    if uvx --from git+https://github.com/github/spec-kit.git specify --version > /dev/null 2>&1; then
+      echo "✓ specify updated successfully"
+    else
+      echo "⚠ Failed to update specify"
+    fi
+  else
+    echo "⚠ uvx not found, skipping specify"
+  fi
+  echo ""
+
+  # Update bun-based tools if bun is available
+  echo "🥟 Updating bun-based tools..."
+  if command -v bun > /dev/null 2>&1; then
+    if bun update > /dev/null 2>&1; then
+      echo "✓ bun packages updated"
+    else
+      echo "⚠ Failed to update bun packages"
+    fi
+  else
+    echo "⚠ bun not found, skipping bun updates"
+  fi
+  echo ""
+
+  # Update Vercel CLI
+  echo "▲ Updating Vercel CLI..."
+  if npm i -g vercel@latest > /dev/null 2>&1; then
+    echo "✓ Vercel CLI installed globally"
+  else
+    echo "⚠ Failed to install Vercel CLI globally"
+  fi
+  echo ""
+
+  echo "🎉 AI CLI tools update complete!"
+  echo "💡 Run 'reload' to refresh your shell environment"
+}
+
 # Network utilities
 alias myip='curl ipinfo.io/ip'
 export PATH="$HOME/bin:$PATH"
@@ -513,6 +587,9 @@ if command -v kubectl &> /dev/null; then
   # Port forwarding and exec shortcuts
   alias kpf='kubectl port-forward'
   alias kexec='kubectl exec -it'
+
+  # Dry-run and export aliases
+  export do="--dry-run=client -o yaml"
 
   # Quick status commands
   alias khealth='kubectl get componentstatuses'

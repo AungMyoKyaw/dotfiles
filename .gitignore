@@ -145,6 +145,9 @@ ssh/config
 .gemini/
 gha-creds-*.json
 
+# Gemini workspace folders
+gemini/commands/workspace/
+
 *.pem
 
 # Hammerspoon sensitive configurations

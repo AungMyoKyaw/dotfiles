@@ -1,5 +1,5 @@
 {
-  "banner": "once",
+  "banner": "never",
   "beep": true,
   "model": "claude-opus-4.5",
   "render_markdown": true,
