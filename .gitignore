@@ -158,6 +158,14 @@ hammerspoon/.sensitive/
 # Hammerspoon wallpapers directory
 hammerspoon/wallpapers/
 
+# Git configuration files (sensitive)
+.gitconfig
+.gitconfig_local
+.gitconfig.local
+git/config
+git/config.local
+git/.gitconfig
+
 # Sensitive configuration files
 **/sensitive_*
 **/*.secret.*
