@@ -40,6 +40,7 @@ FILES_TO_LINK=(
   "$DOTFILES_DIR/qwen/QWEN.md:$HOME/.qwen/QWEN.md"
   "$DOTFILES_DIR/opencode/settings.json:$HOME/.config/opencode/settings.json"
   "$DOTFILES_DIR/opencode/opencode.json:$HOME/.config/opencode/opencode.json"
+  "$DOTFILES_DIR/opencode/command:$HOME/.config/opencode/command"
   "$DOTFILES_DIR/claude/settings.json:$HOME/.claude/settings.json"
   "$DOTFILES_DIR/claude/CLAUDE.md:$HOME/.claude/CLAUDE.md"
   "$DOTFILES_DIR/claude/commands:$HOME/.claude/commands"
