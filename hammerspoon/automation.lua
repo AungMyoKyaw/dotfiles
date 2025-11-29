@@ -8,6 +8,12 @@ local idleChecker = nil
 local lastInputEpoch = hs.timer.secondsSinceEpoch()
 local inputEventtap = nil
 
+-- Timers for scheduled updates
+local macUpdateTimer = nil
+local aiToolsUpdateTimer = nil
+local lastUpdateDate = nil
+local lastAiUpdateDate = nil
+
 -- Update last input timestamp on user interactions
 local function startInputWatcher()
   if inputEventtap then return end
@@ -118,6 +124,59 @@ local function monitorAndOptimizeApps()
   end
 end
 
+-- Function to check if update should run (twice daily on machine startup)
+local function shouldRunUpdate(lastUpdateStr, maxHours)
+  if not lastUpdateStr then return true end
+  
+  -- Parse date string (YYYY-MM-DD format)
+  local year, month, day = lastUpdateStr:match("(%d+)-(%d+)-(%d+)")
+  if not year or not month or not day then return true end
+  
+  local lastUpdate = {
+    year = tonumber(year),
+    month = tonumber(month),
+    day = tonumber(day),
+    hour = 0,
+    min = 0,
+    sec = 0
+  }
+  
+  local now = os.date("*t")
+  local hoursDiff = os.difftime(os.time(now), os.time(lastUpdate)) / 3600
+  
+  return hoursDiff >= maxHours
+end
+
+-- Function to run updates on startup with smart scheduling
+local function runStartupUpdates()
+  local currentDate = os.date("%Y-%m-%d")
+  local currentHour = tonumber(os.date("%H"))
+  
+  -- Check if we should run mac_update (twice daily, at least 8 hours apart)
+  if shouldRunUpdate(lastUpdateDate, 8) then
+    hs.alert.show("Running startup mac_update...")
+    local ok, out = safeExecute("source ~/.zshrc && mac_update")
+    if ok then
+      hs.alert.show("Startup mac_update completed")
+      lastUpdateDate = currentDate
+    else
+      hs.alert.show("Startup mac_update failed")
+    end
+  end
+  
+  -- Check if we should run AI tools update (once daily)
+  if shouldRunUpdate(lastAiUpdateDate, 20) then
+    hs.alert.show("Running startup AI tools update...")
+    local ok, out = safeExecute("source ~/.zshrc && update_ai_tools")
+    if ok then
+      hs.alert.show("Startup AI tools update completed")
+      lastAiUpdateDate = currentDate
+    else
+      hs.alert.show("Startup AI tools update failed")
+    end
+  end
+end
+
 -- Function to set up automated maintenance
 local function setupAutomatedMaintenance()
   -- Run cleanup every 30 minutes
@@ -125,6 +184,40 @@ local function setupAutomatedMaintenance()
   cleanupTimer = hs.timer.doEvery(1800, function()
     checkSystemResources()
     monitorAndOptimizeApps()
+  end)
+
+  -- Run startup updates after 2 minutes delay (to let system settle)
+  hs.timer.doAfter(120, function()
+    runStartupUpdates()
+  end)
+
+  -- Check every hour for missed updates (in case machine was sleeping)
+  local hourlyCheck = hs.timer.doEvery(3600, function()
+    local currentHour = tonumber(os.date("%H"))
+    
+    -- Run mac_update at 9 AM and 6 PM if not already run
+    if (currentHour == 9 or currentHour == 18) and shouldRunUpdate(lastUpdateDate, 8) then
+      hs.alert.show("Running scheduled mac_update...")
+      local ok, out = safeExecute("source ~/.zshrc && mac_update")
+      if ok then
+        hs.alert.show("Scheduled mac_update completed")
+        lastUpdateDate = os.date("%Y-%m-%d")
+      else
+        hs.alert.show("Scheduled mac_update failed")
+      end
+    end
+    
+    -- Run AI tools update at 10 AM if not already run today
+    if currentHour == 10 and shouldRunUpdate(lastAiUpdateDate, 20) then
+      hs.alert.show("Running scheduled AI tools update...")
+      local ok, out = safeExecute("source ~/.zshrc && update_ai_tools")
+      if ok then
+        hs.alert.show("Scheduled AI tools update completed")
+        lastAiUpdateDate = os.date("%Y-%m-%d")
+      else
+        hs.alert.show("Scheduled AI tools update failed")
+      end
+    end
   end)
 end
 
@@ -229,6 +322,28 @@ function M.init(hyper)
     hs.alert.show("Running manual maintenance...")
     safeExecute("find \"$HOME/Library/Caches\" -type f -mtime +1 -delete")
     hs.alert.show("Maintenance completed")
+  end)
+
+  -- Hotkey to run mac_update command (Hyper + U)
+  hs.hotkey.bind(hyper, "u", function()
+    hs.alert.show("Running mac_update...")
+    local ok, out = safeExecute("source ~/.zshrc && mac_update")
+    if ok then
+      hs.alert.show("mac_update completed successfully")
+    else
+      hs.alert.show("mac_update failed: " .. (out or "Unknown error"))
+    end
+  end)
+
+  -- Hotkey to run update_ai_tools command (Hyper + Shift + U)
+  hs.hotkey.bind({"cmd", "alt", "ctrl", "shift"}, "u", function()
+    hs.alert.show("Updating AI tools...")
+    local ok, out = safeExecute("source ~/.zshrc && update_ai_tools")
+    if ok then
+      hs.alert.show("AI tools updated successfully")
+    else
+      hs.alert.show("AI tools update failed: " .. (out or "Unknown error"))
+    end
   end)
 end
 
