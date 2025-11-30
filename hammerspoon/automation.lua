@@ -127,11 +127,11 @@ end
 -- Function to check if update should run (twice daily on machine startup)
 local function shouldRunUpdate(lastUpdateStr, maxHours)
   if not lastUpdateStr then return true end
-  
+
   -- Parse date string (YYYY-MM-DD format)
   local year, month, day = lastUpdateStr:match("(%d+)-(%d+)-(%d+)")
   if not year or not month or not day then return true end
-  
+
   local lastUpdate = {
     year = tonumber(year),
     month = tonumber(month),
@@ -140,10 +140,10 @@ local function shouldRunUpdate(lastUpdateStr, maxHours)
     min = 0,
     sec = 0
   }
-  
+
   local now = os.date("*t")
   local hoursDiff = os.difftime(os.time(now), os.time(lastUpdate)) / 3600
-  
+
   return hoursDiff >= maxHours
 end
 
@@ -151,7 +151,7 @@ end
 local function runStartupUpdates()
   local currentDate = os.date("%Y-%m-%d")
   local currentHour = tonumber(os.date("%H"))
-  
+
   -- Check if we should run mac_update (twice daily, at least 8 hours apart)
   if shouldRunUpdate(lastUpdateDate, 8) then
     hs.alert.show("Running startup mac_update...")
@@ -163,7 +163,7 @@ local function runStartupUpdates()
       hs.alert.show("Startup mac_update failed")
     end
   end
-  
+
   -- Check if we should run AI tools update (once daily)
   if shouldRunUpdate(lastAiUpdateDate, 20) then
     hs.alert.show("Running startup AI tools update...")
@@ -187,16 +187,15 @@ local function setupAutomatedMaintenance()
   end)
 
   -- Run startup updates after 2 minutes delay (to let system settle)
-  hs.timer.doAfter(120, function()
-    runStartupUpdates()
-  end)
+  hs.timer.doAfter(120, function() runStartupUpdates() end)
 
   -- Check every hour for missed updates (in case machine was sleeping)
   local hourlyCheck = hs.timer.doEvery(3600, function()
     local currentHour = tonumber(os.date("%H"))
-    
+
     -- Run mac_update at 9 AM and 6 PM if not already run
-    if (currentHour == 9 or currentHour == 18) and shouldRunUpdate(lastUpdateDate, 8) then
+    if (currentHour == 9 or currentHour == 18) and
+        shouldRunUpdate(lastUpdateDate, 8) then
       hs.alert.show("Running scheduled mac_update...")
       local ok, out = safeExecute("source ~/.zshrc && mac_update")
       if ok then
@@ -206,7 +205,7 @@ local function setupAutomatedMaintenance()
         hs.alert.show("Scheduled mac_update failed")
       end
     end
-    
+
     -- Run AI tools update at 10 AM if not already run today
     if currentHour == 10 and shouldRunUpdate(lastAiUpdateDate, 20) then
       hs.alert.show("Running scheduled AI tools update...")
