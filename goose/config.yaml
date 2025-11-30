@@ -1,0 +1,147 @@
+extensions:
+  developer:
+    enabled: true
+    type: builtin
+    name: developer
+    description: ''
+    display_name: Developer
+    timeout: 300
+    bundled: true
+    available_tools: []
+  memory:
+    enabled: true
+    type: builtin
+    name: memory
+    description: ''
+    display_name: Memory
+    timeout: 300
+    bundled: true
+    available_tools: []
+  tutorial:
+    enabled: false
+    type: builtin
+    name: tutorial
+    description: ''
+    display_name: Tutorial
+    timeout: 300
+    bundled: true
+    available_tools: []
+  todo:
+    enabled: true
+    type: platform
+    name: todo
+    description: Enable a todo list for Goose so it can keep track of what it is doing
+    bundled: true
+    available_tools: []
+  chatrecall:
+    enabled: true
+    type: platform
+    name: chatrecall
+    description: Search past conversations and load session summaries for contextual memory
+    bundled: true
+    available_tools: []
+  extensionmanager:
+    enabled: true
+    type: platform
+    name: Extension Manager
+    description: Enable extension management tools for discovering, enabling, and disabling extensions
+    bundled: true
+    available_tools: []
+  autovisualiser:
+    enabled: true
+    type: builtin
+    name: autovisualiser
+    description: Data visualization and UI generation tools
+    display_name: Auto Visualiser
+    timeout: 600
+    bundled: true
+    available_tools: []
+  computercontroller:
+    enabled: true
+    type: builtin
+    name: computercontroller
+    description: ''
+    display_name: Computer Controller
+    timeout: 600
+    bundled: true
+    available_tools: []
+  sequential-thinking:
+    enabled: true
+    type: stdio
+    name: Sequential Thinking
+    description: MCP server for sequential thinking and reasoning
+    cmd: npx
+    args:
+      - -y
+      - '@modelcontextprotocol/server-sequential-thinking@latest'
+    envs: {}
+    env_keys: []
+    timeout: 300
+    bundled: null
+    available_tools: []
+  fetch:
+    enabled: true
+    type: stdio
+    name: Fetch
+    description: MCP server for web fetching capabilities
+    cmd: uvx
+    args:
+      - mcp-server-fetch
+      - --user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15
+      - --ignore-robots-txt
+    envs: {}
+    env_keys: []
+    timeout: 300
+    bundled: null
+    available_tools: []
+  playwright:
+    enabled: true
+    type: stdio
+    name: Playwright
+    description: MCP server for browser automation and web scraping
+    cmd: npx
+    args:
+      - '@playwright/mcp@latest'
+      - --no-sandbox
+      - --isolated
+      - --image-responses
+      - omit
+      - --block-service-workers
+      - --ignore-https-errors
+      - --save-session
+      - --save-trace
+    envs: {}
+    env_keys: []
+    timeout: 600
+    bundled: null
+    available_tools: []
+  context7:
+    enabled: true
+    type: streamable_http
+    name: context7
+    description: ''
+    uri: https://mcp.context7.com/mcp
+    envs: {}
+    env_keys: []
+    headers:
+      CONTEXT7_API_KEY: ${CONTEXT7_API_KEY}
+    timeout: 300
+    bundled: null
+    available_tools: []
+
+# Model Configuration
+GOOSE_PROVIDER: custom_glm_coding_plan
+GOOSE_MODEL: GLM-4.6
+GOOSE_TEMPERATURE: 0.7
+GOOSE_ENABLE_ROUTER: 'true'
+GOOSE_MODE: auto
+
+# Planning Configuration (Experimental)
+GOOSE_PLANNER_PROVIDER: custom_glm_coding_plan
+GOOSE_PLANNER_MODEL: GLM-4.6
+
+# Experimental Features
+ALPHA_FEATURES: true
+
+# Recipe Configuration
+GOOSE_RECIPE_GITHUB_REPO: block/goose-recipes

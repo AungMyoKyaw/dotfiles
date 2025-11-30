@@ -54,6 +54,7 @@ FILES_TO_LINK=(
   "$DOTFILES_DIR/starship/starship.toml:$HOME/.config/starship.toml"
   "$DOTFILES_DIR/doom:$HOME/.config/doom"
   "$DOTFILES_DIR/espanso:$HOME/Library/Application Support/espanso"
+  "$DOTFILES_DIR/goose/config.yaml:$HOME/.config/goose/config.yaml"
 )
 
 # Backup directory

@@ -472,6 +472,10 @@ update_ai_tools() {
 
 # Network utilities
 alias myip='curl ipinfo.io/ip'
+
+# Goose desktop alias
+alias goose-desktop='open -a Goose .'
+
 export PATH="$HOME/bin:$PATH"
 
 # ===================================
