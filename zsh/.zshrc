@@ -6,19 +6,16 @@ if [[ -n $GHOSTTY_RESOURCES_DIR ]]; then
   source "$GHOSTTY_RESOURCES_DIR"/shell-integration/zsh/ghostty-integration
 fi
 
-# Public aliases - Using pre-release versions for latest features
-# alias qwen='npx @qwen-code/qwen-code@preview -y'
-# alias claude='npx @anthropic-ai/claude-code@next --dangerously-skip-permissions'
-# alias codex='npx @openai/codex@latest'
-# alias gemini='npx @google/gemini-cli@preview -y'
-# alias copilot='npx @github/copilot@prerelease --allow-all-tools --allow-all-paths --banner'
-# alias openspec='npx @fission-ai/openspec@latest'
-# alias opencode='npx opencode-ai@dev'
-# alias crush='npx @charmland/crush@latest'
-# alias rovodev='acli rovodev'
-
-alias copilot='copilot --allow-all-tools --allow-all-paths'
-alias claude='claude --dangerously-skip-permissions'
+# Public aliases - Using pre-release versions for latest features with bunx for speed
+alias qwen='bunx @qwen-code/qwen-code@preview -y'
+alias claude='bunx @anthropic-ai/claude-code@next --dangerously-skip-permissions --disallowed-tools "WebSearch"'
+alias codex='bunx @openai/codex@latest'
+alias gemini='bunx @google/gemini-cli@preview -y'
+alias copilot='bunx @github/copilot@prerelease --allow-all-tools --allow-all-paths --banner'
+alias openspec='bunx @fission-ai/openspec@latest'
+alias opencode='bunx opencode-ai@dev'
+alias crush='bunx @charmland/crush@latest'
+alias rovodev='acli rovodev'
 
 alias specify='uvx --from git+https://github.com/github/spec-kit.git specify'
 alias vercel='npx vercel'
@@ -239,6 +236,11 @@ export AZURE_DEV_COLLECT_TELEMETRY=no
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+# Node.js replacement with Bun
+alias node='bun'
+alias npm='bun'
+alias npx='bunx'
+
 # ===================================
 # ADDITIONAL ALIASES AND UTILITIES
 # ===================================
@@ -407,8 +409,8 @@ update_ai_tools() {
   echo "🤖 Updating AI CLI tools to latest versions..."
   echo ""
 
-  # Update npm global packages
-  echo "📦 Updating npm global packages..."
+  # Update AI tools using bunx for faster installation
+  echo "📦 Updating AI tools using bunx..."
 
   tools=(
     "@qwen-code/qwen-code@preview"
@@ -422,52 +424,37 @@ update_ai_tools() {
   )
 
   for package in "${tools[@]}"; do
-    echo "Updating $package..."
-    if npm i -g "$package" > /dev/null 2>&1; then
-      echo "✓ $package installed globally"
+    echo "Updating $package using bunx..."
+    if bunx "$package" --version > /dev/null 2>&1; then
+      echo "✓ $package updated (via bunx)"
     else
-      echo "⚠ Failed to install $package globally"
+      echo "⚠ Failed to update $package with bunx, falling back to npm..."
+      if npm i -g "$package" > /dev/null 2>&1; then
+        echo "✓ $package installed globally (via npm fallback)"
+      else
+        echo "⚠ Failed to install $package globally"
+      fi
     fi
   done
   echo ""
 
-  # Update uvx-based tools
-  echo "⚡ Updating uvx-based tools..."
-  if command -v uvx > /dev/null 2>&1; then
-    if uvx --from git+https://github.com/github/spec-kit.git specify --version > /dev/null 2>&1; then
-      echo "✓ specify updated successfully"
-    else
-      echo "⚠ Failed to update specify"
-    fi
-  else
-    echo "⚠ uvx not found, skipping specify"
-  fi
-  echo ""
-
-  # Update bun-based tools if bun is available
-  echo "🥟 Updating bun-based tools..."
-  if command -v bun > /dev/null 2>&1; then
-    if bun update > /dev/null 2>&1; then
-      echo "✓ bun packages updated"
-    else
-      echo "⚠ Failed to update bun packages"
-    fi
-  else
-    echo "⚠ bun not found, skipping bun updates"
-  fi
-  echo ""
-
   # Update Vercel CLI
-  echo "▲ Updating Vercel CLI..."
-  if npm i -g vercel@latest > /dev/null 2>&1; then
-    echo "✓ Vercel CLI installed globally"
+  echo "▲ Updating Vercel CLI using bunx..."
+  if bunx vercel --version > /dev/null 2>&1; then
+    echo "✓ Vercel CLI updated (via bunx)"
   else
-    echo "⚠ Failed to install Vercel CLI globally"
+    echo "⚠ Failed to update Vercel CLI with bunx, falling back to npm..."
+    if npm i -g vercel@latest > /dev/null 2>&1; then
+      echo "✓ Vercel CLI installed globally (via npm fallback)"
+    else
+      echo "⚠ Failed to install Vercel CLI globally"
+    fi
   fi
   echo ""
 
   echo "🎉 AI CLI tools update complete!"
   echo "💡 Run 'reload' to refresh your shell environment"
+  echo "🚀 Using bunx for faster package execution and updates"
 }
 
 # Network utilities
